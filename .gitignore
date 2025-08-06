@@ -1,0 +1,85 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Node
+node_modules/
+.vite/
+npm-debug.log
+yarn-debug.log
+pnpm-debug.log
+*.log
+
+
+# Build output
+dist/
+.next/
+out/
+build/
+coverage/
+.eslintcache
+
+# Vercel & Render
+.vercel/
+render-build/
+.render/
+
+# Supabase
+.supabase/
+supabase/.temp/
+supabase/functions/.netlify/
+.env
+.env.local
+.env.*.local
+.env.example
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Playwright
+playwright-report/
+test-results/
+*.spec.ts.snap
+*.spec.js.snap
+*.log
+.traces/
+
+# Misc
+*.swp
+*.bak
+*.tmp
+*.lock
+.cache/
+.pnpm-store/
+.parcel-cache/
+*.tgz
+
+# TypeScript
+*.tsbuildinfo
+
+# SCSS/CSS
+*.css.map
+
+# Optional local uploads (not for production)
+public/uploads/
+supabase/storage/buckets/knowledge-base-files/*
+!supabase/storage/buckets/knowledge-base-files/.keep

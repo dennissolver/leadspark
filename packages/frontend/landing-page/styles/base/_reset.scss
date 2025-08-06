@@ -1,0 +1,13 @@
+// File: packages/frontend/landing-page/styles/base/_reset.scss
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #fff;
+  color: #333;
+}

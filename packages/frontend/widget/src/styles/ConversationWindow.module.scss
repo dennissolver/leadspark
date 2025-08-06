@@ -1,0 +1,28 @@
+.conversation-window {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  max-width: 300px;
+  font-family: $font-stack;
+
+  h3 {
+    color: $primary-color;
+  }
+
+  .transcript {
+    margin-top: 1rem;
+    max-height: 150px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  button {
+    margin-top: 0.5rem;
+    background: $primary-color;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+}

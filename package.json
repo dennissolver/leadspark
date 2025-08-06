@@ -1,0 +1,29 @@
+
+{
+  "name": "leadspark-project",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "tools/*",
+    "workspaces",
+    "packages/backend",
+    "packages/common",
+    "packages/frontend/*"
+]
+
+  ],
+  "scripts": {
+    "start": "npm run start --workspace=packages/backend",
+    "dev:backend": "npm run dev --workspace=packages/backend",
+    "dev:widget": "npm run dev --workspace=packages/frontend/widget",
+    "dev:portal": "npm run dev --workspace=packages/frontend/portal",
+    "dev:admin": "npm run dev --workspace=packages/frontend/admin-portal",
+    "dev:landing": "npm run dev --workspace=packages/frontend/landing-page",
+    "test:e2e": "npm run test --workspace=tools/playwright",
+    "install:all": "npm install"
+  },
+  "devDependencies": {
+    "lerna": "^8.0.0"
+  }
+}

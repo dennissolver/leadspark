@@ -1,0 +1,6 @@
+// File: packages/frontend/admin-portal/vercel.json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs"
+}
