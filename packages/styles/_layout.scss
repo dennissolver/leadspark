@@ -1,4 +1,4 @@
-// File: styles/_layout.scss
+@use './variables' as *;
 body {
   font-family: $font-stack;
   background-color: $bg-color;

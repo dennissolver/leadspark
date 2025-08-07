@@ -1,6 +1,4 @@
-// packages/styles/base/_typography.scss
-// Base typography styles using your variables
-
+@use './variables' as *;
 body {
   font-family: $font-family-sans;
   font-size: $text-base;

@@ -1,4 +1,4 @@
-// File: styles/_components.scss
+@use './variables' as *;
 .card {
   background: white;
   border: 1px solid $border-color;
