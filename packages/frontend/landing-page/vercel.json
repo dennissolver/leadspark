@@ -2,6 +2,5 @@
   "buildCommand": "cd ../../../ && npx turbo run build --filter=landing-page",
   "outputDirectory": ".next",
   "installCommand": "cd ../../../ && npm install",
-  "framework": "nextjs",
-  "rootDirectory": "packages/frontend/landing-page"
+  "framework": "nextjs"
 }
