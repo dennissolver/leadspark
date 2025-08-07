@@ -6,7 +6,7 @@ const nextConfig = {
 
   sassOptions: {
     includePaths: [
-      path.resolve(__dirname, '../../styles'), // Resolves to packages/styles
+      path.resolve(__dirname, '../../../styles'), // Resolves to packages/styles
     ],
   },
 
