@@ -1,49 +1,7 @@
-.log-viewer {
-  padding: 2rem;
-  font-family: monospace;
-  max-width: 800px;
-  margin: 0 auto;
-
-  &__title {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
-  }
-
-  &__status,
-  &__error {
-    color: #666;
-    font-style: italic;
-    margin-bottom: 1rem;
-  }
-
-  &__error {
-    color: #c00;
-  }
-
-  &__list {
-    list-style: none;
-    padding: 0;
-  }
-
-  &__item {
-    background: #f5f5f5;
-    margin-bottom: 0.75rem;
-    padding: 1rem;
-    border-radius: 6px;
-  }
-
-  &__timestamp {
-    font-size: 0.85rem;
-    color: #888;
-    margin-bottom: 0.25rem;
-  }
-
-  &__file {
-    font-weight: bold;
-    color: #005;
-  }
-
-  &__message {
-    color: #111;
-  }
+// 📁 packages/styles/globals.scss
+body {
+  font-family: $font-stack;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #222;
 }
