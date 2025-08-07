@@ -4,24 +4,19 @@ const path = require('path');
 const nextConfig = {
   reactStrictMode: true,
 
+  // SCSS configuration
   sassOptions: {
-    includePaths: [
-      path.resolve(__dirname, '../../../styles'), // Resolves to packages/styles
-    ],
+    includePaths: [path.join(__dirname, '../../../styles')],
+    prependData: `@use "variables"; @use "mixins";`, // Auto-import variables and mixins
   },
 
+  // Webpack configuration for monorepo
   experimental: {
-    externalDir: true, // for monorepo support
+    externalDir: true, // Allow imports from outside the app directory
   },
 
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'http://localhost:8000/api/:path*',
-      },
-    ];
-  },
-};
+  // Transpile workspace packages if needed
+  transpilePackages: [],
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
