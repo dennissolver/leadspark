@@ -1,0 +1,29 @@
+{
+  "name": "@leadspark/styles",
+  "version": "1.0.0",
+  "description": "Shared SCSS styles for all Leadspark frontend applications",
+  "main": "main.scss",
+  "exports": {
+    ".": "./main.scss",
+    "./variables": "./_variables.scss",
+    "./buttons": "./_buttons.scss",
+    "./components": "./_components.scss",
+    "./layout": "./_layout.scss",
+    "./typography": "./_typography.scss",
+    "./forms": "./form.scss",
+    "./globals": "./globals.scss",
+    "./ui": "./ui1.scss"
+  },
+  "files": [
+    "*.scss"
+  ],
+  "keywords": [
+    "scss",
+    "styles",
+    "leadspark",
+    "shared"
+  ],
+  "peerDependencies": {
+    "sass": "^1.0.0"
+  }
+}

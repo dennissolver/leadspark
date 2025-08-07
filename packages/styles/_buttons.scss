@@ -1,0 +1,14 @@
+.button {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $secondary-color;
+  }
+}

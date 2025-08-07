@@ -1,0 +1,24 @@
+// File: styles/_layout.scss
+body {
+  font-family: $font-stack;
+  background-color: $bg-color;
+  color: $text-color;
+  margin: 0;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: $sidebar-width;
+  background: white;
+  border-right: 1px solid $border-color;
+  padding: $padding-base;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}
