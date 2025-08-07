@@ -9,8 +9,6 @@
     "packages/backend",
     "packages/common",
     "packages/frontend/*"
-]
-
   ],
   "scripts": {
     "start": "npm run start --workspace=packages/backend",
