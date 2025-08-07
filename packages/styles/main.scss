@@ -1,9 +1,6 @@
-// packages/styles/main.scss
 @use './_variables.scss' as *;
 @use './_mixins.scss' as *;
 @use './_functions.scss' as *;
-
-// Then import the rest of your files.
 @use './_reset.scss' as *;
 @use './_typography.scss' as *;
 @use './_layout.scss' as *;
