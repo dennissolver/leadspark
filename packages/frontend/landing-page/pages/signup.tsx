@@ -54,17 +54,17 @@ export default function Signup(): JSX.Element {
     starter: {
       name: 'Starter',
       price: '$29/month',
-      priceId: 'price_starter_monthly' // Replace with your actual Stripe price ID
+      priceId: 'prod_SoziIISihvVYy3' // Replace with your actual Stripe price ID
     },
     professional: {
       name: 'Professional',
       price: '$99/month',
-      priceId: 'price_professional_monthly' // Replace with your actual Stripe price ID
+      priceId: 'prod_SozkQ2yZtisIaG' // Replace with your actual Stripe price ID
     },
     enterprise: {
       name: 'Enterprise',
       price: '$299/month',
-      priceId: 'price_enterprise_monthly' // Replace with your actual Stripe price ID
+      priceId: 'prod_SozkFpslZbjZn9' // Replace with your actual Stripe price ID
     }
   };
 

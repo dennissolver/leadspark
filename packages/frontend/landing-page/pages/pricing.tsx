@@ -38,7 +38,7 @@ export default function Pricing(): JSX.Element {
         'Email support'
       ],
       cta: 'Start Free Trial',
-      popular: false
+      popular: true
     },
     professional: {
       name: 'Professional',
