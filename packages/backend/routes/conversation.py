@@ -9,7 +9,8 @@ router = APIRouter()
 
 # Initialize services with API keys from environment variables
 SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+# CORRECTED: Use SUPABASE_SERVICE_ROLE_KEY instead of SUPABASE_KEY
+SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
 
 supabase_service = SupabaseService(SUPABASE_URL, SUPABASE_KEY)
