@@ -1,7 +1,19 @@
-// Import shared styles
-@import '@leadspark/styles';
+// packages/frontend/landing-page/styles/main.scss
+// Import shared variables from packages/styles
+@import "../../../styles/variables";
 
-// Landing page specific overrides
-.landing-page {
-  // Custom styles for landing page
+// Import other shared styles if needed
+@import "../../../styles/layout";
+@import "../../../styles/buttons";
+@import "../../../styles/components";
+
+// Import local base styles
+@import "./base/reset";
+@import "./layout/layout";
+
+// Landing page specific styles can go here
+body {
+  font-family: $font-family-sans;
+  color: $text-color;
+  background-color: $bg-color;
 }
