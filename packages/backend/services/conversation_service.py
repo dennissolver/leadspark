@@ -1,6 +1,6 @@
 from models.input import ConversationInput
-from services.elevenlabs_service import synthesize_speech, ElevenLabsService
-from services.supabase_service import save_conversation, SupabaseService
+from services.elevenlabs_service import ElevenLabsService
+from services.supabase_service import SupabaseService
 from utils.prompt_builder import build_prompt
 
 class ConversationService:

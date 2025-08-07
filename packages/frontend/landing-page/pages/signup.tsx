@@ -1,6 +1,17 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import {
+  CheckCircle,
+  Star,
+  ArrowRight,
+  Mic,
+  Calendar,
+  BarChart,
+  Settings,
+  Users,
+  Lightbulb
+} from 'lucide-react';
 
 interface SignupFormData {
   email: string;
@@ -30,6 +41,7 @@ export default function Signup() {
     companyName: ''
   });
   const [errors, setErrors] = useState<SignupErrors>({});
+  const portalUrl = 'https://leadspark-tenant.vercel.app/'; // The portal app URL
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -91,7 +103,7 @@ export default function Signup() {
       // You would then redirect the user to an onboarding page or dashboard.
       // For now, this is a simulated success.
       alert('Signup successful! Redirecting to dashboard...');
-      router.push('/dashboard');
+      window.location.href = portalUrl; // Redirect to the portal app
     } catch (error) {
       console.error('Signup error:', error);
       setErrors({
@@ -106,14 +118,14 @@ export default function Signup() {
     // This function would initiate the Google SSO flow.
     // For this example, we will simulate a redirection.
     alert('Initiating Google sign-in...');
-    router.push('/dashboard');
+    window.location.href = portalUrl; // Redirect to the portal app
   };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="text-center">
-          <Link href="/">
+          <Link href="/leadspark-intro">
             <button className="text-2xl font-bold text-blue-600 hover:text-blue-700">
               Leadspark
             </button>
@@ -302,3 +314,4 @@ export default function Signup() {
     </div>
   );
 }
+
