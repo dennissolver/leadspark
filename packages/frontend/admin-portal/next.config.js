@@ -1,4 +1,5 @@
 // packages/frontend/admin-portal/next.config.js
+/** @type {import('next').NextConfig} */
 const path = require('path');
 
 const nextConfig = {
@@ -6,8 +7,12 @@ const nextConfig = {
 
   // SCSS configuration
   sassOptions: {
-    includePaths: [path.join(__dirname, '../../../styles')],
-    prependData: `@use "variables"; @use "mixins";`, // Auto-import variables and mixins
+    includePaths: [
+      path.join(__dirname, 'styles'),
+      path.join(__dirname, '../../../styles'), // Shared styles path
+    ],
+    // Corrected: Use both @use and @import for variables and mixins
+    prependData: `@use "variables" as *; @use "mixins" as *; @import "variables"; @import "mixins";`,
   },
 
   // Webpack configuration for monorepo
@@ -19,4 +24,4 @@ const nextConfig = {
   transpilePackages: [],
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;
