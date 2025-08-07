@@ -1,13 +1,47 @@
-// packages/styles/main.scss
-@import './abstracts/variables';
-@import './abstracts/mixins';
-@import './abstracts/functions';
+// packages/styles/main.scss - MASTER STYLESHEET
+// This is imported by all frontend apps
 
-@import './base/reset';
-@import './base/typography';
+// ==============================================
+// ABSTRACTS (Variables, Mixins, Functions)
+// ==============================================
+@import './variables';
+@import './mixins';         // Create this for reusable mixins
 
-@import './layout/layout';
+// ==============================================
+// BASE STYLES (Reset, Typography, Global)
+// ==============================================
+@import './base/reset';     // CSS reset
+@import './base/typography'; // Global typography
+@import './base/globals';   // Global styles
 
-@import './components/buttons';
-@import './components/forms';
-@import './components/components';t
+// ==============================================
+// LAYOUT (Grid, Containers, etc.)
+// ==============================================
+@import './layout';
+
+// ==============================================
+// COMPONENTS (Buttons, Forms, Cards, etc.)
+// ==============================================
+@import './buttons';
+@import './components';
+@import './forms';          // Create this for form styles
+
+// ==============================================
+// UTILITIES (Helper classes)
+// ==============================================
+@import './utilities';      // Create this for utility classes
+
+// ==============================================
+// GLOBAL STYLES
+// ==============================================
+body {
+  font-family: $font-family-sans;
+  color: $text-color;
+  background-color: $bg-color;
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
