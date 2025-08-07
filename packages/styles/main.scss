@@ -1,5 +1,13 @@
-// File: styles/main.scss
-@import './variables';
-@import './layout';
-@import './typography';
-@import './components';
+// packages/styles/main.scss
+@import './abstracts/variables';
+@import './abstracts/mixins';
+@import './abstracts/functions';
+
+@import './base/reset';
+@import './base/typography';
+
+@import './layout/layout';
+
+@import './components/buttons';
+@import './components/forms';
+@import './components/components';t

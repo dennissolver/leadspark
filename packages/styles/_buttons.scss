@@ -1,14 +1,74 @@
-.button {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background-color: $primary-color;
-  color: white;
-  border: none;
-  border-radius: $border-radius;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+// packages/styles/base/_typography.scss
+// Base typography styles using your variables
+
+body {
+  font-family: $font-family-sans;
+  font-size: $text-base;
+  font-weight: $font-normal;
+  line-height: $leading-normal;
+  color: $text-color;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $font-semibold;
+  line-height: $leading-tight;
+  margin-bottom: $spacing-4;
+  color: $text-color;
+}
+
+h1 { font-size: $text-4xl; }
+h2 { font-size: $text-3xl; }
+h3 { font-size: $text-2xl; }
+h4 { font-size: $text-xl; }
+h5 { font-size: $text-lg; }
+h6 { font-size: $text-base; }
+
+// Paragraphs and text
+p {
+  margin-bottom: $spacing-4;
+  line-height: $leading-relaxed;
+}
+
+// Links
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color $transition-base;
 
   &:hover {
-    background-color: $secondary-color;
+    color: $primary-600;
+    text-decoration: underline;
   }
 }
+
+// Text utilities
+.text-muted {
+  color: $muted-text;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-success {
+  color: $success-color;
+}
+
+.text-error {
+  color: $error-color;
+}
+
+// Font weight utilities
+.font-light { font-weight: $font-light; }
+.font-normal { font-weight: $font-normal; }
+.font-medium { font-weight: $font-medium; }
+.font-semibold { font-weight: $font-semibold; }
+.font-bold { font-weight: $font-bold; }
+
+// Font size utilities
+.text-xs { font-size: $text-xs; }
+.text-sm { font-size: $text-sm; }
+.text-base { font-size: $text-base; }
+.text-lg { font-size: $text-lg; }
+.text-xl { font-size: $text-xl; }
