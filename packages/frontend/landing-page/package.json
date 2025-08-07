@@ -1,12 +1,17 @@
 {
   "name": "landing-page",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf .next .turbo node_modules/.cache"
   },
   "dependencies": {
+    "@leadspark/styles": "file:../../styles",
     "sass": "^1.0.0",
     "@stripe/stripe-js": "^2.4.0",
     "@supabase/supabase-js": "^2.0.0",
