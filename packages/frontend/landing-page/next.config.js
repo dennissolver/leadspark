@@ -21,6 +21,17 @@ const nextConfig = {
 
   // Transpile workspace packages if needed
   transpilePackages: [],
+
+  // NEW: API rewrites for local development
+  // This is crucial for proxying API calls to the backend
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "http://localhost:8000/api/:path*",
+      },
+    ];
+  },
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;
