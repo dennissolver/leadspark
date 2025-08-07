@@ -1,0 +1,21 @@
+// Functions
+// These are reusable snippets of code that return a value.
+// They help keep your stylesheets DRY (Don't Repeat Yourself).
+
+// Converts a pixel value to a rem value, based on a base font size.
+// This is useful for maintaining a consistent scale throughout your application.
+@function rem($pixels, $base: 16) {
+  @return ($pixels / $base) * 1rem;
+}
+
+// Dynamically adjusts the lightness of a color.
+// This is useful for creating consistent hover or active states for elements.
+@function color-lighten($color, $amount) {
+  @return lighten($color, $amount);
+}
+
+// Dynamically adjusts the darkness of a color.
+// This can be used to create deeper, more intense versions of your brand colors.
+@function color-darken($color, $amount) {
+  @return darken($color, $amount);
+}

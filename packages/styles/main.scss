@@ -1,10 +1,13 @@
 // packages/styles/main.scss
-@use './variables' as *;
-@use './mixins' as *;
-@use './reset' as *;
-@use './typography' as *;
-@use './layout' as *;
-@use './buttons' as *;
-@use './utilities' as *;
-@use './form' as *;
-@use './globals' as *;
+@use './_variables.scss' as *;
+@use './_mixins.scss' as *;
+@use './_functions.scss' as *;
+
+// Then import the rest of your files.
+@use './_reset.scss' as *;
+@use './_typography.scss' as *;
+@use './_layout.scss' as *;
+@use './_buttons.scss' as *;
+@use './_utilities.scss' as *;
+@use './_form.scss' as *;
+@use './_globals.scss' as *;
