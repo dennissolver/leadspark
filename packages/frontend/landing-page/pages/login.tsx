@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { supabase } from '../lib/supabaseClient';
 import { AuthError } from '@supabase/supabase-js';
+import Link from 'next/link';
 
 interface LoginFormData {
   email: string;
@@ -23,6 +24,7 @@ export default function Login(): JSX.Element {
     password: ''
   });
   const [errors, setErrors] = useState<LoginErrors>({});
+  const portalUrl = 'https://leadspark-tenant.vercel.app/'; // The portal app URL
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -67,7 +69,6 @@ export default function Login(): JSX.Element {
     setLoading(true);
 
     try {
-      // Option 1: Use Supabase client directly (recommended)
       const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
@@ -78,32 +79,9 @@ export default function Login(): JSX.Element {
       }
 
       if (data.user) {
-        // Successful login - redirect to dashboard
-        router.push('/dashboard');
+        // Successful login - redirect to portal
+        window.location.href = portalUrl;
       }
-
-      // Option 2: Use your existing API route (alternative)
-      /*
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-        }),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || 'Login failed');
-      }
-
-      // Successful login - redirect to dashboard
-      router.push('/dashboard');
-      */
 
     } catch (error) {
       console.error('Login error:', error);
@@ -133,7 +111,8 @@ export default function Login(): JSX.Element {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/dashboard`
+          // Redirect to the portal app after successful login
+          redirectTo: `${portalUrl}dashboard`
         }
       });
 
@@ -148,60 +127,26 @@ export default function Login(): JSX.Element {
     }
   };
 
-  const handleForgotPassword = async (): Promise<void> => {
-    if (!formData.email) {
-      setErrors({ email: 'Please enter your email address first' });
-      return;
-    }
-
-    try {
-      const { error } = await supabase.auth.resetPasswordForEmail(formData.email, {
-        redirectTo: `${window.location.origin}/reset-password`,
-      });
-
-      if (error) {
-        throw error;
-      }
-
-      alert('Password reset email sent! Please check your inbox.');
-    } catch (error) {
-      console.error('Password reset error:', error);
-      setErrors({
-        general: 'Failed to send password reset email. Please try again.'
-      });
-    }
-  };
-
-  const handleSignupRedirect = (): void => {
-    router.push('/signup');
-  };
-
-  const handleHomeRedirect = (): void => {
-    router.push('/');
-  };
-
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="text-center">
-          <button
-            onClick={handleHomeRedirect}
-            className="text-2xl font-bold text-blue-600 hover:text-blue-700"
-          >
-            Leadspark
-          </button>
+          <Link href="/leadspark-intro">
+            <button className="text-2xl font-bold text-blue-600 hover:text-blue-700">
+              Leadspark
+            </button>
+          </Link>
         </div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Sign in to your account
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Or{' '}
-          <button
-            onClick={handleSignupRedirect}
-            className="font-medium text-blue-600 hover:text-blue-500"
-          >
-            start your 14-day free trial
-          </button>
+          <Link href="/signup">
+            <button className="font-medium text-blue-600 hover:text-blue-500">
+              start your 14-day free trial
+            </button>
+          </Link>
         </p>
       </div>
 
@@ -277,7 +222,7 @@ export default function Login(): JSX.Element {
               <div className="text-sm">
                 <button
                   type="button"
-                  onClick={handleForgotPassword}
+                  onClick={() => router.push('/forgot-password')}
                   className="font-medium text-blue-600 hover:text-blue-500"
                 >
                   Forgot your password?
@@ -296,7 +241,7 @@ export default function Login(): JSX.Element {
                 }`}
               >
                 {loading ? (
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-center">
                     <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -342,12 +287,11 @@ export default function Login(): JSX.Element {
             <div className="text-center">
               <span className="text-sm text-gray-600">
                 Don't have an account?{' '}
-                <button
-                  onClick={handleSignupRedirect}
-                  className="font-medium text-blue-600 hover:text-blue-500"
-                >
-                  Sign up for free
-                </button>
+                <Link href="/signup">
+                  <button className="font-medium text-blue-600 hover:text-blue-500">
+                    Sign up for free
+                  </button>
+                </Link>
               </span>
             </div>
           </div>
