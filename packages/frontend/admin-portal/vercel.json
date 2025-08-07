@@ -1,5 +1,7 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "cd ../../../ && npx turbo run build --filter=admin-portal",
   "outputDirectory": ".next",
-  "framework": "nextjs"
+  "installCommand": "cd ../../../ && npm install",
+  "framework": "nextjs",
+  "rootDirectory": "packages/frontend/admin-portal"
 }

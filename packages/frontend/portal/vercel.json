@@ -1,6 +1,7 @@
 {
-  "buildCommand": "npm install && npm run build",
+  "buildCommand": "cd ../../../ && npx turbo run build --filter=portal",
   "outputDirectory": ".next",
+  "installCommand": "cd ../../../ && npm install",
   "framework": "nextjs",
-  "installCommand": "npm install"
+  "rootDirectory": "packages/frontend/lportal"
 }
