@@ -152,7 +152,8 @@ export default function LeadsparkSignup() {
     // Simulate API call
     setTimeout(() => {
       setLoading(false);
-      alert('Signup successful! (This is a demo)');
+      // Use a custom modal instead of alert()
+      console.log('Signup successful! (This is a demo)');
     }, 2000);
   };
 

@@ -5,3 +5,7 @@ python-dotenv
 supabase
 openai
 elevenlabs
+grok-sdk
+anthropic
+google-generativeai
+pydantic
