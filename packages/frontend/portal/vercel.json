@@ -2,9 +2,5 @@
   "buildCommand": "npm install && npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
-  "installCommand": "npm install",
-  "env": {
-    "TURBO_FORCE": "false",
-    "VERCEL_IGNORE_WORKSPACE": "1"
-  }
+  "installCommand": "npm install"
 }
