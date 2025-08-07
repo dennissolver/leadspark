@@ -1,35 +1,31 @@
-// packages/styles/main.scss - MASTER STYLESHEET
-// This is imported by all frontend apps
+// packages/styles/main.scss - COMPLETE MASTER STYLESHEET
+// This imports all your existing and new essential files
 
 // ==============================================
-// ABSTRACTS (Variables, Mixins, Functions)
+// ABSTRACTS (Variables & Mixins)
 // ==============================================
-@import './variables';
-@import './mixins';         // Create this for reusable mixins
+@import './variables';         // Your comprehensive variables
+@import './mixins';           // NEW: Reusable patterns
 
 // ==============================================
-// BASE STYLES (Reset, Typography, Global)
+// BASE STYLES (Reset & Typography)
 // ==============================================
-@import './base/reset';     // CSS reset
-@import './base/typography'; // Global typography
-@import './base/globals';   // Global styles
+@import './reset';            // NEW: Browser normalization
+@import './typography';       // Your existing typography
 
 // ==============================================
-// LAYOUT (Grid, Containers, etc.)
+// LAYOUT & COMPONENTS
 // ==============================================
-@import './layout';
+@import './layout';           // Your existing layout
+@import './buttons';          // Your existing buttons
+@import './components';       // Your existing components
+@import './form';            // Your existing form styles
 
 // ==============================================
-// COMPONENTS (Buttons, Forms, Cards, etc.)
+// UTILITIES & GLOBALS
 // ==============================================
-@import './buttons';
-@import './components';
-@import './forms';          // Create this for form styles
-
-// ==============================================
-// UTILITIES (Helper classes)
-// ==============================================
-@import './utilities';      // Create this for utility classes
+@import './utilities';        // NEW: Helper classes
+@import './globals';          // Your existing globals
 
 // ==============================================
 // GLOBAL STYLES
