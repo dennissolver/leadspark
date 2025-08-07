@@ -1,5 +1,15 @@
 import { useState } from 'react';
-import { CheckCircle, Star, ArrowRight, Mic, Calendar, BarChart3, Settings, Users, Lightbulb } from 'lucide-react';
+import {
+  CheckCircle,
+  Star,
+  ArrowRight,
+  Mic,
+  Calendar,
+  BarChart,
+  Settings,
+  Users,
+  Lightbulb
+} from 'lucide-react';
 
 interface FormData {
   email: string;
@@ -157,14 +167,18 @@ export default function LeadsparkSignup() {
       <div className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24">
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Transform Your Website Visitors Into{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                Qualified Leads 24/7
-              </span>
-            </h1>
+            <div className="mb-8">
+              <h1 className="text-6xl md:text-7xl font-bold mb-4">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                  Leadspark
+                </span>
+              </h1>
+              <p className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
+                Transform Your Website Visitors Into Qualified Leads 24/7
+              </p>
+            </div>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Never miss another opportunity. Leadspark is the intelligent voice assistant that engages visitors,
+              Never miss another opportunity. <strong>Leadspark</strong> is the intelligent voice assistant that engages visitors,
               qualifies leads, and books discovery calls automatically.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -172,7 +186,7 @@ export default function LeadsparkSignup() {
                 onClick={() => setShowSignupForm(true)}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors flex items-center gap-2"
               >
-                Start Free 14-Day Trial <ArrowRight className="w-5 h-5" />
+                Start Your Leadspark Free Trial <ArrowRight className="w-5 h-5" />
               </button>
               <p className="text-sm text-gray-500">No credit card required • Setup in 5 minutes</p>
             </div>
@@ -184,7 +198,7 @@ export default function LeadsparkSignup() {
       <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Why Leadspark is Different
+            Why <span className="text-blue-600">Leadspark</span> is Different
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center p-6">
@@ -249,10 +263,10 @@ export default function LeadsparkSignup() {
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Perfect For Growing Businesses</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: 'Financial Advisors', desc: 'Qualify investment goals, risk tolerance, and timeline before prospects book calls.' },
-              { title: 'Business Consultants', desc: 'Understand client challenges and budget before discovery calls.' },
-              { title: 'SaaS Companies', desc: 'Pre-qualify leads based on company size and use case.' },
-              { title: 'Professional Services', desc: 'Capture project requirements and budgets upfront.' }
+              { title: 'Financial Advisors', desc: 'Qualify investment goals, risk tolerance, and timeline before prospects book calls with Leadspark.' },
+              { title: 'Business Consultants', desc: 'Understand client challenges and budget before discovery calls using Leadspark.' },
+              { title: 'SaaS Companies', desc: 'Pre-qualify leads based on company size and use case with Leadspark\'s AI assistant.' },
+              { title: 'Professional Services', desc: 'Capture project requirements and budgets upfront using Leadspark.' }
             ].map((item, index) => (
               <div key={index} className="p-6 bg-gray-50 rounded-lg">
                 <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
@@ -267,7 +281,7 @@ export default function LeadsparkSignup() {
       <div className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Intelligent Features That Set You Apart
+            Intelligent <span className="text-blue-600">Leadspark</span> Features That Set You Apart
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -301,8 +315,8 @@ export default function LeadsparkSignup() {
       {/* Pricing Section */}
       <div className="py-16 bg-white" id="pricing">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">Choose Your Plan</h2>
-          <p className="text-center text-gray-600 mb-12">Start your 14-day free trial today. No setup fees, no long-term contracts.</p>
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">Choose Your <span className="text-blue-600">Leadspark</span> Plan</h2>
+          <p className="text-center text-gray-600 mb-12">Start your Leadspark free trial today. No setup fees, no long-term contracts.</p>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {Object.entries(plans).map(([key, plan]) => (
@@ -337,7 +351,7 @@ export default function LeadsparkSignup() {
                   ))}
                 </ul>
 
-                <button
+                  <button
                   onClick={() => handlePlanSelect(key)}
                   className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors ${
                     plan.recommended
@@ -345,7 +359,7 @@ export default function LeadsparkSignup() {
                       : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
                   }`}
                 >
-                  Start Free Trial
+                  Start Leadspark Free Trial
                 </button>
               </div>
             ))}
@@ -359,7 +373,7 @@ export default function LeadsparkSignup() {
           <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-900">Create Your Account</h2>
+                <h2 className="text-2xl font-bold text-gray-900">Create Your <span className="text-blue-600">Leadspark</span> Account</h2>
                 <button
                   onClick={() => setShowSignupForm(false)}
                   className="text-gray-400 hover:text-gray-600 text-2xl"
@@ -369,7 +383,7 @@ export default function LeadsparkSignup() {
               </div>
 
               <p className="text-center text-sm text-gray-600 mb-6">
-                Selected plan: <span className="font-medium text-blue-600">{plans[selectedPlan].name}</span> - {plans[selectedPlan].price}
+                Selected Leadspark plan: <span className="font-medium text-blue-600">{plans[selectedPlan].name}</span> - {plans[selectedPlan].price}
               </p>
 
               <div className="space-y-4">
@@ -471,7 +485,7 @@ export default function LeadsparkSignup() {
                       Creating account...
                     </div>
                   ) : (
-                    'Start Free Trial & Continue to Setup'
+                    'Start Your Leadspark Free Trial & Continue to Setup'
                   )}
                 </button>
 
@@ -542,36 +556,36 @@ export default function LeadsparkSignup() {
       {/* Final CTA */}
       <div className="py-16 bg-gradient-to-r from-blue-600 to-indigo-600">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-white mb-4">Start Your Free Trial Today</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Start Your <span className="text-blue-100">Leadspark</span> Free Trial Today</h2>
           <p className="text-xl text-blue-100 mb-8">
-            Transform your website from a digital brochure into a 24/7 lead generation machine.
+            Transform your website from a digital brochure into a 24/7 lead generation machine with Leadspark.
           </p>
           <button
             onClick={() => setShowSignupForm(true)}
             className="bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-lg text-lg font-semibold transition-colors inline-flex items-center gap-2"
           >
-            Get Started Free <ArrowRight className="w-5 h-5" />
+            Get Started with Leadspark Free <ArrowRight className="w-5 h-5" />
           </button>
           <p className="text-blue-100 mt-4 text-sm">No credit card required • Setup in under 5 minutes</p>
 
-          <div className="mt-8 text-center">
-            <h3 className="text-lg font-semibold text-white mb-4">What happens next?</h3>
+            <div className="mt-8 text-center">
+            <h3 className="text-lg font-semibold text-white mb-4">What happens when you join <span className="text-blue-100">Leadspark</span>?</h3>
             <div className="grid md:grid-cols-4 gap-4 max-w-3xl mx-auto">
               <div className="text-center">
                 <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-2 text-white font-bold">1</div>
-                <p className="text-blue-100 text-sm">Choose your plan and create account</p>
+                <p className="text-blue-100 text-sm">Choose your Leadspark plan and create account</p>
               </div>
               <div className="text-center">
                 <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-2 text-white font-bold">2</div>
-                <p className="text-blue-100 text-sm">5-minute guided setup</p>
+                <p className="text-blue-100 text-sm">5-minute guided Leadspark setup</p>
               </div>
               <div className="text-center">
                 <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-2 text-white font-bold">3</div>
-                <p className="text-blue-100 text-sm">AI assistant goes live</p>
+                <p className="text-blue-100 text-sm">Your Leadspark AI assistant goes live</p>
               </div>
               <div className="text-center">
                 <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-2 text-white font-bold">4</div>
-                <p className="text-blue-100 text-sm">Start capturing leads today</p>
+                <p className="text-blue-100 text-sm">Start capturing leads with Leadspark today</p>
               </div>
             </div>
           </div>
