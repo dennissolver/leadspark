@@ -1,7 +1,6 @@
-// 📁 packages/styles/globals.scss
-body {
-  font-family: $font-stack;
-  line-height: 1.6;
-  background-color: #f9f9f9;
-  color: #222;
-}
+// globals.scss — shared mixins, components, etc.
+
+@use './variables' as *;
+@use './mixins' as *;
+@use './buttons' as *;
+@use './components' as *;
