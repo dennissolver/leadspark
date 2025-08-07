@@ -514,7 +514,6 @@ export default function LeadsparkSignup() {
                 </svg>
                 Continue with Google
               </button>
-            </form>
             </div>
           </div>
         </div>
