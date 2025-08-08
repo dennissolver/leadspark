@@ -34,6 +34,16 @@ $font-size-base: $text-base !default;
 /* Brand colors */
 $brand-primary: #2563eb !default; // Tailwind blue-600
 
+// packages/styles/_variables.scss
+$brand-primary: #2563eb !default;
+
+// new — used by .module.scss
+$brand-primary-dark: mix(#000, $brand-primary, 15%) !default;
+
+// used by _layout.scss top-level rules
+$bg-color: #ffffff !default;
+
+
 /* Blues */
 $blue-50: #eff6ff !default;
 $blue-100: #dbeafe !default;
