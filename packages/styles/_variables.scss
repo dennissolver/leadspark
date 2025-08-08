@@ -2,6 +2,7 @@
 
 /* Typography */
 $font-family-base: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji" !default;
+$font-family-sans: $font-family-base !default;
 
 /* Brand */
 $brand-primary: #2563eb !default; /* Tailwind blue-600 default for brand */
