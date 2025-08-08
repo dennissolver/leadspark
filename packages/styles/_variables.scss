@@ -4,6 +4,26 @@
 $font-family-base: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji" !default;
 $font-family-sans: $font-family-base !default;
 
+/* NEW: type scale tokens (Tailwind-ish names) */
+$text-xs: 0.75rem !default;   // 12px
+$text-sm: 0.875rem !default;  // 14px
+$text-base: 1rem !default;    // 16px   <-- the one failing
+$text-lg: 1.125rem !default;  // 18px
+$text-xl: 1.25rem !default;   // 20px
+$text-2xl: 1.5rem !default;   // 24px
+$text-3xl: 1.875rem !default; // 30px
+$text-4xl: 2.25rem !default;  // 36px
+$text-5xl: 3rem !default;     // 48px
+
+/* line-height helpers (optional but handy) */
+$leading-normal: 1.5 !default;
+$leading-tight: 1.25 !default;
+$leading-relaxed: 1.625 !default;
+
+/* optional compatibility aliases */
+$font-stack: $font-family-base !default;
+$font-size-base: $text-base !default;
+
 /* Brand */
 $brand-primary: #2563eb !default; /* Tailwind blue-600 default for brand */
 
