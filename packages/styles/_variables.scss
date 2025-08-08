@@ -5,6 +5,7 @@
 $font-family-base: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji" !default;
 $font-family-sans: $font-family-base !default;
 
+$font-light: 300 !default;
 $font-normal: 400 !default;
 $font-medium: 500 !default;
 $font-semibold: 600 !default;
@@ -34,18 +35,18 @@ $font-size-base: $text-base !default;
 $brand-primary: #2563eb !default; // Tailwind blue-600
 
 /* Blues */
-$blue-50:   #eff6ff !default;
-$blue-100:  #dbeafe !default;
-$blue-500:  #3b82f6 !default;
-$blue-600:  #2563eb !default;
-$blue-700:  #1d4ed8 !default;
+$blue-50: #eff6ff !default;
+$blue-100: #dbeafe !default;
+$blue-500: #3b82f6 !default;
+$blue-600: #2563eb !default;
+$blue-700: #1d4ed8 !default;
 
 /* Indigo */
-$indigo-50:  #eef2ff !default;
+$indigo-50: #eef2ff !default;
 $indigo-600: #4f46e5 !default;
 
 /* Grays */
-$gray-50:  #f9fafb !default;
+$gray-50: #f9fafb !default;
 $gray-100: #f3f4f6 !default;
 $gray-200: #e5e7eb !default;
 $gray-300: #d1d5db !default;
@@ -56,7 +57,7 @@ $gray-800: #1f2937 !default;
 $gray-900: #111827 !default;
 
 /* Accents */
-$green-500:  #16a34a !default;
+$green-500: #16a34a !default;
 $orange-600: #ea580c !default;
 $purple-600: #9333ea !default;
 
@@ -65,4 +66,67 @@ $text-color: $gray-900 !default;
 
 /* Shadows */
 $shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05) !default;
+$shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !default;
 $shadow-md: 0 6px 24px rgba(0, 0, 0, 0.06) !default;
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1) !default;
+$shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15) !default;
+
+/* Background colors */
+$bg-color: $gray-50 !default; // #f9fafb
+$white: #ffffff !default;
+
+/* Colors */
+$primary-color: $blue-500 !default;   // #3b82f6
+$primary-600: $blue-600 !default;     // #2563eb
+$secondary-color: $gray-600 !default;  // #4b5563
+$success-color: $green-500 !default;   // #16a34a
+$error-color: #dc2626 !default;       // Tailwind red-600
+$warning-color: $orange-600 !default;  // #ea580c
+$muted-text: $gray-500 !default;      // #6b7280
+
+/* Spacing */
+$spacing-1: 0.25rem !default; // 4px
+$spacing-2: 0.5rem !default;  // 8px
+$spacing-3: 0.75rem !default; // 12px
+$spacing-4: 1rem !default;    // 16px
+$spacing-5: 1.25rem !default; // 20px
+$spacing-6: 1.5rem !default;  // 24px
+$spacing-8: 2rem !default;    // 32px
+
+/* Transitions */
+$transition-base: 0.2s ease-in-out !default;
+
+/* Button variables */
+$btn-padding-y: 0.5rem !default;      // 8px
+$btn-padding-x: 1rem !default;        // 16px
+$btn-border-radius: 0.375rem !default; // 6px
+$btn-font-size: $text-base !default;  // 16px
+
+/* Border radius */
+$rounded: 0.25rem !default;     // 4px
+$rounded-md: 0.375rem !default; // 6px
+$rounded-lg: 0.5rem !default;   // 8px
+$rounded-xl: 0.75rem !default;  // 12px
+$rounded-full: 9999px !default;
+
+/* Border variables */
+$border-width: 1px !default;
+$border-color: $gray-300 !default;   // #d1d5db
+$border-radius: $rounded !default;   // 0.25rem
+
+/* Layout */
+$sidebar-width: 250px !default;
+$padding-base: 1rem !default; // 16px
+
+/* Breakpoints */
+$breakpoint-sm: 640px !default; // Tailwind sm
+$breakpoint-lg: 1024px !default; // Tailwind lg
+
+/* Container */
+$container-max-width: 1280px !default; // Tailwind xl
+
+/* Input variables */
+$input-padding-y: 0.5rem !default;    // 8px
+$input-padding-x: 0.75rem !default;   // 12px
+$input-border-color: $gray-300 !default; // #d1d5db
+$input-focus-border-color: $blue-500 !default; // #3b82f6

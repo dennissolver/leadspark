@@ -11,22 +11,20 @@
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
     "clean": "turbo run clean",
-
     "build:landing": "turbo run build --filter=landing-page",
     "build:portal": "turbo run build --filter=portal",
     "build:admin": "turbo run build --filter=admin-portal",
     "build:styles": "turbo run build --filter=@leadspark/styles",
-
     "dev:landing": "turbo run dev --filter=landing-page",
     "dev:portal": "turbo run dev --filter=portal",
     "dev:admin": "turbo run dev --filter=admin-portal",
     "dev:all-frontend": "turbo run dev --filter='./packages/frontend/*'",
-
     "deploy:landing": "cd packages/frontend/landing-page && vercel --prod",
     "deploy:portal": "cd packages/frontend/portal && vercel --prod",
     "deploy:admin": "cd packages/frontend/admin-portal && vercel --prod"
   },
   "devDependencies": {
+    "sass": "^1.90.0",
     "turbo": "latest",
     "typescript": "^5.0.0"
   },
