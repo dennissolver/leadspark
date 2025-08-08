@@ -9,7 +9,7 @@ import {
   Lightbulb
 } from 'lucide-react';
 import Link from 'next/link';
-import './leadspark-intro.module.scss';
+import styles from './leadspark-intro.module.scss';
 
 interface FormData {
   email: string;
@@ -89,767 +89,483 @@ export default function LeadsparkIntro() {
       features: [
         'Unlimited conversations',
         'Multi-tenant management',
-        'ვ
-
-System: You are Grok 3 built by xAI.
-
-<xaiArtifact artifact_id="25a92acb-2826-4225-96b6-adf26097a923" artifact_version_id="c7defc3d-81cf-46b3-a928-ecd297033d4a" title="leadspark-intro.module.scss" contentType="text/scss">
-.page {
-  width: 100%;
-}
-
-.hero-wrap {
-  background: linear-gradient(to right, #2563eb, #4f46e5);
-  padding: 4rem 1rem;
-}
-
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.center {
-  text-align: center;
-}
-
-.heading-block {
-  margin-bottom: 2rem;
-}
-
-.title {
-  font-size: 3rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 1rem;
-}
-
-.title-gradient {
-  background: linear-gradient(to right, #3b82f6, #7c3aed);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.subtitle {
-  font-size: 1.5rem;
-  color: white;
-  opacity: 0.9;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.tagline {
-  font-size: 1.25rem;
-  color: white;
-  max-width: 700px;
-  margin: 1.5rem auto;
-}
-
-.cta-row {
-  margin-top: 2rem;
-}
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
-  background-color: white;
-  color: #2563eb;
-  font-size: 1.125rem;
-  font-weight: 600;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #f3f4f6;
-  }
-}
-
-.cta-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-.note {
-  color: white;
-  opacity: 0.8;
-  font-size: 0.875rem;
-  margin-top: 1rem;
-}
-
-.features-section {
-  padding: 4rem 1rem;
-  background-color: white;
-}
-
-.features-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.features-title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #111827;
-  text-align: center;
-  margin-bottom: 3rem;
-
-  span {
-    color: #2563eb;
-  }
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.feature-item {
-  text-align: center;
-  padding: 1.5rem;
-}
-
-.feature-icon {
-  width: 3rem;
-  height: 3rem;
-  background-color: rgba(59, 130, 246, 0.1);
-  border-radius: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-}
-
-.feature-icon-blue {
-  color: #2563eb;
-}
-
-.feature-icon-green {
-  color: #16a34a;
-}
-
-.feature-icon-purple {
-  color: #7c3aed;
-}
-
-.feature-icon-orange {
-  color: #ea580c;
-}
-
-.feature-title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.feature-desc {
-  color: #4b5563;
-}
-
-.how-it-works-section {
-  padding: 4rem 1rem;
-  background-color: #f9fafb;
-}
-
-.how-it-works-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.how-it-works-title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #111827;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.how-it-works-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2rem;
-}
-
-.step-item {
-  text-align: center;
-}
-
-.step-number {
-  width: 3rem;
-  height: 3rem;
-  background-color: #2563eb;
-  color: white;
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-  font-weight: 700;
-  font-size: 1.125rem;
-}
-
-.step-title {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.step-desc {
-  color: #4b5563;
-  font-size: 0.875rem;
-}
-
-.audience-section {
-  padding: 4rem 1rem;
-  background-color: white;
-}
-
-.audience-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.audience-title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #111827;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.audience-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.audience-item {
-  padding: 1.5rem;
-  background-color: #f9fafb;
-  border-radius: 0.5rem;
-}
-
-.audience-item-title {
-  font-weight: 600;
-  font-size: 1.125rem;
-  margin-bottom: 0.5rem;
-}
-
-.audience-item-desc {
-  color: #4b5563;
-}
-
-.intelligent-features-section {
-  padding: 4rem 1rem;
-  background-color: #f9fafb;
-}
-
-.intelligent-features-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.intelligent-features-title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #111827;
-  text-align: center;
-  margin-bottom: 3rem;
-
-  span {
-    color: #2563eb;
-  }
-}
-
-.intelligent-features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.feature-card {
-  background-color: white;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.feature-card-title {
-  font-weight: 600;
-  font-size: 1.125rem;
-  margin-bottom: 0.5rem;
-}
-
-.feature-card-desc {
-  color: #4b5563;
-}
-
-.pricing-section {
-  padding: 4rem 1rem;
-  background-color: white;
-}
-
-.pricing-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.pricing-title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #111827;
-  text-align: center;
-  margin-bottom: 1rem;
-
-  span {
-    color: #2563eb;
-  }
-}
-
-.pricing-subtitle {
-  color: #4b5563;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.plan-card {
-  background-color: white;
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
-
-  &.recommended {
-    border: 2px solid #2563eb;
-    transform: scale(1.05);
-  }
-}
-
-.plan-badge {
-  position: absolute;
-  top: -1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #2563eb;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.plan-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #111827;
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.plan-price {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #111827;
-  text-align: center;
-  margin-bottom: 0.25rem;
-}
-
-.plan-desc {
-  font-size: 0.875rem;
-  color: #6b7280;
-  text-align: center;
-}
-
-.features-list {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 2rem;
-}
-
-.feature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.feature-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: #16a34a;
-  flex-shrink: 0;
-  margin-top: 0.125rem;
-}
-
-.plan-button {
-  width: 100%;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  transition: background-color 0.2s;
-
-  &.recommended {
-    background-color: #2563eb;
-    color: white;
-
-    &:hover {
-      background-color: #1d4ed8;
+        'Advanced customization',
+        'Dedicated success manager',
+        'Custom integrations',
+        'White-label options'
+      ]
     }
-  }
+  };
 
-  &:not(.recommended) {
-    background-color: #f3f4f6;
-    color: #111827;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
 
-    &:hover {
-      background-color: #e5e7eb;
+    if (errors[name as keyof FormErrors]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: undefined
+      }));
     }
-  }
-}
+  };
 
-.modal {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  z-index: 50;
-}
+  const validateForm = () => {
+    const newErrors: FormErrors = {};
 
-.modal-content {
-  background-color: white;
-  border-radius: 0.5rem;
-  max-width: 28rem;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-}
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email';
+    }
 
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  padding: 1.5rem;
-}
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+    } else if (formData.password.length < 8) {
+      newErrors.password = 'Password must be at least 8 characters';
+    }
 
-.modal-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #111827;
+    if (!formData.firstName) {
+      newErrors.firstName = 'First name is required';
+    }
 
-  span {
-    color: #2563eb;
-  }
-}
+    if (!formData.lastName) {
+      newErrors.lastName = 'Last name is required';
+    }
 
-.close-button {
-  color: #9ca3af;
-  font-size: 1.5rem;
+    if (!formData.companyName) {
+      newErrors.companyName = 'Company name is required';
+    }
 
-  &:hover {
-    color: #4b5563;
-  }
-}
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-.modal-plan-info {
-  text-align: center;
-  font-size: 0.875rem;
-  color: #4b5563;
-  margin-bottom: 1.5rem;
+  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!validateForm()) return;
 
-  span {
-    font-weight: 500;
-    color: #2563eb;
-  }
-}
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      alert('Signup successful! (This is a demo)');
+    }, 2000);
+  };
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+  const handlePlanSelect = (planKey: string) => {
+    setSelectedPlan(planKey);
+    setFormData(prev => ({ ...prev, plan: planKey }));
+    setShowSignupForm(true);
+  };
 
-.error-message {
-  background-color: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #b91c1c;
-  padding: 0.75rem 1rem;
-  border-radius: 0.25rem;
-}
+  return (
+    <div className={styles.page}>
+      {/* Hero Section */}
+      <div className={styles['hero-wrap']}>
+        <div className={styles.container}>
+          <div className={styles.center}>
+            <div className={styles['heading-block']}>
+              <h1 className={styles.title}>
+                <span className={styles['title-gradient']}>Leadspark</span>
+              </h1>
+              <p className={styles.subtitle}>
+                Transform Your Website Visitors Into Qualified Leads 24/7
+              </p>
+            </div>
+            <p className={styles.tagline}>
+              Never miss another opportunity. <strong>Leadspark</strong> is the intelligent voice assistant that
+              engages visitors, qualifies leads, and books discovery calls automatically.
+            </p>
+            <div className={styles['cta-row']}>
+              <Link href="/signup" className={styles.cta}>
+                Start Your Leadspark Free Trial <ArrowRight className={styles['cta-icon']} />
+              </Link>
+              <p className={styles.note}>No credit card required • Setup in 5 minutes</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
+      {/* Features Grid */}
+      <div className={styles['features-section']}>
+        <div className={styles['features-container']}>
+          <h2 className={styles['features-title']}>
+            Why <span>Leadspark</span> is Different
+          </h2>
+          <div className={styles['features-grid']}>
+            <div className={styles['feature-item']}>
+              <div className={`${styles['feature-icon']} ${styles['feature-icon-blue']}`}>
+                <Lightbulb className={styles['feature-icon-blue']} />
+              </div>
+              <h3 className={styles['feature-title']}>Instant Engagement</h3>
+              <p className={styles['feature-desc']}>
+                AI assistant ready the moment someone lands on your site. No forms, just natural conversation.
+              </p>
+            </div>
+            <div className={styles['feature-item']}>
+              <div className={`${styles['feature-icon']} ${styles['feature-icon-green']}`}>
+                <Settings className={styles['feature-icon-green']} />
+              </div>
+              <h3 className={styles['feature-title']}>Smart & Personalized</h3>
+              <p className={styles['feature-desc']}>
+                Advanced AI that understands your business and tailors every conversation to visitor needs.
+              </p>
+            </div>
+            <div className={styles['feature-item']}>
+              <div className={`${styles['feature-icon']} ${styles['feature-icon-purple']}`}>
+                <Calendar className={styles['feature-icon-purple']} />
+              </div>
+              <h3 className={styles['feature-title']}>Books Calls Automatically</h3>
+              <p className={styles['feature-desc']}>
+                Qualified leads get seamlessly booked directly in your calendar. No missed opportunities.
+              </p>
+            </div>
+            <div className={styles['feature-item']}>
+              <div className={`${styles['feature-icon']} ${styles['feature-icon-orange']}`}>
+                <Mic className={styles['feature-icon-orange']} />
+              </div>
+              <h3 className={styles['feature-title']}>Natural Voice Conversations</h3>
+              <p className={styles['feature-desc']}>
+                Visitors speak naturally with advanced voice technology that feels human.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
+      {/* How It Works */}
+      <div className={styles['how-it-works-section']}>
+        <div className={styles['how-it-works-container']}>
+          <h2 className={styles['how-it-works-title']}>How It Works</h2>
+          <div className={styles['how-it-works-grid']}>
+            {[
+              { step: '1', title: 'Easy Integration', desc: 'Add one line of code to your website' },
+              { step: '2', title: 'Smart Conversations', desc: 'AI engages visitors with natural questions' },
+              { step: '3', title: 'Automatic Qualification', desc: 'AI determines if visitor is qualified' },
+              { step: '4', title: 'Seamless Booking', desc: 'Qualified leads book calls automatically' },
+              { step: '5', title: 'Complete Insights', desc: 'Every conversation transcribed and organized' }
+            ].map((item, index) => (
+              <div key={index} className={styles['step-item']}>
+                <div className={styles['step-number']}>{item.step}</div>
+                <h3 className={styles['step-title']}>{item.title}</h3>
+                <p className={styles['step-desc']}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-.form-label {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #374151;
-  margin-bottom: 0.25rem;
-}
+      {/* Target Audiences */}
+      <div className={styles['audience-section']}>
+        <div className={styles['audience-container']}>
+          <h2 className={styles['audience-title']}>Perfect For Growing Businesses</h2>
+          <div className={styles['audience-grid']}>
+            {[
+              { title: 'Financial Advisors', desc: 'Qualify investment goals, risk tolerance, and timeline before prospects book calls with Leadspark.' },
+              { title: 'Business Consultants', desc: 'Understand client challenges and budget before discovery calls using Leadspark.' },
+              { title: 'SaaS Companies', desc: 'Pre-qualify leads based on company size and use case with Leadspark\'s AI assistant.' },
+              { title: 'Professional Services', desc: 'Capture project requirements and budgets upfront using Leadspark.' }
+            ].map((item, index) => (
+              <div key={index} className={styles['audience-item']}>
+                <h3 className={styles['audience-item-title']}>{item.title}</h3>
+                <p className={styles['audience-item-desc']}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-.form-input {
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.375rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  outline: none;
+      {/* Intelligent Features */}
+      <div className={styles['intelligent-features-section']}>
+        <div className={styles['intelligent-features-container']}>
+          <h2 className={styles['intelligent-features-title']}>
+            Intelligent <span>Leadspark</span> Features That Set You Apart
+          </h2>
+          <div className={styles['intelligent-features-grid']}>
+            <div className={styles['feature-card']}>
+              <h3 className={styles['feature-card-title']}>Multi-LLM Consensus Technology</h3>
+              <p className={styles['feature-card-desc']}>
+                Our unique approach uses multiple AI models working together to ensure the most accurate and helpful responses.
+              </p>
+            </div>
+            <div className={styles['feature-card']}>
+              <h3 className={styles['feature-card-title']}>Custom Knowledge Base</h3>
+              <p className={styles['feature-card-desc']}>
+                Upload your marketing materials, FAQs, and service descriptions. Your AI knows your business inside and out.
+              </p>
+            </div>
+            <div className={styles['feature-card']}>
+              <h3 className={styles['feature-card-title']}>Smart Handoff</h3>
+              <p className={styles['feature-card-desc']}>
+                When conversations get complex, your AI smoothly transitions to booking a call with you.
+              </p>
+            </div>
+            <div className={styles['feature-card']}>
+              <h3 className={styles['feature-card-title']}>Real-time Analytics</h3>
+              <p className={styles['feature-card-desc']}>
+                See exactly which topics generate the most interest and optimize your messaging accordingly.
+              </p>
+            </div>
+            <div className={styles['feature-card']}>
+              <h3 className={styles['feature-card-title']}>Seamless CRM Integration</h3>
+              <p className={styles['feature-card-desc']}>
+                All lead data flows directly into your existing systems. No manual data entry required.
+              </p>
+            </div>
+            <div className={styles['feature-card']}>
+              <h3 className={styles['feature-card-title']}>24/7 Operation</h3>
+              <p className={styles['feature-card-desc']}>
+                Your AI assistant never sleeps, capturing leads and booking calls even outside business hours.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  &:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-  }
+      {/* Pricing Section */}
+      <div className={styles['pricing-section']} id="pricing">
+        <div className={styles['pricing-container']}>
+          <h2 className={styles['pricing-title']}>
+            Choose Your <span>Leadspark</span> Plan
+          </h2>
+          <p className={styles['pricing-subtitle']}>
+            Start your Leadspark free trial today. No setup fees, no long-term contracts.
+          </p>
+          <div className={styles['pricing-grid']}>
+            {Object.entries(plans).map(([key, plan]) => (
+              <div
+                key={key}
+                className={`${styles['plan-card']} ${plan.recommended ? styles.recommended : ''}`}
+              >
+                {plan.recommended && (
+                  <div className={styles['plan-badge']}>
+                    <Star className="w-4 h-4" /> Most Popular
+                  </div>
+                )}
+                <div className="text-center mb-6">
+                  <h3 className={styles['plan-title']}>{plan.name}</h3>
+                  <div className={styles['plan-price']}>{plan.price}</div>
+                  {key === 'starter' && <p className={styles['plan-desc']}>Perfect for Solo Professionals</p>}
+                  {key === 'professional' && <p className={styles['plan-desc']}>Built for Growing Teams</p>}
+                  {key === 'enterprise' && <p className={styles['plan-desc']}>Scale Without Limits</p>}
+                </div>
+                <ul className={styles['features-list']}>
+                  {plan.features.map((feature, index) => (
+                    <li key={index} className={styles['feature-item']}>
+                      <CheckCircle className={styles['feature-icon']} />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/signup">
+                  <button
+                    className={`${styles['plan-button']} ${plan.recommended ? styles.recommended : ''}`}
+                  >
+                    Start Leadspark Free Trial
+                  </button>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-  &.error {
-    border-color: #f87171;
-  }
-}
+      {/* Signup Form Modal */}
+      {showSignupForm && (
+        <div className={styles.modal}>
+          <div className={styles['modal-content']}>
+            <div className={styles['modal-header']}>
+              <h2 className={styles['modal-title']}>
+                Create Your <span>Leadspark</span> Account
+              </h2>
+              <button
+                onClick={() => setShowSignupForm(false)}
+                className={styles['close-button']}
+              >
+                ×
+              </button>
+            </div>
+            <p className={styles['modal-plan-info']}>
+              Selected Leadspark plan: <span>{plans[selectedPlan].name}</span> - {plans[selectedPlan].price}
+            </p>
+            <form onSubmit={handleSignup} className={styles.form}>
+              {errors.general && (
+                <div className={styles['error-message']}>{errors.general}</div>
+              )}
+              <div className={styles['form-grid']}>
+                <div className={styles['form-group']}>
+                  <label className={styles['form-label']}>First name</label>
+                  <input
+                    name="firstName"
+                    type="text"
+                    required
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    className={`${styles['form-input']} ${errors.firstName ? styles.error : ''}`}
+                  />
+                  {errors.firstName && <p className={styles['form-error']}>{errors.firstName}</p>}
+                </div>
+                <div className={styles['form-group']}>
+                  <label className={styles['form-label']}>Last name</label>
+                  <input
+                    name="lastName"
+                    type="text"
+                    required
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    className={`${styles['form-input']} ${errors.lastName ? styles.error : ''}`}
+                  />
+                  {errors.lastName && <p className={styles['form-error']}>{errors.lastName}</p>}
+                </div>
+              </div>
+              <div className={styles['form-group']}>
+                <label className={styles['form-label']}>Company name</label>
+                <input
+                  name="companyName"
+                  type="text"
+                  required
+                  value={formData.companyName}
+                  onChange={handleInputChange}
+                  className={`${styles['form-input']} ${errors.companyName ? styles.error : ''}`}
+                />
+                {errors.companyName && <p className={styles['form-error']}>{errors.companyName}</p>}
+              </div>
+              <div className={styles['form-group']}>
+                <label className={styles['form-label']}>Email address</label>
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className={`${styles['form-input']} ${errors.email ? styles.error : ''}`}
+                />
+                {errors.email && <p className={styles['form-error']}>{errors.email}</p>}
+              </div>
+              <div className={styles['form-group']}>
+                <label className={styles['form-label']}>Password</label>
+                <input
+                  name="password"
+                  type="password"
+                  required
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  className={`${styles['form-input']} ${errors.password ? styles.error : ''}`}
+                />
+                {errors.password && <p className={styles['form-error']}>{errors.password}</p>}
+              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className={`${styles['submit-button']} ${loading ? styles.disabled : ''}`}
+              >
+                {loading ? (
+                  <div className={styles.spinner}>
+                    <div className={styles['spinner-icon']}></div>
+                    Creating account...
+                  </div>
+                ) : (
+                  'Start Your Leadspark Free Trial & Continue to Setup'
+                )}
+              </button>
+            </form>
+            <div className={styles['divider-container']}>
+              <div className={styles.divider}></div>
+              <div className={styles['divider-text']}>Or continue with</div>
+            </div>
+            <button
+              type="button"
+              disabled={loading}
+              className={`${styles['google-button']} ${loading ? styles.disabled : ''}`}
+            >
+              <svg className={styles['google-icon']} viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              Continue with Google
+            </button>
+          </div>
+        </div>
+      )}
 
-.form-error {
-  color: #dc2626;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-}
+      {/* FAQ Section */}
+      <div className={styles['faq-section']}>
+        <div className={styles['faq-container']}>
+          <h2 className={styles['faq-title']}>Frequently Asked Questions</h2>
+          <div className={styles['faq-items']}>
+            {[
+              {
+                q: "How quickly can I get started?",
+                a: "Setup takes less than 5 minutes. Just add our widget code to your site and configure your AI assistant through our intuitive dashboard."
+              },
+              {
+                q: "Will visitors know they're talking to AI?",
+                a: "Our AI is transparent but natural. Visitors appreciate the instant response and helpful information, regardless of whether it's AI or human."
+              },
+              {
+                q: "What if my business is too complex for AI?",
+                a: "Our AI learns your business through your custom knowledge base. For complex situations, it smoothly transitions to booking a call with you."
+              },
+              {
+                q: "Do I need technical skills?",
+                a: "None at all. Our platform is designed for business owners, not developers. If you can use email, you can use Leadspark."
+              },
+              {
+                q: "How does pricing work?",
+                a: "Simple monthly plans based on conversation volume. No hidden fees, no per-lead charges. Scale up or down anytime."
+              }
+            ].map((faq, index) => (
+              <div key={index} className={styles['faq-item']}>
+                <h3 className={styles['faq-question']}>{faq.q}</h3>
+                <p className={styles['faq-answer']}>{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-.submit-button {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: 0.375rem;
-  font-weight: 500;
-  transition: background-color 0.2s;
-  background-color: #2563eb;
-  color: white;
-
-  &:hover {
-    background-color: #1d4ed8;
-  }
-
-  &.disabled {
-    background-color: #9ca3af;
-    cursor: not-allowed;
-    color: white;
-  }
-}
-
-.spinner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.spinner-icon {
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid white;
-  border-top-color: transparent;
-  border-radius: 9999px;
-  animation: spin 1s linear infinite;
-}
-
-.divider-container {
-  position: relative;
-  margin: 1.5rem 0;
-}
-
-.divider {
-  border-top: 1px solid #d1d5db;
-}
-
-.divider-text {
-  position: relative;
-  text-align: center;
-  font-size: 0.875rem;
-  color: #6b7280;
-  background-color: white;
-  padding: 0 0.5rem;
-}
-
-.google-button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.375rem;
-  background-color: white;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #f9fafb;
-  }
-
-  &.disabled {
-    opacity: 0.5;
-  }
-}
-
-.google-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-.faq-section {
-  padding: 4rem 1rem;
-  background-color: #f9fafb;
-}
-
-.faq-container {
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.faq-title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #111827;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.faq-item {
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 2rem;
-
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
-.faq-question {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #111827;
-  margin-bottom: 0.5rem;
-}
-
-.faq-answer {
-  color: #4b5563;
-}
-
-.final-cta-section {
-  padding: 4rem 1rem;
-  background: linear-gradient(to right, #2563eb, #4f46e5);
-}
-
-.final-cta-container {
-  max-width: 1024px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 0 1rem;
-}
-
-.final-cta-title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 1rem;
-
-  span {
-    color: #bfdbfe;
-  }
-}
-
-.final-cta-subtitle {
-  font-size: 1.25rem;
-  color: #bfdbfe;
-  margin-bottom: 2rem;
-}
-
-.final-cta-button {
-  background-color: white;
-  color: #2563eb;
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  font-size: 1.125rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #f9fafb;
-  }
-}
-
-.final-cta-note {
-  color: #bfdbfe;
-  font-size: 0.875rem;
-  margin-top: 1rem;
-}
-
-.final-cta-steps-title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: white;
-  margin-bottom: 1rem;
-
-  span {
-    color: #bfdbfe;
-  }
-}
-
-.final-cta-steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  max-width: 768px;
-  margin: 0 auto;
-}
-
-.step-circle {
-  width: 2rem;
-  height: 2rem;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 0.5rem;
-  color: white;
-  font-weight: 700;
-}
-
-.step-text {
-  color: #bfdbfe;
-  font-size: 0.875rem;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+      {/* Final CTA */}
+      <div className={styles['final-cta-section']}>
+        <div className={styles['final-cta-container']}>
+          <h2 className={styles['final-cta-title']}>
+            Start Your <span>Leadspark</span> Free Trial Today
+          </h2>
+          <p className={styles['final-cta-subtitle']}>
+            Transform your website from a digital brochure into a 24/7 lead generation machine with Leadspark.
+          </p>
+          <button
+            onClick={() => setShowSignupForm(true)}
+            className={styles['final-cta-button']}
+          >
+            Get Started with Leadspark Free <ArrowRight className="w-5 h-5" />
+          </button>
+          <p className={styles['final-cta-note']}>
+            No credit card required • Setup in under 5 minutes
+          </p>
+          <div className={styles['final-cta-steps']}>
+            <h3 className={styles['final-cta-steps-title']}>
+              What happens when you join <span>Leadspark</span>?
+            </h3>
+            <div className={styles['final-cta-steps-grid']}>
+              {[
+                { step: '1', text: 'Choose your Leadspark plan and create account' },
+                { step: '2', text: '5-minute guided Leadspark setup' },
+                { step: '3', text: 'Your Leadspark AI assistant goes live' },
+                { step: '4', text: 'Start capturing leads with Leadspark today' }
+              ].map((item, index) => (
+                <div key={index} className={styles['step-item']}>
+                  <div className={styles['step-circle']}>{item.step}</div>
+                  <p className={styles['step-text']}>{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
