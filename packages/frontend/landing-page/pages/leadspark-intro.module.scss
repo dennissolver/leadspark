@@ -1,4 +1,5 @@
-@use '../../../styles' as *;
+@use '../../../styles/main' as *;
+
 
 /* --- Layout & containers --- */
 .page { background: linear-gradient(135deg, $blue-50, #ffffff 40%, $indigo-50); min-height: 100vh; font-family: $font-family-base; color: $text-color; }

@@ -1,10 +1,27 @@
-@use './_variables.scss' as *;
-@use './_mixins.scss' as *;
-@use './_functions.scss' as *;
-@use './_reset.scss' as *;
-@use './_typography.scss' as *;
-@use './_layout.scss' as *;
-@use './_buttons.scss' as *;
-@use './_utilities.scss' as *;
-@use './_form.scss' as *;
-@use './_globals.scss' as *;
+/* packages/styles/main.scss */
+
+/* ====== Load and expose design tokens & base styles ====== */
+@forward './_variables';
+@forward './_typography';
+@forward './_mixins';
+@forward './_functions';
+@forward './_reset';
+@forward './_layout';
+@forward './_buttons';
+@forward './_utilities';
+@forward './_form';
+@forward './_globals';
+
+/* ====== Optional: bring them into this file’s scope if needed ====== */
+@use './_variables' as *;
+@use './_typography' as *;
+@use './_mixins' as *;
+@use './_functions' as *;
+@use './_reset' as *;
+@use './_layout' as *;
+@use './_buttons' as *;
+@use './_utilities' as *;
+@use './_form' as *;
+@use './_globals' as *;
+
+
