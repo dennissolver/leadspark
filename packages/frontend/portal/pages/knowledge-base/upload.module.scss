@@ -1,0 +1,461 @@
+.uploadContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+  font-size: $font-size-sm;
+}
+
+.breadcrumbLink {
+  color: $color-text-secondary;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.breadcrumbSeparator {
+  color: $color-text-secondary;
+}
+
+.breadcrumbCurrent {
+  color: $color-text-primary;
+  font-weight: 500;
+}
+
+.uploadHeader {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+}
+
+.pageTitle {
+  font-size: $font-size-xxl;
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-md 0;
+}
+
+.pageDescription {
+  font-size: $font-size-lg;
+  color: $color-text-secondary;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.errorMessage,
+.successMessage {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+  margin-bottom: $spacing-lg;
+  font-weight: 500;
+}
+
+.errorMessage {
+  background: $color-danger-light;
+  border: 1px solid $color-danger;
+  color: $color-danger-dark;
+}
+
+.successMessage {
+  background: $color-success-light;
+  border: 1px solid $color-success;
+  color: $color-success-dark;
+}
+
+.messageIcon {
+  font-size: $font-size-lg;
+}
+
+.uploadForm {
+  background: $color-background-secondary;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+}
+
+.tabNavigation {
+  display: flex;
+  border-bottom: 1px solid $color-border-light;
+}
+
+.tabButton {
+  flex: 1;
+  padding: $spacing-lg;
+  background: $color-background-primary;
+  border: none;
+  color: $color-text-secondary;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent;
+
+  &:hover {
+    background: $color-background-secondary;
+    color: $color-text-primary;
+  }
+
+  &.active {
+    background: $color-background-secondary;
+    color: $color-primary;
+    border-bottom-color: $color-primary;
+  }
+
+  &:focus {
+    outline: none;
+    background: $color-background-secondary;
+  }
+}
+
+.tabContent {
+  padding: $spacing-xl;
+  min-height: 200px;
+}
+
+.documentUpload {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.fileUploadArea {
+  border: 2px dashed $color-border-light;
+  border-radius: $border-radius-lg;
+  padding: $spacing-xl;
+  text-align: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: $color-primary;
+    background: $color-primary-light;
+  }
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileInputLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg;
+  cursor: pointer;
+  color: $color-text-secondary;
+}
+
+.uploadIcon {
+  font-size: 3rem;
+  opacity: 0.7;
+}
+
+.uploadText {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  strong {
+    font-size: $font-size-lg;
+    color: $color-text-primary;
+  }
+
+  span {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+  }
+}
+
+.fileInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md;
+  background: $color-background-primary;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-md;
+}
+
+.fileName {
+  font-weight: 500;
+  color: $color-text-primary;
+}
+
+.fileSize {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.urlUpload {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.urlInputGroup {
+  display: flex;
+  gap: $spacing-md;
+}
+
+.urlInput {
+  flex: 1;
+  padding: $spacing-md;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-md;
+  font-size: $font-size-md;
+  background: $color-background-primary;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px $color-primary-light;
+  }
+
+  &::placeholder {
+    color: $color-text-secondary;
+  }
+}
+
+.fetchButton {
+  padding: $spacing-md $spacing-lg;
+  background: $color-primary;
+  color: $color-white;
+  border: none;
+  border-radius: $border-radius-md;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+
+  &:hover:not(:disabled) {
+    background: $color-primary-dark;
+  }
+
+  &:disabled {
+    background: $color-border-light;
+    color: $color-text-secondary;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $color-primary-light;
+  }
+}
+
+.urlHelpText,
+.textHelpText {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.contentForm {
+  padding: $spacing-xl;
+  border-top: 1px solid $color-border-light;
+}
+
+.formGroup {
+  margin-bottom: $spacing-lg;
+
+  &:last-of-type {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.formLabel {
+  display: block;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin-bottom: $spacing-sm;
+}
+
+.formInput,
+.contentTextarea {
+  width: 100%;
+  padding: $spacing-md;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-md;
+  font-size: $font-size-md;
+  background: $color-background-primary;
+  font-family: inherit;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px $color-primary-light;
+  }
+
+  &::placeholder {
+    color: $color-text-secondary;
+  }
+}
+
+.contentTextarea {
+  resize: vertical;
+  min-height: 200px;
+  line-height: 1.6;
+}
+
+.characterCount {
+  margin-top: $spacing-xs;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  text-align: right;
+}
+
+.fieldHelp {
+  margin-top: $spacing-xs;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  line-height: 1.4;
+}
+
+.formActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-md;
+  padding-top: $spacing-lg;
+  border-top: 1px solid $color-border-light;
+}
+
+.cancelButton {
+  padding: $spacing-md $spacing-lg;
+  color: $color-text-secondary;
+  text-decoration: none;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-md;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: $color-background-primary;
+    color: $color-text-primary;
+    border-color: $color-text-secondary;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $color-primary-light;
+  }
+}
+
+.submitButton {
+  padding: $spacing-md $spacing-xl;
+  background: $color-success;
+  color: $color-white;
+  border: none;
+  border-radius: $border-radius-md;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background: $color-success-dark;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    background: $color-border-light;
+    color: $color-text-secondary;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px $color-success-light;
+  }
+}
+
+// Responsive Design
+@media (max-width: $breakpoint-tablet) {
+  .uploadContainer {
+    max-width: none;
+    padding: 0;
+  }
+
+  .tabNavigation {
+    flex-direction: column;
+  }
+
+  .tabButton {
+    border-bottom: none;
+    border-right: 3px solid transparent;
+    text-align: left;
+
+    &.active {
+      border-right-color: $color-primary;
+      border-bottom-color: transparent;
+    }
+  }
+
+  .tabContent {
+    padding: $spacing-lg;
+  }
+
+  .urlInputGroup {
+    flex-direction: column;
+  }
+
+  .fetchButton {
+    align-self: flex-start;
+  }
+
+  .contentForm {
+    padding: $spacing-lg;
+  }
+
+  .formActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cancelButton,
+  .submitButton {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .pageTitle {
+    font-size: $font-size-xl;
+  }
+
+  .pageDescription {
+    font-size: $font-size-md;
+  }
+
+  .uploadIcon {
+    font-size: 2rem;
+  }
+
+  .uploadText strong {
+    font-size: $font-size-md;
+  }
+
+  .fileUploadArea {
+    padding: $spacing-lg;
+  }
+
+  .tabContent {
+    padding: $spacing-md;
+  }
+
+  .contentForm {
+    padding: $spacing-md;
+  }
+}

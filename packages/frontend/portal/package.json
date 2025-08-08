@@ -1,25 +1,33 @@
 {
-  "name": "portal",
-  "version": "1.0.0",
+  "name": "@leadspark/portal",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3001",
+    "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3001",
     "lint": "next lint",
-    "type-check": "tsc --noEmit",
-    "clean": "rm -rf .next .turbo node_modules/.cache"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@leadspark/styles": "file:../../styles",
-    "@supabase/supabase-js": "^2.0.0",
-    "@types/node": "^20.0.0",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "next": "^14.0.0",
+    "@supabase/auth-helpers-nextjs": "^0.8.7",
+    "@supabase/supabase-js": "^2.38.4",
+    "@leadspark/styles": "workspace:*",
+    "next": "14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.90.0",
-    "typescript": "^5.0.0"
+    "sass": "^1.69.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "eslint": "^8.53.0",
+    "eslint-config-next": "14.0.4",
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }

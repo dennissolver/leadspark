@@ -1,0 +1,379 @@
+.dashboardContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: $spacing-lg;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid $color-border-light;
+  border-top: 3px solid $color-primary;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingText {
+  color: $color-text-secondary;
+  font-size: $font-size-lg;
+  margin: 0;
+}
+
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: $spacing-xl;
+  padding-bottom: $spacing-lg;
+  border-bottom: 1px solid $color-border-light;
+}
+
+.headerContent {
+  flex: 1;
+}
+
+.pageTitle {
+  font-size: $font-size-xxl;
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-sm 0;
+}
+
+.welcomeText {
+  font-size: $font-size-lg;
+  color: $color-text-secondary;
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  gap: $spacing-md;
+}
+
+.viewAllButton {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-md $spacing-lg;
+  background: $color-primary;
+  color: $color-white;
+  text-decoration: none;
+  border-radius: $border-radius-md;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $color-primary-dark;
+    transform: translateY(-2px);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px $color-primary-light;
+  }
+}
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  background: $color-danger-light;
+  border: 1px solid $color-danger;
+  border-radius: $border-radius-md;
+  color: $color-danger-dark;
+  margin-bottom: $spacing-lg;
+}
+
+.errorIcon {
+  font-size: $font-size-lg;
+}
+
+.statsSection {
+  margin-bottom: $spacing-xl;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $spacing-lg;
+}
+
+.statCard {
+  background: $color-background-secondary;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.statIcon {
+  font-size: 2rem;
+  background: $color-primary-light;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.statContent {
+  flex: 1;
+}
+
+.statValue {
+  font-size: $font-size-xxl;
+  font-weight: 700;
+  color: $color-primary;
+  margin: 0 0 $spacing-xs 0;
+}
+
+.statLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin: 0 0 $spacing-xs 0;
+  font-weight: 500;
+}
+
+.statTrend {
+  font-size: $font-size-xs;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  &.positive {
+    color: $color-success-dark;
+  }
+
+  &.negative {
+    color: $color-danger;
+  }
+}
+
+.statPercentage {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.activitySection,
+.quickActions {
+  margin-bottom: $spacing-xl;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+}
+
+.sectionTitle {
+  font-size: $font-size-xl;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+.sectionAction {
+  color: $color-primary;
+  text-decoration: none;
+  font-weight: 600;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-sm;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: $color-primary-light;
+    color: $color-primary-dark;
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: $spacing-xxl;
+  background: $color-background-secondary;
+  border: 2px dashed $color-border-light;
+  border-radius: $border-radius-lg;
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  margin-bottom: $spacing-lg;
+  opacity: 0.6;
+}
+
+.emptyTitle {
+  font-size: $font-size-xl;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-md 0;
+}
+
+.emptyText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  margin: 0 0 $spacing-lg 0;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.setupButton {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-md $spacing-lg;
+  background: $color-primary;
+  color: $color-white;
+  text-decoration: none;
+  border-radius: $border-radius-md;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $color-primary-dark;
+    transform: translateY(-2px);
+  }
+}
+
+.leadsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: $spacing-lg;
+}
+
+.actionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $spacing-lg;
+}
+
+.actionCard {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  background: $color-background-secondary;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-lg;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: $color-primary-light;
+  }
+}
+
+.actionIcon {
+  font-size: 2rem;
+  background: $color-primary-light;
+  width: 50px;
+  height: 50px;
+  border-radius: $border-radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.actionContent {
+  flex: 1;
+}
+
+.actionTitle {
+  font-size: $font-size-lg;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-xs 0;
+}
+
+.actionDescription {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin: 0;
+  line-height: 1.5;
+}
+
+// Responsive Design
+@media (max-width: $breakpoint-tablet) {
+  .dashboardHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: $spacing-lg;
+  }
+
+  .headerActions {
+    align-self: flex-end;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .statCard {
+    padding: $spacing-md;
+  }
+
+  .statIcon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .leadsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .actionsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .pageTitle {
+    font-size: $font-size-xl;
+  }
+
+  .emptyState {
+    padding: $spacing-lg;
+  }
+
+  .emptyIcon {
+    font-size: 3rem;
+  }
+
+  .actionCard {
+    padding: $spacing-md;
+  }
+
+  .actionIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,183 @@
+.layoutContainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: $color-background-primary;
+}
+
+.mobileMenuButton {
+  display: none;
+  position: fixed;
+  top: $spacing-lg;
+  left: $spacing-lg;
+  z-index: 200;
+  background: $color-background-secondary;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-sm;
+  padding: $spacing-sm;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 3px;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background: $color-background-primary;
+  }
+}
+
+.hamburger {
+  width: 20px;
+  height: 2px;
+  background-color: $color-text-primary;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+.sidebarWrapper {
+  flex-shrink: 0;
+}
+
+.mobileOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+.mainContent {
+  flex: 1;
+  margin-left: 280px;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
+.contentWrapper {
+  padding: $spacing-xl;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+// Loading states
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $color-background-primary;
+}
+
+.loadingSpinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid $color-border-light;
+  border-top: 3px solid $color-primary;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingText {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  margin: 0;
+}
+
+// Responsive Design
+@media (max-width: $breakpoint-tablet) {
+  .mobileMenuButton {
+    display: flex;
+  }
+
+  .sidebarWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 150;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+
+    &.sidebarOpen {
+      transform: translateX(0);
+    }
+  }
+
+  .mobileOverlay {
+    display: block;
+  }
+
+  .mainContent {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .contentWrapper {
+    padding: $spacing-lg;
+    padding-top: calc(#{$spacing-xl} + 40px); // Account for mobile menu button
+  }
+
+  // Hamburger animation when sidebar is open
+  .sidebarOpen ~ .mobileMenuButton {
+    .hamburger:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .contentWrapper {
+    padding: $spacing-md;
+    padding-top: calc(#{$spacing-lg} + 40px);
+  }
+}
+
+// Handle collapsed sidebar state
+@media (min-width: calc(#{$breakpoint-tablet} + 1px)) {
+  .layoutContainer:has(.sidebar.collapsed) .mainContent {
+    margin-left: 80px;
+  }
+}
+
+// Print styles
+@media print {
+  .sidebarWrapper,
+  .mobileMenuButton,
+  .mobileOverlay {
+    display: none;
+  }
+
+  .mainContent {
+    margin-left: 0;
+  }
+
+  .contentWrapper {
+    padding: 0;
+    max-width: none;
+  }
+}

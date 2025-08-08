@@ -1,0 +1,558 @@
+.leadDetailContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.loadingContainer,
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: $spacing-lg;
+  text-align: center;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid $color-border-light;
+  border-top: 3px solid $color-primary;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingText {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 120px;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px $color-primary-light;
+  }
+
+  &::placeholder {
+    color: $color-text-secondary;
+  }
+}
+
+.saveNotesButton {
+  margin-top: $spacing-md;
+  padding: $spacing-sm $spacing-lg;
+  background: $color-success;
+  color: $color-white;
+  border: none;
+  border-radius: $border-radius-md;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background: $color-success-dark;
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    background: $color-border-light;
+    color: $color-text-secondary;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $color-success-light;
+  }
+}
+
+.noConversations {
+  text-align: center;
+  padding: $spacing-xl;
+  color: $color-text-secondary;
+}
+
+.noConversationsIcon {
+  font-size: 3rem;
+  margin-bottom: $spacing-md;
+  opacity: 0.6;
+}
+
+.noConversationsText {
+  margin: 0;
+  font-size: $font-size-md;
+}
+
+.conversationsList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.conversationCard {
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-md;
+  background: $color-background-primary;
+  overflow: hidden;
+}
+
+.conversationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md;
+  background: $color-background-secondary;
+  border-bottom: 1px solid $color-border-light;
+}
+
+.conversationDate {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-text-primary;
+}
+
+.conversationDuration {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  background: $color-border-light;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+}
+
+.conversationContent {
+  padding: $spacing-md;
+}
+
+.messagesList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.message {
+  border-left: 3px solid transparent;
+  padding-left: $spacing-sm;
+}
+
+.messageHeader {
+  margin-bottom: $spacing-xs;
+}
+
+.messageSender {
+  font-size: $font-size-xs;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &.ai {
+    color: $color-primary;
+    border-left-color: $color-primary;
+  }
+
+  &.user {
+    color: $color-success;
+    border-left-color: $color-success;
+  }
+}
+
+.messageText {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.moreMessages {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  text-align: center;
+  margin: $spacing-sm 0 0 0;
+  padding-top: $spacing-sm;
+  border-top: 1px solid $color-border-light;
+}
+
+.noTranscript {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-style: italic;
+  margin: 0;
+}
+
+// Responsive Design
+@media (max-width: $breakpoint-desktop) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .rightColumn {
+    order: 1;
+  }
+
+  .leftColumn {
+    order: 2;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .leadHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: $spacing-lg;
+  }
+
+  .leadInfo {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $spacing-md;
+  }
+
+  .leadAvatar {
+    width: 60px;
+    height: 60px;
+    font-size: $font-size-lg;
+  }
+
+  .leadActions {
+    justify-content: center;
+  }
+
+  .statusButtons {
+    grid-template-columns: 1fr;
+  }
+
+  .infoItem {
+    flex-direction: column;
+    align-items: stretch;
+    gap: $spacing-xs;
+  }
+
+  .infoLabel {
+    min-width: auto;
+  }
+
+  .infoValue {
+    text-align: left;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .leadDetailContainer {
+    padding: 0;
+  }
+
+  .breadcrumb {
+    flex-wrap: wrap;
+  }
+
+  .leadHeader {
+    padding: $spacing-md;
+    margin-bottom: $spacing-lg;
+  }
+
+  .leadName {
+    font-size: $font-size-xl;
+  }
+
+  .infoSection,
+  .statusSection,
+  .notesSection,
+  .conversationsSection {
+    padding: $spacing-md;
+  }
+
+  .sectionTitle {
+    font-size: $font-size-md;
+  }
+
+  .conversationHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: $spacing-xs;
+  }
+
+  .conversationDate {
+    text-align: left;
+  }
+
+  .conversationDuration {
+    align-self: flex-start;
+  }
+}font-size-lg;
+  margin: 0;
+}
+
+.errorIcon {
+  font-size: 4rem;
+  opacity: 0.6;
+}
+
+.errorTitle {
+  font-size: $font-size-xl;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-md 0;
+}
+
+.errorText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  margin: 0 0 $spacing-lg 0;
+  max-width: 400px;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-md $spacing-lg;
+  background: $color-primary;
+  color: $color-white;
+  text-decoration: none;
+  border-radius: $border-radius-md;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $color-primary-dark;
+    transform: translateY(-2px);
+  }
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+  font-size: $font-size-sm;
+}
+
+.breadcrumbLink {
+  color: $color-text-secondary;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.breadcrumbSeparator {
+  color: $color-text-secondary;
+}
+
+.breadcrumbCurrent {
+  color: $color-text-primary;
+  font-weight: 500;
+}
+
+.leadHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $spacing-xl;
+  padding: $spacing-lg;
+  background: $color-background-secondary;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-lg;
+}
+
+.leadInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-lg;
+}
+
+.leadAvatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  font-weight: 700;
+  font-size: $font-size-xl;
+  flex-shrink: 0;
+}
+
+.leadDetails {
+  flex: 1;
+}
+
+.leadName {
+  font-size: $font-size-xxl;
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-sm 0;
+}
+
+.leadEmail {
+  font-size: $font-size-lg;
+  color: $color-text-secondary;
+  margin: 0 0 $spacing-xs 0;
+}
+
+.leadPhone {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  margin: 0;
+}
+
+.phoneIcon {
+  font-size: $font-size-sm;
+}
+
+.leadActions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.statusBadge {
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &.statusNew {
+    background-color: $color-info-light;
+    color: $color-info-dark;
+  }
+
+  &.statusContacted {
+    background-color: $color-warning-light;
+    color: $color-warning-dark;
+  }
+
+  &.statusQualified {
+    background-color: $color-primary-light;
+    color: $color-primary-dark;
+  }
+
+  &.statusConverted {
+    background-color: $color-success-light;
+    color: $color-success-dark;
+  }
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-xl;
+}
+
+.leftColumn,
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.infoSection,
+.statusSection,
+.notesSection,
+.conversationsSection {
+  background: $color-background-secondary;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-lg 0;
+  padding-bottom: $spacing-sm;
+  border-bottom: 1px solid $color-border-light;
+}
+
+.infoGrid {
+  display: grid;
+  gap: $spacing-md;
+}
+
+.infoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: $spacing-sm 0;
+}
+
+.infoLabel {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-text-secondary;
+  min-width: 120px;
+}
+
+.infoValue {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  text-align: right;
+  word-break: break-word;
+  flex: 1;
+}
+
+.statusButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-sm;
+}
+
+.statusButton {
+  padding: $spacing-md;
+  border: 2px solid $color-border-light;
+  border-radius: $border-radius-md;
+  background: $color-background-primary;
+  color: $color-text-secondary;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &.currentStatus {
+    border-color: $color-primary;
+    background: $color-primary;
+    color: $color-white;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $color-primary-light;
+  }
+}
+
+.notesTextarea {
+  width: 100%;
+  padding: $spacing-md;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius-md;
+  background: $color-background-primary;
+  color: $color-text-primary;
+  font-size: $

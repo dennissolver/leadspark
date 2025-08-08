@@ -1,0 +1,194 @@
+.leadCard {
+  background: $color-background-secondary;
+  border-radius: $border-radius-lg;
+  border: 1px solid $color-border-light;
+  padding: $spacing-lg;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: $color-primary-light;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  font-weight: 600;
+  font-size: $font-size-sm;
+  flex-shrink: 0;
+}
+
+.leadInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.leadName {
+  margin: 0 0 $spacing-xs 0;
+  font-size: $font-size-lg;
+  font-weight: 600;
+  color: $color-text-primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.leadEmail {
+  margin: 0;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.statusBadge {
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-xs;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+
+  &.statusNew {
+    background-color: $color-info-light;
+    color: $color-info-dark;
+  }
+
+  &.statusContacted {
+    background-color: $color-warning-light;
+    color: $color-warning-dark;
+  }
+
+  &.statusQualified {
+    background-color: $color-primary-light;
+    color: $color-primary-dark;
+  }
+
+  &.statusConverted {
+    background-color: $color-success-light;
+    color: $color-success-dark;
+  }
+}
+
+.cardBody {
+  margin-bottom: $spacing-lg;
+}
+
+.contactInfo,
+.investmentGoals,
+.sourceInfo {
+  display: flex;
+  margin-bottom: $spacing-sm;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: 500;
+  color: $color-text-secondary;
+  min-width: 60px;
+  margin-right: $spacing-sm;
+}
+
+.value {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  flex: 1;
+  word-break: break-word;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: $spacing-md;
+  border-top: 1px solid $color-border-light;
+}
+
+.dateInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.createdDate,
+.contactedDate {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.cardActions {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.viewButton {
+  padding: $spacing-sm $spacing-md;
+  background: $color-primary;
+  color: $color-white;
+  border: none;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $color-primary-light;
+  }
+}
+
+// Responsive design
+@media (max-width: $breakpoint-tablet) {
+  .cardHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: $spacing-sm;
+  }
+
+  .avatar {
+    align-self: flex-start;
+  }
+
+  .statusBadge {
+    align-self: flex-start;
+    margin-top: $spacing-xs;
+  }
+
+  .cardFooter {
+    flex-direction: column;
+    align-items: stretch;
+    gap: $spacing-md;
+  }
+
+  .cardActions {
+    justify-content: center;
+  }
+}
