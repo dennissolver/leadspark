@@ -3,7 +3,12 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"],
+      "env": [
+        "GOOGLE_MAPS_API_KEY",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY"
+      ]
     },
     "build:styles": {
       "outputs": ["dist/**", "build/**"],
@@ -14,10 +19,8 @@
       "persistent": true,
       "dependsOn": ["build:styles"]
     }
-    // ... rest of your tasks
   },
   "globalDependencies": [
     "packages/common/**/*"
-    // Remove styles from global deps since it'll be pre-built
   ]
 }
