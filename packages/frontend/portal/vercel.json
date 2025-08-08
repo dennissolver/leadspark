@@ -3,5 +3,4 @@
   "outputDirectory": ".next",
   "installCommand": "cd ../../../ && npm install",
   "framework": "nextjs"
-
 }
