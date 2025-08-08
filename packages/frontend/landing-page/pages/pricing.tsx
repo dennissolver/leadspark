@@ -1,6 +1,6 @@
-// pages/pricing.tsx
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import styles from './pricing.module.scss';
 
 type BillingCycle = 'monthly' | 'annually';
 
@@ -115,41 +115,37 @@ export default function Pricing(): JSX.Element {
   };
 
   return (
-    <div className="bg-white">
+    <div className={styles.page}>
       {/* Header */}
-      <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
-        <div className="sm:text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>
             Simple, transparent pricing
           </h2>
-          <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className={styles.subtitle}>
             Choose the perfect plan for your business. Start with a 14-day free trial, no credit card required.
           </p>
         </div>
 
         {/* Billing toggle */}
-        <div className="mt-12 flex justify-center">
-          <div className="relative bg-gray-100 rounded-lg p-1 flex">
+        <div className={styles.billingToggleContainer}>
+          <div className={styles.billingToggle}>
             <button
               onClick={() => handleBillingToggle('monthly')}
-              className={`relative px-6 py-2 text-sm font-medium rounded-md transition-all ${
-                billingCycle === 'monthly'
-                  ? 'bg-white text-gray-900 shadow-sm'
-                  : 'text-gray-500 hover:text-gray-900'
+              className={`${styles.billingButton} ${
+                billingCycle === 'monthly' ? styles.billingButtonActive : ''
               }`}
             >
               Monthly
             </button>
             <button
               onClick={() => handleBillingToggle('annually')}
-              className={`relative px-6 py-2 text-sm font-medium rounded-md transition-all ${
-                billingCycle === 'annually'
-                  ? 'bg-white text-gray-900 shadow-sm'
-                  : 'text-gray-500 hover:text-gray-900'
+              className={`${styles.billingButton} ${
+                billingCycle === 'annually' ? styles.billingButtonActive : ''
               }`}
             >
               Annual
-              <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+              <span className={styles.discountBadge}>
                 Save {getDiscountPercentage(plans.professional.monthly, plans.professional.annually)}%
               </span>
             </button>
@@ -157,39 +153,37 @@ export default function Pricing(): JSX.Element {
         </div>
 
         {/* Pricing cards */}
-        <div className="mt-16 grid gap-8 lg:grid-cols-3 lg:gap-x-8">
+        <div className={styles.pricingGrid}>
           {Object.entries(plans).map(([key, plan]) => (
             <div
               key={key}
-              className={`relative bg-white border rounded-2xl shadow-sm ${
-                plan.popular
-                  ? 'border-blue-500 ring-2 ring-blue-500'
-                  : 'border-gray-200'
+              className={`${styles.pricingCard} ${
+                plan.popular ? styles.pricingCardPopular : ''
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="inline-flex items-center px-4 py-1 rounded-full text-sm font-medium bg-blue-500 text-white">
+                <div className={styles.popularBadge}>
+                  <span className={styles.popularBadgeText}>
                     Most Popular
                   </span>
                 </div>
               )}
 
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-gray-900">{plan.name}</h3>
-                <p className="mt-4 text-gray-500">{plan.description}</p>
+              <div className={styles.cardContent}>
+                <h3 className={styles.planName}>{plan.name}</h3>
+                <p className={styles.planDescription}>{plan.description}</p>
 
-                <div className="mt-8">
-                  <div className="flex items-baseline">
-                    <span className="text-5xl font-extrabold tracking-tight text-gray-900">
+                <div className={styles.priceSection}>
+                  <div className={styles.priceDisplay}>
+                    <span className={styles.price}>
                       {formatPrice(plan[billingCycle])}
                     </span>
-                    <span className="ml-1 text-xl font-semibold text-gray-500">
+                    <span className={styles.pricePeriod}>
                       {billingCycle === 'monthly' ? '/month' : '/year'}
                     </span>
                   </div>
                   {billingCycle === 'annually' && (
-                    <p className="mt-1 text-sm text-gray-500">
+                    <p className={styles.annualNote}>
                       {formatPrice(plan.monthly)} per month, billed annually
                     </p>
                   )}
@@ -197,21 +191,19 @@ export default function Pricing(): JSX.Element {
 
                 <button
                   onClick={() => handleSelectPlan(key)}
-                  className={`mt-8 w-full py-3 px-6 border border-transparent rounded-md text-center font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-                    plan.popular
-                      ? 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500'
-                      : 'bg-blue-50 text-blue-600 hover:bg-blue-100 focus:ring-blue-500'
+                  className={`${styles.planButton} ${
+                    plan.popular ? styles.planButtonPrimary : styles.planButtonSecondary
                   }`}
                 >
                   {plan.cta}
                 </button>
 
-                <ul className="mt-8 space-y-4">
+                <ul className={styles.featureList}>
                   {plan.features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="flex-shrink-0">
+                    <li key={index} className={styles.featureItem}>
+                      <div className={styles.checkIcon}>
                         <svg
-                          className="h-6 w-6 text-green-500"
+                          className={styles.checkSvg}
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -224,7 +216,7 @@ export default function Pricing(): JSX.Element {
                           />
                         </svg>
                       </div>
-                      <p className="ml-3 text-base text-gray-700">{feature}</p>
+                      <p className={styles.featureText}>{feature}</p>
                     </li>
                   ))}
                 </ul>
@@ -234,40 +226,40 @@ export default function Pricing(): JSX.Element {
         </div>
 
         {/* FAQ Section */}
-        <div className="mt-24">
-          <h3 className="text-2xl font-bold text-gray-900 text-center mb-12">
+        <div className={styles.faqSection}>
+          <h3 className={styles.faqTitle}>
             Frequently Asked Questions
           </h3>
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">
+          <div className={styles.faqGrid}>
+            <div className={styles.faqItem}>
+              <h4 className={styles.faqQuestion}>
                 Is there a free trial?
               </h4>
-              <p className="text-gray-600">
+              <p className={styles.faqAnswer}>
                 Yes! All plans come with a 14-day free trial. No credit card required to start.
               </p>
             </div>
-            <div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className={styles.faqItem}>
+              <h4 className={styles.faqQuestion}>
                 Can I change plans later?
               </h4>
-              <p className="text-gray-600">
+              <p className={styles.faqAnswer}>
                 Absolutely. You can upgrade or downgrade your plan at any time from your dashboard.
               </p>
             </div>
-            <div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className={styles.faqItem}>
+              <h4 className={styles.faqQuestion}>
                 What happens if I exceed my conversation limit?
               </h4>
-              <p className="text-gray-600">
+              <p className={styles.faqAnswer}>
                 We'll notify you when you're approaching your limit. You can upgrade your plan or purchase additional conversations.
               </p>
             </div>
-            <div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className={styles.faqItem}>
+              <h4 className={styles.faqQuestion}>
                 Do you offer custom enterprise solutions?
               </h4>
-              <p className="text-gray-600">
+              <p className={styles.faqAnswer}>
                 Yes! Our Enterprise plan includes custom integrations, dedicated support, and can be tailored to your specific needs.
               </p>
             </div>
@@ -275,24 +267,24 @@ export default function Pricing(): JSX.Element {
         </div>
 
         {/* CTA Section */}
-        <div className="mt-24 bg-gray-50 rounded-2xl p-8 lg:p-12">
-          <div className="text-center">
-            <h3 className="text-2xl font-bold text-gray-900">
+        <div className={styles.ctaSection}>
+          <div className={styles.ctaContent}>
+            <h3 className={styles.ctaTitle}>
               Ready to transform your lead generation?
             </h3>
-            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className={styles.ctaSubtitle}>
               Join hundreds of businesses already using Leadspark to capture and convert more leads with AI-powered conversations.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <div className={styles.ctaButtons}>
               <button
                 onClick={() => handleSelectPlan('professional')}
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className={styles.ctaPrimary}
               >
                 Start Free Trial
               </button>
               <button
                 onClick={handleContactSales}
-                className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className={styles.ctaSecondary}
               >
                 Contact Sales
               </button>

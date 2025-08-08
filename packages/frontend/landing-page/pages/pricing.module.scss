@@ -1,0 +1,380 @@
+@use 'sass:color';
+@use '@leadspark/styles/variables' as *;
+
+/* Page layout */
+.page {
+  background: $white;
+  font-family: $font-family-base;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 6rem $spacing-4;
+
+  @media (min-width: $breakpoint-sm) {
+    padding-inline: $spacing-6;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding-inline: $spacing-8;
+  }
+}
+
+/* Header */
+.header {
+  text-align: center;
+
+  @media (min-width: $breakpoint-sm) {
+    text-align: center;
+  }
+}
+
+.title {
+  font-size: $text-3xl;
+  font-weight: $font-bold;
+  color: $gray-900;
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: $text-4xl;
+  }
+}
+
+.subtitle {
+  margin-top: $spacing-4;
+  font-size: $text-xl;
+  color: $gray-600;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Billing toggle */
+.billingToggleContainer {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.billingToggle {
+  position: relative;
+  background: $gray-100;
+  border-radius: $rounded-lg;
+  padding: $spacing-1;
+  display: flex;
+}
+
+.billingButton {
+  position: relative;
+  padding: $spacing-2 $spacing-6;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  border-radius: $rounded-md;
+  transition: all $transition-base;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $gray-500;
+
+  &:hover {
+    color: $gray-900;
+  }
+
+  &.billingButtonActive {
+    background: $white;
+    color: $gray-900;
+    box-shadow: $shadow-sm;
+  }
+}
+
+.discountBadge {
+  margin-left: $spacing-2;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem $spacing-2;
+  border-radius: $rounded-full;
+  font-size: $text-xs;
+  font-weight: $font-medium;
+  background: $green-100;
+  color: $green-500;
+}
+
+/* Pricing grid */
+.pricingGrid {
+  margin-top: 4rem;
+  display: grid;
+  gap: $spacing-8;
+
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-8;
+  }
+}
+
+.pricingCard {
+  position: relative;
+  background: $white;
+  border: $border-width solid $gray-200;
+  border-radius: 1rem;
+  box-shadow: $shadow-sm;
+
+  &.pricingCardPopular {
+    border-color: $blue-500;
+    box-shadow: 0 0 0 2px $blue-500;
+  }
+}
+
+.popularBadge {
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.popularBadgeText {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-1 $spacing-4;
+  border-radius: $rounded-full;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  background: $blue-500;
+  color: $white;
+}
+
+.cardContent {
+  padding: $spacing-8;
+}
+
+.planName {
+  font-size: $text-2xl;
+  font-weight: $font-bold;
+  color: $gray-900;
+}
+
+.planDescription {
+  margin-top: $spacing-4;
+  color: $gray-500;
+}
+
+/* Price section */
+.priceSection {
+  margin-top: $spacing-8;
+}
+
+.priceDisplay {
+  display: flex;
+  align-items: baseline;
+}
+
+.price {
+  font-size: 3rem;
+  font-weight: $font-bold;
+  letter-spacing: -0.025em;
+  color: $gray-900;
+}
+
+.pricePeriod {
+  margin-left: $spacing-1;
+  font-size: $text-xl;
+  font-weight: $font-semibold;
+  color: $gray-500;
+}
+
+.annualNote {
+  margin-top: $spacing-1;
+  font-size: $text-sm;
+  color: $gray-500;
+}
+
+/* Plan button */
+.planButton {
+  margin-top: $spacing-8;
+  width: 100%;
+  padding: $spacing-3 $spacing-6;
+  border: $border-width solid transparent;
+  border-radius: $rounded-md;
+  text-align: center;
+  font-weight: $font-medium;
+  transition: all $transition-base;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($blue-500, 0.5);
+  }
+}
+
+.planButtonPrimary {
+  background: $blue-600;
+  color: $white;
+
+  &:hover {
+    background: $blue-700;
+  }
+}
+
+.planButtonSecondary {
+  background: $blue-50;
+  color: $blue-600;
+
+  &:hover {
+    background: $blue-100;
+  }
+}
+
+/* Feature list */
+.featureList {
+  margin-top: $spacing-8;
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: $spacing-4;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+}
+
+.checkIcon {
+  flex-shrink: 0;
+}
+
+.checkSvg {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: $green-500;
+}
+
+.featureText {
+  margin-left: $spacing-3;
+  font-size: $text-base;
+  color: $gray-700;
+}
+
+/* FAQ Section */
+.faqSection {
+  margin-top: 6rem;
+}
+
+.faqTitle {
+  font-size: $text-2xl;
+  font-weight: $font-bold;
+  color: $gray-900;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.faqGrid {
+  display: grid;
+  gap: $spacing-8;
+
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.faqItem {
+  /* FAQ item styles */
+}
+
+.faqQuestion {
+  font-size: $text-lg;
+  font-weight: $font-semibold;
+  color: $gray-900;
+  margin-bottom: $spacing-2;
+}
+
+.faqAnswer {
+  color: $gray-600;
+}
+
+/* CTA Section */
+.ctaSection {
+  margin-top: 6rem;
+  background: $gray-50;
+  border-radius: 1rem;
+  padding: $spacing-8;
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 3rem;
+  }
+}
+
+.ctaContent {
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: $text-2xl;
+  font-weight: $font-bold;
+  color: $gray-900;
+}
+
+.ctaSubtitle {
+  margin-top: $spacing-4;
+  font-size: $text-lg;
+  color: $gray-600;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaButtons {
+  margin-top: $spacing-8;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  justify-content: center;
+
+  @media (min-width: $breakpoint-sm) {
+    flex-direction: row;
+  }
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-3 $spacing-6;
+  border: $border-width solid transparent;
+  font-size: $text-base;
+  font-weight: $font-medium;
+  border-radius: $rounded-md;
+  color: $white;
+  background: $blue-600;
+  cursor: pointer;
+  transition: background-color $transition-base;
+
+  &:hover {
+    background: $blue-700;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($blue-500, 0.5);
+  }
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-3 $spacing-6;
+  border: $border-width solid $gray-300;
+  font-size: $text-base;
+  font-weight: $font-medium;
+  border-radius: $rounded-md;
+  color: $gray-700;
+  background: $white;
+  cursor: pointer;
+  transition: background-color $transition-base;
+
+  &:hover {
+    background: $gray-50;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($blue-500, 0.5);
+  }
+}
