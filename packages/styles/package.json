@@ -2,12 +2,17 @@
   "name": "@leadspark/styles",
   "version": "1.0.0",
   "private": true,
-  "main": "main.scss",
+  "main": "dist/main.css",
   "scripts": {
-    "build": "echo 'Styles built'",
-    "clean": "echo 'Styles cleaned'"
+    "build": "sass main.scss dist/main.css",
+    "watch": "sass --watch main.scss dist/main.css",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "sass": "^1.69.0"
   },
   "files": [
+    "dist/**",
     "*.scss",
     "abstracts/**/*",
     "base/**/*",

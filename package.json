@@ -6,6 +6,7 @@
     "packages/frontend/*"
   ],
   "scripts": {
+    "dev:main": "turbo run dev --filter='!leadspark-widget'",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",

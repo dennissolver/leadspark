@@ -3,30 +3,21 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"],
-      "env": [
-        "NODE_ENV",
-        "GOOGLE_MAPS_API_KEY",
-        "STRIPE_SECRET_KEY"
-      ]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"]
+    },
+    "build:styles": {
+      "outputs": ["dist/**", "build/**"],
+      "inputs": ["src/**/*.scss", "src/**/*.sass"]
     },
     "dev": {
       "cache": false,
-      "persistent": true
-    },
-    "lint": {
-      "outputs": []
-    },
-    "type-check": {
-      "dependsOn": ["^build"],
-      "outputs": []
-    },
-    "clean": {
-      "cache": false
+      "persistent": true,
+      "dependsOn": ["build:styles"]
     }
+    // ... rest of your tasks
   },
   "globalDependencies": [
-    "packages/styles/**/*",
     "packages/common/**/*"
+    // Remove styles from global deps since it'll be pre-built
   ]
 }
