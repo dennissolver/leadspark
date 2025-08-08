@@ -1,3 +1,6 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
 .leadCard {
   background: $color-background-secondary;
   border-radius: $border-radius-lg;
