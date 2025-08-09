@@ -1,9 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import s from '../styles/thank-you.module.scss'; // You will need to create this SCSS file
+import s from './thank-you.module.scss'; // Corrected import path
 
 const ThankYouPage: React.FC = () => {
+  // This is the base URL for the portal application
+  const portalUrl = 'https://leadspark-tenant.vercel.app';
+
   return (
     <div className={s.page}>
       <Head>
@@ -19,7 +22,7 @@ const ThankYouPage: React.FC = () => {
           Please check your inbox and click the link to confirm your account and activate your free trial.
         </p>
         <div className={s.actions}>
-          <Link href="https://leadspark-tenant.vercel.app/login" className={s.button}>
+          <Link href={`${portalUrl}/login`} className={s.button}>
             Go to Login
           </Link>
           <Link href="/" className={s.link}>
