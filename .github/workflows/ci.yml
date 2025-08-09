@@ -38,9 +38,9 @@ jobs:
             rm package-lock.json
           fi
 
-      # Installs dependencies using a clean-install to ensure a fresh dependency tree.
+      # Installs dependencies. This will also create a new package-lock.json file.
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       # Runs the 'typecheck' task using Turbo, forcing a fresh build.
       - name: Run typecheck with cache bypass
