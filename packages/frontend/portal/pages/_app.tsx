@@ -1,42 +1,19 @@
+// pages/_app.tsx
 import React, { createContext, useContext } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { useSupabaseClient } from '../hooks/useSupabase';
 
-// Import centralized styles
+// central stylesheet from your styles package
 import '@leadspark/styles/dist/main.css';
 
-// Supabase Context Provider
-interface SupabaseContextType {
-  user: any;
-  session: any;
-  loading: boolean;
-  signOut: () => Promise<void>;
-  signIn: (email: string, password: string) => Promise<{ error: any }>;
-  getTenantId: () => string | null;
-  isAuthenticated: boolean;
-}
+// pull in the hook/provider you implemented in hooks/useSupabase
+import {
+  SupabaseProvider,        // the provider that actually initializes session/client
+  useSupabase as useSupabaseFromHook,
+} from '../hooks/useSupabase';
 
-const SupabaseContext = createContext<SupabaseContextType | undefined>(undefined);
-
-export const useSupabase = (): SupabaseContextType => {
-  const context = useContext(SupabaseContext);
-  if (context === undefined) {
-    throw new Error('useSupabase must be used within a SupabaseProvider');
-  }
-  return context;
-};
-
-// Supabase Provider Component
-const SupabaseProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const supabaseClient = useSupabaseClient();
-
-  return (
-    <SupabaseContext.Provider value={supabaseClient}>
-      {children}
-    </SupabaseContext.Provider>
-  );
-};
+// Re‑export the hook so existing imports keep working (optional)
+export const useSupabase = useSupabaseFromHook;
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
