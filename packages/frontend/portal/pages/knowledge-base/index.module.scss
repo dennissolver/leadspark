@@ -1,5 +1,14 @@
-@use '../../../../styles/variables';
-@use '../../../../styles/mixins';
+@use "../../../styles/mixins" as mixins;
+@use "../../../styles/variables" as vars;
+
+.container {
+  // Use variables with their namespace
+  background-color: vars.$color-background-primary;
+  font-family: vars.$font-family-base;
+
+  // Use mixins with their namespace
+  @include mixins.shadow-elevation-1;
+}
 
 .knowledgeBaseContainer {
   max-width: 1400px;
