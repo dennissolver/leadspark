@@ -2,8 +2,7 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "typecheck": {
-      "outputs": [],
-      "command": "tsc -p packages/frontend/portal/tsconfig.json --noEmit"
+      "outputs": []
     },
     "build:styles": {
       "outputs": ["dist/**", "build/**"],

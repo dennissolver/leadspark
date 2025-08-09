@@ -1,14 +1,13 @@
 {
   "name": "portal",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "build": "npm run typecheck && next build",
-    "clean": "rimraf .next .turbo node_modules/.cache"
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@leadspark/styles": "file:../../styles",
