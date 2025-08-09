@@ -32,5 +32,9 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "npm@9.0.0"
+  "packageManager": "npm@9.0.0",
+  "dependencies": {
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.54.0"
+  }
 }
