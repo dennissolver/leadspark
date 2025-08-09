@@ -13,10 +13,8 @@ const IndexPage: React.FC = () => {
     if (loading) return;
 
     if (!user) {
-      // Redirect to landing page login with return URL
-      const returnUrl = `${process.env.NEXT_PUBLIC_PORTAL_URL}/dashboard`;
-      const loginUrl = `${process.env.NEXT_PUBLIC_LANDING_URL}/login?redirect=${encodeURIComponent(returnUrl)}`;
-      window.location.href = loginUrl;
+      // Redirect to the local /login page within the portal app.
+      router.push('/login');
       return;
     }
 
@@ -53,7 +51,7 @@ const IndexPage: React.FC = () => {
                 Taking you to the login page...
               </p>
               <a
-                href={`${process.env.NEXT_PUBLIC_LANDING_URL}/login`}
+                href="/login" // Redirect to the local login path
                 className={styles.manualLink}
               >
                 Click here if you're not redirected automatically
@@ -67,4 +65,3 @@ const IndexPage: React.FC = () => {
 };
 
 export default IndexPage;
-

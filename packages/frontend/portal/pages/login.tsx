@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { supabase } from '../lib/supabaseClient';
 import { AuthError } from '@supabase/supabase-js';
@@ -25,6 +25,20 @@ export default function Login(): JSX.Element {
   });
   const [errors, setErrors] = useState<LoginErrors>({});
   const portalUrl = 'https://leadspark-tenant.vercel.app/'; // The portal app URL
+
+  // Add this useEffect to handle redirection if the user is already authenticated.
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        const nextUrl = router.query.next as string | undefined;
+        if (nextUrl) {
+          router.push(nextUrl);
+        } else {
+          router.push('/dashboard');
+        }
+      }
+    });
+  }, [router]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -79,8 +93,15 @@ export default function Login(): JSX.Element {
       }
 
       if (data.user) {
-        // Successful login - redirect to portal
-        window.location.href = portalUrl;
+        // Successful login - now correctly redirect to the intended page or dashboard.
+        const nextUrl = router.query.next as string | undefined;
+        if (nextUrl) {
+          // Use `router.push` for client-side navigation.
+          router.push(nextUrl);
+        } else {
+          // Redirect to the default dashboard if no `next` URL is specified.
+          router.push('/dashboard');
+        }
       }
 
     } catch (error) {
