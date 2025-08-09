@@ -29,16 +29,17 @@ jobs:
         with:
           node-version: '20' # You can adjust this to your project's Node.js version.
 
-      # Forcefully remove old dependencies and cache to ensure a clean slate.
-      - name: Clean dependencies and cache
+      # Forcefully remove old dependencies, package-lock, and cache to ensure a clean slate.
+      - name: Clean dependencies and lockfile
         run: |
           npm cache clean --force
           rm -rf node_modules
+          rm package-lock.json
 
-      # Installs project dependencies.
+      # Installs dependencies using a clean-install to ensure a fresh dependency tree.
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # Runs the 'typecheck' task using Turbo, forcing a fresh build to bypass any cache issues.
+      # Runs the 'typecheck' task using Turbo, forcing a fresh build.
       - name: Run typecheck with cache bypass
         run: TURBO_FORCE=true npx turbo run typecheck --filter=portal
