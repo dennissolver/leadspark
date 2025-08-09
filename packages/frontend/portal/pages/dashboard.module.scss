@@ -3,8 +3,8 @@
 
 .container {
   // Use variables with their namespace
-  background-color: vars.$color-background-primary;
-  font-family: vars.$font-family-base;
+  background-color: vars.vars.color-background-primary;
+  font-family: vars.vars.font-family-base;
 
   // Use mixins with their namespace
   @include mixins.shadow-elevation-1;
@@ -21,14 +21,14 @@
   align-items: center;
   justify-content: center;
   min-height: 60vh;
-  gap: $spacing-lg;
+  gap: vars.spacing-lg;
 }
 
 .loadingSpinner {
   width: 40px;
   height: 40px;
-  border: 3px solid $color-border-light;
-  border-top: 3px solid $color-primary;
+  border: 3px solid vars.color-border-light;
+  border-top: 3px solid vars.color-primary;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -39,8 +39,8 @@
 }
 
 .loadingText {
-  color: $color-text-secondary;
-  font-size: $font-size-lg;
+  color: vars.color-text-secondary;
+  font-size: vars.font-size-lg;
   margin: 0;
 }
 
@@ -48,9 +48,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: $spacing-xl;
-  padding-bottom: $spacing-lg;
-  border-bottom: 1px solid $color-border-light;
+  margin-bottom: vars.spacing-xl;
+  padding-bottom: vars.spacing-lg;
+  border-bottom: 1px solid vars.color-border-light;
 }
 
 .headerContent {
@@ -58,79 +58,79 @@
 }
 
 .pageTitle {
-  font-size: $font-size-xxl;
+  font-size: vars.font-size-xxl;
   font-weight: 700;
-  color: $color-text-primary;
-  margin: 0 0 $spacing-sm 0;
+  color: vars.color-text-primary;
+  margin: 0 0 vars.spacing-sm 0;
 }
 
 .welcomeText {
-  font-size: $font-size-lg;
-  color: $color-text-secondary;
+  font-size: vars.font-size-lg;
+  color: vars.color-text-secondary;
   margin: 0;
 }
 
 .headerActions {
   display: flex;
-  gap: $spacing-md;
+  gap: vars.spacing-md;
 }
 
 .viewAllButton {
   display: inline-flex;
   align-items: center;
-  padding: $spacing-md $spacing-lg;
-  background: $color-primary;
-  color: $color-white;
+  padding: vars.spacing-md vars.spacing-lg;
+  background: vars.color-primary;
+  color: vars.color-white;
   text-decoration: none;
   border-radius: $border-radius-md;
   font-weight: 600;
   transition: all 0.3s ease;
 
   &:hover {
-    background: $color-primary-dark;
+    background: vars.color-primary-dark;
     transform: translateY(-2px);
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px $color-primary-light;
+    box-shadow: 0 0 0 3px vars.color-primary-light;
   }
 }
 
 .errorMessage {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
-  padding: $spacing-md;
-  background: $color-danger-light;
-  border: 1px solid $color-danger;
+  gap: vars.spacing-sm;
+  padding: vars.spacing-md;
+  background: vars.color-danger-light;
+  border: 1px solid vars.color-danger;
   border-radius: $border-radius-md;
-  color: $color-danger-dark;
-  margin-bottom: $spacing-lg;
+  color: vars.color-danger-dark;
+  margin-bottom: vars.spacing-lg;
 }
 
 .errorIcon {
-  font-size: $font-size-lg;
+  font-size: vars.font-size-lg;
 }
 
 .statsSection {
-  margin-bottom: $spacing-xl;
+  margin-bottom: vars.spacing-xl;
 }
 
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: $spacing-lg;
+  gap: vars.spacing-lg;
 }
 
 .statCard {
-  background: $color-background-secondary;
-  border: 1px solid $color-border-light;
+  background: vars.color-background-secondary;
+  border: 1px solid vars.color-border-light;
   border-radius: $border-radius-lg;
-  padding: $spacing-lg;
+  padding: vars.spacing-lg;
   display: flex;
   align-items: center;
-  gap: $spacing-md;
+  gap: vars.spacing-md;
   transition: all 0.3s ease;
 
   &:hover {
@@ -141,7 +141,7 @@
 
 .statIcon {
   font-size: 2rem;
-  background: $color-primary-light;
+  background: vars.color-primary-light;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -156,98 +156,98 @@
 }
 
 .statValue {
-  font-size: $font-size-xxl;
+  font-size: vars.font-size-xxl;
   font-weight: 700;
-  color: $color-primary;
-  margin: 0 0 $spacing-xs 0;
+  color: vars.color-primary;
+  margin: 0 0 vars.spacing-xs 0;
 }
 
 .statLabel {
-  font-size: $font-size-sm;
-  color: $color-text-secondary;
-  margin: 0 0 $spacing-xs 0;
+  font-size: vars.font-size-sm;
+  color: vars.color-text-secondary;
+  margin: 0 0 vars.spacing-xs 0;
   font-weight: 500;
 }
 
 .statTrend {
-  font-size: $font-size-xs;
+  font-size: vars.font-size-xs;
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: $spacing-xs;
+  gap: vars.spacing-xs;
 
   &.positive {
-    color: $color-success-dark;
+    color: vars.color-success-dark;
   }
 
   &.negative {
-    color: $color-danger;
+    color: vars.color-danger;
   }
 }
 
 .statPercentage {
-  font-size: $font-size-xs;
-  color: $color-text-secondary;
+  font-size: vars.font-size-xs;
+  color: vars.color-text-secondary;
 }
 
 .activitySection,
 .quickActions {
-  margin-bottom: $spacing-xl;
+  margin-bottom: vars.spacing-xl;
 }
 
 .sectionHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: $spacing-lg;
+  margin-bottom: vars.spacing-lg;
 }
 
 .sectionTitle {
-  font-size: $font-size-xl;
+  font-size: vars.font-size-xl;
   font-weight: 600;
-  color: $color-text-primary;
+  color: vars.color-text-primary;
   margin: 0;
 }
 
 .sectionAction {
-  color: $color-primary;
+  color: vars.color-primary;
   text-decoration: none;
   font-weight: 600;
-  padding: $spacing-sm $spacing-md;
+  padding: vars.spacing-sm vars.spacing-md;
   border-radius: $border-radius-sm;
   transition: all 0.2s ease;
 
   &:hover {
-    background: $color-primary-light;
-    color: $color-primary-dark;
+    background: vars.color-primary-light;
+    color: vars.color-primary-dark;
   }
 }
 
 .emptyState {
   text-align: center;
-  padding: $spacing-xxl;
-  background: $color-background-secondary;
-  border: 2px dashed $color-border-light;
+  padding: vars.spacing-xxl;
+  background: vars.color-background-secondary;
+  border: 2px dashed vars.color-border-light;
   border-radius: $border-radius-lg;
 }
 
 .emptyIcon {
   font-size: 4rem;
-  margin-bottom: $spacing-lg;
+  margin-bottom: vars.spacing-lg;
   opacity: 0.6;
 }
 
 .emptyTitle {
-  font-size: $font-size-xl;
+  font-size: vars.font-size-xl;
   font-weight: 600;
-  color: $color-text-primary;
-  margin: 0 0 $spacing-md 0;
+  color: vars.color-text-primary;
+  margin: 0 0 vars.spacing-md 0;
 }
 
 .emptyText {
-  font-size: $font-size-md;
-  color: $color-text-secondary;
-  margin: 0 0 $spacing-lg 0;
+  font-size: vars.font-size-md;
+  color: vars.color-text-secondary;
+  margin: 0 0 vars.spacing-lg 0;
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
@@ -256,16 +256,16 @@
 .setupButton {
   display: inline-flex;
   align-items: center;
-  padding: $spacing-md $spacing-lg;
-  background: $color-primary;
-  color: $color-white;
+  padding: vars.spacing-md vars.spacing-lg;
+  background: vars.color-primary;
+  color: vars.color-white;
   text-decoration: none;
   border-radius: $border-radius-md;
   font-weight: 600;
   transition: all 0.3s ease;
 
   &:hover {
-    background: $color-primary-dark;
+    background: vars.color-primary-dark;
     transform: translateY(-2px);
   }
 }
@@ -273,22 +273,22 @@
 .leadsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: $spacing-lg;
+  gap: vars.spacing-lg;
 }
 
 .actionsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: $spacing-lg;
+  gap: vars.spacing-lg;
 }
 
 .actionCard {
   display: flex;
   align-items: flex-start;
-  gap: $spacing-md;
-  padding: $spacing-lg;
-  background: $color-background-secondary;
-  border: 1px solid $color-border-light;
+  gap: vars.spacing-md;
+  padding: vars.spacing-lg;
+  background: vars.color-background-secondary;
+  border: 1px solid vars.color-border-light;
   border-radius: $border-radius-lg;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -296,13 +296,13 @@
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    border-color: $color-primary-light;
+    border-color: vars.color-primary-light;
   }
 }
 
 .actionIcon {
   font-size: 2rem;
-  background: $color-primary-light;
+  background: vars.color-primary-light;
   width: 50px;
   height: 50px;
   border-radius: $border-radius-md;
@@ -317,25 +317,25 @@
 }
 
 .actionTitle {
-  font-size: $font-size-lg;
+  font-size: vars.font-size-lg;
   font-weight: 600;
-  color: $color-text-primary;
-  margin: 0 0 $spacing-xs 0;
+  color: vars.color-text-primary;
+  margin: 0 0 vars.spacing-xs 0;
 }
 
 .actionDescription {
-  font-size: $font-size-sm;
-  color: $color-text-secondary;
+  font-size: vars.font-size-sm;
+  color: vars.color-text-secondary;
   margin: 0;
   line-height: 1.5;
 }
 
 // Responsive Design
-@media (max-width: $breakpoint-tablet) {
+@media (max-width: vars.breakpoint-tablet) {
   .dashboardHeader {
     flex-direction: column;
     align-items: stretch;
-    gap: $spacing-lg;
+    gap: vars.spacing-lg;
   }
 
   .headerActions {
@@ -347,7 +347,7 @@
   }
 
   .statCard {
-    padding: $spacing-md;
+    padding: vars.spacing-md;
   }
 
   .statIcon {
@@ -365,13 +365,13 @@
   }
 }
 
-@media (max-width: $breakpoint-mobile) {
+@media (max-width: vars.breakpoint-mobile) {
   .pageTitle {
-    font-size: $font-size-xl;
+    font-size: vars.font-size-xl;
   }
 
   .emptyState {
-    padding: $spacing-lg;
+    padding: vars.spacing-lg;
   }
 
   .emptyIcon {
@@ -379,7 +379,7 @@
   }
 
   .actionCard {
-    padding: $spacing-md;
+    padding: vars.spacing-md;
   }
 
   .actionIcon {

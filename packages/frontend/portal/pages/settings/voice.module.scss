@@ -3,8 +3,8 @@
 
 .container {
   // Use variables with their namespace
-  background-color: vars.$color-background-primary;
-  font-family: vars.$font-family-base;
+  background-color: vars.vars.color-background-primary;
+  font-family: vars.vars.font-family-base;
 
   // Use mixins with their namespace
   @include mixins.shadow-elevation-1;
@@ -25,24 +25,24 @@
     display: block;
     font-size: 0.875rem;
     font-weight: 600;
-    color: $color-text-primary;
+    color: vars.color-text-primary;
     margin-bottom: 0.5rem;
   }
 
   .select {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid $color-border-light;
+    border: 1px solid vars.color-border-light;
     border-radius: 8px;
     font-size: 0.875rem;
-    background-color: $color-background-card;
+    background-color: vars.color-background-card;
     cursor: pointer;
     transition: border-color 0.2s ease;
 
     &:focus {
       outline: none;
-      border-color: $color-primary;
-      box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+      border-color: vars.color-primary;
+      box-shadow: 0 0 0 3px rgba(vars.color-primary, 0.1);
     }
   }
 }
@@ -57,7 +57,7 @@
       display: block;
       font-size: 0.875rem;
       font-weight: 600;
-      color: $color-text-primary;
+      color: vars.color-text-primary;
       margin-bottom: 0.5rem;
     }
 
@@ -65,7 +65,7 @@
       width: 100%;
       height: 6px;
       border-radius: 3px;
-      background: $color-border-light;
+      background: vars.color-border-light;
       outline: none;
       -webkit-appearance: none;
       margin-bottom: 0.5rem;
@@ -76,7 +76,7 @@
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        background: $color-primary;
+        background: vars.color-primary;
         cursor: pointer;
         transition: transform 0.2s ease;
 
@@ -89,7 +89,7 @@
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        background: $color-primary;
+        background: vars.color-primary;
         cursor: pointer;
         border: none;
         transition: transform 0.2s ease;
@@ -102,7 +102,7 @@
 
     .sliderDescription {
       font-size: 0.75rem;
-      color: $color-text-secondary;
+      color: vars.color-text-secondary;
       line-height: 1.4;
     }
   }
@@ -118,19 +118,19 @@
     width: 18px;
     height: 18px;
     margin-top: 2px;
-    accent-color: $color-primary;
+    accent-color: vars.color-primary;
   }
 
   .checkboxLabel {
     font-size: 0.875rem;
     font-weight: 600;
-    color: $color-text-primary;
+    color: vars.color-text-primary;
     cursor: pointer;
   }
 
   .checkboxDescription {
     font-size: 0.75rem;
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
     margin-top: 0.25rem;
     line-height: 1.4;
   }
@@ -140,9 +140,9 @@
   .cloningOptions {
     margin-top: 1.5rem;
     padding: 1.5rem;
-    background: $color-background-secondary;
+    background: vars.color-background-secondary;
     border-radius: 8px;
-    border: 1px solid $color-border-light;
+    border: 1px solid vars.color-border-light;
   }
 
   .uploadSection {
@@ -150,33 +150,33 @@
       display: block;
       font-size: 0.875rem;
       font-weight: 600;
-      color: $color-text-primary;
+      color: vars.color-text-primary;
       margin-bottom: 0.5rem;
     }
 
     .fileInput {
       width: 100%;
       padding: 0.75rem;
-      border: 2px dashed $color-border-light;
+      border: 2px dashed vars.color-border-light;
       border-radius: 8px;
-      background: $color-background-card;
+      background: vars.color-background-card;
       font-size: 0.875rem;
       cursor: pointer;
       transition: border-color 0.2s ease;
 
       &:hover {
-        border-color: $color-primary;
+        border-color: vars.color-primary;
       }
 
       &:focus {
         outline: none;
-        border-color: $color-primary;
+        border-color: vars.color-primary;
       }
     }
 
     .uploadHint {
       font-size: 0.75rem;
-      color: $color-text-secondary;
+      color: vars.color-text-secondary;
       margin-top: 0.5rem;
       line-height: 1.4;
     }
@@ -186,8 +186,8 @@
 .sidebar {
   .previewSection,
   .actionsSection {
-    background: $color-background-card;
-    border: 1px solid $color-border-light;
+    background: vars.color-background-card;
+    border: 1px solid vars.color-border-light;
     border-radius: 12px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
@@ -196,7 +196,7 @@
   .previewTitle {
     font-size: 1.125rem;
     font-weight: 600;
-    color: $color-text-primary;
+    color: vars.color-text-primary;
     margin-bottom: 1rem;
   }
 
@@ -204,7 +204,7 @@
     width: 100%;
     min-height: 100px;
     padding: 0.75rem;
-    border: 1px solid $color-border-light;
+    border: 1px solid vars.color-border-light;
     border-radius: 8px;
     font-family: inherit;
     font-size: 0.875rem;
@@ -214,19 +214,19 @@
 
     &:focus {
       outline: none;
-      border-color: $color-primary;
-      box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+      border-color: vars.color-primary;
+      box-shadow: 0 0 0 3px rgba(vars.color-primary, 0.1);
     }
 
     &::placeholder {
-      color: $color-text-muted;
+      color: vars.color-text-muted;
     }
   }
 
   .previewButton {
     width: 100%;
     padding: 0.75rem;
-    background: $color-secondary;
+    background: vars.color-secondary;
     color: white;
     border: none;
     border-radius: 8px;
@@ -237,27 +237,27 @@
     margin-bottom: 1rem;
 
     &:hover:not(:disabled) {
-      background: darken($color-secondary, 5%);
+      background: darken(vars.color-secondary, 5%);
     }
 
     &:disabled {
-      background: $color-text-muted;
+      background: vars.color-text-muted;
       cursor: not-allowed;
     }
   }
 
   .previewInfo {
     padding: 1rem;
-    background: $color-background-secondary;
+    background: vars.color-background-secondary;
     border-radius: 8px;
 
     p {
       font-size: 0.75rem;
-      color: $color-text-secondary;
+      color: vars.color-text-secondary;
       margin: 0.25rem 0;
 
       strong {
-        color: $color-text-primary;
+        color: vars.color-text-primary;
       }
     }
   }
@@ -265,7 +265,7 @@
   .saveButton {
     width: 100%;
     padding: 1rem;
-    background: $color-primary;
+    background: vars.color-primary;
     color: white;
     border: none;
     border-radius: 8px;
@@ -276,11 +276,11 @@
     margin-bottom: 1rem;
 
     &:hover:not(:disabled) {
-      background: darken($color-primary, 5%);
+      background: darken(vars.color-primary, 5%);
     }
 
     &:disabled {
-      background: $color-text-muted;
+      background: vars.color-text-muted;
       cursor: not-allowed;
     }
   }
@@ -289,8 +289,8 @@
     width: 100%;
     padding: 0.75rem;
     background: transparent;
-    color: $color-primary;
-    border: 1px solid $color-primary;
+    color: vars.color-primary;
+    border: 1px solid vars.color-primary;
     border-radius: 8px;
     font-size: 0.875rem;
     font-weight: 600;
@@ -298,7 +298,7 @@
     transition: all 0.2s ease;
 
     &:hover {
-      background: $color-primary;
+      background: vars.color-primary;
       color: white;
     }
   }
@@ -318,14 +318,14 @@
   .spinner {
     width: 40px;
     height: 40px;
-    border: 4px solid $color-border-light;
-    border-top: 4px solid $color-primary;
+    border: 4px solid vars.color-border-light;
+    border-top: 4px solid vars.color-primary;
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
 
   p {
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
     font-size: 1rem;
   }
 }
@@ -341,7 +341,7 @@
   .backButton {
     display: inline-flex;
     align-items: center;
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
@@ -349,20 +349,20 @@
     transition: color 0.2s ease;
 
     &:hover {
-      color: $color-primary;
+      color: vars.color-primary;
     }
   }
 
   .title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: $color-text-primary;
+    color: vars.color-text-primary;
     margin-bottom: 0.5rem;
   }
 
   .subtitle {
     font-size: 1.125rem;
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
     max-width: 600px;
   }
 }
@@ -380,8 +380,8 @@
 
 .mainConfig {
   .section {
-    background: $color-background-card;
-    border: 1px solid $color-border-light;
+    background: vars.color-background-card;
+    border: 1px solid vars.color-border-light;
     border-radius: 12px;
     padding: 2rem;
     margin-bottom: 2rem;
@@ -389,13 +389,13 @@
     .sectionTitle {
       font-size: 1.5rem;
       font-weight: 600;
-      color: $color-text-primary;
+      color: vars.color-text-primary;
       margin-bottom: 0.5rem;
     }
 
     .sectionDescription {
       font-size: 0.875rem;
-      color: $color-text-secondary;
+      color: vars.color-text-secondary;
       margin-bottom: 1.5rem;
     }
   }
@@ -413,22 +413,22 @@
 
 .voiceCard {
   padding: 1.5rem;
-  border: 2px solid $color-border-light;
+  border: 2px solid vars.color-border-light;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: $color-background-secondary;
+  background: vars.color-background-secondary;
 
   &:hover {
-    border-color: $color-primary;
+    border-color: vars.color-primary;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   &.selected {
-    border-color: $color-primary;
-    background: rgba($color-primary, 0.05);
-    box-shadow: 0 4px 12px rgba($color-primary, 0.2);
+    border-color: vars.color-primary;
+    background: rgba(vars.color-primary, 0.05);
+    box-shadow: 0 4px 12px rgba(vars.color-primary, 0.2);
   }
 
   .voiceHeader {
@@ -440,15 +440,15 @@
     .voiceName {
       font-size: 1rem;
       font-weight: 600;
-      color: $color-text-primary;
+      color: vars.color-text-primary;
       margin: 0;
     }
 
     .voiceCategory {
       font-size: 0.75rem;
       padding: 0.25rem 0.5rem;
-      background: $color-background-tertiary;
-      color: $color-text-secondary;
+      background: vars.color-background-tertiary;
+      color: vars.color-text-secondary;
       border-radius: 12px;
       text-transform: capitalize;
     }
@@ -456,7 +456,7 @@
 
   .voiceDescription {
     font-size: 0.75rem;
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
     margin-bottom: 1rem;
     line-height: 1.4;
   }
@@ -466,7 +466,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background: $color-primary;
+    background: vars.color-primary;
     color: white;
     border: none;
     border-radius: 6px;
@@ -476,11 +476,11 @@
     transition: background-color 0.2s ease;
 
     &:hover:not(:disabled) {
-      background: darken($color-primary, 5%);
+      background: darken(vars.color-primary, 5%);
     }
 
     &:disabled {
-      background: $color-text-muted;
+      background: vars.color-text-muted;
       cursor: not-allowed;
     }
   }

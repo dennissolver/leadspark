@@ -1,10 +1,10 @@
 @use "../../../styles/mixins" as mixins;
-@use "../../../styles/variables" as vars;
+@use "../../../../../styles/variables" as vars;
 
 .container {
   // Use variables with their namespace
-  background-color: vars.$color-background-primary;
-  font-family: vars.$font-family-base;
+  background-color: vars.vars.color-background-primary;
+  font-family: vars.vars.font-family-base;
 
   // Use mixins with their namespace
   @include mixins.shadow-elevation-1;
@@ -23,15 +23,15 @@
   align-items: center;
   justify-content: center;
   min-height: 60vh;
-  gap: $spacing-lg;
+  gap: vars.vars.spacing-lg; // Corrected variable reference
   text-align: center;
 }
 
 .loadingSpinner {
   width: 40px;
   height: 40px;
-  border: 3px solid $color-border-light;
-  border-top: 3px solid $color-primary;
+  border: 3px solid vars.vars.color-border-light; // Corrected variable reference
+  border-top: 3px solid vars.vars.color-primary; // Corrected variable reference
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -42,79 +42,79 @@
 }
 
 .loadingText {
-  color: $color-text-secondary;
-  font-size: $font-size-sm;
+  color: vars.vars.color-text-secondary; // Corrected variable reference
+  font-size: vars.vars.font-size-sm; // Corrected variable reference
   font-family: inherit;
   resize: vertical;
   min-height: 120px;
 
   &:focus {
     outline: none;
-    border-color: $color-primary;
-    box-shadow: 0 0 0 2px $color-primary-light;
+    border-color: vars.vars.color-primary; // Corrected variable reference
+    box-shadow: 0 0 0 2px vars.vars.color-primary-light; // Corrected variable reference
   }
 
   &::placeholder {
-    color: $color-text-secondary;
+    color: vars.vars.color-text-secondary; // Corrected variable reference
   }
 }
 
 .saveNotesButton {
-  margin-top: $spacing-md;
-  padding: $spacing-sm $spacing-lg;
-  background: $color-success;
-  color: $color-white;
+  margin-top: vars.vars.spacing-md; // Corrected variable reference
+  padding: vars.vars.spacing-sm vars.vars.spacing-lg; // Corrected variable reference
+  background: vars.vars.color-success; // Corrected variable reference
+  color: vars.vars.color-white; // Corrected variable reference
   border: none;
-  border-radius: $border-radius-md;
+  border-radius: vars.$border-radius-md; // Corrected variable reference
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover:not(:disabled) {
-    background: $color-success-dark;
+    background: vars.vars.color-success-dark; // Corrected variable reference
     transform: translateY(-1px);
   }
 
   &:disabled {
-    background: $color-border-light;
-    color: $color-text-secondary;
+    background: vars.vars.color-border-light; // Corrected variable reference
+    color: vars.vars.color-text-secondary; // Corrected variable reference
     cursor: not-allowed;
     transform: none;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px $color-success-light;
+    box-shadow: 0 0 0 2px vars.vars.color-success-light; // Corrected variable reference
   }
 }
 
 .noConversations {
   text-align: center;
-  padding: $spacing-xl;
-  color: $color-text-secondary;
+  padding: vars.vars.spacing-xl; // Corrected variable reference
+  color: vars.vars.color-text-secondary; // Corrected variable reference
 }
 
 .noConversationsIcon {
   font-size: 3rem;
-  margin-bottom: $spacing-md;
+  margin-bottom: vars.vars.spacing-md; // Corrected variable reference
   opacity: 0.6;
 }
 
 .noConversationsText {
   margin: 0;
-  font-size: $font-size-md;
+  font-size: vars.vars.font-size-md; // Corrected variable reference
 }
 
 .conversationsList {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: vars.vars.spacing-lg; // Corrected variable reference
 }
 
 .conversationCard {
-  border: 1px solid $color-border-light;
-  border-radius: $border-radius-md;
-  background: $color-background-primary;
+  border: 1px solid vars.vars.color-border-light; // Corrected variable reference
+  border-radius: vars.$border-radius-md; // Corrected variable reference
+  background: vars.vars.color-background-primary; // Corrected variable reference
   overflow: hidden;
 }
 
@@ -122,86 +122,86 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: $spacing-md;
-  background: $color-background-secondary;
-  border-bottom: 1px solid $color-border-light;
+  padding: vars.vars.spacing-md; // Corrected variable reference
+  background: vars.vars.color-background-secondary; // Corrected variable reference
+  border-bottom: 1px solid vars.vars.color-border-light; // Corrected variable reference
 }
 
 .conversationDate {
-  font-size: $font-size-sm;
+  font-size: vars.vars.font-size-sm; // Corrected variable reference
   font-weight: 600;
-  color: $color-text-primary;
+  color: vars.vars.color-text-primary; // Corrected variable reference
 }
 
 .conversationDuration {
-  font-size: $font-size-xs;
-  color: $color-text-secondary;
-  background: $color-border-light;
-  padding: $spacing-xs $spacing-sm;
-  border-radius: $border-radius-sm;
+  font-size: vars.vars.font-size-xs; // Corrected variable reference
+  color: vars.vars.color-text-secondary; // Corrected variable reference
+  background: vars.vars.color-border-light; // Corrected variable reference
+  padding: vars.vars.spacing-xs vars.vars.spacing-sm; // Corrected variable reference
+  border-radius: vars.$border-radius-sm; // Corrected variable reference
 }
 
 .conversationContent {
-  padding: $spacing-md;
+  padding: vars.vars.spacing-md; // Corrected variable reference
 }
 
 .messagesList {
   display: flex;
   flex-direction: column;
-  gap: $spacing-sm;
+  gap: vars.vars.spacing-sm; // Corrected variable reference
 }
 
 .message {
   border-left: 3px solid transparent;
-  padding-left: $spacing-sm;
+  padding-left: vars.vars.spacing-sm; // Corrected variable reference
 }
 
 .messageHeader {
-  margin-bottom: $spacing-xs;
+  margin-bottom: vars.vars.spacing-xs; // Corrected variable reference
 }
 
 .messageSender {
-  font-size: $font-size-xs;
+  font-size: vars.vars.font-size-xs; // Corrected variable reference
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 
   &.ai {
-    color: $color-primary;
-    border-left-color: $color-primary;
+    color: vars.vars.color-primary; // Corrected variable reference
+    border-left-color: vars.vars.color-primary; // Corrected variable reference
   }
 
   &.user {
-    color: $color-success;
-    border-left-color: $color-success;
+    color: vars.vars.color-success; // Corrected variable reference
+    border-left-color: vars.vars.color-success; // Corrected variable reference
   }
 }
 
 .messageText {
-  font-size: $font-size-sm;
-  color: $color-text-primary;
+  font-size: vars.vars.font-size-sm; // Corrected variable reference
+  color: vars.vars.color-text-primary; // Corrected variable reference
   line-height: 1.5;
   margin: 0;
 }
 
 .moreMessages {
-  font-size: $font-size-xs;
-  color: $color-text-secondary;
+  font-size: vars.vars.font-size-xs; // Corrected variable reference
+  color: vars.vars.color-text-secondary; // Corrected variable reference
   text-align: center;
-  margin: $spacing-sm 0 0 0;
-  padding-top: $spacing-sm;
-  border-top: 1px solid $color-border-light;
+  margin: vars.vars.spacing-sm 0 0 0; // Corrected variable reference
+  padding-top: vars.vars.spacing-sm; // Corrected variable reference
+  border-top: 1px solid vars.vars.color-border-light; // Corrected variable reference
 }
 
 .noTranscript {
-  font-size: $font-size-sm;
-  color: $color-text-secondary;
+  font-size: vars.vars.font-size-sm; // Corrected variable reference
+  color: vars.vars.color-text-secondary; // Corrected variable reference
   font-style: italic;
   margin: 0;
 }
 
 // Responsive Design
-@media (max-width: $breakpoint-desktop) {
+@media (max-width: vars.vars.breakpoint-desktop) { // Corrected variable reference
   .contentGrid {
     grid-template-columns: 1fr;
   }
@@ -215,24 +215,24 @@
   }
 }
 
-@media (max-width: $breakpoint-tablet) {
+@media (max-width: vars.vars.breakpoint-tablet) { // Corrected variable reference
   .leadHeader {
     flex-direction: column;
     align-items: stretch;
-    gap: $spacing-lg;
+    gap: vars.vars.spacing-lg; // Corrected variable reference
   }
 
   .leadInfo {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: $spacing-md;
+    gap: vars.vars.spacing-md; // Corrected variable reference
   }
 
   .leadAvatar {
     width: 60px;
     height: 60px;
-    font-size: $font-size-lg;
+    font-size: vars.vars.font-size-lg; // Corrected variable reference
   }
 
   .leadActions {
@@ -246,7 +246,7 @@
   .infoItem {
     flex-direction: column;
     align-items: stretch;
-    gap: $spacing-xs;
+    gap: vars.vars.spacing-xs; // Corrected variable reference
   }
 
   .infoLabel {
@@ -258,7 +258,7 @@
   }
 }
 
-@media (max-width: $breakpoint-mobile) {
+@media (max-width: vars.vars.breakpoint-mobile) { // Corrected variable reference
   .leadDetailContainer {
     padding: 0;
   }
@@ -268,29 +268,29 @@
   }
 
   .leadHeader {
-    padding: $spacing-md;
-    margin-bottom: $spacing-lg;
+    padding: vars.vars.spacing-md; // Corrected variable reference
+    margin-bottom: vars.vars.spacing-lg; // Corrected variable reference
   }
 
   .leadName {
-    font-size: $font-size-xl;
+    font-size: vars.vars.font-size-xl; // Corrected variable reference
   }
 
   .infoSection,
   .statusSection,
   .notesSection,
   .conversationsSection {
-    padding: $spacing-md;
+    padding: vars.vars.spacing-md; // Corrected variable reference
   }
 
   .sectionTitle {
-    font-size: $font-size-md;
+    font-size: vars.vars.font-size-md; // Corrected variable reference
   }
 
   .conversationHeader {
     flex-direction: column;
     align-items: stretch;
-    gap: $spacing-xs;
+    gap: vars.vars.spacing-xs; // Corrected variable reference
   }
 
   .conversationDate {
@@ -310,32 +310,35 @@
 }
 
 .errorTitle {
-  font-size: $font-size-xl;
+  font-size: vars.vars.font-size-xl; // Corrected variable reference
   font-weight: 600;
-  color: $color-text-primary;
-  margin: 0 0 $spacing-md 0;
+  color: vars.vars.color-text-primary; // Corrected variable reference
+  margin: 0 0 vars.vars.spacing-md 0; // Corrected variable reference
 }
 
 .errorText {
-  font-size: $font-size-md;
-  color: $color-text-secondary;
-  margin: 0 0 $spacing-lg 0;
+  font-size: vars.vars.font-size-md; // Corrected variable reference
+  color: vars.vars.color-text-secondary; // Corrected variable reference
+  margin: 0 0 vars.vars.spacing-lg 0; // Corrected variable reference
   max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
 }
 
 .backButton {
   display: inline-flex;
   align-items: center;
-  padding: $spacing-md $spacing-lg;
-  background: $color-primary;
-  color: $color-white;
+  padding: vars.vars.spacing-md vars.vars.spacing-lg; // Corrected variable reference
+  background: vars.vars.color-primary; // Corrected variable reference
+  color: vars.vars.color-white; // Corrected variable reference
   text-decoration: none;
-  border-radius: $border-radius-md;
+  border-radius: vars.$border-radius-md; // Corrected variable reference
   font-weight: 600;
   transition: all 0.3s ease;
 
   &:hover {
-    background: $color-primary-dark;
+    background: vars.vars.color-primary-dark; // Corrected variable reference
     transform: translateY(-2px);
   }
 }
@@ -343,27 +346,27 @@
 .breadcrumb {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
-  margin-bottom: $spacing-lg;
-  font-size: $font-size-sm;
+  gap: vars.vars.spacing-sm; // Corrected variable reference
+  margin-bottom: vars.vars.spacing-lg; // Corrected variable reference
+  font-size: vars.vars.font-size-sm; // Corrected variable reference
 }
 
 .breadcrumbLink {
-  color: $color-text-secondary;
+  color: vars.vars.color-text-secondary; // Corrected variable reference
   text-decoration: none;
   transition: color 0.2s ease;
 
   &:hover {
-    color: $color-primary;
+    color: vars.vars.color-primary; // Corrected variable reference
   }
 }
 
 .breadcrumbSeparator {
-  color: $color-text-secondary;
+  color: vars.vars.color-text-secondary; // Corrected variable reference
 }
 
 .breadcrumbCurrent {
-  color: $color-text-primary;
+  color: vars.vars.color-text-primary; // Corrected variable reference
   font-weight: 500;
 }
 
@@ -371,30 +374,30 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: $spacing-xl;
-  padding: $spacing-lg;
-  background: $color-background-secondary;
-  border: 1px solid $color-border-light;
-  border-radius: $border-radius-lg;
+  margin-bottom: vars.vars.spacing-xl; // Corrected variable reference
+  padding: vars.vars.spacing-lg; // Corrected variable reference
+  background: vars.vars.color-background-secondary; // Corrected variable reference
+  border: 1px solid vars.vars.color-border-light; // Corrected variable reference
+  border-radius: vars.$border-radius-lg; // Corrected variable reference
 }
 
 .leadInfo {
   display: flex;
   align-items: flex-start;
-  gap: $spacing-lg;
+  gap: vars.vars.spacing-lg; // Corrected variable reference
 }
 
 .leadAvatar {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+  background: linear-gradient(135deg, vars.vars.color-primary, vars.vars.color-primary-dark); // Corrected variable reference
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-white;
+  color: vars.vars.color-white; // Corrected variable reference
   font-weight: 700;
-  font-size: $font-size-xl;
+  font-size: vars.vars.font-size-xl; // Corrected variable reference
   flex-shrink: 0;
 }
 
@@ -403,120 +406,120 @@
 }
 
 .leadName {
-  font-size: $font-size-xxl;
+  font-size: vars.vars.font-size-xxl; // Corrected variable reference
   font-weight: 700;
-  color: $color-text-primary;
-  margin: 0 0 $spacing-sm 0;
+  color: vars.vars.color-text-primary; // Corrected variable reference
+  margin: 0 0 vars.vars.spacing-sm 0; // Corrected variable reference
 }
 
 .leadEmail {
-  font-size: $font-size-lg;
-  color: $color-text-secondary;
-  margin: 0 0 $spacing-xs 0;
+  font-size: vars.vars.font-size-lg; // Corrected variable reference
+  color: vars.vars.color-text-secondary; // Corrected variable reference
+  margin: 0 0 vars.vars.spacing-xs 0; // Corrected variable reference
 }
 
 .leadPhone {
   display: flex;
   align-items: center;
-  gap: $spacing-xs;
-  font-size: $font-size-md;
-  color: $color-text-secondary;
+  gap: vars.vars.spacing-xs; // Corrected variable reference
+  font-size: vars.vars.font-size-md; // Corrected variable reference
+  color: vars.vars.color-text-secondary; // Corrected variable reference
   margin: 0;
 }
 
 .phoneIcon {
-  font-size: $font-size-sm;
+  font-size: vars.vars.font-size-sm; // Corrected variable reference
 }
 
 .leadActions {
   display: flex;
   align-items: center;
-  gap: $spacing-md;
+  gap: vars.vars.spacing-md; // Corrected variable reference
 }
 
 .statusBadge {
-  padding: $spacing-sm $spacing-md;
-  border-radius: $border-radius-md;
-  font-size: $font-size-sm;
+  padding: vars.vars.spacing-sm vars.vars.spacing-md; // Corrected variable reference
+  border-radius: vars.$border-radius-md; // Corrected variable reference
+  font-size: vars.vars.font-size-sm; // Corrected variable reference
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 
   &.statusNew {
-    background-color: $color-info-light;
-    color: $color-info-dark;
+    background-color: vars.vars.color-info-light; // Corrected variable reference
+    color: vars.vars.color-info-dark; // Corrected variable reference
   }
 
   &.statusContacted {
-    background-color: $color-warning-light;
-    color: $color-warning-dark;
+    background-color: vars.vars.color-warning-light; // Corrected variable reference
+    color: vars.vars.color-warning-dark; // Corrected variable reference
   }
 
   &.statusQualified {
-    background-color: $color-primary-light;
-    color: $color-primary-dark;
+    background-color: vars.vars.color-primary-light; // Corrected variable reference
+    color: vars.vars.color-primary-dark; // Corrected variable reference
   }
 
   &.statusConverted {
-    background-color: $color-success-light;
-    color: $color-success-dark;
+    background-color: vars.vars.color-success-light; // Corrected variable reference
+    color: vars.vars.color-success-dark; // Corrected variable reference
   }
 }
 
 .contentGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $spacing-xl;
+  gap: vars.vars.spacing-xl; // Corrected variable reference
 }
 
 .leftColumn,
 .rightColumn {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: vars.vars.spacing-lg; // Corrected variable reference
 }
 
 .infoSection,
 .statusSection,
 .notesSection,
 .conversationsSection {
-  background: $color-background-secondary;
-  border: 1px solid $color-border-light;
-  border-radius: $border-radius-lg;
-  padding: $spacing-lg;
+  background: vars.vars.color-background-secondary; // Corrected variable reference
+  border: 1px solid vars.vars.color-border-light; // Corrected variable reference
+  border-radius: vars.$border-radius-lg; // Corrected variable reference
+  padding: vars.vars.spacing-lg; // Corrected variable reference
 }
 
 .sectionTitle {
-  font-size: $font-size-lg;
+  font-size: vars.vars.font-size-lg; // Corrected variable reference
   font-weight: 600;
-  color: $color-text-primary;
-  margin: 0 0 $spacing-lg 0;
-  padding-bottom: $spacing-sm;
-  border-bottom: 1px solid $color-border-light;
+  color: vars.vars.color-text-primary; // Corrected variable reference
+  margin: 0 0 vars.vars.spacing-lg 0; // Corrected variable reference
+  padding-bottom: vars.vars.spacing-sm; // Corrected variable reference
+  border-bottom: 1px solid vars.vars.color-border-light; // Corrected variable reference
 }
 
 .infoGrid {
   display: grid;
-  gap: $spacing-md;
+  gap: vars.vars.spacing-md; // Corrected variable reference
 }
 
 .infoItem {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: $spacing-sm 0;
+  padding: vars.vars.spacing-sm 0; // Corrected variable reference
 }
 
 .infoLabel {
-  font-size: $font-size-sm;
+  font-size: vars.vars.font-size-sm; // Corrected variable reference
   font-weight: 600;
-  color: $color-text-secondary;
+  color: vars.vars.color-text-secondary; // Corrected variable reference
   min-width: 120px;
 }
 
 .infoValue {
-  font-size: $font-size-sm;
-  color: $color-text-primary;
+  font-size: vars.vars.font-size-sm; // Corrected variable reference
+  color: vars.vars.color-text-primary; // Corrected variable reference
   text-align: right;
   word-break: break-word;
   flex: 1;
@@ -525,22 +528,22 @@
 .statusButtons {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $spacing-sm;
+  gap: vars.vars.spacing-sm; // Corrected variable reference
 }
 
 .statusButton {
-  padding: $spacing-md;
-  border: 2px solid $color-border-light;
-  border-radius: $border-radius-md;
-  background: $color-background-primary;
-  color: $color-text-secondary;
+  padding: vars.vars.spacing-md; // Corrected variable reference
+  border: 2px solid vars.vars.color-border-light; // Corrected variable reference
+  border-radius: vars.$border-radius-md; // Corrected variable reference
+  background: vars.vars.color-background-primary; // Corrected variable reference
+  color: vars.vars.color-text-secondary; // Corrected variable reference
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover:not(:disabled) {
-    border-color: $color-primary;
-    color: $color-primary;
+    border-color: vars.vars.color-primary; // Corrected variable reference
+    color: vars.vars.color-primary; // Corrected variable reference
   }
 
   &:disabled {
@@ -549,22 +552,23 @@
   }
 
   &.currentStatus {
-    border-color: $color-primary;
-    background: $color-primary;
-    color: $color-white;
+    border-color: vars.vars.color-primary; // Corrected variable reference
+    background: vars.vars.color-primary; // Corrected variable reference
+    color: vars.vars.color-white; // Corrected variable reference
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px $color-primary-light;
+    box-shadow: 0 0 0 2px vars.vars.color-primary-light; // Corrected variable reference
   }
 }
 
 .notesTextarea {
   width: 100%;
-  padding: $spacing-md;
-  border: 1px solid $color-border-light;
-  border-radius: $border-radius-md;
-  background: $color-background-primary;
-  color: $color-text-primary;
-  font-size: $
+  padding: vars.vars.spacing-md; // Corrected variable reference
+  border: 1px solid vars.vars.color-border-light; // Corrected variable reference
+  border-radius: vars.$border-radius-md; // Corrected variable reference
+  background: vars.vars.color-background-primary; // Corrected variable reference
+  color: vars.vars.color-text-primary; // Corrected variable reference
+  font-size: vars.vars.font-size-sm; // Corrected variable reference
+}

@@ -3,8 +3,8 @@
 
 .container {
   // Use variables with their namespace
-  background-color: vars.$color-background-primary;
-  font-family: vars.$font-family-base;
+  background-color: vars.vars.color-background-primary;
+  font-family: vars.vars.font-family-base;
 
   // Use mixins with their namespace
   @include mixins.shadow-elevation-1;
@@ -22,14 +22,14 @@
   align-items: center;
   justify-content: center;
   min-height: 60vh;
-  gap: $spacing-lg;
+  gap: vars.spacing-lg;
 }
 
 .loadingSpinner {
   width: 40px;
   height: 40px;
-  border: 3px solid $color-border-light;
-  border-top: 3px solid $color-primary;
+  border: 3px solid vars.color-border-light;
+  border-top: 3px solid vars.color-primary;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -40,8 +40,8 @@
 }
 
 .loadingText {
-  color: $color-text-secondary;
-  font-size: $font-size-lg;
+  color: vars.color-text-secondary;
+  font-size: vars.font-size-lg;
   margin: 0;
 }
 
@@ -49,9 +49,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: $spacing-xl;
-  padding-bottom: $spacing-lg;
-  border-bottom: 1px solid $color-border-light;
+  margin-bottom: vars.spacing-xl;
+  padding-bottom: vars.spacing-lg;
+  border-bottom: 1px solid vars.color-border-light;
 }
 
 .headerContent {
@@ -59,30 +59,30 @@
 }
 
 .pageTitle {
-  font-size: $font-size-xxl;
+  font-size: vars.font-size-xxl;
   font-weight: 700;
-  color: $color-text-primary;
-  margin: 0 0 $spacing-sm 0;
+  color: vars.color-text-primary;
+  margin: 0 0 vars.spacing-sm 0;
 }
 
 .leadsCount {
-  font-size: $font-size-lg;
-  color: $color-text-secondary;
+  font-size: vars.font-size-lg;
+  color: vars.color-text-secondary;
   margin: 0;
 }
 
 .headerActions {
   display: flex;
-  gap: $spacing-md;
+  gap: vars.spacing-md;
 }
 
 .exportButton {
   display: inline-flex;
   align-items: center;
-  gap: $spacing-sm;
-  padding: $spacing-md $spacing-lg;
-  background: $color-success;
-  color: $color-white;
+  gap: vars.spacing-sm;
+  padding: vars.spacing-md vars.spacing-lg;
+  background: vars.color-success;
+  color: vars.color-white;
   border: none;
   border-radius: $border-radius-md;
   font-weight: 600;
@@ -90,49 +90,49 @@
   transition: all 0.3s ease;
 
   &:hover:not(:disabled) {
-    background: $color-success-dark;
+    background: vars.color-success-dark;
     transform: translateY(-2px);
   }
 
   &:disabled {
-    background: $color-border-light;
-    color: $color-text-secondary;
+    background: vars.color-border-light;
+    color: vars.color-text-secondary;
     cursor: not-allowed;
     transform: none;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px $color-success-light;
+    box-shadow: 0 0 0 3px vars.color-success-light;
   }
 }
 
 .errorMessage {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
-  padding: $spacing-md;
-  background: $color-danger-light;
-  border: 1px solid $color-danger;
+  gap: vars.spacing-sm;
+  padding: vars.spacing-md;
+  background: vars.color-danger-light;
+  border: 1px solid vars.color-danger;
   border-radius: $border-radius-md;
-  color: $color-danger-dark;
-  margin-bottom: $spacing-lg;
+  color: vars.color-danger-dark;
+  margin-bottom: vars.spacing-lg;
 }
 
 .errorIcon {
-  font-size: $font-size-lg;
+  font-size: vars.font-size-lg;
 }
 
 .filtersSection {
-  background: $color-background-secondary;
-  border: 1px solid $color-border-light;
+  background: vars.color-background-secondary;
+  border: 1px solid vars.color-border-light;
   border-radius: $border-radius-lg;
-  padding: $spacing-lg;
-  margin-bottom: $spacing-xl;
+  padding: vars.spacing-lg;
+  margin-bottom: vars.spacing-xl;
 }
 
 .searchContainer {
-  margin-bottom: $spacing-lg;
+  margin-bottom: vars.spacing-lg;
 }
 
 .searchInputWrapper {
@@ -142,30 +142,30 @@
 
 .searchIcon {
   position: absolute;
-  left: $spacing-md;
+  left: vars.spacing-md;
   top: 50%;
   transform: translateY(-50%);
-  color: $color-text-secondary;
-  font-size: $font-size-md;
+  color: vars.color-text-secondary;
+  font-size: vars.font-size-md;
 }
 
 .searchInput {
   width: 100%;
-  padding: $spacing-md $spacing-md $spacing-md 3rem;
-  border: 1px solid $color-border-light;
+  padding: vars.spacing-md vars.spacing-md vars.spacing-md 3rem;
+  border: 1px solid vars.color-border-light;
   border-radius: $border-radius-md;
-  font-size: $font-size-md;
-  background: $color-background-primary;
+  font-size: vars.font-size-md;
+  background: vars.color-background-primary;
   transition: border-color 0.2s ease;
 
   &:focus {
     outline: none;
-    border-color: $color-primary;
-    box-shadow: 0 0 0 2px $color-primary-light;
+    border-color: vars.color-primary;
+    box-shadow: 0 0 0 2px vars.color-primary-light;
   }
 
   &::placeholder {
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
   }
 }
 
@@ -173,114 +173,114 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: $spacing-lg;
+  gap: vars.spacing-lg;
 }
 
 .statusFilters {
   display: flex;
-  gap: $spacing-sm;
+  gap: vars.spacing-sm;
   flex-wrap: wrap;
 }
 
 .filterButton {
   display: flex;
   align-items: center;
-  gap: $spacing-xs;
-  padding: $spacing-sm $spacing-md;
-  background: $color-background-primary;
-  border: 1px solid $color-border-light;
+  gap: vars.spacing-xs;
+  padding: vars.spacing-sm vars.spacing-md;
+  background: vars.color-background-primary;
+  border: 1px solid vars.color-border-light;
   border-radius: $border-radius-md;
-  color: $color-text-secondary;
-  font-size: $font-size-sm;
+  color: vars.color-text-secondary;
+  font-size: vars.font-size-sm;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    border-color: $color-primary;
-    color: $color-text-primary;
+    border-color: vars.color-primary;
+    color: vars.color-text-primary;
   }
 
   &.active {
-    background: $color-primary;
-    border-color: $color-primary;
-    color: $color-white;
+    background: vars.color-primary;
+    border-color: vars.color-primary;
+    color: vars.color-white;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px $color-primary-light;
+    box-shadow: 0 0 0 2px vars.color-primary-light;
   }
 }
 
 .filterCount {
   background: rgba(255, 255, 255, 0.2);
   border-radius: $border-radius-sm;
-  padding: 2px $spacing-xs;
-  font-size: $font-size-xs;
+  padding: 2px vars.spacing-xs;
+  font-size: vars.font-size-xs;
   font-weight: 600;
   min-width: 18px;
   text-align: center;
 
   .filterButton:not(.active) & {
-    background: $color-border-light;
-    color: $color-text-secondary;
+    background: vars.color-border-light;
+    color: vars.color-text-secondary;
   }
 }
 
 .sortContainer {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
+  gap: vars.spacing-sm;
 }
 
 .sortLabel {
-  font-size: $font-size-sm;
-  color: $color-text-secondary;
+  font-size: vars.font-size-sm;
+  color: vars.color-text-secondary;
   font-weight: 500;
 }
 
 .sortSelect {
-  padding: $spacing-sm $spacing-md;
-  border: 1px solid $color-border-light;
+  padding: vars.spacing-sm vars.spacing-md;
+  border: 1px solid vars.color-border-light;
   border-radius: $border-radius-sm;
-  background: $color-background-primary;
-  color: $color-text-primary;
-  font-size: $font-size-sm;
+  background: vars.color-background-primary;
+  color: vars.color-text-primary;
+  font-size: vars.font-size-sm;
   cursor: pointer;
 
   &:focus {
     outline: none;
-    border-color: $color-primary;
-    box-shadow: 0 0 0 2px $color-primary-light;
+    border-color: vars.color-primary;
+    box-shadow: 0 0 0 2px vars.color-primary-light;
   }
 }
 
 .emptyState {
   text-align: center;
-  padding: $spacing-xxl;
-  background: $color-background-secondary;
-  border: 2px dashed $color-border-light;
+  padding: vars.spacing-xxl;
+  background: vars.color-background-secondary;
+  border: 2px dashed vars.color-border-light;
   border-radius: $border-radius-lg;
 }
 
 .emptyIcon {
   font-size: 4rem;
-  margin-bottom: $spacing-lg;
+  margin-bottom: vars.spacing-lg;
   opacity: 0.6;
 }
 
 .emptyTitle {
-  font-size: $font-size-xl;
+  font-size: vars.font-size-xl;
   font-weight: 600;
-  color: $color-text-primary;
-  margin: 0 0 $spacing-md 0;
+  color: vars.color-text-primary;
+  margin: 0 0 vars.spacing-md 0;
 }
 
 .emptyText {
-  font-size: $font-size-md;
-  color: $color-text-secondary;
-  margin: 0 0 $spacing-lg 0;
+  font-size: vars.font-size-md;
+  color: vars.color-text-secondary;
+  margin: 0 0 vars.spacing-lg 0;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -288,9 +288,9 @@
 }
 
 .clearFiltersButton {
-  padding: $spacing-md $spacing-lg;
-  background: $color-primary;
-  color: $color-white;
+  padding: vars.spacing-md vars.spacing-lg;
+  background: vars.color-primary;
+  color: vars.color-white;
   border: none;
   border-radius: $border-radius-md;
   font-weight: 600;
@@ -298,28 +298,28 @@
   transition: all 0.3s ease;
 
   &:hover {
-    background: $color-primary-dark;
+    background: vars.color-primary-dark;
     transform: translateY(-2px);
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px $color-primary-light;
+    box-shadow: 0 0 0 3px vars.color-primary-light;
   }
 }
 
 .leadsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: $spacing-lg;
+  gap: vars.spacing-lg;
 }
 
 // Responsive Design
-@media (max-width: $breakpoint-tablet) {
+@media (max-width: vars.breakpoint-tablet) {
   .leadsHeader {
     flex-direction: column;
     align-items: stretch;
-    gap: $spacing-lg;
+    gap: vars.spacing-lg;
   }
 
   .headerActions {
@@ -329,7 +329,7 @@
   .filterControls {
     flex-direction: column;
     align-items: stretch;
-    gap: $spacing-md;
+    gap: vars.spacing-md;
   }
 
   .statusFilters {
@@ -345,13 +345,13 @@
   }
 }
 
-@media (max-width: $breakpoint-mobile) {
+@media (max-width: vars.breakpoint-mobile) {
   .pageTitle {
-    font-size: $font-size-xl;
+    font-size: vars.font-size-xl;
   }
 
   .filtersSection {
-    padding: $spacing-md;
+    padding: vars.spacing-md;
   }
 
   .searchInputWrapper {
@@ -359,16 +359,16 @@
   }
 
   .statusFilters {
-    gap: $spacing-xs;
+    gap: vars.spacing-xs;
   }
 
   .filterButton {
-    padding: $spacing-xs $spacing-sm;
-    font-size: $font-size-xs;
+    padding: vars.spacing-xs vars.spacing-sm;
+    font-size: vars.font-size-xs;
   }
 
   .emptyState {
-    padding: $spacing-lg;
+    padding: vars.spacing-lg;
   }
 
   .emptyIcon {

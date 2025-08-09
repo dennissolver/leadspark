@@ -3,8 +3,8 @@
 
 .container {
   // Use variables with their namespace
-  background-color: vars.$color-background-primary;
-  font-family: vars.$font-family-base;
+  background-color: vars.vars.color-background-primary;
+  font-family: vars.vars.font-family-base;
 
   // Use mixins with their namespace
   @include mixins.shadow-elevation-1;
@@ -19,45 +19,45 @@
 .breadcrumb {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
-  margin-bottom: $spacing-lg;
-  font-size: $font-size-sm;
+  gap: vars.spacing-sm;
+  margin-bottom: vars.spacing-lg;
+  font-size: vars.font-size-sm;
 }
 
 .breadcrumbLink {
-  color: $color-text-secondary;
+  color: vars.color-text-secondary;
   text-decoration: none;
   transition: color 0.2s ease;
 
   &:hover {
-    color: $color-primary;
+    color: vars.color-primary;
   }
 }
 
 .breadcrumbSeparator {
-  color: $color-text-secondary;
+  color: vars.color-text-secondary;
 }
 
 .breadcrumbCurrent {
-  color: $color-text-primary;
+  color: vars.color-text-primary;
   font-weight: 500;
 }
 
 .uploadHeader {
   text-align: center;
-  margin-bottom: $spacing-xl;
+  margin-bottom: vars.spacing-xl;
 }
 
 .pageTitle {
-  font-size: $font-size-xxl;
+  font-size: vars.font-size-xxl;
   font-weight: 700;
-  color: $color-text-primary;
-  margin: 0 0 $spacing-md 0;
+  color: vars.color-text-primary;
+  margin: 0 0 vars.spacing-md 0;
 }
 
 .pageDescription {
-  font-size: $font-size-lg;
-  color: $color-text-secondary;
+  font-size: vars.font-size-lg;
+  color: vars.color-text-secondary;
   margin: 0;
   line-height: 1.6;
 }
@@ -66,90 +66,90 @@
 .successMessage {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
-  padding: $spacing-md;
+  gap: vars.spacing-sm;
+  padding: vars.spacing-md;
   border-radius: $border-radius-md;
-  margin-bottom: $spacing-lg;
+  margin-bottom: vars.spacing-lg;
   font-weight: 500;
 }
 
 .errorMessage {
-  background: $color-danger-light;
-  border: 1px solid $color-danger;
-  color: $color-danger-dark;
+  background: vars.color-danger-light;
+  border: 1px solid vars.color-danger;
+  color: vars.color-danger-dark;
 }
 
 .successMessage {
-  background: $color-success-light;
-  border: 1px solid $color-success;
-  color: $color-success-dark;
+  background: vars.color-success-light;
+  border: 1px solid vars.color-success;
+  color: vars.color-success-dark;
 }
 
 .messageIcon {
-  font-size: $font-size-lg;
+  font-size: vars.font-size-lg;
 }
 
 .uploadForm {
-  background: $color-background-secondary;
-  border: 1px solid $color-border-light;
+  background: vars.color-background-secondary;
+  border: 1px solid vars.color-border-light;
   border-radius: $border-radius-lg;
   overflow: hidden;
 }
 
 .tabNavigation {
   display: flex;
-  border-bottom: 1px solid $color-border-light;
+  border-bottom: 1px solid vars.color-border-light;
 }
 
 .tabButton {
   flex: 1;
-  padding: $spacing-lg;
-  background: $color-background-primary;
+  padding: vars.spacing-lg;
+  background: vars.color-background-primary;
   border: none;
-  color: $color-text-secondary;
+  color: vars.color-text-secondary;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   border-bottom: 3px solid transparent;
 
   &:hover {
-    background: $color-background-secondary;
-    color: $color-text-primary;
+    background: vars.color-background-secondary;
+    color: vars.color-text-primary;
   }
 
   &.active {
-    background: $color-background-secondary;
-    color: $color-primary;
-    border-bottom-color: $color-primary;
+    background: vars.color-background-secondary;
+    color: vars.color-primary;
+    border-bottom-color: vars.color-primary;
   }
 
   &:focus {
     outline: none;
-    background: $color-background-secondary;
+    background: vars.color-background-secondary;
   }
 }
 
 .tabContent {
-  padding: $spacing-xl;
+  padding: vars.spacing-xl;
   min-height: 200px;
 }
 
 .documentUpload {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: vars.spacing-lg;
 }
 
 .fileUploadArea {
-  border: 2px dashed $color-border-light;
+  border: 2px dashed vars.color-border-light;
   border-radius: $border-radius-lg;
-  padding: $spacing-xl;
+  padding: vars.spacing-xl;
   text-align: center;
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: $color-primary;
-    background: $color-primary-light;
+    border-color: vars.color-primary;
+    background: vars.color-primary-light;
   }
 }
 
@@ -161,9 +161,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-lg;
+  gap: vars.spacing-lg;
   cursor: pointer;
-  color: $color-text-secondary;
+  color: vars.color-text-secondary;
 }
 
 .uploadIcon {
@@ -174,16 +174,16 @@
 .uploadText {
   display: flex;
   flex-direction: column;
-  gap: $spacing-xs;
+  gap: vars.spacing-xs;
 
   strong {
-    font-size: $font-size-lg;
-    color: $color-text-primary;
+    font-size: vars.font-size-lg;
+    color: vars.color-text-primary;
   }
 
   span {
-    font-size: $font-size-sm;
-    color: $color-text-secondary;
+    font-size: vars.font-size-sm;
+    color: vars.color-text-secondary;
   }
 }
 
@@ -191,56 +191,56 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: $spacing-md;
-  background: $color-background-primary;
-  border: 1px solid $color-border-light;
+  padding: vars.spacing-md;
+  background: vars.color-background-primary;
+  border: 1px solid vars.color-border-light;
   border-radius: $border-radius-md;
 }
 
 .fileName {
   font-weight: 500;
-  color: $color-text-primary;
+  color: vars.color-text-primary;
 }
 
 .fileSize {
-  font-size: $font-size-sm;
-  color: $color-text-secondary;
+  font-size: vars.font-size-sm;
+  color: vars.color-text-secondary;
 }
 
 .urlUpload {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: vars.spacing-lg;
 }
 
 .urlInputGroup {
   display: flex;
-  gap: $spacing-md;
+  gap: vars.spacing-md;
 }
 
 .urlInput {
   flex: 1;
-  padding: $spacing-md;
-  border: 1px solid $color-border-light;
+  padding: vars.spacing-md;
+  border: 1px solid vars.color-border-light;
   border-radius: $border-radius-md;
-  font-size: $font-size-md;
-  background: $color-background-primary;
+  font-size: vars.font-size-md;
+  background: vars.color-background-primary;
 
   &:focus {
     outline: none;
-    border-color: $color-primary;
-    box-shadow: 0 0 0 2px $color-primary-light;
+    border-color: vars.color-primary;
+    box-shadow: 0 0 0 2px vars.color-primary-light;
   }
 
   &::placeholder {
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
   }
 }
 
 .fetchButton {
-  padding: $spacing-md $spacing-lg;
-  background: $color-primary;
-  color: $color-white;
+  padding: vars.spacing-md vars.spacing-lg;
+  background: vars.color-primary;
+  color: vars.color-white;
   border: none;
   border-radius: $border-radius-md;
   font-weight: 600;
@@ -249,68 +249,68 @@
   white-space: nowrap;
 
   &:hover:not(:disabled) {
-    background: $color-primary-dark;
+    background: vars.color-primary-dark;
   }
 
   &:disabled {
-    background: $color-border-light;
-    color: $color-text-secondary;
+    background: vars.color-border-light;
+    color: vars.color-text-secondary;
     cursor: not-allowed;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px $color-primary-light;
+    box-shadow: 0 0 0 2px vars.color-primary-light;
   }
 }
 
 .urlHelpText,
 .textHelpText {
-  color: $color-text-secondary;
-  font-size: $font-size-sm;
+  color: vars.color-text-secondary;
+  font-size: vars.font-size-sm;
   margin: 0;
   line-height: 1.5;
 }
 
 .contentForm {
-  padding: $spacing-xl;
-  border-top: 1px solid $color-border-light;
+  padding: vars.spacing-xl;
+  border-top: 1px solid vars.color-border-light;
 }
 
 .formGroup {
-  margin-bottom: $spacing-lg;
+  margin-bottom: vars.spacing-lg;
 
   &:last-of-type {
-    margin-bottom: $spacing-xl;
+    margin-bottom: vars.spacing-xl;
   }
 }
 
 .formLabel {
   display: block;
-  font-size: $font-size-sm;
+  font-size: vars.font-size-sm;
   font-weight: 600;
-  color: $color-text-primary;
-  margin-bottom: $spacing-sm;
+  color: vars.color-text-primary;
+  margin-bottom: vars.spacing-sm;
 }
 
 .formInput,
 .contentTextarea {
   width: 100%;
-  padding: $spacing-md;
-  border: 1px solid $color-border-light;
+  padding: vars.spacing-md;
+  border: 1px solid vars.color-border-light;
   border-radius: $border-radius-md;
-  font-size: $font-size-md;
-  background: $color-background-primary;
+  font-size: vars.font-size-md;
+  background: vars.color-background-primary;
   font-family: inherit;
 
   &:focus {
     outline: none;
-    border-color: $color-primary;
-    box-shadow: 0 0 0 2px $color-primary-light;
+    border-color: vars.color-primary;
+    box-shadow: 0 0 0 2px vars.color-primary-light;
   }
 
   &::placeholder {
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
   }
 }
 
@@ -321,16 +321,16 @@
 }
 
 .characterCount {
-  margin-top: $spacing-xs;
-  font-size: $font-size-xs;
-  color: $color-text-secondary;
+  margin-top: vars.spacing-xs;
+  font-size: vars.font-size-xs;
+  color: vars.color-text-secondary;
   text-align: right;
 }
 
 .fieldHelp {
-  margin-top: $spacing-xs;
-  font-size: $font-size-xs;
-  color: $color-text-secondary;
+  margin-top: vars.spacing-xs;
+  font-size: vars.font-size-xs;
+  color: vars.color-text-secondary;
   line-height: 1.4;
 }
 
@@ -338,36 +338,36 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: $spacing-md;
-  padding-top: $spacing-lg;
-  border-top: 1px solid $color-border-light;
+  gap: vars.spacing-md;
+  padding-top: vars.spacing-lg;
+  border-top: 1px solid vars.color-border-light;
 }
 
 .cancelButton {
-  padding: $spacing-md $spacing-lg;
-  color: $color-text-secondary;
+  padding: vars.spacing-md vars.spacing-lg;
+  color: vars.color-text-secondary;
   text-decoration: none;
-  border: 1px solid $color-border-light;
+  border: 1px solid vars.color-border-light;
   border-radius: $border-radius-md;
   font-weight: 500;
   transition: all 0.2s ease;
 
   &:hover {
-    background: $color-background-primary;
-    color: $color-text-primary;
-    border-color: $color-text-secondary;
+    background: vars.color-background-primary;
+    color: vars.color-text-primary;
+    border-color: vars.color-text-secondary;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px $color-primary-light;
+    box-shadow: 0 0 0 2px vars.color-primary-light;
   }
 }
 
 .submitButton {
-  padding: $spacing-md $spacing-xl;
-  background: $color-success;
-  color: $color-white;
+  padding: vars.spacing-md vars.spacing-xl;
+  background: vars.color-success;
+  color: vars.color-white;
   border: none;
   border-radius: $border-radius-md;
   font-weight: 600;
@@ -375,25 +375,25 @@
   transition: all 0.3s ease;
 
   &:hover:not(:disabled) {
-    background: $color-success-dark;
+    background: vars.color-success-dark;
     transform: translateY(-2px);
   }
 
   &:disabled {
-    background: $color-border-light;
-    color: $color-text-secondary;
+    background: vars.color-border-light;
+    color: vars.color-text-secondary;
     cursor: not-allowed;
     transform: none;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px $color-success-light;
+    box-shadow: 0 0 0 3px vars.color-success-light;
   }
 }
 
 // Responsive Design
-@media (max-width: $breakpoint-tablet) {
+@media (max-width: vars.breakpoint-tablet) {
   .uploadContainer {
     max-width: none;
     padding: 0;
@@ -409,13 +409,13 @@
     text-align: left;
 
     &.active {
-      border-right-color: $color-primary;
+      border-right-color: vars.color-primary;
       border-bottom-color: transparent;
     }
   }
 
   .tabContent {
-    padding: $spacing-lg;
+    padding: vars.spacing-lg;
   }
 
   .urlInputGroup {
@@ -427,7 +427,7 @@
   }
 
   .contentForm {
-    padding: $spacing-lg;
+    padding: vars.spacing-lg;
   }
 
   .formActions {
@@ -442,13 +442,13 @@
   }
 }
 
-@media (max-width: $breakpoint-mobile) {
+@media (max-width: vars.breakpoint-mobile) {
   .pageTitle {
-    font-size: $font-size-xl;
+    font-size: vars.font-size-xl;
   }
 
   .pageDescription {
-    font-size: $font-size-md;
+    font-size: vars.font-size-md;
   }
 
   .uploadIcon {
@@ -456,18 +456,18 @@
   }
 
   .uploadText strong {
-    font-size: $font-size-md;
+    font-size: vars.font-size-md;
   }
 
   .fileUploadArea {
-    padding: $spacing-lg;
+    padding: vars.spacing-lg;
   }
 
   .tabContent {
-    padding: $spacing-md;
+    padding: vars.spacing-md;
   }
 
   .contentForm {
-    padding: $spacing-md;
+    padding: vars.spacing-md;
   }
 }

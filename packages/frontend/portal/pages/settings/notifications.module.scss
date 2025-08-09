@@ -3,8 +3,8 @@
 
 .container {
   // Use variables with their namespace
-  background-color: vars.$color-background-primary;
-  font-family: vars.$font-family-base;
+  background-color: vars.vars.color-background-primary;
+  font-family: vars.vars.font-family-base;
 
   // Use mixins with their namespace
   @include mixins.shadow-elevation-1;
@@ -31,14 +31,14 @@
   .spinner {
     width: 40px;
     height: 40px;
-    border: 4px solid $color-border-light;
-    border-top: 4px solid $color-primary;
+    border: 4px solid vars.color-border-light;
+    border-top: 4px solid vars.color-primary;
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
 
   p {
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
     font-size: 1rem;
   }
 }
@@ -54,7 +54,7 @@
   .backButton {
     display: inline-flex;
     align-items: center;
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
@@ -62,20 +62,20 @@
     transition: color 0.2s ease;
 
     &:hover {
-      color: $color-primary;
+      color: vars.color-primary;
     }
   }
 
   .title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: $color-text-primary;
+    color: vars.color-text-primary;
     margin-bottom: 0.5rem;
   }
 
   .subtitle {
     font-size: 1.125rem;
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
     max-width: 700px;
   }
 }
@@ -97,8 +97,8 @@
 }
 
 .section {
-  background: $color-background-card;
-  border: 1px solid $color-border-light;
+  background: vars.color-background-card;
+  border: 1px solid vars.color-border-light;
   border-radius: 12px;
   overflow: hidden;
 
@@ -107,13 +107,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 2rem;
-    background: $color-background-secondary;
-    border-bottom: 1px solid $color-border-light;
+    background: vars.color-background-secondary;
+    border-bottom: 1px solid vars.color-border-light;
 
     .sectionTitle {
       font-size: 1.25rem;
       font-weight: 600;
-      color: $color-text-primary;
+      color: vars.color-text-primary;
       margin: 0;
     }
   }
@@ -149,7 +149,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: $color-border-light;
+      background-color: vars.color-border-light;
       transition: 0.3s;
       border-radius: 24px;
 
@@ -167,7 +167,7 @@
     }
 
     input:checked + .slider {
-      background-color: $color-primary;
+      background-color: vars.color-primary;
     }
 
     input:checked + .slider:before {
@@ -188,12 +188,12 @@
     input[type="checkbox"] {
       width: 18px;
       height: 18px;
-      accent-color: $color-primary;
+      accent-color: vars.color-primary;
     }
 
     label {
       font-size: 0.875rem;
-      color: $color-text-primary;
+      color: vars.color-text-primary;
       cursor: pointer;
     }
   }
@@ -206,7 +206,7 @@
   h4 {
     font-size: 0.875rem;
     font-weight: 600;
-    color: $color-text-primary;
+    color: vars.color-text-primary;
     margin-bottom: 1rem;
   }
 
@@ -220,21 +220,21 @@
     .phoneInput {
       flex: 1;
       padding: 0.75rem;
-      border: 1px solid $color-border-light;
+      border: 1px solid vars.color-border-light;
       border-radius: 8px;
       font-size: 0.875rem;
       transition: border-color 0.2s ease;
 
       &:focus {
         outline: none;
-        border-color: $color-primary;
-        box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+        border-color: vars.color-primary;
+        box-shadow: 0 0 0 3px rgba(vars.color-primary, 0.1);
       }
     }
 
     .addButton {
       padding: 0.75rem 1.5rem;
-      background: $color-primary;
+      background: vars.color-primary;
       color: white;
       border: none;
       border-radius: 8px;
@@ -244,11 +244,11 @@
       transition: background-color 0.2s ease;
 
       &:hover:not(:disabled) {
-        background: darken($color-primary, 5%);
+        background: darken(vars.color-primary, 5%);
       }
 
       &:disabled {
-        background: $color-text-muted;
+        background: vars.color-text-muted;
         cursor: not-allowed;
       }
     }
@@ -266,16 +266,16 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.5rem 0.75rem;
-      background: $color-background-secondary;
-      border: 1px solid $color-border-light;
+      background: vars.color-background-secondary;
+      border: 1px solid vars.color-border-light;
       border-radius: 20px;
       font-size: 0.75rem;
-      color: $color-text-primary;
+      color: vars.color-text-primary;
 
       .removeTag {
         background: none;
         border: none;
-        color: $color-danger;
+        color: vars.color-danger;
         cursor: pointer;
         font-size: 1rem;
         line-height: 1;
@@ -287,7 +287,7 @@
         justify-content: center;
 
         &:hover {
-          color: darken($color-danger, 10%);
+          color: darken(vars.color-danger, 10%);
         }
       }
     }
@@ -301,7 +301,7 @@
     display: block;
     font-size: 0.875rem;
     font-weight: 600;
-    color: $color-text-primary;
+    color: vars.color-text-primary;
     margin-bottom: 0.5rem;
   }
 
@@ -309,7 +309,7 @@
   .textarea {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid $color-border-light;
+    border: 1px solid vars.color-border-light;
     border-radius: 8px;
     font-size: 0.875rem;
     font-family: inherit;
@@ -317,12 +317,12 @@
 
     &:focus {
       outline: none;
-      border-color: $color-primary;
-      box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+      border-color: vars.color-primary;
+      box-shadow: 0 0 0 3px rgba(vars.color-primary, 0.1);
     }
 
     &::placeholder {
-      color: $color-text-muted;
+      color: vars.color-text-muted;
     }
   }
 
@@ -341,7 +341,7 @@
 .testButton {
   width: 100%;
   padding: 0.75rem;
-  background: $color-secondary;
+  background: vars.color-secondary;
   color: white;
   border: none;
   border-radius: 8px;
@@ -351,11 +351,11 @@
   transition: background-color 0.2s ease;
 
   &:hover:not(:disabled) {
-    background: darken($color-secondary, 5%);
+    background: darken(vars.color-secondary, 5%);
   }
 
   &:disabled {
-    background: $color-text-muted;
+    background: vars.color-text-muted;
     cursor: not-allowed;
   }
 }
@@ -364,11 +364,11 @@
   display: flex;
   justify-content: center;
   padding-top: 2rem;
-  border-top: 1px solid $color-border-light;
+  border-top: 1px solid vars.color-border-light;
 
   .saveButton {
     padding: 1rem 3rem;
-    background: $color-primary;
+    background: vars.color-primary;
     color: white;
     border: none;
     border-radius: 8px;
@@ -378,11 +378,11 @@
     transition: background-color 0.2s ease;
 
     &:hover:not(:disabled) {
-      background: darken($color-primary, 5%);
+      background: darken(vars.color-primary, 5%);
     }
 
     &:disabled {
-      background: $color-text-muted;
+      background: vars.color-text-muted;
       cursor: not-allowed;
     }
   }

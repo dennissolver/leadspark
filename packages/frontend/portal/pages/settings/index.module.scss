@@ -3,8 +3,8 @@
 
 .container {
   // Use variables with their namespace
-  background-color: vars.$color-background-primary;
-  font-family: vars.$font-family-base;
+  background-color: vars.vars.color-background-primary;
+  font-family: vars.vars.font-family-base;
 
   // Use mixins with their namespace
   @include mixins.shadow-elevation-1;
@@ -27,13 +27,13 @@
   .title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: $color-text-primary;
+    color: vars.color-text-primary;
     margin-bottom: 0.5rem;
   }
 
   .subtitle {
     font-size: 1.125rem;
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
     max-width: 600px;
     margin: 0 auto;
   }
@@ -54,8 +54,8 @@
 .settingCard {
   display: block;
   text-decoration: none;
-  background: $color-background-card;
-  border: 1px solid $color-border-light;
+  background: vars.color-background-card;
+  border: 1px solid vars.color-border-light;
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -64,10 +64,10 @@
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    border-color: $color-primary;
+    border-color: vars.color-primary;
 
     .configureText {
-      color: $color-primary;
+      color: vars.color-primary;
       transform: translateX(4px);
     }
   }
@@ -87,7 +87,7 @@
 .iconWrapper {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, $color-primary, $color-secondary);
+  background: linear-gradient(135deg, vars.color-primary, vars.color-secondary);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -104,15 +104,15 @@
     font-weight: 600;
 
     &.active {
-      color: $color-success;
+      color: vars.color-success;
     }
 
     &.inactive {
-      color: $color-text-muted;
+      color: vars.color-text-muted;
     }
 
     &.warning {
-      color: $color-warning;
+      color: vars.color-warning;
     }
   }
 }
@@ -121,13 +121,13 @@
   .cardTitle {
     font-size: 1.25rem;
     font-weight: 600;
-    color: $color-text-primary;
+    color: vars.color-text-primary;
     margin-bottom: 0.75rem;
   }
 
   .cardDescription {
     font-size: 0.875rem;
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
     line-height: 1.6;
     margin-bottom: 1.5rem;
   }
@@ -137,7 +137,7 @@
   .configureText {
     font-size: 0.875rem;
     font-weight: 600;
-    color: $color-text-secondary;
+    color: vars.color-text-secondary;
     transition: all 0.2s ease;
   }
 }
@@ -148,7 +148,7 @@
   .quickActionsTitle {
     font-size: 1.5rem;
     font-weight: 600;
-    color: $color-text-primary;
+    color: vars.color-text-primary;
     margin-bottom: 1.5rem;
   }
 
@@ -163,8 +163,8 @@
   }
 
   .actionButton {
-    background: $color-background-secondary;
-    border: 1px solid $color-border-light;
+    background: vars.color-background-secondary;
+    border: 1px solid vars.color-border-light;
     border-radius: 8px;
     padding: 1rem;
     display: flex;
@@ -172,14 +172,14 @@
     gap: 0.75rem;
     font-size: 0.875rem;
     font-weight: 500;
-    color: $color-text-primary;
+    color: vars.color-text-primary;
     cursor: pointer;
     transition: all 0.2s ease;
 
     &:hover {
-      background: $color-background-card;
-      border-color: $color-primary;
-      color: $color-primary;
+      background: vars.color-background-card;
+      border-color: vars.color-primary;
+      color: vars.color-primary;
 
       .actionIcon {
         transform: scale(1.1);
@@ -197,7 +197,7 @@
   .systemInfoTitle {
     font-size: 1.5rem;
     font-weight: 600;
-    color: $color-text-primary;
+    color: vars.color-text-primary;
     margin-bottom: 1.5rem;
   }
 
@@ -205,7 +205,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
-    background: $color-background-secondary;
+    background: vars.color-background-secondary;
     border-radius: 8px;
     padding: 2rem;
 
@@ -224,7 +224,7 @@
     .infoLabel {
       font-size: 0.75rem;
       font-weight: 600;
-      color: $color-text-muted;
+      color: vars.color-text-muted;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -232,10 +232,10 @@
     .infoValue {
       font-size: 0.875rem;
       font-weight: 500;
-      color: $color-text-primary;
+      color: vars.color-text-primary;
 
       &.statusActive {
-        color: $color-success;
+        color: vars.color-success;
       }
     }
   }

@@ -3,8 +3,8 @@
 
 .container {
   // Use variables with their namespace
-  background-color: vars.$color-background-primary;
-  font-family: vars.$font-family-base;
+  background-color: vars.vars.color-background-primary;
+  font-family: vars.vars.font-family-base;
 
   // Use mixins with their namespace
   @include mixins.shadow-elevation-1;
@@ -13,8 +13,8 @@
 .sidebar {
   width: 280px;
   height: 100vh;
-  background: $color-background-secondary;
-  border-right: 1px solid $color-border-light;
+  background: vars.color-background-secondary;
+  border-right: 1px solid vars.color-border-light;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -32,49 +32,49 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $spacing-lg;
-  border-bottom: 1px solid $color-border-light;
+  padding: vars.spacing-lg;
+  border-bottom: 1px solid vars.color-border-light;
   min-height: 70px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
+  gap: vars.spacing-sm;
 }
 
 .logoIcon {
-  font-size: $font-size-xl;
+  font-size: vars.font-size-xl;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .logoText {
-  font-size: $font-size-lg;
+  font-size: vars.font-size-lg;
   font-weight: 700;
-  color: $color-text-primary;
+  color: vars.color-text-primary;
   white-space: nowrap;
 }
 
 .collapseButton {
   background: none;
   border: none;
-  color: $color-text-secondary;
+  color: vars.color-text-secondary;
   cursor: pointer;
-  padding: $spacing-xs;
+  padding: vars.spacing-xs;
   border-radius: $border-radius-sm;
   transition: all 0.2s ease;
 
   &:hover {
-    background: $color-background-primary;
-    color: $color-text-primary;
+    background: vars.color-background-primary;
+    color: vars.color-text-primary;
   }
 }
 
 .navigation {
   flex: 1;
-  padding: $spacing-lg 0;
+  padding: vars.spacing-lg 0;
   overflow-y: auto;
 }
 
@@ -85,34 +85,34 @@
 }
 
 .navItem {
-  margin-bottom: $spacing-xs;
+  margin-bottom: vars.spacing-xs;
 }
 
 .navLink {
   display: flex;
   align-items: center;
-  gap: $spacing-md;
-  padding: $spacing-md $spacing-lg;
-  color: $color-text-secondary;
+  gap: vars.spacing-md;
+  padding: vars.spacing-md vars.spacing-lg;
+  color: vars.color-text-secondary;
   text-decoration: none;
   transition: all 0.2s ease;
   border-right: 3px solid transparent;
   position: relative;
 
   &:hover {
-    background: $color-background-primary;
-    color: $color-text-primary;
+    background: vars.color-background-primary;
+    color: vars.color-text-primary;
   }
 
   &.active {
-    background: $color-primary-light;
-    color: $color-primary-dark;
-    border-right-color: $color-primary;
+    background: vars.color-primary-light;
+    color: vars.color-primary-dark;
+    border-right-color: vars.color-primary;
   }
 }
 
 .navIcon {
-  font-size: $font-size-lg;
+  font-size: vars.font-size-lg;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,37 +125,37 @@
 }
 
 .badge {
-  background: $color-primary;
-  color: $color-white;
+  background: vars.color-primary;
+  color: vars.color-white;
   border-radius: 50%;
   width: 20px;
   height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: $font-size-xs;
+  font-size: vars.font-size-xs;
   font-weight: 600;
   margin-left: auto;
 }
 
 .quickStats {
-  padding: $spacing-lg;
-  border-top: 1px solid $color-border-light;
-  border-bottom: 1px solid $color-border-light;
+  padding: vars.spacing-lg;
+  border-top: 1px solid vars.color-border-light;
+  border-bottom: 1px solid vars.color-border-light;
 }
 
 .statsTitle {
-  font-size: $font-size-sm;
+  font-size: vars.font-size-sm;
   font-weight: 600;
-  color: $color-text-primary;
-  margin: 0 0 $spacing-md 0;
+  color: vars.color-text-primary;
+  margin: 0 0 vars.spacing-md 0;
 }
 
 .statItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: $spacing-sm;
+  margin-bottom: vars.spacing-sm;
 
   &:last-child {
     margin-bottom: 0;
@@ -163,39 +163,39 @@
 }
 
 .statLabel {
-  font-size: $font-size-xs;
-  color: $color-text-secondary;
+  font-size: vars.font-size-xs;
+  color: vars.color-text-secondary;
 }
 
 .statValue {
-  font-size: $font-size-sm;
+  font-size: vars.font-size-sm;
   font-weight: 600;
-  color: $color-primary;
+  color: vars.color-primary;
 }
 
 .userProfile {
-  padding: $spacing-lg;
-  border-top: 1px solid $color-border-light;
+  padding: vars.spacing-lg;
+  border-top: 1px solid vars.color-border-light;
 }
 
 .userInfo {
   display: flex;
   align-items: center;
-  gap: $spacing-md;
-  margin-bottom: $spacing-md;
+  gap: vars.spacing-md;
+  margin-bottom: vars.spacing-md;
 }
 
 .userAvatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+  background: linear-gradient(135deg, vars.color-primary, vars.color-primary-dark);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-white;
+  color: vars.color-white;
   font-weight: 600;
-  font-size: $font-size-sm;
+  font-size: vars.font-size-sm;
   flex-shrink: 0;
 }
 
@@ -205,17 +205,17 @@
 }
 
 .userName {
-  font-size: $font-size-sm;
+  font-size: vars.font-size-sm;
   font-weight: 600;
-  color: $color-text-primary;
+  color: vars.color-text-primary;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .userEmail {
-  font-size: $font-size-xs;
-  color: $color-text-secondary;
+  font-size: vars.font-size-xs;
+  color: vars.color-text-secondary;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -224,69 +224,69 @@
 .userActions {
   display: flex;
   flex-direction: column;
-  gap: $spacing-xs;
+  gap: vars.spacing-xs;
 }
 
 .settingsLink {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
-  padding: $spacing-sm;
-  color: $color-text-secondary;
+  gap: vars.spacing-sm;
+  padding: vars.spacing-sm;
+  color: vars.color-text-secondary;
   text-decoration: none;
   border-radius: $border-radius-sm;
-  font-size: $font-size-sm;
+  font-size: vars.font-size-sm;
   transition: all 0.2s ease;
 
   &:hover {
-    background: $color-background-primary;
-    color: $color-text-primary;
+    background: vars.color-background-primary;
+    color: vars.color-text-primary;
   }
 }
 
 .settingsIcon {
-  font-size: $font-size-sm;
+  font-size: vars.font-size-sm;
 }
 
 .signOutButton {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
-  padding: $spacing-sm;
+  gap: vars.spacing-sm;
+  padding: vars.spacing-sm;
   background: none;
   border: none;
-  color: $color-danger;
+  color: vars.color-danger;
   text-align: left;
   border-radius: $border-radius-sm;
-  font-size: $font-size-sm;
+  font-size: vars.font-size-sm;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    background: $color-danger-light;
+    background: vars.color-danger-light;
   }
 }
 
 .signOutIcon {
-  font-size: $font-size-sm;
+  font-size: vars.font-size-sm;
 }
 
 .signOutIconOnly {
   background: none;
   border: none;
-  color: $color-danger;
+  color: vars.color-danger;
   cursor: pointer;
-  padding: $spacing-sm;
+  padding: vars.spacing-sm;
   border-radius: $border-radius-sm;
   transition: all 0.2s ease;
 
   &:hover {
-    background: $color-danger-light;
+    background: vars.color-danger-light;
   }
 }
 
 // Responsive design
-@media (max-width: $breakpoint-tablet) {
+@media (max-width: vars.breakpoint-tablet) {
   .sidebar {
     transform: translateX(-100%);
     transition: transform 0.3s ease;
@@ -310,12 +310,12 @@
 
   .collapseButton {
     position: absolute;
-    right: $spacing-sm;
+    right: vars.spacing-sm;
   }
 
   .navLink {
     justify-content: center;
-    padding: $spacing-md;
+    padding: vars.spacing-md;
   }
 
   .userInfo {

@@ -3,18 +3,18 @@
 
 .container {
   // Use variables with their namespace
-  background-color: vars.$color-background-primary;
-  font-family: vars.$font-family-base;
+  background-color: vars.vars.color-background-primary;
+  font-family: vars.vars.font-family-base;
 
   // Use mixins with their namespace
   @include mixins.shadow-elevation-1;
 }
 
 .leadCard {
-  background: $color-background-secondary;
+  background: vars.color-background-secondary;
   border-radius: $border-radius-lg;
-  border: 1px solid $color-border-light;
-  padding: $spacing-lg;
+  border: 1px solid vars.color-border-light;
+  padding: vars.spacing-lg;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -22,28 +22,28 @@
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    border-color: $color-primary-light;
+    border-color: vars.color-primary-light;
   }
 }
 
 .cardHeader {
   display: flex;
   align-items: flex-start;
-  gap: $spacing-md;
-  margin-bottom: $spacing-md;
+  gap: vars.spacing-md;
+  margin-bottom: vars.spacing-md;
 }
 
 .avatar {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+  background: linear-gradient(135deg, vars.color-primary, vars.color-primary-dark);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-white;
+  color: vars.color-white;
   font-weight: 600;
-  font-size: $font-size-sm;
+  font-size: vars.font-size-sm;
   flex-shrink: 0;
 }
 
@@ -53,10 +53,10 @@
 }
 
 .leadName {
-  margin: 0 0 $spacing-xs 0;
-  font-size: $font-size-lg;
+  margin: 0 0 vars.spacing-xs 0;
+  font-size: vars.font-size-lg;
   font-weight: 600;
-  color: $color-text-primary;
+  color: vars.color-text-primary;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -64,52 +64,52 @@
 
 .leadEmail {
   margin: 0;
-  font-size: $font-size-sm;
-  color: $color-text-secondary;
+  font-size: vars.font-size-sm;
+  color: vars.color-text-secondary;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .statusBadge {
-  padding: $spacing-xs $spacing-sm;
+  padding: vars.spacing-xs vars.spacing-sm;
   border-radius: $border-radius-sm;
-  font-size: $font-size-xs;
+  font-size: vars.font-size-xs;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   flex-shrink: 0;
 
   &.statusNew {
-    background-color: $color-info-light;
-    color: $color-info-dark;
+    background-color: vars.color-info-light;
+    color: vars.color-info-dark;
   }
 
   &.statusContacted {
-    background-color: $color-warning-light;
-    color: $color-warning-dark;
+    background-color: vars.color-warning-light;
+    color: vars.color-warning-dark;
   }
 
   &.statusQualified {
-    background-color: $color-primary-light;
-    color: $color-primary-dark;
+    background-color: vars.color-primary-light;
+    color: vars.color-primary-dark;
   }
 
   &.statusConverted {
-    background-color: $color-success-light;
-    color: $color-success-dark;
+    background-color: vars.color-success-light;
+    color: vars.color-success-dark;
   }
 }
 
 .cardBody {
-  margin-bottom: $spacing-lg;
+  margin-bottom: vars.spacing-lg;
 }
 
 .contactInfo,
 .investmentGoals,
 .sourceInfo {
   display: flex;
-  margin-bottom: $spacing-sm;
+  margin-bottom: vars.spacing-sm;
 
   &:last-child {
     margin-bottom: 0;
@@ -117,16 +117,16 @@
 }
 
 .label {
-  font-size: $font-size-sm;
+  font-size: vars.font-size-sm;
   font-weight: 500;
-  color: $color-text-secondary;
+  color: vars.color-text-secondary;
   min-width: 60px;
-  margin-right: $spacing-sm;
+  margin-right: vars.spacing-sm;
 }
 
 .value {
-  font-size: $font-size-sm;
-  color: $color-text-primary;
+  font-size: vars.font-size-sm;
+  color: vars.color-text-primary;
   flex: 1;
   word-break: break-word;
 }
@@ -135,54 +135,54 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: $spacing-md;
-  border-top: 1px solid $color-border-light;
+  padding-top: vars.spacing-md;
+  border-top: 1px solid vars.color-border-light;
 }
 
 .dateInfo {
   display: flex;
   flex-direction: column;
-  gap: $spacing-xs;
+  gap: vars.spacing-xs;
 }
 
 .createdDate,
 .contactedDate {
-  font-size: $font-size-xs;
-  color: $color-text-secondary;
+  font-size: vars.font-size-xs;
+  color: vars.color-text-secondary;
 }
 
 .cardActions {
   display: flex;
-  gap: $spacing-sm;
+  gap: vars.spacing-sm;
 }
 
 .viewButton {
-  padding: $spacing-sm $spacing-md;
-  background: $color-primary;
-  color: $color-white;
+  padding: vars.spacing-sm vars.spacing-md;
+  background: vars.color-primary;
+  color: vars.color-white;
   border: none;
   border-radius: $border-radius-sm;
-  font-size: $font-size-sm;
+  font-size: vars.font-size-sm;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
 
   &:hover {
-    background: $color-primary-dark;
+    background: vars.color-primary-dark;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px $color-primary-light;
+    box-shadow: 0 0 0 2px vars.color-primary-light;
   }
 }
 
 // Responsive design
-@media (max-width: $breakpoint-tablet) {
+@media (max-width: vars.breakpoint-tablet) {
   .cardHeader {
     flex-direction: column;
     align-items: stretch;
-    gap: $spacing-sm;
+    gap: vars.spacing-sm;
   }
 
   .avatar {
@@ -191,13 +191,13 @@
 
   .statusBadge {
     align-self: flex-start;
-    margin-top: $spacing-xs;
+    margin-top: vars.spacing-xs;
   }
 
   .cardFooter {
     flex-direction: column;
     align-items: stretch;
-    gap: $spacing-md;
+    gap: vars.spacing-md;
   }
 
   .cardActions {
