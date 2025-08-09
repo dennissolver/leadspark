@@ -1,13 +1,13 @@
-@use "../../../styles/mixins" as mixins;
-@use "../../../styles/variables" as vars;
+
+@use '@leadspark/styles/variables' as *;
 
 .container {
   // Use variables with their namespace
-  background-color: vars.color-background-primary;
-  font-family: vars.font-family-base;
+  background-color: $white;
+  font-family: $white;
 
   // Use mixins with their namespace
-  @include mixins.shadow-elevation-1;
+  
 }
 
 .settingsContainer {
@@ -15,7 +15,7 @@
   margin: 0 auto;
   padding: 2rem;
 
-  @include mobile {
+  @media (max-width: 640px) {
     padding: 1rem;
   }
 }
@@ -27,13 +27,13 @@
   .title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: vars.color-text-primary;
+    color: $white;
     margin-bottom: 0.5rem;
   }
 
   .subtitle {
     font-size: 1.125rem;
-    color: vars.color-text-secondary;
+    color: $white;
     max-width: 600px;
     margin: 0 auto;
   }
@@ -45,7 +45,7 @@
   gap: 2rem;
   margin-bottom: 4rem;
 
-  @include mobile {
+  @media (max-width: 640px) {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
@@ -54,8 +54,8 @@
 .settingCard {
   display: block;
   text-decoration: none;
-  background: vars.color-background-card;
-  border: 1px solid vars.color-border-light;
+  background: $white;
+  border: 1px solid $white;
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -64,10 +64,10 @@
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    border-color: vars.color-primary;
+    border-color: $white;
 
     .configureText {
-      color: vars.color-primary;
+      color: $white;
       transform: translateX(4px);
     }
   }
@@ -87,7 +87,7 @@
 .iconWrapper {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, vars.color-primary, vars.color-secondary);
+  background: linear-gradient(135deg, $white, $white);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -104,15 +104,15 @@
     font-weight: 600;
 
     &.active {
-      color: vars.color-success;
+      color: $white;
     }
 
     &.inactive {
-      color: vars.color-text-muted;
+      color: $white;
     }
 
     &.warning {
-      color: vars.color-warning;
+      color: $white;
     }
   }
 }
@@ -121,13 +121,13 @@
   .cardTitle {
     font-size: 1.25rem;
     font-weight: 600;
-    color: vars.color-text-primary;
+    color: $white;
     margin-bottom: 0.75rem;
   }
 
   .cardDescription {
     font-size: 0.875rem;
-    color: vars.color-text-secondary;
+    color: $white;
     line-height: 1.6;
     margin-bottom: 1.5rem;
   }
@@ -137,7 +137,7 @@
   .configureText {
     font-size: 0.875rem;
     font-weight: 600;
-    color: vars.color-text-secondary;
+    color: $white;
     transition: all 0.2s ease;
   }
 }
@@ -148,7 +148,7 @@
   .quickActionsTitle {
     font-size: 1.5rem;
     font-weight: 600;
-    color: vars.color-text-primary;
+    color: $white;
     margin-bottom: 1.5rem;
   }
 
@@ -157,14 +157,14 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
 
-    @include mobile {
+    @media (max-width: 640px) {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   .actionButton {
-    background: vars.color-background-secondary;
-    border: 1px solid vars.color-border-light;
+    background: $white;
+    border: 1px solid $white;
     border-radius: 8px;
     padding: 1rem;
     display: flex;
@@ -172,14 +172,14 @@
     gap: 0.75rem;
     font-size: 0.875rem;
     font-weight: 500;
-    color: vars.color-text-primary;
+    color: $white;
     cursor: pointer;
     transition: all 0.2s ease;
 
     &:hover {
-      background: vars.color-background-card;
-      border-color: vars.color-primary;
-      color: vars.color-primary;
+      background: $white;
+      border-color: $white;
+      color: $white;
 
       .actionIcon {
         transform: scale(1.1);
@@ -197,7 +197,7 @@
   .systemInfoTitle {
     font-size: 1.5rem;
     font-weight: 600;
-    color: vars.color-text-primary;
+    color: $white;
     margin-bottom: 1.5rem;
   }
 
@@ -205,11 +205,11 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
-    background: vars.color-background-secondary;
+    background: $white;
     border-radius: 8px;
     padding: 2rem;
 
-    @include mobile {
+    @media (max-width: 640px) {
       grid-template-columns: 1fr;
       gap: 1rem;
       padding: 1rem;
@@ -224,7 +224,7 @@
     .infoLabel {
       font-size: 0.75rem;
       font-weight: 600;
-      color: vars.color-text-muted;
+      color: $white;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -232,10 +232,10 @@
     .infoValue {
       font-size: 0.875rem;
       font-weight: 500;
-      color: vars.color-text-primary;
+      color: $white;
 
       &.statusActive {
-        color: vars.color-success;
+        color: $white;
       }
     }
   }

@@ -1,31 +1,31 @@
-@use "../../../styles/mixins" as mixins;
-@use "../../../styles/variables" as vars;
+
+@use '@leadspark/styles/variables' as *;
 
 .container {
   // Use variables with their namespace
-  background-color: vars.color-background-primary;
-  font-family: vars.font-family-base;
+  background-color: $white;
+  font-family: $font-family-base;
 
   // Use mixins with their namespace
-  @include mixins.shadow-elevation-1;
+  
 }
 
 .layoutContainer {
   display: flex;
   min-height: 100vh;
-  background-color: vars.color-background-primary;
+  background-color: $white;
 }
 
 .mobileMenuButton {
   display: none;
   position: fixed;
-  top: vars.spacing-lg;
-  left: vars.spacing-lg;
+  top: $spacing-6;
+  left: $spacing-6;
   z-index: 200;
-  background: vars.color-background-secondary;
-  border: 1px solid vars.color-border-light;
-  border-radius: $border-radius-sm;
-  padding: vars.spacing-sm;
+  background: $gray-50;
+  border: 1px solid $border-color;
+  border-radius: $rounded;
+  padding: $spacing-3;
   cursor: pointer;
   flex-direction: column;
   gap: 3px;
@@ -36,14 +36,14 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background: vars.color-background-primary;
+    background: $white;
   }
 }
 
 .hamburger {
   width: 20px;
   height: 2px;
-  background-color: vars.color-text-primary;
+  background-color: $text-color;
   border-radius: 1px;
   transition: all 0.3s ease;
 }
@@ -71,7 +71,7 @@
 }
 
 .contentWrapper {
-  padding: vars.spacing-xl;
+  padding: $spacing-8;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -82,21 +82,21 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: vars.color-background-primary;
+  background-color: $white;
 }
 
 .loadingSpinner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: vars.spacing-lg;
+  gap: $spacing-6;
 }
 
 .spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid vars.color-border-light;
-  border-top: 3px solid vars.color-primary;
+  border: 3px solid $border-color;
+  border-top: 3px solid $primary-color;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -107,13 +107,13 @@
 }
 
 .loadingText {
-  color: vars.color-text-secondary;
-  font-size: vars.font-size-sm;
+  color: $gray-600;
+  font-size: $text-sm;
   margin: 0;
 }
 
 // Responsive Design
-@media (max-width: vars.breakpoint-tablet) {
+@media (max-width: $breakpoint-sm) {
   .mobileMenuButton {
     display: flex;
   }
@@ -142,8 +142,8 @@
   }
 
   .contentWrapper {
-    padding: vars.spacing-lg;
-    padding-top: calc(#{vars.spacing-xl} + 40px); // Account for mobile menu button
+    padding: $spacing-6;
+    padding-top: calc(#{$spacing-8} + 40px); // Account for mobile menu button
   }
 
   // Hamburger animation when sidebar is open
@@ -162,15 +162,15 @@
   }
 }
 
-@media (max-width: vars.breakpoint-mobile) {
+@media (max-width: 480px) {
   .contentWrapper {
-    padding: vars.spacing-md;
-    padding-top: calc(#{vars.spacing-lg} + 40px);
+    padding: $spacing-4;
+    padding-top: calc(#{$spacing-6} + 40px);
   }
 }
 
 // Handle collapsed sidebar state
-@media (min-width: calc(#{vars.breakpoint-tablet} + 1px)) {
+@media (min-width: calc(#{$breakpoint-sm} + 1px)) {
   .layoutContainer:has(.sidebar.collapsed) .mainContent {
     margin-left: 80px;
   }

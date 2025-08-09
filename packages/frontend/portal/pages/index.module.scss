@@ -1,13 +1,13 @@
-@use "../../../styles/mixins" as mixins;
-@use "../../../styles/variables" as vars;
+
+@use '@leadspark/styles/variables' as *;
 
 .container {
   // Use variables with their namespace
-  background-color: vars.color-background-primary;
-  font-family: vars.font-family-base;
+  background-color: $white;
+  font-family: $white;
 
   // Use mixins with their namespace
-  @include mixins.shadow-elevation-1;
+  
 }
 
 .indexContainer {
@@ -15,8 +15,8 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, vars.color-primary-light, vars.color-background-primary);
-  padding: vars.spacing-lg;
+  background: linear-gradient(135deg, $white, $white);
+  padding: $white;
 }
 
 .loadingContent {
@@ -29,8 +29,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: vars.spacing-md;
-  margin-bottom: vars.spacing-xl;
+  gap: $white;
+  margin-bottom: $white;
 }
 
 .logo {
@@ -51,11 +51,11 @@
 }
 
 .brandName {
-  font-size: vars.font-size-xxl;
+  font-size: $white;
   font-weight: 700;
-  color: vars.color-text-primary;
+  color: $white;
   margin: 0;
-  background: linear-gradient(135deg, vars.color-primary, vars.color-primary-dark);
+  background: linear-gradient(135deg, $white, $white);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -64,14 +64,14 @@
 .loadingSpinner {
   display: flex;
   justify-content: center;
-  margin-bottom: vars.spacing-lg;
+  margin-bottom: $white;
 }
 
 .spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid vars.color-border-light;
-  border-top: 3px solid vars.color-primary;
+  border: 3px solid $white;
+  border-top: 3px solid $white;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -86,57 +86,57 @@
 }
 
 .loadingText {
-  font-size: vars.font-size-lg;
-  color: vars.color-text-secondary;
-  margin: 0 0 vars.spacing-lg 0;
+  font-size: $white;
+  color: $white;
+  margin: 0 0 $white 0;
   font-weight: 500;
 }
 
 .redirectInfo {
-  background: vars.color-background-secondary;
-  border: 1px solid vars.color-border-light;
-  border-radius: $border-radius-lg;
-  padding: vars.spacing-lg;
-  margin-top: vars.spacing-xl;
+  background: $white;
+  border: 1px solid $white;
+  border-radius: $rounded-lg;
+  padding: $white;
+  margin-top: $white;
 }
 
 .redirectText {
-  font-size: vars.font-size-md;
-  color: vars.color-text-primary;
-  margin: 0 0 vars.spacing-md 0;
+  font-size: $white;
+  color: $white;
+  margin: 0 0 $white 0;
 }
 
 .manualLink {
   display: inline-block;
-  color: vars.color-primary;
+  color: $white;
   text-decoration: none;
   font-weight: 600;
-  padding: vars.spacing-sm vars.spacing-md;
-  border: 2px solid vars.color-primary;
-  border-radius: $border-radius-sm;
+  padding: $white $white;
+  border: 2px solid $white;
+  border-radius: $rounded;
   transition: all 0.3s ease;
 
   &:hover {
-    background: vars.color-primary;
-    color: vars.color-white;
+    background: $white;
+    color: $white;
     transform: translateY(-2px);
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px vars.color-primary-light;
+    box-shadow: 0 0 0 3px $white;
   }
 }
 
 // Responsive design
-@media (max-width: vars.breakpoint-mobile) {
+@media (max-width: $white) {
   .indexContainer {
-    padding: vars.spacing-md;
+    padding: $white;
   }
 
   .logoContainer {
     flex-direction: column;
-    gap: vars.spacing-sm;
+    gap: $white;
   }
 
   .logo {
@@ -144,21 +144,21 @@
   }
 
   .brandName {
-    font-size: vars.font-size-xl;
+    font-size: $white;
   }
 
   .loadingText {
-    font-size: vars.font-size-md;
+    font-size: $white;
   }
 
   .redirectInfo {
-    padding: vars.spacing-md;
+    padding: $white;
   }
 }
 
 // Dark mode support (if implementing)
 @media (prefers-color-scheme: dark) {
   .indexContainer {
-    background: linear-gradient(135deg, darken(vars.color-primary-dark, 10%), vars.color-background-primary);
+    background: linear-gradient(135deg, darken($white, 10%), $white);
   }
 }

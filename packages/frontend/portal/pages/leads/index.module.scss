@@ -1,13 +1,13 @@
-@use "../../../styles/mixins" as mixins;
-@use "../../../styles/variables" as vars;
+
+@use '@leadspark/styles/variables' as *;
 
 .container {
   // Use variables with their namespace
-  background-color: vars.color-background-primary;
-  font-family: vars.font-family-base;
+  background-color: $white;
+  font-family: $white;
 
   // Use mixins with their namespace
-  @include mixins.shadow-elevation-1;
+  
 }
 
 .leadsContainer {
@@ -22,14 +22,14 @@
   align-items: center;
   justify-content: center;
   min-height: 60vh;
-  gap: vars.spacing-lg;
+  gap: $white;
 }
 
 .loadingSpinner {
   width: 40px;
   height: 40px;
-  border: 3px solid vars.color-border-light;
-  border-top: 3px solid vars.color-primary;
+  border: 3px solid $white;
+  border-top: 3px solid $white;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -40,8 +40,8 @@
 }
 
 .loadingText {
-  color: vars.color-text-secondary;
-  font-size: vars.font-size-lg;
+  color: $white;
+  font-size: $white;
   margin: 0;
 }
 
@@ -49,9 +49,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: vars.spacing-xl;
-  padding-bottom: vars.spacing-lg;
-  border-bottom: 1px solid vars.color-border-light;
+  margin-bottom: $white;
+  padding-bottom: $white;
+  border-bottom: 1px solid $white;
 }
 
 .headerContent {
@@ -59,80 +59,80 @@
 }
 
 .pageTitle {
-  font-size: vars.font-size-xxl;
+  font-size: $white;
   font-weight: 700;
-  color: vars.color-text-primary;
-  margin: 0 0 vars.spacing-sm 0;
+  color: $white;
+  margin: 0 0 $white 0;
 }
 
 .leadsCount {
-  font-size: vars.font-size-lg;
-  color: vars.color-text-secondary;
+  font-size: $white;
+  color: $white;
   margin: 0;
 }
 
 .headerActions {
   display: flex;
-  gap: vars.spacing-md;
+  gap: $white;
 }
 
 .exportButton {
   display: inline-flex;
   align-items: center;
-  gap: vars.spacing-sm;
-  padding: vars.spacing-md vars.spacing-lg;
-  background: vars.color-success;
-  color: vars.color-white;
+  gap: $white;
+  padding: $white $white;
+  background: $white;
+  color: $white;
   border: none;
-  border-radius: $border-radius-md;
+  border-radius: $rounded-md;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover:not(:disabled) {
-    background: vars.color-success-dark;
+    background: $white;
     transform: translateY(-2px);
   }
 
   &:disabled {
-    background: vars.color-border-light;
-    color: vars.color-text-secondary;
+    background: $white;
+    color: $white;
     cursor: not-allowed;
     transform: none;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px vars.color-success-light;
+    box-shadow: 0 0 0 3px $white;
   }
 }
 
 .errorMessage {
   display: flex;
   align-items: center;
-  gap: vars.spacing-sm;
-  padding: vars.spacing-md;
-  background: vars.color-danger-light;
-  border: 1px solid vars.color-danger;
-  border-radius: $border-radius-md;
-  color: vars.color-danger-dark;
-  margin-bottom: vars.spacing-lg;
+  gap: $white;
+  padding: $white;
+  background: $white;
+  border: 1px solid $white;
+  border-radius: $rounded-md;
+  color: $white;
+  margin-bottom: $white;
 }
 
 .errorIcon {
-  font-size: vars.font-size-lg;
+  font-size: $white;
 }
 
 .filtersSection {
-  background: vars.color-background-secondary;
-  border: 1px solid vars.color-border-light;
-  border-radius: $border-radius-lg;
-  padding: vars.spacing-lg;
-  margin-bottom: vars.spacing-xl;
+  background: $white;
+  border: 1px solid $white;
+  border-radius: $rounded-lg;
+  padding: $white;
+  margin-bottom: $white;
 }
 
 .searchContainer {
-  margin-bottom: vars.spacing-lg;
+  margin-bottom: $white;
 }
 
 .searchInputWrapper {
@@ -142,30 +142,30 @@
 
 .searchIcon {
   position: absolute;
-  left: vars.spacing-md;
+  left: $white;
   top: 50%;
   transform: translateY(-50%);
-  color: vars.color-text-secondary;
-  font-size: vars.font-size-md;
+  color: $white;
+  font-size: $white;
 }
 
 .searchInput {
   width: 100%;
-  padding: vars.spacing-md vars.spacing-md vars.spacing-md 3rem;
-  border: 1px solid vars.color-border-light;
-  border-radius: $border-radius-md;
-  font-size: vars.font-size-md;
-  background: vars.color-background-primary;
+  padding: $white $white $white 3rem;
+  border: 1px solid $white;
+  border-radius: $rounded-md;
+  font-size: $white;
+  background: $white;
   transition: border-color 0.2s ease;
 
   &:focus {
     outline: none;
-    border-color: vars.color-primary;
-    box-shadow: 0 0 0 2px vars.color-primary-light;
+    border-color: $white;
+    box-shadow: 0 0 0 2px $white;
   }
 
   &::placeholder {
-    color: vars.color-text-secondary;
+    color: $white;
   }
 }
 
@@ -173,114 +173,114 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: vars.spacing-lg;
+  gap: $white;
 }
 
 .statusFilters {
   display: flex;
-  gap: vars.spacing-sm;
+  gap: $white;
   flex-wrap: wrap;
 }
 
 .filterButton {
   display: flex;
   align-items: center;
-  gap: vars.spacing-xs;
-  padding: vars.spacing-sm vars.spacing-md;
-  background: vars.color-background-primary;
-  border: 1px solid vars.color-border-light;
-  border-radius: $border-radius-md;
-  color: vars.color-text-secondary;
-  font-size: vars.font-size-sm;
+  gap: $white;
+  padding: $white $white;
+  background: $white;
+  border: 1px solid $white;
+  border-radius: $rounded-md;
+  color: $white;
+  font-size: $white;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    border-color: vars.color-primary;
-    color: vars.color-text-primary;
+    border-color: $white;
+    color: $white;
   }
 
   &.active {
-    background: vars.color-primary;
-    border-color: vars.color-primary;
-    color: vars.color-white;
+    background: $white;
+    border-color: $white;
+    color: $white;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px vars.color-primary-light;
+    box-shadow: 0 0 0 2px $white;
   }
 }
 
 .filterCount {
   background: rgba(255, 255, 255, 0.2);
-  border-radius: $border-radius-sm;
-  padding: 2px vars.spacing-xs;
-  font-size: vars.font-size-xs;
+  border-radius: $rounded;
+  padding: 2px $white;
+  font-size: $white;
   font-weight: 600;
   min-width: 18px;
   text-align: center;
 
   .filterButton:not(.active) & {
-    background: vars.color-border-light;
-    color: vars.color-text-secondary;
+    background: $white;
+    color: $white;
   }
 }
 
 .sortContainer {
   display: flex;
   align-items: center;
-  gap: vars.spacing-sm;
+  gap: $white;
 }
 
 .sortLabel {
-  font-size: vars.font-size-sm;
-  color: vars.color-text-secondary;
+  font-size: $white;
+  color: $white;
   font-weight: 500;
 }
 
 .sortSelect {
-  padding: vars.spacing-sm vars.spacing-md;
-  border: 1px solid vars.color-border-light;
-  border-radius: $border-radius-sm;
-  background: vars.color-background-primary;
-  color: vars.color-text-primary;
-  font-size: vars.font-size-sm;
+  padding: $white $white;
+  border: 1px solid $white;
+  border-radius: $rounded;
+  background: $white;
+  color: $white;
+  font-size: $white;
   cursor: pointer;
 
   &:focus {
     outline: none;
-    border-color: vars.color-primary;
-    box-shadow: 0 0 0 2px vars.color-primary-light;
+    border-color: $white;
+    box-shadow: 0 0 0 2px $white;
   }
 }
 
 .emptyState {
   text-align: center;
-  padding: vars.spacing-xxl;
-  background: vars.color-background-secondary;
-  border: 2px dashed vars.color-border-light;
-  border-radius: $border-radius-lg;
+  padding: $white;
+  background: $white;
+  border: 2px dashed $white;
+  border-radius: $rounded-lg;
 }
 
 .emptyIcon {
   font-size: 4rem;
-  margin-bottom: vars.spacing-lg;
+  margin-bottom: $white;
   opacity: 0.6;
 }
 
 .emptyTitle {
-  font-size: vars.font-size-xl;
+  font-size: $white;
   font-weight: 600;
-  color: vars.color-text-primary;
-  margin: 0 0 vars.spacing-md 0;
+  color: $white;
+  margin: 0 0 $white 0;
 }
 
 .emptyText {
-  font-size: vars.font-size-md;
-  color: vars.color-text-secondary;
-  margin: 0 0 vars.spacing-lg 0;
+  font-size: $white;
+  color: $white;
+  margin: 0 0 $white 0;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -288,38 +288,38 @@
 }
 
 .clearFiltersButton {
-  padding: vars.spacing-md vars.spacing-lg;
-  background: vars.color-primary;
-  color: vars.color-white;
+  padding: $white $white;
+  background: $white;
+  color: $white;
   border: none;
-  border-radius: $border-radius-md;
+  border-radius: $rounded-md;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
-    background: vars.color-primary-dark;
+    background: $white;
     transform: translateY(-2px);
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px vars.color-primary-light;
+    box-shadow: 0 0 0 3px $white;
   }
 }
 
 .leadsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: vars.spacing-lg;
+  gap: $white;
 }
 
 // Responsive Design
-@media (max-width: vars.breakpoint-tablet) {
+@media (max-width: $white) {
   .leadsHeader {
     flex-direction: column;
     align-items: stretch;
-    gap: vars.spacing-lg;
+    gap: $white;
   }
 
   .headerActions {
@@ -329,7 +329,7 @@
   .filterControls {
     flex-direction: column;
     align-items: stretch;
-    gap: vars.spacing-md;
+    gap: $white;
   }
 
   .statusFilters {
@@ -345,13 +345,13 @@
   }
 }
 
-@media (max-width: vars.breakpoint-mobile) {
+@media (max-width: $white) {
   .pageTitle {
-    font-size: vars.font-size-xl;
+    font-size: $white;
   }
 
   .filtersSection {
-    padding: vars.spacing-md;
+    padding: $white;
   }
 
   .searchInputWrapper {
@@ -359,16 +359,16 @@
   }
 
   .statusFilters {
-    gap: vars.spacing-xs;
+    gap: $white;
   }
 
   .filterButton {
-    padding: vars.spacing-xs vars.spacing-sm;
-    font-size: vars.font-size-xs;
+    padding: $white $white;
+    font-size: $white;
   }
 
   .emptyState {
-    padding: vars.spacing-lg;
+    padding: $white;
   }
 
   .emptyIcon {

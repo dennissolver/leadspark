@@ -1,20 +1,20 @@
-@use "../../../styles/mixins" as mixins;
-@use "../../../styles/variables" as vars;
+
+@use '@leadspark/styles/variables' as *;
 
 .container {
   // Use variables with their namespace
-  background-color: vars.color-background-primary;
-  font-family: vars.font-family-base;
+  background-color: $white;
+  font-family: $white;
 
   // Use mixins with their namespace
-  @include mixins.shadow-elevation-1;
+  
 }
 
 .sidebar {
   width: 280px;
   height: 100vh;
-  background: vars.color-background-secondary;
-  border-right: 1px solid vars.color-border-light;
+  background: $white;
+  border-right: 1px solid $white;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -32,49 +32,49 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: vars.spacing-lg;
-  border-bottom: 1px solid vars.color-border-light;
+  padding: $white;
+  border-bottom: 1px solid $white;
   min-height: 70px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: vars.spacing-sm;
+  gap: $white;
 }
 
 .logoIcon {
-  font-size: vars.font-size-xl;
+  font-size: $white;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .logoText {
-  font-size: vars.font-size-lg;
+  font-size: $white;
   font-weight: 700;
-  color: vars.color-text-primary;
+  color: $white;
   white-space: nowrap;
 }
 
 .collapseButton {
   background: none;
   border: none;
-  color: vars.color-text-secondary;
+  color: $white;
   cursor: pointer;
-  padding: vars.spacing-xs;
-  border-radius: $border-radius-sm;
+  padding: $white;
+  border-radius: $rounded;
   transition: all 0.2s ease;
 
   &:hover {
-    background: vars.color-background-primary;
-    color: vars.color-text-primary;
+    background: $white;
+    color: $white;
   }
 }
 
 .navigation {
   flex: 1;
-  padding: vars.spacing-lg 0;
+  padding: $white 0;
   overflow-y: auto;
 }
 
@@ -85,34 +85,34 @@
 }
 
 .navItem {
-  margin-bottom: vars.spacing-xs;
+  margin-bottom: $white;
 }
 
 .navLink {
   display: flex;
   align-items: center;
-  gap: vars.spacing-md;
-  padding: vars.spacing-md vars.spacing-lg;
-  color: vars.color-text-secondary;
+  gap: $white;
+  padding: $white $white;
+  color: $white;
   text-decoration: none;
   transition: all 0.2s ease;
   border-right: 3px solid transparent;
   position: relative;
 
   &:hover {
-    background: vars.color-background-primary;
-    color: vars.color-text-primary;
+    background: $white;
+    color: $white;
   }
 
   &.active {
-    background: vars.color-primary-light;
-    color: vars.color-primary-dark;
-    border-right-color: vars.color-primary;
+    background: $white;
+    color: $white;
+    border-right-color: $white;
   }
 }
 
 .navIcon {
-  font-size: vars.font-size-lg;
+  font-size: $white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,37 +125,37 @@
 }
 
 .badge {
-  background: vars.color-primary;
-  color: vars.color-white;
+  background: $white;
+  color: $white;
   border-radius: 50%;
   width: 20px;
   height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: vars.font-size-xs;
+  font-size: $white;
   font-weight: 600;
   margin-left: auto;
 }
 
 .quickStats {
-  padding: vars.spacing-lg;
-  border-top: 1px solid vars.color-border-light;
-  border-bottom: 1px solid vars.color-border-light;
+  padding: $white;
+  border-top: 1px solid $white;
+  border-bottom: 1px solid $white;
 }
 
 .statsTitle {
-  font-size: vars.font-size-sm;
+  font-size: $white;
   font-weight: 600;
-  color: vars.color-text-primary;
-  margin: 0 0 vars.spacing-md 0;
+  color: $white;
+  margin: 0 0 $white 0;
 }
 
 .statItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: vars.spacing-sm;
+  margin-bottom: $white;
 
   &:last-child {
     margin-bottom: 0;
@@ -163,39 +163,39 @@
 }
 
 .statLabel {
-  font-size: vars.font-size-xs;
-  color: vars.color-text-secondary;
+  font-size: $white;
+  color: $white;
 }
 
 .statValue {
-  font-size: vars.font-size-sm;
+  font-size: $white;
   font-weight: 600;
-  color: vars.color-primary;
+  color: $white;
 }
 
 .userProfile {
-  padding: vars.spacing-lg;
-  border-top: 1px solid vars.color-border-light;
+  padding: $white;
+  border-top: 1px solid $white;
 }
 
 .userInfo {
   display: flex;
   align-items: center;
-  gap: vars.spacing-md;
-  margin-bottom: vars.spacing-md;
+  gap: $white;
+  margin-bottom: $white;
 }
 
 .userAvatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, vars.color-primary, vars.color-primary-dark);
+  background: linear-gradient(135deg, $white, $white);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: vars.color-white;
+  color: $white;
   font-weight: 600;
-  font-size: vars.font-size-sm;
+  font-size: $white;
   flex-shrink: 0;
 }
 
@@ -205,17 +205,17 @@
 }
 
 .userName {
-  font-size: vars.font-size-sm;
+  font-size: $white;
   font-weight: 600;
-  color: vars.color-text-primary;
+  color: $white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .userEmail {
-  font-size: vars.font-size-xs;
-  color: vars.color-text-secondary;
+  font-size: $white;
+  color: $white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -224,69 +224,69 @@
 .userActions {
   display: flex;
   flex-direction: column;
-  gap: vars.spacing-xs;
+  gap: $white;
 }
 
 .settingsLink {
   display: flex;
   align-items: center;
-  gap: vars.spacing-sm;
-  padding: vars.spacing-sm;
-  color: vars.color-text-secondary;
+  gap: $white;
+  padding: $white;
+  color: $white;
   text-decoration: none;
-  border-radius: $border-radius-sm;
-  font-size: vars.font-size-sm;
+  border-radius: $rounded;
+  font-size: $white;
   transition: all 0.2s ease;
 
   &:hover {
-    background: vars.color-background-primary;
-    color: vars.color-text-primary;
+    background: $white;
+    color: $white;
   }
 }
 
 .settingsIcon {
-  font-size: vars.font-size-sm;
+  font-size: $white;
 }
 
 .signOutButton {
   display: flex;
   align-items: center;
-  gap: vars.spacing-sm;
-  padding: vars.spacing-sm;
+  gap: $white;
+  padding: $white;
   background: none;
   border: none;
-  color: vars.color-danger;
+  color: $white;
   text-align: left;
-  border-radius: $border-radius-sm;
-  font-size: vars.font-size-sm;
+  border-radius: $rounded;
+  font-size: $white;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    background: vars.color-danger-light;
+    background: $white;
   }
 }
 
 .signOutIcon {
-  font-size: vars.font-size-sm;
+  font-size: $white;
 }
 
 .signOutIconOnly {
   background: none;
   border: none;
-  color: vars.color-danger;
+  color: $white;
   cursor: pointer;
-  padding: vars.spacing-sm;
-  border-radius: $border-radius-sm;
+  padding: $white;
+  border-radius: $rounded;
   transition: all 0.2s ease;
 
   &:hover {
-    background: vars.color-danger-light;
+    background: $white;
   }
 }
 
 // Responsive design
-@media (max-width: vars.breakpoint-tablet) {
+@media (max-width: $white) {
   .sidebar {
     transform: translateX(-100%);
     transition: transform 0.3s ease;
@@ -310,12 +310,12 @@
 
   .collapseButton {
     position: absolute;
-    right: vars.spacing-sm;
+    right: $white;
   }
 
   .navLink {
     justify-content: center;
-    padding: vars.spacing-md;
+    padding: $white;
   }
 
   .userInfo {

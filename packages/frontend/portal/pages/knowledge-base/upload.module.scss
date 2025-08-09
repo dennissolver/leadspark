@@ -1,13 +1,13 @@
-@use "../../../styles/mixins" as mixins;
-@use "../../../styles/variables" as vars;
+
+@use '@leadspark/styles/variables' as *;
 
 .container {
   // Use variables with their namespace
-  background-color: vars.color-background-primary;
-  font-family: vars.font-family-base;
+  background-color: $white;
+  font-family: $white;
 
   // Use mixins with their namespace
-  @include mixins.shadow-elevation-1;
+  
 }
 
 .uploadContainer {
@@ -19,45 +19,45 @@
 .breadcrumb {
   display: flex;
   align-items: center;
-  gap: vars.spacing-sm;
-  margin-bottom: vars.spacing-lg;
-  font-size: vars.font-size-sm;
+  gap: $white;
+  margin-bottom: $white;
+  font-size: $white;
 }
 
 .breadcrumbLink {
-  color: vars.color-text-secondary;
+  color: $white;
   text-decoration: none;
   transition: color 0.2s ease;
 
   &:hover {
-    color: vars.color-primary;
+    color: $white;
   }
 }
 
 .breadcrumbSeparator {
-  color: vars.color-text-secondary;
+  color: $white;
 }
 
 .breadcrumbCurrent {
-  color: vars.color-text-primary;
+  color: $white;
   font-weight: 500;
 }
 
 .uploadHeader {
   text-align: center;
-  margin-bottom: vars.spacing-xl;
+  margin-bottom: $white;
 }
 
 .pageTitle {
-  font-size: vars.font-size-xxl;
+  font-size: $white;
   font-weight: 700;
-  color: vars.color-text-primary;
-  margin: 0 0 vars.spacing-md 0;
+  color: $white;
+  margin: 0 0 $white 0;
 }
 
 .pageDescription {
-  font-size: vars.font-size-lg;
-  color: vars.color-text-secondary;
+  font-size: $white;
+  color: $white;
   margin: 0;
   line-height: 1.6;
 }
@@ -66,90 +66,90 @@
 .successMessage {
   display: flex;
   align-items: center;
-  gap: vars.spacing-sm;
-  padding: vars.spacing-md;
-  border-radius: $border-radius-md;
-  margin-bottom: vars.spacing-lg;
+  gap: $white;
+  padding: $white;
+  border-radius: $rounded-md;
+  margin-bottom: $white;
   font-weight: 500;
 }
 
 .errorMessage {
-  background: vars.color-danger-light;
-  border: 1px solid vars.color-danger;
-  color: vars.color-danger-dark;
+  background: $white;
+  border: 1px solid $white;
+  color: $white;
 }
 
 .successMessage {
-  background: vars.color-success-light;
-  border: 1px solid vars.color-success;
-  color: vars.color-success-dark;
+  background: $white;
+  border: 1px solid $white;
+  color: $white;
 }
 
 .messageIcon {
-  font-size: vars.font-size-lg;
+  font-size: $white;
 }
 
 .uploadForm {
-  background: vars.color-background-secondary;
-  border: 1px solid vars.color-border-light;
-  border-radius: $border-radius-lg;
+  background: $white;
+  border: 1px solid $white;
+  border-radius: $rounded-lg;
   overflow: hidden;
 }
 
 .tabNavigation {
   display: flex;
-  border-bottom: 1px solid vars.color-border-light;
+  border-bottom: 1px solid $white;
 }
 
 .tabButton {
   flex: 1;
-  padding: vars.spacing-lg;
-  background: vars.color-background-primary;
+  padding: $white;
+  background: $white;
   border: none;
-  color: vars.color-text-secondary;
+  color: $white;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   border-bottom: 3px solid transparent;
 
   &:hover {
-    background: vars.color-background-secondary;
-    color: vars.color-text-primary;
+    background: $white;
+    color: $white;
   }
 
   &.active {
-    background: vars.color-background-secondary;
-    color: vars.color-primary;
-    border-bottom-color: vars.color-primary;
+    background: $white;
+    color: $white;
+    border-bottom-color: $white;
   }
 
   &:focus {
     outline: none;
-    background: vars.color-background-secondary;
+    background: $white;
   }
 }
 
 .tabContent {
-  padding: vars.spacing-xl;
+  padding: $white;
   min-height: 200px;
 }
 
 .documentUpload {
   display: flex;
   flex-direction: column;
-  gap: vars.spacing-lg;
+  gap: $white;
 }
 
 .fileUploadArea {
-  border: 2px dashed vars.color-border-light;
-  border-radius: $border-radius-lg;
-  padding: vars.spacing-xl;
+  border: 2px dashed $white;
+  border-radius: $rounded-lg;
+  padding: $white;
   text-align: center;
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: vars.color-primary;
-    background: vars.color-primary-light;
+    border-color: $white;
+    background: $white;
   }
 }
 
@@ -161,9 +161,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: vars.spacing-lg;
+  gap: $white;
   cursor: pointer;
-  color: vars.color-text-secondary;
+  color: $white;
 }
 
 .uploadIcon {
@@ -174,16 +174,16 @@
 .uploadText {
   display: flex;
   flex-direction: column;
-  gap: vars.spacing-xs;
+  gap: $white;
 
   strong {
-    font-size: vars.font-size-lg;
-    color: vars.color-text-primary;
+    font-size: $white;
+    color: $white;
   }
 
   span {
-    font-size: vars.font-size-sm;
-    color: vars.color-text-secondary;
+    font-size: $white;
+    color: $white;
   }
 }
 
@@ -191,126 +191,126 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: vars.spacing-md;
-  background: vars.color-background-primary;
-  border: 1px solid vars.color-border-light;
-  border-radius: $border-radius-md;
+  padding: $white;
+  background: $white;
+  border: 1px solid $white;
+  border-radius: $rounded-md;
 }
 
 .fileName {
   font-weight: 500;
-  color: vars.color-text-primary;
+  color: $white;
 }
 
 .fileSize {
-  font-size: vars.font-size-sm;
-  color: vars.color-text-secondary;
+  font-size: $white;
+  color: $white;
 }
 
 .urlUpload {
   display: flex;
   flex-direction: column;
-  gap: vars.spacing-lg;
+  gap: $white;
 }
 
 .urlInputGroup {
   display: flex;
-  gap: vars.spacing-md;
+  gap: $white;
 }
 
 .urlInput {
   flex: 1;
-  padding: vars.spacing-md;
-  border: 1px solid vars.color-border-light;
-  border-radius: $border-radius-md;
-  font-size: vars.font-size-md;
-  background: vars.color-background-primary;
+  padding: $white;
+  border: 1px solid $white;
+  border-radius: $rounded-md;
+  font-size: $white;
+  background: $white;
 
   &:focus {
     outline: none;
-    border-color: vars.color-primary;
-    box-shadow: 0 0 0 2px vars.color-primary-light;
+    border-color: $white;
+    box-shadow: 0 0 0 2px $white;
   }
 
   &::placeholder {
-    color: vars.color-text-secondary;
+    color: $white;
   }
 }
 
 .fetchButton {
-  padding: vars.spacing-md vars.spacing-lg;
-  background: vars.color-primary;
-  color: vars.color-white;
+  padding: $white $white;
+  background: $white;
+  color: $white;
   border: none;
-  border-radius: $border-radius-md;
+  border-radius: $rounded-md;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
 
   &:hover:not(:disabled) {
-    background: vars.color-primary-dark;
+    background: $white;
   }
 
   &:disabled {
-    background: vars.color-border-light;
-    color: vars.color-text-secondary;
+    background: $white;
+    color: $white;
     cursor: not-allowed;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px vars.color-primary-light;
+    box-shadow: 0 0 0 2px $white;
   }
 }
 
 .urlHelpText,
 .textHelpText {
-  color: vars.color-text-secondary;
-  font-size: vars.font-size-sm;
+  color: $white;
+  font-size: $white;
   margin: 0;
   line-height: 1.5;
 }
 
 .contentForm {
-  padding: vars.spacing-xl;
-  border-top: 1px solid vars.color-border-light;
+  padding: $white;
+  border-top: 1px solid $white;
 }
 
 .formGroup {
-  margin-bottom: vars.spacing-lg;
+  margin-bottom: $white;
 
   &:last-of-type {
-    margin-bottom: vars.spacing-xl;
+    margin-bottom: $white;
   }
 }
 
 .formLabel {
   display: block;
-  font-size: vars.font-size-sm;
+  font-size: $white;
   font-weight: 600;
-  color: vars.color-text-primary;
-  margin-bottom: vars.spacing-sm;
+  color: $white;
+  margin-bottom: $white;
 }
 
 .formInput,
 .contentTextarea {
   width: 100%;
-  padding: vars.spacing-md;
-  border: 1px solid vars.color-border-light;
-  border-radius: $border-radius-md;
-  font-size: vars.font-size-md;
-  background: vars.color-background-primary;
+  padding: $white;
+  border: 1px solid $white;
+  border-radius: $rounded-md;
+  font-size: $white;
+  background: $white;
   font-family: inherit;
 
   &:focus {
     outline: none;
-    border-color: vars.color-primary;
-    box-shadow: 0 0 0 2px vars.color-primary-light;
+    border-color: $white;
+    box-shadow: 0 0 0 2px $white;
   }
 
   &::placeholder {
-    color: vars.color-text-secondary;
+    color: $white;
   }
 }
 
@@ -321,16 +321,16 @@
 }
 
 .characterCount {
-  margin-top: vars.spacing-xs;
-  font-size: vars.font-size-xs;
-  color: vars.color-text-secondary;
+  margin-top: $white;
+  font-size: $white;
+  color: $white;
   text-align: right;
 }
 
 .fieldHelp {
-  margin-top: vars.spacing-xs;
-  font-size: vars.font-size-xs;
-  color: vars.color-text-secondary;
+  margin-top: $white;
+  font-size: $white;
+  color: $white;
   line-height: 1.4;
 }
 
@@ -338,62 +338,62 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: vars.spacing-md;
-  padding-top: vars.spacing-lg;
-  border-top: 1px solid vars.color-border-light;
+  gap: $white;
+  padding-top: $white;
+  border-top: 1px solid $white;
 }
 
 .cancelButton {
-  padding: vars.spacing-md vars.spacing-lg;
-  color: vars.color-text-secondary;
+  padding: $white $white;
+  color: $white;
   text-decoration: none;
-  border: 1px solid vars.color-border-light;
-  border-radius: $border-radius-md;
+  border: 1px solid $white;
+  border-radius: $rounded-md;
   font-weight: 500;
   transition: all 0.2s ease;
 
   &:hover {
-    background: vars.color-background-primary;
-    color: vars.color-text-primary;
-    border-color: vars.color-text-secondary;
+    background: $white;
+    color: $white;
+    border-color: $white;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px vars.color-primary-light;
+    box-shadow: 0 0 0 2px $white;
   }
 }
 
 .submitButton {
-  padding: vars.spacing-md vars.spacing-xl;
-  background: vars.color-success;
-  color: vars.color-white;
+  padding: $white $white;
+  background: $white;
+  color: $white;
   border: none;
-  border-radius: $border-radius-md;
+  border-radius: $rounded-md;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover:not(:disabled) {
-    background: vars.color-success-dark;
+    background: $white;
     transform: translateY(-2px);
   }
 
   &:disabled {
-    background: vars.color-border-light;
-    color: vars.color-text-secondary;
+    background: $white;
+    color: $white;
     cursor: not-allowed;
     transform: none;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px vars.color-success-light;
+    box-shadow: 0 0 0 3px $white;
   }
 }
 
 // Responsive Design
-@media (max-width: vars.breakpoint-tablet) {
+@media (max-width: $white) {
   .uploadContainer {
     max-width: none;
     padding: 0;
@@ -409,13 +409,13 @@
     text-align: left;
 
     &.active {
-      border-right-color: vars.color-primary;
+      border-right-color: $white;
       border-bottom-color: transparent;
     }
   }
 
   .tabContent {
-    padding: vars.spacing-lg;
+    padding: $white;
   }
 
   .urlInputGroup {
@@ -427,7 +427,7 @@
   }
 
   .contentForm {
-    padding: vars.spacing-lg;
+    padding: $white;
   }
 
   .formActions {
@@ -442,13 +442,13 @@
   }
 }
 
-@media (max-width: vars.breakpoint-mobile) {
+@media (max-width: $white) {
   .pageTitle {
-    font-size: vars.font-size-xl;
+    font-size: $white;
   }
 
   .pageDescription {
-    font-size: vars.font-size-md;
+    font-size: $white;
   }
 
   .uploadIcon {
@@ -456,18 +456,18 @@
   }
 
   .uploadText strong {
-    font-size: vars.font-size-md;
+    font-size: $white;
   }
 
   .fileUploadArea {
-    padding: vars.spacing-lg;
+    padding: $white;
   }
 
   .tabContent {
-    padding: vars.spacing-md;
+    padding: $white;
   }
 
   .contentForm {
-    padding: vars.spacing-md;
+    padding: $white;
   }
 }

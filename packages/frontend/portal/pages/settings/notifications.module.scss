@@ -1,13 +1,13 @@
-@use "../../../styles/mixins" as mixins;
-@use "../../../styles/variables" as vars;
+
+@use '@leadspark/styles/variables' as *;
 
 .container {
   // Use variables with their namespace
-  background-color: vars.color-background-primary;
-  font-family: vars.font-family-base;
+  background-color: $white;
+  font-family: $white;
 
   // Use mixins with their namespace
-  @include mixins.shadow-elevation-1;
+  
 }
 
 .notificationsContainer {
@@ -15,7 +15,7 @@
   margin: 0 auto;
   padding: 2rem;
 
-  @include mobile {
+  @media (max-width: 640px) {
     padding: 1rem;
   }
 }
@@ -31,14 +31,14 @@
   .spinner {
     width: 40px;
     height: 40px;
-    border: 4px solid vars.color-border-light;
-    border-top: 4px solid vars.color-primary;
+    border: 4px solid $white;
+    border-top: 4px solid $white;
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
 
   p {
-    color: vars.color-text-secondary;
+    color: $white;
     font-size: 1rem;
   }
 }
@@ -54,7 +54,7 @@
   .backButton {
     display: inline-flex;
     align-items: center;
-    color: vars.color-text-secondary;
+    color: $white;
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
@@ -62,20 +62,20 @@
     transition: color 0.2s ease;
 
     &:hover {
-      color: vars.color-primary;
+      color: $white;
     }
   }
 
   .title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: vars.color-text-primary;
+    color: $white;
     margin-bottom: 0.5rem;
   }
 
   .subtitle {
     font-size: 1.125rem;
-    color: vars.color-text-secondary;
+    color: $white;
     max-width: 700px;
   }
 }
@@ -86,19 +86,19 @@
   gap: 2rem;
   margin-bottom: 3rem;
 
-  @include tablet {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
-  @include mobile {
+  @media (max-width: 640px) {
     grid-template-columns: 1fr;
   }
 }
 
 .section {
-  background: vars.color-background-card;
-  border: 1px solid vars.color-border-light;
+  background: $white;
+  border: 1px solid $white;
   border-radius: 12px;
   overflow: hidden;
 
@@ -107,13 +107,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 2rem;
-    background: vars.color-background-secondary;
-    border-bottom: 1px solid vars.color-border-light;
+    background: $white;
+    border-bottom: 1px solid $white;
 
     .sectionTitle {
       font-size: 1.25rem;
       font-weight: 600;
-      color: vars.color-text-primary;
+      color: $white;
       margin: 0;
     }
   }
@@ -149,7 +149,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: vars.color-border-light;
+      background-color: $white;
       transition: 0.3s;
       border-radius: 24px;
 
@@ -167,7 +167,7 @@
     }
 
     input:checked + .slider {
-      background-color: vars.color-primary;
+      background-color: $white;
     }
 
     input:checked + .slider:before {
@@ -188,12 +188,12 @@
     input[type="checkbox"] {
       width: 18px;
       height: 18px;
-      accent-color: vars.color-primary;
+      accent-color: $white;
     }
 
     label {
       font-size: 0.875rem;
-      color: vars.color-text-primary;
+      color: $white;
       cursor: pointer;
     }
   }
@@ -206,7 +206,7 @@
   h4 {
     font-size: 0.875rem;
     font-weight: 600;
-    color: vars.color-text-primary;
+    color: $white;
     margin-bottom: 1rem;
   }
 
@@ -220,21 +220,21 @@
     .phoneInput {
       flex: 1;
       padding: 0.75rem;
-      border: 1px solid vars.color-border-light;
+      border: 1px solid $white;
       border-radius: 8px;
       font-size: 0.875rem;
       transition: border-color 0.2s ease;
 
       &:focus {
         outline: none;
-        border-color: vars.color-primary;
-        box-shadow: 0 0 0 3px rgba(vars.color-primary, 0.1);
+        border-color: $white;
+        box-shadow: 0 0 0 3px rgba($white, 0.1);
       }
     }
 
     .addButton {
       padding: 0.75rem 1.5rem;
-      background: vars.color-primary;
+      background: $white;
       color: white;
       border: none;
       border-radius: 8px;
@@ -244,11 +244,11 @@
       transition: background-color 0.2s ease;
 
       &:hover:not(:disabled) {
-        background: darken(vars.color-primary, 5%);
+        background: darken($white, 5%);
       }
 
       &:disabled {
-        background: vars.color-text-muted;
+        background: $white;
         cursor: not-allowed;
       }
     }
@@ -266,16 +266,16 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.5rem 0.75rem;
-      background: vars.color-background-secondary;
-      border: 1px solid vars.color-border-light;
+      background: $white;
+      border: 1px solid $white;
       border-radius: 20px;
       font-size: 0.75rem;
-      color: vars.color-text-primary;
+      color: $white;
 
       .removeTag {
         background: none;
         border: none;
-        color: vars.color-danger;
+        color: $white;
         cursor: pointer;
         font-size: 1rem;
         line-height: 1;
@@ -287,7 +287,7 @@
         justify-content: center;
 
         &:hover {
-          color: darken(vars.color-danger, 10%);
+          color: darken($white, 10%);
         }
       }
     }
@@ -301,7 +301,7 @@
     display: block;
     font-size: 0.875rem;
     font-weight: 600;
-    color: vars.color-text-primary;
+    color: $white;
     margin-bottom: 0.5rem;
   }
 
@@ -309,7 +309,7 @@
   .textarea {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid vars.color-border-light;
+    border: 1px solid $white;
     border-radius: 8px;
     font-size: 0.875rem;
     font-family: inherit;
@@ -317,12 +317,12 @@
 
     &:focus {
       outline: none;
-      border-color: vars.color-primary;
-      box-shadow: 0 0 0 3px rgba(vars.color-primary, 0.1);
+      border-color: $white;
+      box-shadow: 0 0 0 3px rgba($white, 0.1);
     }
 
     &::placeholder {
-      color: vars.color-text-muted;
+      color: $white;
     }
   }
 
@@ -341,7 +341,7 @@
 .testButton {
   width: 100%;
   padding: 0.75rem;
-  background: vars.color-secondary;
+  background: $white;
   color: white;
   border: none;
   border-radius: 8px;
@@ -351,11 +351,11 @@
   transition: background-color 0.2s ease;
 
   &:hover:not(:disabled) {
-    background: darken(vars.color-secondary, 5%);
+    background: darken($white, 5%);
   }
 
   &:disabled {
-    background: vars.color-text-muted;
+    background: $white;
     cursor: not-allowed;
   }
 }
@@ -364,11 +364,11 @@
   display: flex;
   justify-content: center;
   padding-top: 2rem;
-  border-top: 1px solid vars.color-border-light;
+  border-top: 1px solid $white;
 
   .saveButton {
     padding: 1rem 3rem;
-    background: vars.color-primary;
+    background: $white;
     color: white;
     border: none;
     border-radius: 8px;
@@ -378,11 +378,11 @@
     transition: background-color 0.2s ease;
 
     &:hover:not(:disabled) {
-      background: darken(vars.color-primary, 5%);
+      background: darken($white, 5%);
     }
 
     &:disabled {
-      background: vars.color-text-muted;
+      background: $white;
       cursor: not-allowed;
     }
   }

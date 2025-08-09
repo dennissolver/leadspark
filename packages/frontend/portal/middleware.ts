@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
+import type { User } from '@supabase/supabase-js'
 
 // 👇 add/adjust protected sections as needed
 const PROTECTED_MATCHERS = [
@@ -8,24 +9,26 @@ const PROTECTED_MATCHERS = [
   '/settings',
   '/knowledge-base',
   '/billing',
-]
+] as const
 
-function isProtectedPath(pathname: string) {
+function isProtectedPath(pathname: string): boolean {
   return PROTECTED_MATCHERS.some((p) => pathname === p || pathname.startsWith(`${p}/`))
 }
 
-function getTenantIdFromUser(user: any): string | null {
+function getTenantIdFromUser(user: User | null): string | null {
+  if (!user) return null
+
   // Safely read from user_metadata (current) or app_metadata (legacy)
-  const um = user?.user_metadata
+  const um = user.user_metadata
   if (um && typeof um.tenant_id === 'string' && um.tenant_id.length) return um.tenant_id
 
-  const am = user?.app_metadata
+  const am = user.app_metadata
   if (am && typeof am.tenant_id === 'string' && am.tenant_id.length) return am.tenant_id
 
   return null
 }
 
-export async function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest): Promise<NextResponse> {
   const { pathname } = req.nextUrl
 
   // Skip public paths early. The matcher in `config` handles this for most cases,
@@ -40,18 +43,36 @@ export async function middleware(req: NextRequest) {
     },
   })
 
-  // The cookie functions required by createServerClient
+  // Check for required environment variables
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.error('Missing required Supabase environment variables')
+    return NextResponse.redirect(new URL('/error', req.url))
+  }
+
+  // The cookie functions required by createServerClient - Updated API
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
-        getAll() {
-          return req.cookies.getAll()
+        get(name: string) {
+          return req.cookies.get(name)?.value
         },
-        setAll(cookies) {
-          cookies.forEach(({ name, value, options }) => {
-            res.cookies.set(name, value, options)
+        set(name: string, value: string, options = {}) {
+          res.cookies.set({
+            name,
+            value,
+            ...options,
+          })
+        },
+        remove(name: string, options = {}) {
+          res.cookies.set({
+            name,
+            value: '',
+            ...options,
           })
         },
       },

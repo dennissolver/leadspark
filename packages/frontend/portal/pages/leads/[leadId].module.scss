@@ -1,4 +1,4 @@
-@use "../../../styles/mixins" as mixins;
+
 @use "../../../../../styles/variables" as vars;
 
 .container {
@@ -7,7 +7,7 @@
   font-family: vars.font-family-base;
 
   // Use mixins with their namespace
-  @include mixins.shadow-elevation-1;
+  
 }
 
 .leadDetailContainer {
@@ -65,7 +65,7 @@
   background: vars.color-success; // Corrected variable reference
   color: vars.color-white; // Corrected variable reference
   border: none;
-  border-radius: vars.$border-radius-md; // Corrected variable reference
+  border-radius: $rounded-md; // Corrected variable reference
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -113,7 +113,7 @@
 
 .conversationCard {
   border: 1px solid vars.color-border-light; // Corrected variable reference
-  border-radius: vars.$border-radius-md; // Corrected variable reference
+  border-radius: $rounded-md; // Corrected variable reference
   background: vars.color-background-primary; // Corrected variable reference
   overflow: hidden;
 }
@@ -138,7 +138,7 @@
   color: vars.color-text-secondary; // Corrected variable reference
   background: vars.color-border-light; // Corrected variable reference
   padding: vars.spacing-xs vars.spacing-sm; // Corrected variable reference
-  border-radius: vars.$border-radius-sm; // Corrected variable reference
+  border-radius: $rounded; // Corrected variable reference
 }
 
 .conversationContent {
@@ -333,7 +333,7 @@
   background: vars.color-primary; // Corrected variable reference
   color: vars.color-white; // Corrected variable reference
   text-decoration: none;
-  border-radius: vars.$border-radius-md; // Corrected variable reference
+  border-radius: $rounded-md; // Corrected variable reference
   font-weight: 600;
   transition: all 0.3s ease;
 
@@ -378,7 +378,7 @@
   padding: vars.spacing-lg; // Corrected variable reference
   background: vars.color-background-secondary; // Corrected variable reference
   border: 1px solid vars.color-border-light; // Corrected variable reference
-  border-radius: vars.$border-radius-lg; // Corrected variable reference
+  border-radius: $rounded-lg; // Corrected variable reference
 }
 
 .leadInfo {
@@ -439,7 +439,7 @@
 
 .statusBadge {
   padding: vars.spacing-sm vars.spacing-md; // Corrected variable reference
-  border-radius: vars.$border-radius-md; // Corrected variable reference
+  border-radius: $rounded-md; // Corrected variable reference
   font-size: vars.font-size-sm; // Corrected variable reference
   font-weight: 600;
   text-transform: uppercase;
@@ -485,7 +485,7 @@
 .conversationsSection {
   background: vars.color-background-secondary; // Corrected variable reference
   border: 1px solid vars.color-border-light; // Corrected variable reference
-  border-radius: vars.$border-radius-lg; // Corrected variable reference
+  border-radius: $rounded-lg; // Corrected variable reference
   padding: vars.spacing-lg; // Corrected variable reference
 }
 
@@ -534,7 +534,7 @@
 .statusButton {
   padding: vars.spacing-md; // Corrected variable reference
   border: 2px solid vars.color-border-light; // Corrected variable reference
-  border-radius: vars.$border-radius-md; // Corrected variable reference
+  border-radius: $rounded-md; // Corrected variable reference
   background: vars.color-background-primary; // Corrected variable reference
   color: vars.color-text-secondary; // Corrected variable reference
   font-weight: 600;
@@ -567,7 +567,7 @@
   width: 100%;
   padding: vars.spacing-md; // Corrected variable reference
   border: 1px solid vars.color-border-light; // Corrected variable reference
-  border-radius: vars.$border-radius-md; // Corrected variable reference
+  border-radius: $rounded-md; // Corrected variable reference
   background: vars.color-background-primary; // Corrected variable reference
   color: vars.color-text-primary; // Corrected variable reference
   font-size: vars.font-size-sm; // Corrected variable reference

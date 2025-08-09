@@ -1,13 +1,13 @@
-@use "../../../styles/mixins" as mixins;
-@use "../../../styles/variables" as vars;
+
+@use '@leadspark/styles/variables' as *;
 
 .container {
   // Use variables with their namespace
-  background-color: vars.color-background-primary;
-  font-family: vars.font-family-base;
+  background-color: $white;
+  font-family: $white;
 
   // Use mixins with their namespace
-  @include mixins.shadow-elevation-1;
+  
 }
 .dashboardContainer {
   max-width: 1400px;
@@ -21,14 +21,14 @@
   align-items: center;
   justify-content: center;
   min-height: 60vh;
-  gap: vars.spacing-lg;
+  gap: $white;
 }
 
 .loadingSpinner {
   width: 40px;
   height: 40px;
-  border: 3px solid vars.color-border-light;
-  border-top: 3px solid vars.color-primary;
+  border: 3px solid $white;
+  border-top: 3px solid $white;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -39,8 +39,8 @@
 }
 
 .loadingText {
-  color: vars.color-text-secondary;
-  font-size: vars.font-size-lg;
+  color: $white;
+  font-size: $white;
   margin: 0;
 }
 
@@ -48,9 +48,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: vars.spacing-xl;
-  padding-bottom: vars.spacing-lg;
-  border-bottom: 1px solid vars.color-border-light;
+  margin-bottom: $white;
+  padding-bottom: $white;
+  border-bottom: 1px solid $white;
 }
 
 .headerContent {
@@ -58,79 +58,79 @@
 }
 
 .pageTitle {
-  font-size: vars.font-size-xxl;
+  font-size: $white;
   font-weight: 700;
-  color: vars.color-text-primary;
-  margin: 0 0 vars.spacing-sm 0;
+  color: $white;
+  margin: 0 0 $white 0;
 }
 
 .welcomeText {
-  font-size: vars.font-size-lg;
-  color: vars.color-text-secondary;
+  font-size: $white;
+  color: $white;
   margin: 0;
 }
 
 .headerActions {
   display: flex;
-  gap: vars.spacing-md;
+  gap: $white;
 }
 
 .viewAllButton {
   display: inline-flex;
   align-items: center;
-  padding: vars.spacing-md vars.spacing-lg;
-  background: vars.color-primary;
-  color: vars.color-white;
+  padding: $white $white;
+  background: $white;
+  color: $white;
   text-decoration: none;
-  border-radius: $border-radius-md;
+  border-radius: $rounded-md;
   font-weight: 600;
   transition: all 0.3s ease;
 
   &:hover {
-    background: vars.color-primary-dark;
+    background: $white;
     transform: translateY(-2px);
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px vars.color-primary-light;
+    box-shadow: 0 0 0 3px $white;
   }
 }
 
 .errorMessage {
   display: flex;
   align-items: center;
-  gap: vars.spacing-sm;
-  padding: vars.spacing-md;
-  background: vars.color-danger-light;
-  border: 1px solid vars.color-danger;
-  border-radius: $border-radius-md;
-  color: vars.color-danger-dark;
-  margin-bottom: vars.spacing-lg;
+  gap: $white;
+  padding: $white;
+  background: $white;
+  border: 1px solid $white;
+  border-radius: $rounded-md;
+  color: $white;
+  margin-bottom: $white;
 }
 
 .errorIcon {
-  font-size: vars.font-size-lg;
+  font-size: $white;
 }
 
 .statsSection {
-  margin-bottom: vars.spacing-xl;
+  margin-bottom: $white;
 }
 
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: vars.spacing-lg;
+  gap: $white;
 }
 
 .statCard {
-  background: vars.color-background-secondary;
-  border: 1px solid vars.color-border-light;
-  border-radius: $border-radius-lg;
-  padding: vars.spacing-lg;
+  background: $white;
+  border: 1px solid $white;
+  border-radius: $rounded-lg;
+  padding: $white;
   display: flex;
   align-items: center;
-  gap: vars.spacing-md;
+  gap: $white;
   transition: all 0.3s ease;
 
   &:hover {
@@ -141,7 +141,7 @@
 
 .statIcon {
   font-size: 2rem;
-  background: vars.color-primary-light;
+  background: $white;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -156,98 +156,98 @@
 }
 
 .statValue {
-  font-size: vars.font-size-xxl;
+  font-size: $white;
   font-weight: 700;
-  color: vars.color-primary;
-  margin: 0 0 vars.spacing-xs 0;
+  color: $white;
+  margin: 0 0 $white 0;
 }
 
 .statLabel {
-  font-size: vars.font-size-sm;
-  color: vars.color-text-secondary;
-  margin: 0 0 vars.spacing-xs 0;
+  font-size: $white;
+  color: $white;
+  margin: 0 0 $white 0;
   font-weight: 500;
 }
 
 .statTrend {
-  font-size: vars.font-size-xs;
+  font-size: $white;
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: vars.spacing-xs;
+  gap: $white;
 
   &.positive {
-    color: vars.color-success-dark;
+    color: $white;
   }
 
   &.negative {
-    color: vars.color-danger;
+    color: $white;
   }
 }
 
 .statPercentage {
-  font-size: vars.font-size-xs;
-  color: vars.color-text-secondary;
+  font-size: $white;
+  color: $white;
 }
 
 .activitySection,
 .quickActions {
-  margin-bottom: vars.spacing-xl;
+  margin-bottom: $white;
 }
 
 .sectionHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: vars.spacing-lg;
+  margin-bottom: $white;
 }
 
 .sectionTitle {
-  font-size: vars.font-size-xl;
+  font-size: $white;
   font-weight: 600;
-  color: vars.color-text-primary;
+  color: $white;
   margin: 0;
 }
 
 .sectionAction {
-  color: vars.color-primary;
+  color: $white;
   text-decoration: none;
   font-weight: 600;
-  padding: vars.spacing-sm vars.spacing-md;
-  border-radius: $border-radius-sm;
+  padding: $white $white;
+  border-radius: $rounded;
   transition: all 0.2s ease;
 
   &:hover {
-    background: vars.color-primary-light;
-    color: vars.color-primary-dark;
+    background: $white;
+    color: $white;
   }
 }
 
 .emptyState {
   text-align: center;
-  padding: vars.spacing-xxl;
-  background: vars.color-background-secondary;
-  border: 2px dashed vars.color-border-light;
-  border-radius: $border-radius-lg;
+  padding: $white;
+  background: $white;
+  border: 2px dashed $white;
+  border-radius: $rounded-lg;
 }
 
 .emptyIcon {
   font-size: 4rem;
-  margin-bottom: vars.spacing-lg;
+  margin-bottom: $white;
   opacity: 0.6;
 }
 
 .emptyTitle {
-  font-size: vars.font-size-xl;
+  font-size: $white;
   font-weight: 600;
-  color: vars.color-text-primary;
-  margin: 0 0 vars.spacing-md 0;
+  color: $white;
+  margin: 0 0 $white 0;
 }
 
 .emptyText {
-  font-size: vars.font-size-md;
-  color: vars.color-text-secondary;
-  margin: 0 0 vars.spacing-lg 0;
+  font-size: $white;
+  color: $white;
+  margin: 0 0 $white 0;
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
@@ -256,16 +256,16 @@
 .setupButton {
   display: inline-flex;
   align-items: center;
-  padding: vars.spacing-md vars.spacing-lg;
-  background: vars.color-primary;
-  color: vars.color-white;
+  padding: $white $white;
+  background: $white;
+  color: $white;
   text-decoration: none;
-  border-radius: $border-radius-md;
+  border-radius: $rounded-md;
   font-weight: 600;
   transition: all 0.3s ease;
 
   &:hover {
-    background: vars.color-primary-dark;
+    background: $white;
     transform: translateY(-2px);
   }
 }
@@ -273,39 +273,39 @@
 .leadsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: vars.spacing-lg;
+  gap: $white;
 }
 
 .actionsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: vars.spacing-lg;
+  gap: $white;
 }
 
 .actionCard {
   display: flex;
   align-items: flex-start;
-  gap: vars.spacing-md;
-  padding: vars.spacing-lg;
-  background: vars.color-background-secondary;
-  border: 1px solid vars.color-border-light;
-  border-radius: $border-radius-lg;
+  gap: $white;
+  padding: $white;
+  background: $white;
+  border: 1px solid $white;
+  border-radius: $rounded-lg;
   text-decoration: none;
   transition: all 0.3s ease;
 
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    border-color: vars.color-primary-light;
+    border-color: $white;
   }
 }
 
 .actionIcon {
   font-size: 2rem;
-  background: vars.color-primary-light;
+  background: $white;
   width: 50px;
   height: 50px;
-  border-radius: $border-radius-md;
+  border-radius: $rounded-md;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -317,25 +317,25 @@
 }
 
 .actionTitle {
-  font-size: vars.font-size-lg;
+  font-size: $white;
   font-weight: 600;
-  color: vars.color-text-primary;
-  margin: 0 0 vars.spacing-xs 0;
+  color: $white;
+  margin: 0 0 $white 0;
 }
 
 .actionDescription {
-  font-size: vars.font-size-sm;
-  color: vars.color-text-secondary;
+  font-size: $white;
+  color: $white;
   margin: 0;
   line-height: 1.5;
 }
 
 // Responsive Design
-@media (max-width: vars.breakpoint-tablet) {
+@media (max-width: $white) {
   .dashboardHeader {
     flex-direction: column;
     align-items: stretch;
-    gap: vars.spacing-lg;
+    gap: $white;
   }
 
   .headerActions {
@@ -347,7 +347,7 @@
   }
 
   .statCard {
-    padding: vars.spacing-md;
+    padding: $white;
   }
 
   .statIcon {
@@ -365,13 +365,13 @@
   }
 }
 
-@media (max-width: vars.breakpoint-mobile) {
+@media (max-width: $white) {
   .pageTitle {
-    font-size: vars.font-size-xl;
+    font-size: $white;
   }
 
   .emptyState {
-    padding: vars.spacing-lg;
+    padding: $white;
   }
 
   .emptyIcon {
@@ -379,7 +379,7 @@
   }
 
   .actionCard {
-    padding: vars.spacing-md;
+    padding: $white;
   }
 
   .actionIcon {
