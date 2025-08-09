@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Layout from '../../components/layout';
-import { useSupabase } from '../../hooks/useSupabase';
+import useSupabase from '../../hooks/useSupabase';
 import { dbHelpers } from '../../lib/supabaseClient';
 import styles from './upload.module.scss';
 

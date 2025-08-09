@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/layout';
 import LeadCard from '../components/LeadCard';
-import { useSupabase } from '../hooks/useSupabase';
+import useSupabase from '../hooks/useSupabase';
 import { dbHelpers, Lead } from '../lib/supabaseClient';
 import styles from './dashboard.module.scss';
 

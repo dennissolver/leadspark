@@ -25,6 +25,7 @@
     "deploy:admin": "cd packages/frontend/admin-portal && vercel --prod"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
     "sass": "^1.90.0",
     "turbo": "latest",
     "typescript": "^5.0.0"

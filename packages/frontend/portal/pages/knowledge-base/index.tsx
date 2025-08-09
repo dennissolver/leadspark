@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/layout';
-import { useSupabase } from '../../hooks/useSupabase';
+import useSupabase from '../../hooks/useSupabase';
 import { dbHelpers, KnowledgeBaseEntry } from '../../lib/supabaseClient';
 import styles from './index.module.scss';
 

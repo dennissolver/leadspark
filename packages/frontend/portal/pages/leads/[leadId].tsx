@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Layout from '../../components/layout';
-import { useSupabase } from '../../hooks/useSupabase';
+import useSupabase from '../../hooks/useSupabase';
 import { dbHelpers, Lead, Conversation } from '../../lib/supabaseClient';
 import styles from './[leadId].module.scss';
 

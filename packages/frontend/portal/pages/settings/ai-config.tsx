@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Layout from '../../components/layout';
-import { useSupabase } from '../../hooks/useSupabase';
+import useSupabase from '../../hooks/useSupabase';
 import styles from './ai-config.module.scss';
 
 interface AIConfig {

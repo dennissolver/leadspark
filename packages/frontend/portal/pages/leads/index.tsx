@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Layout from '../../components/layout';
 import LeadCard from '../../components/LeadCard';
-import { useSupabase } from '../../hooks/useSupabase';
+import useSupabase from '../../hooks/useSupabase';
 import { dbHelpers, Lead } from '../../lib/supabaseClient';
 import styles from './index.module.scss';
 
