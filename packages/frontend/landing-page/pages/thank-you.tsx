@@ -5,7 +5,7 @@ import s from './thank-you.module.scss'; // Corrected import path
 
 const ThankYouPage: React.FC = () => {
   // This is the base URL for the portal application
-  const portalUrl = 'https://leadspark-tenant.vercel.app';
+  const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://leadspark-tenant.vercel.app';
 
   return (
     <div className={s.page}>
