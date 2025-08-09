@@ -1,0 +1,86 @@
+@use "../../styles/mixins" as mixins;
+@use "../../styles/variables" as vars;
+
+.page {
+  min-height: 100vh;
+  background-color: vars.$color-background-primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: vars.$spacing-8;
+}
+
+.container {
+  text-align: center;
+  padding: vars.$spacing-xl;
+  background-color: vars.$color-background-secondary;
+  border-radius: vars.$border-radius-lg;
+  border: 1px solid vars.$color-border-light;
+  @include mixins.shadow-elevation-2;
+  max-width: 500px;
+}
+
+.title {
+  font-size: vars.$font-size-xxl;
+  font-weight: 700;
+  color: vars.$color-text-primary;
+  margin: 0 0 vars.$spacing-md 0;
+}
+
+.subtitle {
+  font-size: vars.$font-size-lg;
+  color: vars.$color-text-secondary;
+  margin: 0 0 vars.$spacing-lg 0;
+}
+
+.description {
+  font-size: vars.$font-size-md;
+  color: vars.$color-text-secondary;
+  margin: 0 0 vars.$spacing-xl 0;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: vars.$spacing-lg;
+  margin-top: vars.$spacing-lg;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: vars.$spacing-md vars.$spacing-xl;
+  background-color: vars.$color-primary;
+  color: vars.$color-white;
+  text-decoration: none;
+  border-radius: vars.$border-radius-md;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: vars.$color-primary-dark;
+    transform: translateY(-2px);
+  }
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: vars.$spacing-md vars.$spacing-xl;
+  color: vars.$color-text-secondary;
+  text-decoration: none;
+  border: 1px solid vars.$color-border-light;
+  border-radius: vars.$border-radius-md;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: vars.$color-background-primary;
+    color: vars.$color-text-primary;
+    border-color: vars.$color-text-primary;
+  }
+}

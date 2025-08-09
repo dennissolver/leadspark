@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { supabase } from '../lib/supabaseClient'; // Make sure this import is correct
+import { AuthError } from '@supabase/supabase-js';
 import styles from './signup.module.scss';
 
 interface SignupFormData {
@@ -31,7 +33,8 @@ export default function Signup() {
     companyName: ''
   });
   const [errors, setErrors] = useState<SignupErrors>({});
-  const portalUrl = 'https://leadspark-tenant.vercel.app/'; // The portal app URL
+  // This is the base URL for the portal application
+  const portalUrl = 'https://leadspark-tenant.vercel.app/';
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -89,26 +92,64 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      // Here you would implement your backend API call to create a new user.
-      // You would then redirect the user to an onboarding page or dashboard.
-      // For now, this is a simulated success.
-      alert('Signup successful! Redirecting to dashboard...');
-      window.location.href = portalUrl; // Redirect to the portal app
+      // ✅ Call the Supabase sign-up method with email and password
+      const { data, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          // You can pass additional user metadata here
+          data: {
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+            company_name: formData.companyName,
+          },
+          // Redirect the user to the portal's login page after confirmation
+          emailRedirectTo: `${portalUrl}login`,
+        },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      // If no error, show a success message and redirect to the portal login page
+      // ✅ Redirect to a new "thank-you" page on the landing app
+      router.push('/thank-you');
     } catch (error) {
       console.error('Signup error:', error);
-      setErrors({
-        general: 'Signup failed. Please try again.'
-      });
+      let errorMessage = 'Signup failed. Please try again.';
+
+      if (error instanceof AuthError) {
+        errorMessage = error.message;
+      } else if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+
+      setErrors({ general: errorMessage });
     } finally {
       setLoading(false);
     }
   };
 
   const handleGoogleLogin = async (): Promise<void> => {
-    // This function would initiate the Google SSO flow.
-    // For this example, we will simulate a redirection.
-    alert('Initiating Google sign-in...');
-    window.location.href = portalUrl; // Redirect to the portal app
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          // Redirect to the portal app after successful login
+          redirectTo: `${portalUrl}dashboard`
+        }
+      });
+
+      if (error) {
+        throw error;
+      }
+    } catch (error) {
+      console.error('Google login error:', error);
+      setErrors({
+        general: 'Google sign-in failed. Please try again.'
+      });
+    }
   };
 
   return (
