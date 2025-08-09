@@ -3,8 +3,8 @@
 
 .container {
   // Use variables with their namespace
-  background-color: vars.vars.color-background-primary;
-  font-family: vars.vars.font-family-base;
+  background-color: vars.color-background-primary;
+  font-family: vars.font-family-base;
 
   // Use mixins with their namespace
   @include mixins.shadow-elevation-1;
@@ -23,15 +23,15 @@
   align-items: center;
   justify-content: center;
   min-height: 60vh;
-  gap: vars.vars.spacing-lg; // Corrected variable reference
+  gap: vars.spacing-lg; // Corrected variable reference
   text-align: center;
 }
 
 .loadingSpinner {
   width: 40px;
   height: 40px;
-  border: 3px solid vars.vars.color-border-light; // Corrected variable reference
-  border-top: 3px solid vars.vars.color-primary; // Corrected variable reference
+  border: 3px solid vars.color-border-light; // Corrected variable reference
+  border-top: 3px solid vars.color-primary; // Corrected variable reference
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -42,28 +42,28 @@
 }
 
 .loadingText {
-  color: vars.vars.color-text-secondary; // Corrected variable reference
-  font-size: vars.vars.font-size-sm; // Corrected variable reference
+  color: vars.color-text-secondary; // Corrected variable reference
+  font-size: vars.font-size-sm; // Corrected variable reference
   font-family: inherit;
   resize: vertical;
   min-height: 120px;
 
   &:focus {
     outline: none;
-    border-color: vars.vars.color-primary; // Corrected variable reference
-    box-shadow: 0 0 0 2px vars.vars.color-primary-light; // Corrected variable reference
+    border-color: vars.color-primary; // Corrected variable reference
+    box-shadow: 0 0 0 2px vars.color-primary-light; // Corrected variable reference
   }
 
   &::placeholder {
-    color: vars.vars.color-text-secondary; // Corrected variable reference
+    color: vars.color-text-secondary; // Corrected variable reference
   }
 }
 
 .saveNotesButton {
-  margin-top: vars.vars.spacing-md; // Corrected variable reference
-  padding: vars.vars.spacing-sm vars.vars.spacing-lg; // Corrected variable reference
-  background: vars.vars.color-success; // Corrected variable reference
-  color: vars.vars.color-white; // Corrected variable reference
+  margin-top: vars.spacing-md; // Corrected variable reference
+  padding: vars.spacing-sm vars.spacing-lg; // Corrected variable reference
+  background: vars.color-success; // Corrected variable reference
+  color: vars.color-white; // Corrected variable reference
   border: none;
   border-radius: vars.$border-radius-md; // Corrected variable reference
   font-weight: 600;
@@ -71,50 +71,50 @@
   transition: all 0.3s ease;
 
   &:hover:not(:disabled) {
-    background: vars.vars.color-success-dark; // Corrected variable reference
+    background: vars.color-success-dark; // Corrected variable reference
     transform: translateY(-1px);
   }
 
   &:disabled {
-    background: vars.vars.color-border-light; // Corrected variable reference
-    color: vars.vars.color-text-secondary; // Corrected variable reference
+    background: vars.color-border-light; // Corrected variable reference
+    color: vars.color-text-secondary; // Corrected variable reference
     cursor: not-allowed;
     transform: none;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px vars.vars.color-success-light; // Corrected variable reference
+    box-shadow: 0 0 0 2px vars.color-success-light; // Corrected variable reference
   }
 }
 
 .noConversations {
   text-align: center;
-  padding: vars.vars.spacing-xl; // Corrected variable reference
-  color: vars.vars.color-text-secondary; // Corrected variable reference
+  padding: vars.spacing-xl; // Corrected variable reference
+  color: vars.color-text-secondary; // Corrected variable reference
 }
 
 .noConversationsIcon {
   font-size: 3rem;
-  margin-bottom: vars.vars.spacing-md; // Corrected variable reference
+  margin-bottom: vars.spacing-md; // Corrected variable reference
   opacity: 0.6;
 }
 
 .noConversationsText {
   margin: 0;
-  font-size: vars.vars.font-size-md; // Corrected variable reference
+  font-size: vars.font-size-md; // Corrected variable reference
 }
 
 .conversationsList {
   display: flex;
   flex-direction: column;
-  gap: vars.vars.spacing-lg; // Corrected variable reference
+  gap: vars.spacing-lg; // Corrected variable reference
 }
 
 .conversationCard {
-  border: 1px solid vars.vars.color-border-light; // Corrected variable reference
+  border: 1px solid vars.color-border-light; // Corrected variable reference
   border-radius: vars.$border-radius-md; // Corrected variable reference
-  background: vars.vars.color-background-primary; // Corrected variable reference
+  background: vars.color-background-primary; // Corrected variable reference
   overflow: hidden;
 }
 
@@ -122,86 +122,86 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: vars.vars.spacing-md; // Corrected variable reference
-  background: vars.vars.color-background-secondary; // Corrected variable reference
-  border-bottom: 1px solid vars.vars.color-border-light; // Corrected variable reference
+  padding: vars.spacing-md; // Corrected variable reference
+  background: vars.color-background-secondary; // Corrected variable reference
+  border-bottom: 1px solid vars.color-border-light; // Corrected variable reference
 }
 
 .conversationDate {
-  font-size: vars.vars.font-size-sm; // Corrected variable reference
+  font-size: vars.font-size-sm; // Corrected variable reference
   font-weight: 600;
-  color: vars.vars.color-text-primary; // Corrected variable reference
+  color: vars.color-text-primary; // Corrected variable reference
 }
 
 .conversationDuration {
-  font-size: vars.vars.font-size-xs; // Corrected variable reference
-  color: vars.vars.color-text-secondary; // Corrected variable reference
-  background: vars.vars.color-border-light; // Corrected variable reference
-  padding: vars.vars.spacing-xs vars.vars.spacing-sm; // Corrected variable reference
+  font-size: vars.font-size-xs; // Corrected variable reference
+  color: vars.color-text-secondary; // Corrected variable reference
+  background: vars.color-border-light; // Corrected variable reference
+  padding: vars.spacing-xs vars.spacing-sm; // Corrected variable reference
   border-radius: vars.$border-radius-sm; // Corrected variable reference
 }
 
 .conversationContent {
-  padding: vars.vars.spacing-md; // Corrected variable reference
+  padding: vars.spacing-md; // Corrected variable reference
 }
 
 .messagesList {
   display: flex;
   flex-direction: column;
-  gap: vars.vars.spacing-sm; // Corrected variable reference
+  gap: vars.spacing-sm; // Corrected variable reference
 }
 
 .message {
   border-left: 3px solid transparent;
-  padding-left: vars.vars.spacing-sm; // Corrected variable reference
+  padding-left: vars.spacing-sm; // Corrected variable reference
 }
 
 .messageHeader {
-  margin-bottom: vars.vars.spacing-xs; // Corrected variable reference
+  margin-bottom: vars.spacing-xs; // Corrected variable reference
 }
 
 .messageSender {
-  font-size: vars.vars.font-size-xs; // Corrected variable reference
+  font-size: vars.font-size-xs; // Corrected variable reference
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 
   &.ai {
-    color: vars.vars.color-primary; // Corrected variable reference
-    border-left-color: vars.vars.color-primary; // Corrected variable reference
+    color: vars.color-primary; // Corrected variable reference
+    border-left-color: vars.color-primary; // Corrected variable reference
   }
 
   &.user {
-    color: vars.vars.color-success; // Corrected variable reference
-    border-left-color: vars.vars.color-success; // Corrected variable reference
+    color: vars.color-success; // Corrected variable reference
+    border-left-color: vars.color-success; // Corrected variable reference
   }
 }
 
 .messageText {
-  font-size: vars.vars.font-size-sm; // Corrected variable reference
-  color: vars.vars.color-text-primary; // Corrected variable reference
+  font-size: vars.font-size-sm; // Corrected variable reference
+  color: vars.color-text-primary; // Corrected variable reference
   line-height: 1.5;
   margin: 0;
 }
 
 .moreMessages {
-  font-size: vars.vars.font-size-xs; // Corrected variable reference
-  color: vars.vars.color-text-secondary; // Corrected variable reference
+  font-size: vars.font-size-xs; // Corrected variable reference
+  color: vars.color-text-secondary; // Corrected variable reference
   text-align: center;
-  margin: vars.vars.spacing-sm 0 0 0; // Corrected variable reference
-  padding-top: vars.vars.spacing-sm; // Corrected variable reference
-  border-top: 1px solid vars.vars.color-border-light; // Corrected variable reference
+  margin: vars.spacing-sm 0 0 0; // Corrected variable reference
+  padding-top: vars.spacing-sm; // Corrected variable reference
+  border-top: 1px solid vars.color-border-light; // Corrected variable reference
 }
 
 .noTranscript {
-  font-size: vars.vars.font-size-sm; // Corrected variable reference
-  color: vars.vars.color-text-secondary; // Corrected variable reference
+  font-size: vars.font-size-sm; // Corrected variable reference
+  color: vars.color-text-secondary; // Corrected variable reference
   font-style: italic;
   margin: 0;
 }
 
 // Responsive Design
-@media (max-width: vars.vars.breakpoint-desktop) { // Corrected variable reference
+@media (max-width: vars.breakpoint-desktop) { // Corrected variable reference
   .contentGrid {
     grid-template-columns: 1fr;
   }
@@ -215,24 +215,24 @@
   }
 }
 
-@media (max-width: vars.vars.breakpoint-tablet) { // Corrected variable reference
+@media (max-width: vars.breakpoint-tablet) { // Corrected variable reference
   .leadHeader {
     flex-direction: column;
     align-items: stretch;
-    gap: vars.vars.spacing-lg; // Corrected variable reference
+    gap: vars.spacing-lg; // Corrected variable reference
   }
 
   .leadInfo {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: vars.vars.spacing-md; // Corrected variable reference
+    gap: vars.spacing-md; // Corrected variable reference
   }
 
   .leadAvatar {
     width: 60px;
     height: 60px;
-    font-size: vars.vars.font-size-lg; // Corrected variable reference
+    font-size: vars.font-size-lg; // Corrected variable reference
   }
 
   .leadActions {
@@ -246,7 +246,7 @@
   .infoItem {
     flex-direction: column;
     align-items: stretch;
-    gap: vars.vars.spacing-xs; // Corrected variable reference
+    gap: vars.spacing-xs; // Corrected variable reference
   }
 
   .infoLabel {
@@ -258,7 +258,7 @@
   }
 }
 
-@media (max-width: vars.vars.breakpoint-mobile) { // Corrected variable reference
+@media (max-width: vars.breakpoint-mobile) { // Corrected variable reference
   .leadDetailContainer {
     padding: 0;
   }
@@ -268,29 +268,29 @@
   }
 
   .leadHeader {
-    padding: vars.vars.spacing-md; // Corrected variable reference
-    margin-bottom: vars.vars.spacing-lg; // Corrected variable reference
+    padding: vars.spacing-md; // Corrected variable reference
+    margin-bottom: vars.spacing-lg; // Corrected variable reference
   }
 
   .leadName {
-    font-size: vars.vars.font-size-xl; // Corrected variable reference
+    font-size: vars.font-size-xl; // Corrected variable reference
   }
 
   .infoSection,
   .statusSection,
   .notesSection,
   .conversationsSection {
-    padding: vars.vars.spacing-md; // Corrected variable reference
+    padding: vars.spacing-md; // Corrected variable reference
   }
 
   .sectionTitle {
-    font-size: vars.vars.font-size-md; // Corrected variable reference
+    font-size: vars.font-size-md; // Corrected variable reference
   }
 
   .conversationHeader {
     flex-direction: column;
     align-items: stretch;
-    gap: vars.vars.spacing-xs; // Corrected variable reference
+    gap: vars.spacing-xs; // Corrected variable reference
   }
 
   .conversationDate {
@@ -310,16 +310,16 @@
 }
 
 .errorTitle {
-  font-size: vars.vars.font-size-xl; // Corrected variable reference
+  font-size: vars.font-size-xl; // Corrected variable reference
   font-weight: 600;
-  color: vars.vars.color-text-primary; // Corrected variable reference
-  margin: 0 0 vars.vars.spacing-md 0; // Corrected variable reference
+  color: vars.color-text-primary; // Corrected variable reference
+  margin: 0 0 vars.spacing-md 0; // Corrected variable reference
 }
 
 .errorText {
-  font-size: vars.vars.font-size-md; // Corrected variable reference
-  color: vars.vars.color-text-secondary; // Corrected variable reference
-  margin: 0 0 vars.vars.spacing-lg 0; // Corrected variable reference
+  font-size: vars.font-size-md; // Corrected variable reference
+  color: vars.color-text-secondary; // Corrected variable reference
+  margin: 0 0 vars.spacing-lg 0; // Corrected variable reference
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
@@ -329,16 +329,16 @@
 .backButton {
   display: inline-flex;
   align-items: center;
-  padding: vars.vars.spacing-md vars.vars.spacing-lg; // Corrected variable reference
-  background: vars.vars.color-primary; // Corrected variable reference
-  color: vars.vars.color-white; // Corrected variable reference
+  padding: vars.spacing-md vars.spacing-lg; // Corrected variable reference
+  background: vars.color-primary; // Corrected variable reference
+  color: vars.color-white; // Corrected variable reference
   text-decoration: none;
   border-radius: vars.$border-radius-md; // Corrected variable reference
   font-weight: 600;
   transition: all 0.3s ease;
 
   &:hover {
-    background: vars.vars.color-primary-dark; // Corrected variable reference
+    background: vars.color-primary-dark; // Corrected variable reference
     transform: translateY(-2px);
   }
 }
@@ -346,27 +346,27 @@
 .breadcrumb {
   display: flex;
   align-items: center;
-  gap: vars.vars.spacing-sm; // Corrected variable reference
-  margin-bottom: vars.vars.spacing-lg; // Corrected variable reference
-  font-size: vars.vars.font-size-sm; // Corrected variable reference
+  gap: vars.spacing-sm; // Corrected variable reference
+  margin-bottom: vars.spacing-lg; // Corrected variable reference
+  font-size: vars.font-size-sm; // Corrected variable reference
 }
 
 .breadcrumbLink {
-  color: vars.vars.color-text-secondary; // Corrected variable reference
+  color: vars.color-text-secondary; // Corrected variable reference
   text-decoration: none;
   transition: color 0.2s ease;
 
   &:hover {
-    color: vars.vars.color-primary; // Corrected variable reference
+    color: vars.color-primary; // Corrected variable reference
   }
 }
 
 .breadcrumbSeparator {
-  color: vars.vars.color-text-secondary; // Corrected variable reference
+  color: vars.color-text-secondary; // Corrected variable reference
 }
 
 .breadcrumbCurrent {
-  color: vars.vars.color-text-primary; // Corrected variable reference
+  color: vars.color-text-primary; // Corrected variable reference
   font-weight: 500;
 }
 
@@ -374,30 +374,30 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: vars.vars.spacing-xl; // Corrected variable reference
-  padding: vars.vars.spacing-lg; // Corrected variable reference
-  background: vars.vars.color-background-secondary; // Corrected variable reference
-  border: 1px solid vars.vars.color-border-light; // Corrected variable reference
+  margin-bottom: vars.spacing-xl; // Corrected variable reference
+  padding: vars.spacing-lg; // Corrected variable reference
+  background: vars.color-background-secondary; // Corrected variable reference
+  border: 1px solid vars.color-border-light; // Corrected variable reference
   border-radius: vars.$border-radius-lg; // Corrected variable reference
 }
 
 .leadInfo {
   display: flex;
   align-items: flex-start;
-  gap: vars.vars.spacing-lg; // Corrected variable reference
+  gap: vars.spacing-lg; // Corrected variable reference
 }
 
 .leadAvatar {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, vars.vars.color-primary, vars.vars.color-primary-dark); // Corrected variable reference
+  background: linear-gradient(135deg, vars.color-primary, vars.color-primary-dark); // Corrected variable reference
   display: flex;
   align-items: center;
   justify-content: center;
-  color: vars.vars.color-white; // Corrected variable reference
+  color: vars.color-white; // Corrected variable reference
   font-weight: 700;
-  font-size: vars.vars.font-size-xl; // Corrected variable reference
+  font-size: vars.font-size-xl; // Corrected variable reference
   flex-shrink: 0;
 }
 
@@ -406,120 +406,120 @@
 }
 
 .leadName {
-  font-size: vars.vars.font-size-xxl; // Corrected variable reference
+  font-size: vars.font-size-xxl; // Corrected variable reference
   font-weight: 700;
-  color: vars.vars.color-text-primary; // Corrected variable reference
-  margin: 0 0 vars.vars.spacing-sm 0; // Corrected variable reference
+  color: vars.color-text-primary; // Corrected variable reference
+  margin: 0 0 vars.spacing-sm 0; // Corrected variable reference
 }
 
 .leadEmail {
-  font-size: vars.vars.font-size-lg; // Corrected variable reference
-  color: vars.vars.color-text-secondary; // Corrected variable reference
-  margin: 0 0 vars.vars.spacing-xs 0; // Corrected variable reference
+  font-size: vars.font-size-lg; // Corrected variable reference
+  color: vars.color-text-secondary; // Corrected variable reference
+  margin: 0 0 vars.spacing-xs 0; // Corrected variable reference
 }
 
 .leadPhone {
   display: flex;
   align-items: center;
-  gap: vars.vars.spacing-xs; // Corrected variable reference
-  font-size: vars.vars.font-size-md; // Corrected variable reference
-  color: vars.vars.color-text-secondary; // Corrected variable reference
+  gap: vars.spacing-xs; // Corrected variable reference
+  font-size: vars.font-size-md; // Corrected variable reference
+  color: vars.color-text-secondary; // Corrected variable reference
   margin: 0;
 }
 
 .phoneIcon {
-  font-size: vars.vars.font-size-sm; // Corrected variable reference
+  font-size: vars.font-size-sm; // Corrected variable reference
 }
 
 .leadActions {
   display: flex;
   align-items: center;
-  gap: vars.vars.spacing-md; // Corrected variable reference
+  gap: vars.spacing-md; // Corrected variable reference
 }
 
 .statusBadge {
-  padding: vars.vars.spacing-sm vars.vars.spacing-md; // Corrected variable reference
+  padding: vars.spacing-sm vars.spacing-md; // Corrected variable reference
   border-radius: vars.$border-radius-md; // Corrected variable reference
-  font-size: vars.vars.font-size-sm; // Corrected variable reference
+  font-size: vars.font-size-sm; // Corrected variable reference
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 
   &.statusNew {
-    background-color: vars.vars.color-info-light; // Corrected variable reference
-    color: vars.vars.color-info-dark; // Corrected variable reference
+    background-color: vars.color-info-light; // Corrected variable reference
+    color: vars.color-info-dark; // Corrected variable reference
   }
 
   &.statusContacted {
-    background-color: vars.vars.color-warning-light; // Corrected variable reference
-    color: vars.vars.color-warning-dark; // Corrected variable reference
+    background-color: vars.color-warning-light; // Corrected variable reference
+    color: vars.color-warning-dark; // Corrected variable reference
   }
 
   &.statusQualified {
-    background-color: vars.vars.color-primary-light; // Corrected variable reference
-    color: vars.vars.color-primary-dark; // Corrected variable reference
+    background-color: vars.color-primary-light; // Corrected variable reference
+    color: vars.color-primary-dark; // Corrected variable reference
   }
 
   &.statusConverted {
-    background-color: vars.vars.color-success-light; // Corrected variable reference
-    color: vars.vars.color-success-dark; // Corrected variable reference
+    background-color: vars.color-success-light; // Corrected variable reference
+    color: vars.color-success-dark; // Corrected variable reference
   }
 }
 
 .contentGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: vars.vars.spacing-xl; // Corrected variable reference
+  gap: vars.spacing-xl; // Corrected variable reference
 }
 
 .leftColumn,
 .rightColumn {
   display: flex;
   flex-direction: column;
-  gap: vars.vars.spacing-lg; // Corrected variable reference
+  gap: vars.spacing-lg; // Corrected variable reference
 }
 
 .infoSection,
 .statusSection,
 .notesSection,
 .conversationsSection {
-  background: vars.vars.color-background-secondary; // Corrected variable reference
-  border: 1px solid vars.vars.color-border-light; // Corrected variable reference
+  background: vars.color-background-secondary; // Corrected variable reference
+  border: 1px solid vars.color-border-light; // Corrected variable reference
   border-radius: vars.$border-radius-lg; // Corrected variable reference
-  padding: vars.vars.spacing-lg; // Corrected variable reference
+  padding: vars.spacing-lg; // Corrected variable reference
 }
 
 .sectionTitle {
-  font-size: vars.vars.font-size-lg; // Corrected variable reference
+  font-size: vars.font-size-lg; // Corrected variable reference
   font-weight: 600;
-  color: vars.vars.color-text-primary; // Corrected variable reference
-  margin: 0 0 vars.vars.spacing-lg 0; // Corrected variable reference
-  padding-bottom: vars.vars.spacing-sm; // Corrected variable reference
-  border-bottom: 1px solid vars.vars.color-border-light; // Corrected variable reference
+  color: vars.color-text-primary; // Corrected variable reference
+  margin: 0 0 vars.spacing-lg 0; // Corrected variable reference
+  padding-bottom: vars.spacing-sm; // Corrected variable reference
+  border-bottom: 1px solid vars.color-border-light; // Corrected variable reference
 }
 
 .infoGrid {
   display: grid;
-  gap: vars.vars.spacing-md; // Corrected variable reference
+  gap: vars.spacing-md; // Corrected variable reference
 }
 
 .infoItem {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: vars.vars.spacing-sm 0; // Corrected variable reference
+  padding: vars.spacing-sm 0; // Corrected variable reference
 }
 
 .infoLabel {
-  font-size: vars.vars.font-size-sm; // Corrected variable reference
+  font-size: vars.font-size-sm; // Corrected variable reference
   font-weight: 600;
-  color: vars.vars.color-text-secondary; // Corrected variable reference
+  color: vars.color-text-secondary; // Corrected variable reference
   min-width: 120px;
 }
 
 .infoValue {
-  font-size: vars.vars.font-size-sm; // Corrected variable reference
-  color: vars.vars.color-text-primary; // Corrected variable reference
+  font-size: vars.font-size-sm; // Corrected variable reference
+  color: vars.color-text-primary; // Corrected variable reference
   text-align: right;
   word-break: break-word;
   flex: 1;
@@ -528,22 +528,22 @@
 .statusButtons {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: vars.vars.spacing-sm; // Corrected variable reference
+  gap: vars.spacing-sm; // Corrected variable reference
 }
 
 .statusButton {
-  padding: vars.vars.spacing-md; // Corrected variable reference
-  border: 2px solid vars.vars.color-border-light; // Corrected variable reference
+  padding: vars.spacing-md; // Corrected variable reference
+  border: 2px solid vars.color-border-light; // Corrected variable reference
   border-radius: vars.$border-radius-md; // Corrected variable reference
-  background: vars.vars.color-background-primary; // Corrected variable reference
-  color: vars.vars.color-text-secondary; // Corrected variable reference
+  background: vars.color-background-primary; // Corrected variable reference
+  color: vars.color-text-secondary; // Corrected variable reference
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover:not(:disabled) {
-    border-color: vars.vars.color-primary; // Corrected variable reference
-    color: vars.vars.color-primary; // Corrected variable reference
+    border-color: vars.color-primary; // Corrected variable reference
+    color: vars.color-primary; // Corrected variable reference
   }
 
   &:disabled {
@@ -552,23 +552,23 @@
   }
 
   &.currentStatus {
-    border-color: vars.vars.color-primary; // Corrected variable reference
-    background: vars.vars.color-primary; // Corrected variable reference
-    color: vars.vars.color-white; // Corrected variable reference
+    border-color: vars.color-primary; // Corrected variable reference
+    background: vars.color-primary; // Corrected variable reference
+    color: vars.color-white; // Corrected variable reference
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px vars.vars.color-primary-light; // Corrected variable reference
+    box-shadow: 0 0 0 2px vars.color-primary-light; // Corrected variable reference
   }
 }
 
 .notesTextarea {
   width: 100%;
-  padding: vars.vars.spacing-md; // Corrected variable reference
-  border: 1px solid vars.vars.color-border-light; // Corrected variable reference
+  padding: vars.spacing-md; // Corrected variable reference
+  border: 1px solid vars.color-border-light; // Corrected variable reference
   border-radius: vars.$border-radius-md; // Corrected variable reference
-  background: vars.vars.color-background-primary; // Corrected variable reference
-  color: vars.vars.color-text-primary; // Corrected variable reference
-  font-size: vars.vars.font-size-sm; // Corrected variable reference
+  background: vars.color-background-primary; // Corrected variable reference
+  color: vars.color-text-primary; // Corrected variable reference
+  font-size: vars.font-size-sm; // Corrected variable reference
 }
