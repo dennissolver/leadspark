@@ -1,86 +1,284 @@
-@use "../../styles/mixins" as mixins;
-@use "../../styles/variables" as vars;
+@use 'sass:color';
+@use '@leadspark/styles/variables' as *;
 
+/* Page layout */
 .page {
   min-height: 100vh;
-  background-color: vars.$color-background-primary;
+  background: $gray-50;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: vars.$spacing-8;
-}
+  padding: $spacing-8 $spacing-6;
+  font-family: $font-family-base;
 
-.container {
-  text-align: center;
-  padding: vars.$spacing-xl;
-  background-color: vars.$color-background-secondary;
-  border-radius: vars.$border-radius-lg;
-  border: 1px solid vars.$color-border-light;
-  @include mixins.shadow-elevation-2;
-  max-width: 500px;
-}
+  @media (min-width: $breakpoint-sm) {
+    padding-inline: $spacing-6;
+  }
 
-.title {
-  font-size: vars.$font-size-xxl;
-  font-weight: 700;
-  color: vars.$color-text-primary;
-  margin: 0 0 vars.$spacing-md 0;
-}
-
-.subtitle {
-  font-size: vars.$font-size-lg;
-  color: vars.$color-text-secondary;
-  margin: 0 0 vars.$spacing-lg 0;
-}
-
-.description {
-  font-size: vars.$font-size-md;
-  color: vars.$color-text-secondary;
-  margin: 0 0 vars.$spacing-xl 0;
-  line-height: 1.5;
-}
-
-.actions {
-  display: flex;
-  justify-content: center;
-  gap: vars.$spacing-lg;
-  margin-top: vars.$spacing-lg;
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: vars.$spacing-md vars.$spacing-xl;
-  background-color: vars.$color-primary;
-  color: vars.$color-white;
-  text-decoration: none;
-  border-radius: vars.$border-radius-md;
-  font-weight: 600;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: vars.$color-primary-dark;
-    transform: translateY(-2px);
+  @media (min-width: $breakpoint-lg) {
+    padding-inline: $spacing-8;
   }
 }
 
-.link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: vars.$spacing-md vars.$spacing-xl;
-  color: vars.$color-text-secondary;
-  text-decoration: none;
-  border: 1px solid vars.$color-border-light;
-  border-radius: vars.$border-radius-md;
-  font-weight: 500;
-  transition: all 0.2s ease;
+/* Header container */
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 28rem;
+
+  @media (min-width: $breakpoint-sm) {
+    max-width: 28rem;
+  }
+}
+
+.header {
+  text-align: center;
+}
+
+.logo {
+  font-size: $text-2xl;
+  font-weight: $font-bold;
+  color: $blue-600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color $transition-base;
 
   &:hover {
-    background-color: vars.$color-background-primary;
-    color: vars.$color-text-primary;
-    border-color: vars.$color-text-primary;
+    color: $blue-700;
+  }
+}
+
+.title {
+  margin-top: $spacing-6;
+  text-align: center;
+  font-size: $text-3xl;
+  font-weight: $font-bold;
+  color: $gray-900;
+}
+
+.subtitle {
+  margin-top: $spacing-2;
+  text-align: center;
+  font-size: $text-sm;
+  color: $gray-600;
+}
+
+.linkButton {
+  font-weight: $font-medium;
+  color: $blue-600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $blue-500;
+  }
+}
+
+/* Form container */
+.formContainer {
+  margin-top: $spacing-8;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 28rem;
+
+  @media (min-width: $breakpoint-sm) {
+    max-width: 28rem;
+  }
+}
+
+.formCard {
+  background: $white;
+  padding: $spacing-8 $spacing-4;
+  box-shadow: $shadow;
+  border-radius: $rounded-lg;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: $spacing-8;
+  }
+}
+
+/* Form styles */
+.form {
+  display: grid;
+  gap: $spacing-6;
+}
+
+.formGrid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-4;
+}
+
+.label {
+  display: block;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  color: $gray-700;
+}
+
+.inputGroup {
+  margin-top: $spacing-1;
+}
+
+.input {
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: $spacing-2 $spacing-3;
+  border: $border-width solid $gray-300;
+  border-radius: $rounded-md;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-size: $text-sm;
+  transition: border-color $transition-base, box-shadow $transition-base;
+
+  &::placeholder {
+    color: $gray-500;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $blue-500;
+    box-shadow: 0 0 0 3px rgba($blue-500, 0.1);
+  }
+
+  &.inputError {
+    border-color: $error-color;
+  }
+}
+
+.errorMessage {
+  margin-top: $spacing-1;
+  font-size: $text-sm;
+  color: $error-color;
+}
+
+.errorBanner {
+  background: #fef2f2;
+  border: $border-width solid #fecaca;
+  color: #dc2626;
+  padding: $spacing-4 $spacing-4;
+  border-radius: $rounded;
+}
+
+/* Submit button */
+.submitButton {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: $spacing-2 $spacing-4;
+  border: $border-width solid transparent;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  border-radius: $rounded-md;
+  color: $white;
+  background: $blue-600;
+  cursor: pointer;
+  transition: background-color $transition-base;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($blue-500, 0.5);
+  }
+
+  &:hover:not(:disabled) {
+    background: $blue-700;
+  }
+
+  &.submitButtonLoading {
+    background: $gray-500;
+    cursor: not-allowed;
+  }
+}
+
+.loadingContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  animation: spin 0.9s linear infinite;
+  margin-right: $spacing-3;
+  height: 1.25rem;
+  width: 1.25rem;
+  border: 2px solid $white;
+  border-top-color: transparent;
+  border-radius: $rounded-full;
+  display: inline-block;
+}
+
+/* Divider section */
+.dividerSection {
+  margin-top: $spacing-6;
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  color: $gray-600;
+  font-size: $text-sm;
+  margin: $spacing-5 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: $gray-300;
+    transform: translateY(-50%);
+  }
+
+  & > span {
+    position: relative;
+    background: $white;
+    padding: 0 $spacing-2;
+  }
+}
+
+.googleButtonContainer {
+  margin-top: $spacing-6;
+}
+
+.googleButton {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-2 $spacing-4;
+  border: $border-width solid $gray-300;
+  border-radius: $rounded-md;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background: $white;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  color: $gray-500;
+  cursor: pointer;
+  transition: background-color $transition-base;
+
+  &:hover:not(:disabled) {
+    background: $gray-50;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.googleIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: $spacing-2;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
