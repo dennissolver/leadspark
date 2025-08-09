@@ -29,11 +29,16 @@ jobs:
         with:
           node-version: '20' # You can adjust this to your project's Node.js version.
 
+      # Forcefully remove old dependencies and cache to ensure a clean slate.
+      - name: Clean dependencies and cache
+        run: |
+          npm cache clean --force
+          rm -rf node_modules
+
       # Installs project dependencies.
       - name: Install dependencies
         run: npm install
 
       # Runs the 'typecheck' task using Turbo, forcing a fresh build to bypass any cache issues.
-      # This command will now ignore the Turborepo cache and re-run the task from scratch.
       - name: Run typecheck with cache bypass
         run: TURBO_FORCE=true npx turbo run typecheck --filter=portal
