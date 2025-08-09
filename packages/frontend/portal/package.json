@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@leadspark/styles": "file:../../styles",
-    "@supabase/auth-helpers-nextjs": "^0.8.7",
+    "@supabase/ssr": "^0.1.0",
     "@supabase/supabase-js": "^2.0.0",
     "@stripe/stripe-js": "^2.4.0",
     "lucide-react": "^0.536.0",
