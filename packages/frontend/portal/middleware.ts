@@ -1,4 +1,3 @@
-// packages/frontend/portal/middleware.ts
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
 
@@ -29,19 +28,24 @@ function getTenantIdFromUser(user: any): string | null {
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
 
-  // Skip public paths early
+  // Skip public paths early. The matcher in `config` handles this for most cases,
+  // but this is a good additional check for clarity.
   if (!isProtectedPath(pathname)) {
     return NextResponse.next()
   }
 
-  const res = NextResponse.next()
+  const res = NextResponse.next({
+    request: {
+      headers: req.headers,
+    },
+  })
 
+  // The cookie functions required by createServerClient
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        // ✅ required shape for @supabase/ssr on Next 13+
         getAll() {
           return req.cookies.getAll()
         },
@@ -72,7 +76,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  // All good
+  // All good, continue to the requested page
   return res
 }
 
@@ -86,4 +90,3 @@ export const config = {
     '/billing/:path*',
   ],
 }
-
