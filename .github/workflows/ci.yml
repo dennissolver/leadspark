@@ -2,46 +2,33 @@
 
 name: CI
 
-# Controls when the action will run.
+# Triggers the workflow on push or pull request events to the main branch.
 on:
-  # Triggers the workflow on push or pull request events to the main branch.
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel.
+# A single job to build and test the project.
 jobs:
-  # This workflow contains a single job called "typecheck".
-  typecheck:
-    # The type of runner that the job will run on.
+  build-and-test:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job.
     steps:
-      # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it.
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Sets up the specified version of Node.js.
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # You can adjust this to your project's Node.js version.
+          node-version: '20'
 
-      # Forcefully remove old dependencies, package-lock, and cache to ensure a clean slate.
-      - name: Clean dependencies and lockfile
-        run: |
-          npm cache clean --force
-          rm -rf node_modules
-          if [ -f "package-lock.json" ]; then
-            rm package-lock.json
-          fi
-
-      # Installs dependencies. This will also create a new package-lock.json file.
       - name: Install dependencies
         run: npm install
 
-      # Runs the 'typecheck' task using Turbo, forcing a fresh build.
-      - name: Run typecheck with cache bypass
-        run: TURBO_FORCE=true npx turbo run typecheck --filter=portal
+      # Run the typecheck and build steps.
+      - name: Run typecheck
+        run: npx turbo run typecheck --filter=portal
+
+      - name: Run build
+        run: npx turbo run build --filter=portal
