@@ -1,3 +1,4 @@
+// packages/frontend/portal/components/Sidebar.tsx
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -17,42 +18,27 @@ const Sidebar: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const navigation: NavigationItem[] = [
-    {
-      name: 'Dashboard',
-      href: '/dashboard',
-      icon: '📊',
-    },
-    {
-      name: 'Leads',
-      href: '/leads',
-      icon: '👥',
-      badge: 5, // This would come from actual data
-    },
-    {
-      name: 'Knowledge Base',
-      href: '/knowledge-base',
-      icon: '📚',
-    },
-    {
-      name: 'Settings',
-      href: '/settings',
-      icon: '⚙️',
-    },
+    { name: 'Dashboard', href: '/dashboard', icon: '📊' },
+    { name: 'Leads', href: '/leads', icon: '👥', badge: 5 }, // Example badge count
+    { name: 'Knowledge Base', href: '/knowledge-base', icon: '📚' },
+    { name: 'Settings', href: '/settings', icon: '⚙️' },
   ];
 
   const handleSignOut = async () => {
     try {
-      await signOut();
-      // Redirect to landing page login
-      window.location.href = `${process.env.NEXT_PUBLIC_LANDING_URL}/login`;
+      const { error } = await signOut();
+      if (!error) {
+        router.push('/login'); // ✅ Client-side redirect via Next.js
+      } else {
+        console.error('Error signing out:', error);
+      }
     } catch (error) {
       console.error('Error signing out:', error);
     }
   };
 
-  const isActive = (href: string) => {
-    return router.pathname === href || router.pathname.startsWith(href + '/');
-  };
+  const isActive = (href: string) =>
+    router.pathname === href || router.pathname.startsWith(href + '/');
 
   return (
     <div className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ''}`}>

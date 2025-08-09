@@ -1,10 +1,12 @@
+// packages/frontend/portal/pages/dashboard.tsx
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Layout from '../components/layout';
 import LeadCard from '../components/LeadCard';
 import useSupabase from '../hooks/useSupabase';
-import { dbHelpers, Lead } from '../lib/supabaseClient';
+import { dbHelpers, type Lead } from '../lib/supabaseClient';
 import styles from './dashboard.module.scss';
 
 interface DashboardStats {
@@ -14,28 +16,52 @@ interface DashboardStats {
 }
 
 const DashboardPage: React.FC = () => {
-  const { user, getTenantId, loading } = useSupabase();
-  const [stats, setStats] = useState<DashboardStats>({ totalLeads: 0, weekLeads: 0, convertedLeads: 0 });
+  const router = useRouter();
+  const { user, tenantId, loading } = useSupabase();
+
+  const [stats, setStats] = useState<DashboardStats>({
+    totalLeads: 0,
+    weekLeads: 0,
+    convertedLeads: 0,
+  });
   const [recentLeads, setRecentLeads] = useState<Lead[]>([]);
   const [loadingData, setLoadingData] = useState(true);
+  const [redirecting, setRedirecting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const tenantId = getTenantId();
-
+  // Auth + tenant gating
   useEffect(() => {
-    if (!tenantId || loading) return;
+    if (loading) return;
+
+    // Not signed in -> login
+    if (!user) {
+      setRedirecting(true);
+      router.replace('/login');
+      return;
+    }
+
+    // Signed in but no tenant -> onboarding
+    if (!tenantId) {
+      setRedirecting(true);
+      router.replace('/onboarding');
+      return;
+    }
+  }, [loading, user, tenantId, router]);
+
+  // Data load once we have a tenant and we're not redirecting
+  useEffect(() => {
+    const canLoad = !loading && !!user && !!tenantId && !redirecting;
+    if (!canLoad) return;
 
     const fetchDashboardData = async () => {
       try {
         setLoadingData(true);
         setError(null);
 
-        // Fetch dashboard statistics
-        const dashboardStats = await dbHelpers.getDashboardStats(tenantId);
+        const dashboardStats = await dbHelpers.getDashboardStats(tenantId as string);
         setStats(dashboardStats);
 
-        // Fetch recent leads (last 5)
-        const allLeads = await dbHelpers.getLeads(tenantId);
+        const allLeads = await dbHelpers.getLeads(tenantId as string);
         setRecentLeads(allLeads.slice(0, 5));
       } catch (err) {
         console.error('Error fetching dashboard data:', err);
@@ -46,7 +72,7 @@ const DashboardPage: React.FC = () => {
     };
 
     fetchDashboardData();
-  }, [tenantId, loading]);
+  }, [loading, user, tenantId, redirecting]);
 
   const getConversionRate = () => {
     if (stats.totalLeads === 0) return 0;
@@ -54,18 +80,21 @@ const DashboardPage: React.FC = () => {
   };
 
   const getGrowthRate = () => {
-    // Calculate growth rate based on this week vs average
-    const averageWeekly = stats.totalLeads / 12; // Assuming 3 months of data
+    // naive baseline: avg per week across ~12 weeks
+    const averageWeekly = stats.totalLeads / 12;
     if (averageWeekly === 0) return 0;
     return Math.round(((stats.weekLeads - averageWeekly) / averageWeekly) * 100);
   };
 
-  if (loadingData) {
+  // Unified loading UI (auth check / redirect / initial data)
+  if (loading || redirecting || loadingData) {
     return (
       <Layout title="Dashboard - LeadSpark Portal">
         <div className={styles.loadingContainer}>
-          <div className={styles.loadingSpinner}></div>
-          <p className={styles.loadingText}>Loading dashboard...</p>
+          <div className={styles.loadingSpinner} />
+          <p className={styles.loadingText}>
+            {redirecting ? 'Taking you to the right place…' : 'Loading dashboard…'}
+          </p>
         </div>
       </Layout>
     );
@@ -75,7 +104,10 @@ const DashboardPage: React.FC = () => {
     <Layout title="Dashboard - LeadSpark Portal">
       <Head>
         <title>Dashboard - LeadSpark Portal</title>
-        <meta name="description" content="Your LeadSpark dashboard with lead analytics and recent activity" />
+        <meta
+          name="description"
+          content="Your LeadSpark dashboard with lead analytics and recent activity"
+        />
       </Head>
 
       <div className={styles.dashboardContainer}>
@@ -84,7 +116,7 @@ const DashboardPage: React.FC = () => {
           <div className={styles.headerContent}>
             <h1 className={styles.pageTitle}>Dashboard</h1>
             <p className={styles.welcomeText}>
-              Welcome back! Here's what's happening with your leads.
+              Welcome back! Here&apos;s what&apos;s happening with your leads.
             </p>
           </div>
           <div className={styles.headerActions}>
@@ -94,7 +126,7 @@ const DashboardPage: React.FC = () => {
           </div>
         </header>
 
-        {/* Error Message */}
+        {/* Error */}
         {error && (
           <div className={styles.errorMessage}>
             <span className={styles.errorIcon}>⚠️</span>
@@ -102,7 +134,7 @@ const DashboardPage: React.FC = () => {
           </div>
         )}
 
-        {/* Stats Grid */}
+        {/* Stats */}
         <section className={styles.statsSection}>
           <div className={styles.statsGrid}>
             <div className={styles.statCard}>
@@ -118,7 +150,11 @@ const DashboardPage: React.FC = () => {
               <div className={styles.statContent}>
                 <h3 className={styles.statValue}>{stats.weekLeads}</h3>
                 <p className={styles.statLabel}>This Week</p>
-                <div className={`${styles.statTrend} ${getGrowthRate() >= 0 ? styles.positive : styles.negative}`}>
+                <div
+                  className={`${styles.statTrend} ${
+                    getGrowthRate() >= 0 ? styles.positive : styles.negative
+                  }`}
+                >
                   {getGrowthRate() >= 0 ? '↗' : '↘'} {Math.abs(getGrowthRate())}%
                 </div>
               </div>
@@ -159,8 +195,8 @@ const DashboardPage: React.FC = () => {
               <div className={styles.emptyIcon}>📝</div>
               <h3 className={styles.emptyTitle}>No leads yet</h3>
               <p className={styles.emptyText}>
-                Your AI assistant is ready to capture leads from your website.
-                Make sure your widget is properly installed.
+                Your AI assistant is ready to capture leads from your website. Make sure your
+                widget is properly installed.
               </p>
               <Link href="/settings" className={styles.setupButton}>
                 Widget Setup
@@ -187,7 +223,7 @@ const DashboardPage: React.FC = () => {
               <div className={styles.actionContent}>
                 <h3 className={styles.actionTitle}>Update Knowledge Base</h3>
                 <p className={styles.actionDescription}>
-                  Add new content to improve your AI's responses
+                  Add new content to improve your AI&apos;s responses
                 </p>
               </div>
             </Link>
@@ -197,7 +233,7 @@ const DashboardPage: React.FC = () => {
               <div className={styles.actionContent}>
                 <h3 className={styles.actionTitle}>Configure AI</h3>
                 <p className={styles.actionDescription}>
-                  Customize your assistant's personality and responses
+                  Customize your assistant&apos;s personality and responses
                 </p>
               </div>
             </Link>
@@ -207,7 +243,7 @@ const DashboardPage: React.FC = () => {
               <div className={styles.actionContent}>
                 <h3 className={styles.actionTitle}>Voice Settings</h3>
                 <p className={styles.actionDescription}>
-                  Choose and customize your AI's voice
+                  Choose and customize your AI&apos;s voice
                 </p>
               </div>
             </Link>

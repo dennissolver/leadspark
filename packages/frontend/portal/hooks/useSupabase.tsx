@@ -9,6 +9,8 @@ type SupabaseContextValue = {
   user: User | null
   tenantId: string | null
   loading: boolean
+  signOut: () => Promise<{ error: Error | null }>
+  signInWithOtp: (email: string) => Promise<{ error: Error | null }>
 }
 
 const SupabaseContext = createContext<SupabaseContextValue | null>(null)
@@ -61,12 +63,27 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
 
   const tenantId = useMemo(() => getTenantIdFromUser(user), [user])
 
+  const signOut = async () => {
+    // instant UI update
+    setSession(null)
+    setUser(null)
+    const { error } = await supabase.auth.signOut()
+    return { error }
+  }
+
+  const signInWithOtp = async (email: string) => {
+    const { error } = await supabase.auth.signInWithOtp({ email })
+    return { error }
+  }
+
   const value: SupabaseContextValue = {
     supabase,
     session,
     user,
     tenantId,
     loading,
+    signOut,
+    signInWithOtp,
   }
 
   return <SupabaseContext.Provider value={value}>{children}</SupabaseContext.Provider>
@@ -79,10 +96,10 @@ export function useSupabase() {
   return ctx
 }
 
-/** Sometimes you only need the client */
+/** Only need the client? */
 export function useSupabaseClient() {
   return useSupabase().supabase
 }
 
-/** Default export for backwards compatibility (same as named hook) */
+/** Default export for backwards compatibility */
 export default useSupabase
