@@ -38,7 +38,7 @@ $brand-primary: #2563eb !default; // Tailwind blue-600
 $brand-primary: #2563eb !default;
 
 // new — used by .module.scss
-$brand-primary-dark: mix(#000, $brand-primary, 15%) !default;
+$brand-primary-dark: color.mix(#000, $brand-primary, 15%) !default;
 
 // used by _layout.scss top-level rules
 $bg-color: #ffffff !default;
