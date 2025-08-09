@@ -86,4 +86,4 @@ test-results/
 public/uploads/
 supabase/storage/buckets/knowledge-base-files/*
 !supabase/storage/buckets/knowledge-base-files/.keep
-temporary_fix.txt
+

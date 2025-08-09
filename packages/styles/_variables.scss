@@ -1,6 +1,6 @@
 /* packages/styles/_variables.scss */
 /* ====== Base tokens (safe with !default to allow overrides) ====== */
-
+@use "sass:color";
 /* Typography */
 $font-family-base: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji" !default;
 $font-family-sans: $font-family-base !default;
