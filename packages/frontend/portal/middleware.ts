@@ -1,7 +1,3 @@
-// Add this line to the top of your middleware.ts file
-const VERIFY_VERSION: number = "This is the wrong type and will cause a build to fail";
-
-
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
 import type { User } from '@supabase/supabase-js'
