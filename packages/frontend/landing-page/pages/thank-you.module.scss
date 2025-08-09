@@ -1,22 +1,22 @@
 @use 'sass:color';
-@use '@leadspark/styles/variables' as *;
+@use '@leadspark/styles/variables' as vars;
 
 /* Page layout */
 .page {
   min-height: 100vh;
-  background: $gray-50;
+  background: vars.$gray-50;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: $spacing-8 $spacing-6;
-  font-family: $font-family-base;
+  padding: vars.$spacing-8 vars.$spacing-6;
+  font-family: vars.$font-family-base;
 
-  @media (min-width: $breakpoint-sm) {
-    padding-inline: $spacing-6;
+  @media (min-width: vars.$breakpoint-sm) {
+    padding-inline: vars.$spacing-6;
   }
 
-  @media (min-width: $breakpoint-lg) {
-    padding-inline: $spacing-8;
+  @media (min-width: vars.$breakpoint-lg) {
+    padding-inline: vars.$spacing-8;
   }
 }
 
@@ -26,7 +26,7 @@
   width: 100%;
   max-width: 28rem;
 
-  @media (min-width: $breakpoint-sm) {
+  @media (min-width: vars.$breakpoint-sm) {
     max-width: 28rem;
   }
 }
@@ -36,131 +36,131 @@
 }
 
 .logo {
-  font-size: $text-2xl;
-  font-weight: $font-bold;
-  color: $blue-600;
+  font-size: vars.$text-2xl;
+  font-weight: vars.$font-bold;
+  color: vars.$blue-600;
   background: none;
   border: none;
   cursor: pointer;
-  transition: color $transition-base;
+  transition: color vars.$transition-base;
 
   &:hover {
-    color: $blue-700;
+    color: vars.$blue-700;
   }
 }
 
 .title {
-  margin-top: $spacing-6;
+  margin-top: vars.$spacing-6;
   text-align: center;
-  font-size: $text-3xl;
-  font-weight: $font-bold;
-  color: $gray-900;
+  font-size: vars.$text-3xl;
+  font-weight: vars.$font-bold;
+  color: vars.$gray-900;
 }
 
 .subtitle {
-  margin-top: $spacing-2;
+  margin-top: vars.$spacing-2;
   text-align: center;
-  font-size: $text-sm;
-  color: $gray-600;
+  font-size: vars.$text-sm;
+  color: vars.$gray-600;
 }
 
 .linkButton {
-  font-weight: $font-medium;
-  color: $blue-600;
+  font-weight: vars.$font-medium;
+  color: vars.$blue-600;
   background: none;
   border: none;
   cursor: pointer;
-  transition: color $transition-base;
+  transition: color vars.$transition-base;
 
   &:hover {
-    color: $blue-500;
+    color: vars.$blue-500;
   }
 }
 
 /* Form container */
 .formContainer {
-  margin-top: $spacing-8;
+  margin-top: vars.$spacing-8;
   margin-inline: auto;
   width: 100%;
   max-width: 28rem;
 
-  @media (min-width: $breakpoint-sm) {
+  @media (min-width: vars.$breakpoint-sm) {
     max-width: 28rem;
   }
 }
 
 .formCard {
-  background: $white;
-  padding: $spacing-8 $spacing-4;
-  box-shadow: $shadow;
-  border-radius: $rounded-lg;
+  background: vars.$white;
+  padding: vars.$spacing-8 vars.$spacing-4;
+  box-shadow: vars.$shadow;
+  border-radius: vars.$rounded-lg;
 
-  @media (min-width: $breakpoint-sm) {
-    padding: $spacing-8;
+  @media (min-width: vars.$breakpoint-sm) {
+    padding: vars.$spacing-8;
   }
 }
 
 /* Form styles */
 .form {
   display: grid;
-  gap: $spacing-6;
+  gap: vars.$spacing-6;
 }
 
 .formGrid2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $spacing-4;
+  gap: vars.$spacing-4;
 }
 
 .label {
   display: block;
-  font-size: $text-sm;
-  font-weight: $font-medium;
-  color: $gray-700;
+  font-size: vars.$text-sm;
+  font-weight: vars.$font-medium;
+  color: vars.$gray-700;
 }
 
 .inputGroup {
-  margin-top: $spacing-1;
+  margin-top: vars.$spacing-1;
 }
 
 .input {
   appearance: none;
   display: block;
   width: 100%;
-  padding: $spacing-2 $spacing-3;
-  border: $border-width solid $gray-300;
-  border-radius: $rounded-md;
+  padding: vars.$spacing-2 vars.$spacing-3;
+  border: vars.$border-width solid vars.$gray-300;
+  border-radius: vars.$rounded-md;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  font-size: $text-sm;
-  transition: border-color $transition-base, box-shadow $transition-base;
+  font-size: vars.$text-sm;
+  transition: border-color vars.$transition-base, box-shadow vars.$transition-base;
 
   &::placeholder {
-    color: $gray-500;
+    color: vars.$gray-500;
   }
 
   &:focus {
     outline: none;
-    border-color: $blue-500;
-    box-shadow: 0 0 0 3px rgba($blue-500, 0.1);
+    border-color: vars.$blue-500;
+    box-shadow: 0 0 0 3px rgba(vars.$blue-500, 0.1);
   }
 
   &.inputError {
-    border-color: $error-color;
+    border-color: vars.$error-color;
   }
 }
 
 .errorMessage {
-  margin-top: $spacing-1;
-  font-size: $text-sm;
-  color: $error-color;
+  margin-top: vars.$spacing-1;
+  font-size: vars.$text-sm;
+  color: vars.$error-color;
 }
 
 .errorBanner {
   background: #fef2f2;
-  border: $border-width solid #fecaca;
+  border: vars.$border-width solid #fecaca;
   color: #dc2626;
-  padding: $spacing-4 $spacing-4;
-  border-radius: $rounded;
+  padding: vars.$spacing-4 vars.$spacing-4;
+  border-radius: vars.$rounded;
 }
 
 /* Submit button */
@@ -169,27 +169,27 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: $spacing-2 $spacing-4;
-  border: $border-width solid transparent;
-  font-size: $text-sm;
-  font-weight: $font-medium;
-  border-radius: $rounded-md;
-  color: $white;
-  background: $blue-600;
+  padding: vars.$spacing-2 vars.$spacing-4;
+  border: vars.$border-width solid transparent;
+  font-size: vars.$text-sm;
+  font-weight: vars.$font-medium;
+  border-radius: vars.$rounded-md;
+  color: vars.$white;
+  background: vars.$blue-600;
   cursor: pointer;
-  transition: background-color $transition-base;
+  transition: background-color vars.$transition-base;
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba($blue-500, 0.5);
+    box-shadow: 0 0 0 2px rgba(vars.$blue-500, 0.5);
   }
 
   &:hover:not(:disabled) {
-    background: $blue-700;
+    background: vars.$blue-700;
   }
 
   &.submitButtonLoading {
-    background: $gray-500;
+    background: vars.$gray-500;
     cursor: not-allowed;
   }
 }
@@ -202,26 +202,26 @@
 
 .spinner {
   animation: spin 0.9s linear infinite;
-  margin-right: $spacing-3;
+  margin-right: vars.$spacing-3;
   height: 1.25rem;
   width: 1.25rem;
-  border: 2px solid $white;
+  border: 2px solid vars.$white;
   border-top-color: transparent;
-  border-radius: $rounded-full;
+  border-radius: vars.$rounded-full;
   display: inline-block;
 }
 
 /* Divider section */
 .dividerSection {
-  margin-top: $spacing-6;
+  margin-top: vars.$spacing-6;
 }
 
 .divider {
   position: relative;
   text-align: center;
-  color: $gray-600;
-  font-size: $text-sm;
-  margin: $spacing-5 0;
+  color: vars.$gray-600;
+  font-size: vars.$text-sm;
+  margin: vars.$spacing-5 0;
 
   &::before {
     content: "";
@@ -230,19 +230,19 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: $gray-300;
+    background: vars.$gray-300;
     transform: translateY(-50%);
   }
 
   & > span {
     position: relative;
-    background: $white;
-    padding: 0 $spacing-2;
+    background: vars.$white;
+    padding: 0 vars.$spacing-2;
   }
 }
 
 .googleButtonContainer {
-  margin-top: $spacing-6;
+  margin-top: vars.$spacing-6;
 }
 
 .googleButton {
@@ -250,19 +250,19 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: $spacing-2 $spacing-4;
-  border: $border-width solid $gray-300;
-  border-radius: $rounded-md;
+  padding: vars.$spacing-2 vars.$spacing-4;
+  border: vars.$border-width solid vars.$gray-300;
+  border-radius: vars.$rounded-md;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  background: $white;
-  font-size: $text-sm;
-  font-weight: $font-medium;
-  color: $gray-500;
+  background: vars.$white;
+  font-size: vars.$text-sm;
+  font-weight: vars.$font-medium;
+  color: vars.$gray-500;
   cursor: pointer;
-  transition: background-color $transition-base;
+  transition: background-color vars.$transition-base;
 
   &:hover:not(:disabled) {
-    background: $gray-50;
+    background: vars.$gray-50;
   }
 
   &:disabled {
@@ -274,7 +274,7 @@
 .googleIcon {
   width: 1.25rem;
   height: 1.25rem;
-  margin-right: $spacing-2;
+  margin-right: vars.$spacing-2;
 }
 
 @keyframes spin {
