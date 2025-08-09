@@ -11,3 +11,4 @@ export const getBrowserClient = () => {
   browserClient = createBrowserClient(url, key)
   return browserClient
 }
+

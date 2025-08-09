@@ -1,14 +1,9 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"],
-      "env": [
-        "GOOGLE_MAPS_API_KEY",
-        "NEXT_PUBLIC_SUPABASE_URL",
-        "NEXT_PUBLIC_SUPABASE_ANON_KEY"
-      ]
+    "typecheck": {
+      "outputs": [],
+      "command": "tsc -p packages/frontend/portal/tsconfig.json --noEmit"
     },
     "build:styles": {
       "outputs": ["dist/**", "build/**"],
@@ -18,9 +13,16 @@
       "cache": false,
       "persistent": true,
       "dependsOn": ["build:styles"]
+    },
+    "build": {
+      "dependsOn": ["^build", "typecheck"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"],
+      "env": [
+        "GOOGLE_MAPS_API_KEY",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY"
+      ]
     }
   },
-  "globalDependencies": [
-    "packages/common/**/*"
-  ]
+  "globalDependencies": ["packages/common/**/*"]
 }

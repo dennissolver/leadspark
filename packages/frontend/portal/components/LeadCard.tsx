@@ -121,3 +121,4 @@ const LeadCard: React.FC<LeadCardProps> = ({ lead }) => {
 };
 
 export default LeadCard;
+

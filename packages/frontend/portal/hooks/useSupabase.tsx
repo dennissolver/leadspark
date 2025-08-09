@@ -103,3 +103,4 @@ export function useSupabaseClient() {
 
 /** Default export for backwards compatibility */
 export default useSupabase
+

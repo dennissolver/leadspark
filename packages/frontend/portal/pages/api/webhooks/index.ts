@@ -238,3 +238,4 @@ async function sendEmail(options: {
   // (SendGrid, AWS SES, Postmark, etc.)
   console.log('Email would be sent:', options);
 }
+

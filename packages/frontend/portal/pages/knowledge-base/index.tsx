@@ -1,314 +1,199 @@
-import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
+import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import Layout from '../../components/layout';
 import useSupabase from '../../hooks/useSupabase';
 import { dbHelpers, KnowledgeBaseEntry } from '../../lib/supabaseClient';
-import styles from './index.module.scss';
+import { getTenantId } from '../../utils/tenant'; // Import the new centralized helper
 
-type FilterType = 'all' | 'document' | 'url' | 'text';
-
-const KnowledgeBasePage: React.FC = () => {
-  const { getTenantId, loading } = useSupabase();
+const KnowledgeBaseIndexPage: React.FC = () => {
+  const { user } = useSupabase();
   const [entries, setEntries] = useState<KnowledgeBaseEntry[]>([]);
-  const [filteredEntries, setFilteredEntries] = useState<KnowledgeBaseEntry[]>([]);
-  const [loadingData, setLoadingData] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState('');
   const [error, setError] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [typeFilter, setTypeFilter] = useState<FilterType>('all');
-  const [deletingEntry, setDeletingEntry] = useState<string | null>(null);
+  const [showDeleteModal, setShowDeleteModal] = useState<string | null>(null); // State for delete confirmation modal
 
-  const tenantId = getTenantId();
+  // Use the centralized helper
+  const tenantId = getTenantId(user);
 
-  useEffect(() => {
-    if (!tenantId || loading) return;
-
-    const fetchKnowledgeBase = async () => {
-      try {
-        setLoadingData(true);
-        setError(null);
-        const kbData = await dbHelpers.getKnowledgeBase(tenantId);
-        setEntries(kbData);
-      } catch (err) {
-        console.error('Error fetching knowledge base:', err);
-        setError('Failed to load knowledge base');
-      } finally {
-        setLoadingData(false);
-      }
-    };
-
-    fetchKnowledgeBase();
-  }, [tenantId, loading]);
-
-  useEffect(() => {
-    let filtered = [...entries];
-
-    // Apply search filter
-    if (searchTerm) {
-      const search = searchTerm.toLowerCase();
-      filtered = filtered.filter(entry =>
-        entry.title.toLowerCase().includes(search) ||
-        entry.content.toLowerCase().includes(search) ||
-        (entry.tags && entry.tags.some(tag => tag.toLowerCase().includes(search)))
-      );
-    }
-
-    // Apply type filter
-    if (typeFilter !== 'all') {
-      filtered = filtered.filter(entry => entry.type === typeFilter);
-    }
-
-    // Sort by most recent
-    filtered.sort((a, b) =>
-      new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-    );
-
-    setFilteredEntries(filtered);
-  }, [entries, searchTerm, typeFilter]);
-
-  const deleteEntry = async (entryId: string) => {
-    if (!tenantId || !confirm('Are you sure you want to delete this entry?')) return;
-
+  const load = async () => {
+    if (!tenantId) return;
     try {
-      setDeletingEntry(entryId);
-      // This would need to be implemented in dbHelpers
-      // await dbHelpers.deleteKnowledgeBaseEntry(entryId, tenantId);
-
-      // For now, simulate the API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      setEntries(entries.filter(entry => entry.id !== entryId));
-    } catch (err) {
-      console.error('Error deleting entry:', err);
-      setError('Failed to delete entry');
+      setLoading(true);
+      setError(null);
+      // Remove 'as any' cast for type safety
+      const list = await dbHelpers.getKnowledgeBase(tenantId);
+      setEntries(list ?? []);
+    } catch (err: any) {
+      setError(err?.message ?? 'Failed to load knowledge base');
     } finally {
-      setDeletingEntry(null);
+      setLoading(false);
     }
   };
 
-  const getTypeIcon = (type: KnowledgeBaseEntry['type']) => {
-    switch (type) {
-      case 'document':
-        return '📄';
-      case 'url':
-        return '🌐';
-      case 'text':
-        return '📝';
-      default:
-        return '📚';
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tenantId]);
+
+  const onDelete = async (id: string) => {
+    if (!tenantId) return;
+    try {
+      // Remove 'as any' cast for type safety
+      await dbHelpers.deleteKnowledgeBaseEntry(tenantId, id);
+      setEntries((prev) => prev.filter((e) => e.id !== id));
+      setShowDeleteModal(null); // Close modal on success
+    } catch (err: any) {
+      // Replace alert with a more robust message display
+      setError(err?.message ?? 'Delete failed');
+      setShowDeleteModal(null);
     }
   };
 
-  const getTypeCounts = () => {
-    return {
-      all: entries.length,
-      document: entries.filter(e => e.type === 'document').length,
-      url: entries.filter(e => e.type === 'url').length,
-      text: entries.filter(e => e.type === 'text').length,
-    };
-  };
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric'
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return entries;
+    return entries.filter((e) => {
+      const hay = [
+        e.title,
+        e.content,
+        e.type,
+        e.url ?? '',
+        (e.tags ?? []).join(' ')
+      ]
+        .join(' ')
+        .toLowerCase();
+      return hay.includes(q);
     });
-  };
-
-  const truncateContent = (content: string, maxLength: number = 150) => {
-    if (content.length <= maxLength) return content;
-    return content.substr(0, maxLength) + '...';
-  };
-
-  const typeCounts = getTypeCounts();
-
-  if (loadingData) {
-    return (
-      <Layout title="Knowledge Base - LeadSpark Portal">
-        <div className={styles.loadingContainer}>
-          <div className={styles.loadingSpinner}></div>
-          <p className={styles.loadingText}>Loading knowledge base...</p>
-        </div>
-      </Layout>
-    );
-  }
+  }, [entries, query]);
 
   return (
-    <Layout title="Knowledge Base - LeadSpark Portal">
+    <Layout title="Knowledge Base">
       <Head>
         <title>Knowledge Base - LeadSpark Portal</title>
-        <meta name="description" content="Manage your AI assistant's knowledge base content" />
       </Head>
 
-      <div className={styles.knowledgeBaseContainer}>
-        {/* Header */}
-        <header className={styles.kbHeader}>
-          <div className={styles.headerContent}>
-            <h1 className={styles.pageTitle}>Knowledge Base</h1>
-            <p className={styles.kbCount}>
-              {filteredEntries.length} of {entries.length} entries
-            </p>
+      <div className="container mx-auto max-w-5xl px-4 py-6">
+        <div className="mb-6 flex items-center justify-between gap-3">
+          <div>
+            <h1 className="text-2xl font-semibold">Knowledge Base</h1>
+            <p className="text-sm text-gray-500">Manage documents, URLs, and snippets your AI can use.</p>
           </div>
-          <div className={styles.headerActions}>
-            <Link href="/knowledge-base/upload" className={styles.uploadButton}>
-              ➕ Add Content
-            </Link>
-          </div>
-        </header>
+          <Link
+            href="/knowledge-base/upload"
+            className="rounded-lg bg-black px-4 py-2 text-white hover:opacity-90"
+          >
+            + Add Entry
+          </Link>
+        </div>
 
-        {/* Error Message */}
+        <div className="mb-4">
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search title, content, tags, or URL…"
+            className="w-full rounded-lg border px-3 py-2 outline-none focus:ring"
+          />
+        </div>
+
         {error && (
-          <div className={styles.errorMessage}>
-            <span className={styles.errorIcon}>⚠️</span>
+          <div className="mb-4 rounded-lg border border-red-300 bg-red-50 px-3 py-2 text-red-700">
             {error}
           </div>
         )}
 
-        {/* Filters and Search */}
-        <div className={styles.filtersSection}>
-          <div className={styles.searchContainer}>
-            <div className={styles.searchInputWrapper}>
-              <span className={styles.searchIcon}>🔍</span>
-              <input
-                type="text"
-                placeholder="Search knowledge base entries..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className={styles.searchInput}
-              />
-            </div>
-          </div>
-
-          <div className={styles.typeFilters}>
-            {(Object.keys(typeCounts) as FilterType[]).map(type => (
-              <button
-                key={type}
-                onClick={() => setTypeFilter(type)}
-                className={`${styles.filterButton} ${typeFilter === type ? styles.active : ''}`}
-              >
-                {type === 'all' ? '📚' : getTypeIcon(type as Exclude<FilterType, 'all'>)}
-                {type === 'all' ? 'All' : type.charAt(0).toUpperCase() + type.slice(1)}
-                <span className={styles.filterCount}>
-                  {typeCounts[type]}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Content Grid */}
-        {filteredEntries.length === 0 ? (
-          <div className={styles.emptyState}>
-            {entries.length === 0 ? (
-              <>
-                <div className={styles.emptyIcon}>📚</div>
-                <h2 className={styles.emptyTitle}>No knowledge base entries</h2>
-                <p className={styles.emptyText}>
-                  Start building your AI's knowledge by adding documents, URLs, or text content.
-                  This will help your assistant provide more accurate and helpful responses.
-                </p>
-                <Link href="/knowledge-base/upload" className={styles.getStartedButton}>
-                  Add Your First Entry
-                </Link>
-              </>
-            ) : (
-              <>
-                <div className={styles.emptyIcon}>🔍</div>
-                <h2 className={styles.emptyTitle}>No matching entries</h2>
-                <p className={styles.emptyText}>
-                  Try adjusting your search terms or filters to find what you're looking for.
-                </p>
-                <button
-                  onClick={() => {
-                    setSearchTerm('');
-                    setTypeFilter('all');
-                  }}
-                  className={styles.clearFiltersButton}
-                >
-                  Clear Filters
-                </button>
-              </>
-            )}
+        {loading ? (
+          <div className="text-gray-500">Loading…</div>
+        ) : filtered.length === 0 ? (
+          <div className="rounded-lg border px-4 py-8 text-center text-gray-500">
+            No entries yet. Click “Add Entry” to create one.
           </div>
         ) : (
-          <div className={styles.entriesGrid}>
-            {filteredEntries.map((entry) => (
-              <div key={entry.id} className={styles.entryCard}>
-                <div className={styles.entryHeader}>
-                  <div className={styles.entryType}>
-                    <span className={styles.typeIcon}>
-                      {getTypeIcon(entry.type)}
-                    </span>
-                    <span className={styles.typeName}>
-                      {entry.type}
-                    </span>
+          <ul className="space-y-3">
+            {filtered.map((e) => (
+              <li key={e.id} className="rounded-xl border p-4">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-lg font-medium">{e.title}</h3>
+                      <span className="rounded-full border px-2 py-0.5 text-xs uppercase text-gray-600">
+                        {e.type}
+                      </span>
+                    </div>
+
+                    {e.url && (
+                      <div className="mt-1">
+                        <a
+                          href={e.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-sm text-blue-600 underline"
+                        >
+                          {e.url}
+                        </a>
+                      </div>
+                    )}
+
+                    <p className="mt-2 text-sm text-gray-700">
+                      {e.content.length > 240 ? `${e.content.slice(0, 240)}…` : e.content}
+                    </p>
+
+                    {e.tags && e.tags.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {e.tags.map((t) => (
+                          <span key={t} className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-700">
+                            #{t}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="mt-2 text-xs text-gray-400">
+                      Added {new Date(e.created_at).toLocaleString()}
+                    </div>
                   </div>
 
-                  <div className={styles.entryActions}>
+                  <div className="flex shrink-0 items-center gap-2">
                     <button
-                      onClick={() => deleteEntry(entry.id)}
-                      disabled={deletingEntry === entry.id}
-                      className={styles.deleteButton}
-                      title="Delete entry"
+                      onClick={() => setShowDeleteModal(e.id)} // Open modal instead of confirm
+                      className="rounded-lg border px-3 py-1.5 text-sm hover:bg-gray-50"
                     >
-                      {deletingEntry === entry.id ? '⏳' : '🗑️'}
+                      Delete
                     </button>
                   </div>
                 </div>
-
-                <div className={styles.entryContent}>
-                  <h3 className={styles.entryTitle}>{entry.title}</h3>
-
-                  {entry.url && (
-                    <a
-                      href={entry.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.entryUrl}
-                    >
-                      {entry.url}
-                    </a>
-                  )}
-
-                  <p className={styles.entryDescription}>
-                    {truncateContent(entry.content)}
-                  </p>
-
-                  {entry.tags && entry.tags.length > 0 && (
-                    <div className={styles.entryTags}>
-                      {entry.tags.slice(0, 3).map((tag, index) => (
-                        <span key={index} className={styles.tag}>
-                          {tag}
-                        </span>
-                      ))}
-                      {entry.tags.length > 3 && (
-                        <span className={styles.tagMore}>
-                          +{entry.tags.length - 3}
-                        </span>
-                      )}
-                    </div>
-                  )}
-                </div>
-
-                <div className={styles.entryFooter}>
-                  <span className={styles.entryDate}>
-                    Added {formatDate(entry.created_at)}
-                  </span>
-
-                  <div className={styles.entryStats}>
-                    <span className={styles.contentLength}>
-                      {entry.content.length} chars
-                    </span>
-                  </div>
-                </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
+
+      {/* Custom delete confirmation modal */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="w-96 rounded-lg bg-white p-6 shadow-xl">
+            <h3 className="text-lg font-bold">Confirm Deletion</h3>
+            <p className="mt-2 text-sm text-gray-600">Are you sure you want to delete this entry? This action cannot be undone.</p>
+            <div className="mt-4 flex justify-end gap-2">
+              <button
+                onClick={() => setShowDeleteModal(null)}
+                className="rounded-lg border px-4 py-2 text-sm hover:bg-gray-50"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => onDelete(showDeleteModal)}
+                className="rounded-lg bg-red-500 px-4 py-2 text-sm text-white hover:bg-red-600"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };
 
-export default KnowledgeBasePage;
+export default KnowledgeBaseIndexPage;

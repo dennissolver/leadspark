@@ -122,6 +122,19 @@ export const dbHelpers = {
     return data as Lead;
   },
 
+  async deleteKnowledgeBaseEntry(tenantId: string, id: string) {
+    const { error } = await supabase
+      .from('knowledge_base')
+      .delete()
+      .eq('tenant_id', tenantId)
+      .eq('id', id);
+    if (error) throw error;
+  },
+
+
+
+
+
   async updateLeadStatus(leadId: string, status: Lead['status'], tenantId: string) {
     const { data, error } = await supabase
       .from('leads')
@@ -235,3 +248,4 @@ export const dbHelpers = {
 };
 
 export default supabase;
+

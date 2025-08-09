@@ -1,0 +1,38 @@
+# .github/workflows/ci.yml
+
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      # Step 1: Run typecheck to catch TypeScript errors early.
+      - name: Run typecheck
+        run: npx turbo run typecheck --filter=portal
+
+      # Step 2: Run ESLint to enforce code style and best practices.
+      # You might need to adjust the command depending on your setup (e.g., `npm run lint`).
+      - name: Run ESLint
+        run: npx turbo run lint --filter=portal
+
+      # Step 3: Run a full build to ensure the project can be built successfully.
+      - name: Run build
+        run: npx turbo run build --filter=portal
