@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { supabase } from '../../lib/supabaseClient';
+import { supabase } from '../lib/supabaseClient';
 import styles from './login.module.scss'; // Reuse login page styles
 
 export default function ResetPassword(): JSX.Element {
