@@ -66,7 +66,7 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
             ...options,
           });
         },
-        delete(name: string, options: { [key: string]: any }): void {
+        remove(name: string, options: { [key: string]: any }): void { // Changed from 'delete' to 'remove'
           res.cookies.set({
             name,
             value: '',
