@@ -85,11 +85,11 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
 
   // This is the line to modify for debugging
   // Comment out this block to allow access to protected pages without a session.
-  // if (!user) {
-  //   const url = new URL('/login', req.url)
-  //   url.searchParams.set('next', pathname)
-  //   return NextResponse.redirect(url)
-  // }
+  if (!user) {
+    const url = new URL('/login', req.url)
+    url.searchParams.set('next', pathname)
+    return NextResponse.redirect(url)
+  }
 
   // All good, continue to the requested page
   return res
