@@ -396,7 +396,7 @@ export default function LeadsparkIntro() {
                     </li>
                   ))}
                 </ul>
-
+                {/* ✅ Added Link components for all plan buttons */}
                 <Link href="/signup" className={`${s.planBtn} ${plan.recommended ? s.planBtnPrimary : s.planBtnGhost}`}>
                   Start Leadspark Free Trial
                 </Link>
@@ -451,9 +451,9 @@ export default function LeadsparkIntro() {
           <p className={s.finalSub}>
             Transform your website from a digital brochure into a 24/7 lead generation machine with Leadspark.
           </p>
-          <button className={s.finalBtn} onClick={() => setShowSignupForm(true)}>
+          <Link href="/signup" className={s.finalBtn}>
             Get Started with Leadspark Free <ArrowRight className={s.ctaIcon} />
-          </button>
+          </Link>
           <p className={s.finalNote}>No credit card required • Setup in under 5 minutes</p>
 
           <div className={s.finalSteps}>
