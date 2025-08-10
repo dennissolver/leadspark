@@ -4,7 +4,7 @@ import { supabase } from '../lib/supabaseClient';
 import { AuthError } from '@supabase/supabase-js';
 import Link from 'next/link';
 import styles from './login.module.scss';
-import useSupabase from '../hooks/useSupabase'; // ✅ Use the Supabase hook to react to auth state changes
+import { useSupabase } from '../hooks/useSupabase'; // ✅ Use named import
 
 interface LoginFormData {
   email: string;
@@ -22,20 +22,19 @@ export default function Login(): JSX.Element {
   const { user, loading } = useSupabase(); // ✅ Destructure user and loading from the hook
   const [formData, setFormData] = useState<LoginFormData>({
     email: '',
-    password: ''
+    password: '',
   });
   const [errors, setErrors] = useState<LoginErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false); // ✅ Add local state for form submission
   const portalUrl = 'https://leadspark-tenant.vercel.app/';
   const landingPageUrl = 'https://leadspark-six.vercel.app/';
 
-  // ✅ This useEffect hook handles the redirect immediately if a user session is detected.
-  // It reacts to changes in the 'user' or 'loading' state.
+  // Redirect if user is already signed in
   useEffect(() => {
     if (loading) {
       return;
     }
 
-    // If a user is already signed in, redirect them.
     if (user) {
       const nextUrl = router.query.next as string | undefined;
       if (nextUrl) {
@@ -48,16 +47,16 @@ export default function Login(): JSX.Element {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
 
     // Clear error when user starts typing
     if (errors[name as keyof LoginErrors]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: undefined
+        [name]: undefined,
       }));
     }
   };
@@ -81,7 +80,7 @@ export default function Login(): JSX.Element {
     if (!validateForm()) {
       return;
     }
-    setLoading(true);
+    setIsSubmitting(true); // ✅ Use local state
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
@@ -114,7 +113,7 @@ export default function Login(): JSX.Element {
       }
       setErrors({ general: errorMessage });
     } finally {
-      setLoading(false);
+      setIsSubmitting(false); // ✅ Reset local state
     }
   };
 
@@ -123,8 +122,8 @@ export default function Login(): JSX.Element {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${portalUrl}dashboard`
-        }
+          redirectTo: `${portalUrl}dashboard`,
+        },
       });
       if (error) {
         throw error;
@@ -132,13 +131,13 @@ export default function Login(): JSX.Element {
     } catch (error) {
       console.error('Google login error:', error);
       setErrors({
-        general: 'Google sign-in failed. Please try again.'
+        general: 'Google sign-in failed. Please try again.',
       });
     }
   };
 
   if (loading) {
-    return <div className={styles.loading}>Loading...</div>; // Render a loading state while checking
+    return <div className={styles.loading}>Loading...</div>;
   }
 
   return (
@@ -146,31 +145,21 @@ export default function Login(): JSX.Element {
       <div className={styles.container}>
         <div className={styles.header}>
           <Link href="/leadspark-intro">
-            <button className={styles.logo}>
-              Leadspark
-            </button>
+            <button className={styles.logo}>Leadspark</button>
           </Link>
         </div>
-        <h2 className={styles.title}>
-          Sign in to your account
-        </h2>
+        <h2 className={styles.title}>Sign in to your account</h2>
         <p className={styles.subtitle}>
           Or{' '}
           <Link href={`${landingPageUrl}signup`}>
-            <button className={styles.linkButton}>
-              start your 14-day free trial
-            </button>
+            <button className={styles.linkButton}>start your 14-day free trial</button>
           </Link>
         </p>
       </div>
       <div className={styles.formContainer}>
         <div className={styles.formCard}>
           <form className={styles.form} onSubmit={handleLogin}>
-            {errors.general && (
-              <div className={styles.errorBanner}>
-                {errors.general}
-              </div>
-            )}
+            {errors.general && <div className={styles.errorBanner}>{errors.general}</div>}
             <div>
               <label htmlFor="email" className={styles.label}>
                 Email address
@@ -187,9 +176,7 @@ export default function Login(): JSX.Element {
                   className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
                   placeholder="you@example.com"
                 />
-                {errors.email && (
-                  <p className={styles.errorMessage}>{errors.email}</p>
-                )}
+                {errors.email && <p className={styles.errorMessage}>{errors.email}</p>}
               </div>
             </div>
             <div>
@@ -207,19 +194,12 @@ export default function Login(): JSX.Element {
                   onChange={handleInputChange}
                   className={`${styles.input} ${errors.password ? styles.inputError : ''}`}
                 />
-                {errors.password && (
-                  <p className={styles.errorMessage}>{errors.password}</p>
-                )}
+                {errors.password && <p className={styles.errorMessage}>{errors.password}</p>}
               </div>
             </div>
             <div className={styles.formOptions}>
               <div className={styles.checkboxGroup}>
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className={styles.checkbox}
-                />
+                <input id="remember-me" name="remember-me" type="checkbox" className={styles.checkbox} />
                 <label htmlFor="remember-me" className={styles.checkboxLabel}>
                   Remember me
                 </label>
@@ -237,10 +217,10 @@ export default function Login(): JSX.Element {
             <div>
               <button
                 type="submit"
-                disabled={loading}
-                className={`${styles.submitButton} ${loading ? styles.submitButtonLoading : ''}`}
+                disabled={isSubmitting || loading} // ✅ Use isSubmitting
+                className={`${styles.submitButton} ${isSubmitting || loading ? styles.submitButtonLoading : ''}`}
               >
-                {loading ? (
+                {isSubmitting || loading ? ( // ✅ Use isSubmitting
                   <div className={styles.loadingContent}>
                     <div className={styles.spinner}></div>
                     Signing in...
@@ -258,14 +238,26 @@ export default function Login(): JSX.Element {
                 <button
                   type="button"
                   onClick={handleGoogleLogin}
-                  disabled={loading}
+                  disabled={isSubmitting || loading} // ✅ Use isSubmitting
                   className={styles.googleButton}
                 >
                   <svg className={styles.googleIcon} viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    <path
+                      fill="#4285F4"
+                      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                    />
+                    <path
+                      fill="#34A853"
+                      d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                    />
+                    <path
+                      fill="#FBBC05"
+                      d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                    />
+                    <path
+                      fill="#EA4335"
+                      d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                    />
                   </svg>
                   Sign in with Google
                 </button>
@@ -277,9 +269,7 @@ export default function Login(): JSX.Element {
               <span className={styles.signupText}>
                 Don't have an account?{' '}
                 <Link href={`${landingPageUrl}signup`}>
-                  <button className={styles.linkButton}>
-                    Sign up for free
-                  </button>
+                  <button className={styles.linkButton}>Sign up for free</button>
                 </Link>
               </span>
             </div>
