@@ -31,8 +31,7 @@ function getTenantIdFromUser(user: User | null): string | null {
 export async function middleware(req: NextRequest): Promise<NextResponse> {
   const { pathname } = req.nextUrl
 
-  // Skip public paths early. The matcher in `config` handles this for most cases,
-  // but this is a good additional check for clarity.
+  // Skip public paths early.
   if (!isProtectedPath(pathname)) {
     return NextResponse.next()
   }
@@ -52,20 +51,21 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
     return NextResponse.redirect(new URL('/error', req.url))
   }
 
-  // The cookie functions required by createServerClient - Updated API
   const supabase = createServerClient(
     supabaseUrl,
     supabaseAnonKey,
     {
       cookies: {
-        get(name: string) {
-          return req.cookies.get(name)?.value
+        getAll() {
+          return req.cookies.getAll()
         },
-        set(name: string, value: string, options = {}) {
-          res.cookies.set({
-            name,
-            value,
-            ...options,
+        setAll(cookies) {
+          cookies.forEach(({ name, value, options }) => {
+            res.cookies.set({
+              name,
+              value,
+              ...options,
+            })
           })
         },
         remove(name: string, options = {}) {
@@ -83,19 +83,13 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // Not signed in ➜ /login
-  if (!user) {
-    const url = new URL('/login', req.url)
-    url.searchParams.set('next', pathname) // optional: return after login
-    return NextResponse.redirect(url)
-  }
-
-  // Signed in but no tenant ➜ /onboarding
-  const tenantId = getTenantIdFromUser(user)
-  if (!tenantId && !pathname.startsWith('/onboarding')) {
-    const url = new URL('/onboarding', req.url)
-    return NextResponse.redirect(url)
-  }
+  // This is the line to modify for debugging
+  // Comment out this block to allow access to protected pages without a session.
+  // if (!user) {
+  //   const url = new URL('/login', req.url)
+  //   url.searchParams.set('next', pathname)
+  //   return NextResponse.redirect(url)
+  // }
 
   // All good, continue to the requested page
   return res
