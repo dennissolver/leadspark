@@ -167,7 +167,8 @@ export default function Signup() {
         </h2>
         <p className={styles.subtitle}>
           Or{' '}
-          <Link href="/login">
+          {/* ✅ Corrected link to the portal app's login page */}
+          <Link href={`${portalUrl}login`}>
             <button className={styles.linkButton}>
               sign in to your existing account
             </button>
