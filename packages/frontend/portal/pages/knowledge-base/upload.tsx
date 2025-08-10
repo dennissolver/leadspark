@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Link from 'next/link'; // Added the missing import for the Link component
 import Layout from '../../components/layout';
-import useSupabase from '../../hooks/useSupabase';
+import { useSupabase } from '../../hooks/useSupabase';
 import { dbHelpers, KnowledgeBaseEntry } from '../../lib/supabaseClient';
 import { getTenantId } from '../../utils/tenant';
 

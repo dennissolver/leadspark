@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Layout from '../../components/layout';
-import useSupabase from '../../hooks/useSupabase';
+import { useSupabase } from '../../hooks/useSupabase';
 import { supabase, Tenant } from '../../lib/supabaseClient';
 
 const getTenantId = (user: any): string | undefined =>

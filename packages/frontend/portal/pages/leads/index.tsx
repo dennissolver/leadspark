@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/layout';
-import useSupabase from '../../hooks/useSupabase';
+import { useSupabase } from '../../hooks/useSupabase';
 import { dbHelpers, Lead } from '../../lib/supabaseClient';
 
 const getTenantId = (user: any): string | undefined =>

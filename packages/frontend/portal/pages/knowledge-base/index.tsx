@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import Layout from '../../components/layout';
-import useSupabase from '../../hooks/useSupabase';
+import { useSupabase } from '../../hooks/useSupabase';
 import { dbHelpers, KnowledgeBaseEntry } from '../../lib/supabaseClient';
 import { getTenantId } from '../../utils/tenant'; // Import the new centralized helper
 
