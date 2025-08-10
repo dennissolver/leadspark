@@ -82,11 +82,11 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
   } = await supabase.auth.getUser();
 
   // Redirect to login if no user is found
-  if (!user) {
-    const url = new URL('/login', req.url);
-    url.searchParams.set('next', pathname);
-    return NextResponse.redirect(url);
-  }
+  // if (!user) {
+  //   const url = new URL('/login', req.url);
+  //   url.searchParams.set('next', pathname);
+  //   return NextResponse.redirect(url);
+  // }
 
   // All good, continue to the requested page
   return res;
