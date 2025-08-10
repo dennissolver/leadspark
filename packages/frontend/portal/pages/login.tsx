@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabaseClient';
 import { AuthError } from '@supabase/supabase-js';
 import Link from 'next/link';
 import styles from './login.module.scss';
+import useSupabase from '../hooks/useSupabase'; // ✅ Use the Supabase hook to react to auth state changes
 
 interface LoginFormData {
   email: string;
@@ -18,7 +19,7 @@ interface LoginErrors {
 
 export default function Login(): JSX.Element {
   const router = useRouter();
-  const [loading, setLoading] = useState<boolean>(false);
+  const { user, loading } = useSupabase(); // ✅ Destructure user and loading from the hook
   const [formData, setFormData] = useState<LoginFormData>({
     email: '',
     password: ''
@@ -27,22 +28,23 @@ export default function Login(): JSX.Element {
   const portalUrl = 'https://leadspark-tenant.vercel.app/';
   const landingPageUrl = 'https://leadspark-six.vercel.app/';
 
-  // ✅ This useEffect hook handles the redirect after a magic link login.
-  // It checks for a session and redirects the user if one is found.
+  // ✅ This useEffect hook handles the redirect immediately if a user session is detected.
+  // It reacts to changes in the 'user' or 'loading' state.
   useEffect(() => {
-    const handleRedirect = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        const nextUrl = router.query.next as string | undefined;
-        if (nextUrl) {
-          router.push(nextUrl);
-        } else {
-          router.push('/dashboard');
-        }
+    if (loading) {
+      return;
+    }
+
+    // If a user is already signed in, redirect them.
+    if (user) {
+      const nextUrl = router.query.next as string | undefined;
+      if (nextUrl) {
+        router.push(nextUrl);
+      } else {
+        router.push('/dashboard');
       }
-    };
-    handleRedirect();
-  }, [router]);
+    }
+  }, [user, loading, router.query.next, router]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -134,6 +136,10 @@ export default function Login(): JSX.Element {
       });
     }
   };
+
+  if (loading) {
+    return <div className={styles.loading}>Loading...</div>; // Render a loading state while checking
+  }
 
   return (
     <div className={styles.page}>
