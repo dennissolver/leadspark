@@ -25,6 +25,7 @@ export default function Login(): JSX.Element {
   });
   const [errors, setErrors] = useState<LoginErrors>({});
   const portalUrl = 'https://leadspark-tenant.vercel.app/'; // The portal app URL
+  const landingPageUrl = 'https://leadspark-six.vercel.app/'; // The landing page app URL
 
   // Add this useEffect to handle redirection if the user is already authenticated.
   useEffect(() => {
@@ -163,7 +164,8 @@ export default function Login(): JSX.Element {
         </h2>
         <p className={styles.subtitle}>
           Or{' '}
-          <Link href="/signup">
+          {/* ✅ Corrected link to the landing page's signup page */}
+          <Link href={`${landingPageUrl}signup`}>
             <button className={styles.linkButton}>
               start your 14-day free trial
             </button>
@@ -292,7 +294,8 @@ export default function Login(): JSX.Element {
             <div className={styles.signupPrompt}>
               <span className={styles.signupText}>
                 Don't have an account?{' '}
-                <Link href="/signup">
+                {/* ✅ Corrected link to the landing page's signup page */}
+                <Link href={`${landingPageUrl}signup`}>
                   <button className={styles.linkButton}>
                     Sign up for free
                   </button>
