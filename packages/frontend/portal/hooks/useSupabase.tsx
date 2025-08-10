@@ -27,24 +27,20 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
     const getSession = async () => {
       try {
         const { data } = await supabase.auth.getSession()
-        if (mounted) {
-          setSession(data.session ?? null)
-          setUser(data.session?.user ?? null)
-        }
+        if (!mounted) return
+        setSession(data.session ?? null)
+        setUser(data.session?.user ?? null)
       } finally {
-        if (mounted) {
-          setLoading(false)
-        }
+        if (mounted) setLoading(false)
       }
     }
 
     getSession()
 
     const { data: sub } = supabase.auth.onAuthStateChange((_event, sess) => {
-      if (mounted) {
-        setSession(sess ?? null)
-        setUser(sess?.user ?? null)
-      }
+      if (!mounted) return
+      setSession(sess ?? null)
+      setUser(sess?.user ?? null)
     })
 
     return () => {
