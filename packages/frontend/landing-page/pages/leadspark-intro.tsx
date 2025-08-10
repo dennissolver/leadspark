@@ -142,10 +142,9 @@ export default function LeadsparkIntro() {
     }
   };
 
-  const handlePlanHover = (key: string) => {
-    const k = key as PlanKey;
-    setSelectedPlan(k);
-    setFormData((prev) => ({ ...prev, plan: k }));
+  const handlePlanHover = (key: PlanKey) => {
+    setSelectedPlan(key);
+    setFormData((prev) => ({ ...prev, plan: key }));
   };
 
   return (
@@ -363,7 +362,7 @@ export default function LeadsparkIntro() {
             {(Object.entries(plans) as [PlanKey, Plan][]).map(([key, plan]) => (
               <div
                 key={key}
-                className={`${s.plan} ${plan.recommended ? s.planRecommended : ""}`}
+                className={`${s.plan} ${selectedPlan === key ? s.planRecommended : ""}`}
                 onMouseEnter={() => handlePlanHover(key)}
               >
                 {plan.recommended && (
@@ -396,8 +395,11 @@ export default function LeadsparkIntro() {
                     </li>
                   ))}
                 </ul>
-                {/* ✅ Added Link components for all plan buttons */}
-                <Link href="/signup" className={`${s.planBtn} ${plan.recommended ? s.planBtnPrimary : s.planBtnGhost}`}>
+                <Link
+                  href="/signup"
+                  className={`${s.planBtn} ${plan.recommended ? s.planBtnPrimary : s.planBtnGhost}`}
+                  onClick={() => handlePlanHover(key)}
+                >
                   Start Leadspark Free Trial
                 </Link>
               </div>
