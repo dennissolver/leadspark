@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import useSupabase from '../hooks/useSupabase';
+import { useSupabase } from '../hooks/useSupabase';
 import styles from './index.module.scss';
 
 const IndexPage: React.FC = () => {

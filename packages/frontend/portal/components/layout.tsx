@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Sidebar from './Sidebar';
-import useSupabase from '../hooks/useSupabase';
+import { useSupabase } from '../hooks/useSupabase';
 import styles from './layout.module.scss';
 
 interface LayoutProps {

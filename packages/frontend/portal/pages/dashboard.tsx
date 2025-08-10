@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Layout from '../components/layout';
 import LeadCard from '../components/LeadCard';
-import useSupabase from '../hooks/useSupabase';
+import { useSupabase } from '../hooks/useSupabase';
 import { dbHelpers, type Lead } from '../lib/supabaseClient';
 import styles from './dashboard.module.scss';
 

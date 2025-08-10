@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import useSupabase from '../hooks/useSupabase';
+import { useSupabase } from '../hooks/useSupabase';
 import styles from './Sidebar.module.scss';
 
 interface NavigationItem {
