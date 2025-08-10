@@ -24,12 +24,14 @@ export default function Login(): JSX.Element {
     password: ''
   });
   const [errors, setErrors] = useState<LoginErrors>({});
-  const portalUrl = 'https://leadspark-tenant.vercel.app/'; // The portal app URL
-  const landingPageUrl = 'https://leadspark-six.vercel.app/'; // The landing page app URL
+  const portalUrl = 'https://leadspark-tenant.vercel.app/';
+  const landingPageUrl = 'https://leadspark-six.vercel.app/';
 
-  // Add this useEffect to handle redirection if the user is already authenticated.
+  // ✅ This useEffect hook handles the redirect after a magic link login.
+  // It checks for a session and redirects the user if one is found.
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    const handleRedirect = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
       if (session) {
         const nextUrl = router.query.next as string | undefined;
         if (nextUrl) {
@@ -38,7 +40,8 @@ export default function Login(): JSX.Element {
           router.push('/dashboard');
         }
       }
-    });
+    };
+    handleRedirect();
   }, [router]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -59,57 +62,43 @@ export default function Login(): JSX.Element {
 
   const validateForm = (): boolean => {
     const newErrors: LoginErrors = {};
-
     if (!formData.email) {
       newErrors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email';
     }
-
     if (!formData.password) {
       newErrors.password = 'Password is required';
     }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-
     if (!validateForm()) {
       return;
     }
-
     setLoading(true);
-
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
       });
-
       if (error) {
         throw error;
       }
-
       if (data.user) {
-        // Successful login - now correctly redirect to the intended page or dashboard.
         const nextUrl = router.query.next as string | undefined;
         if (nextUrl) {
-          // Use `router.push` for client-side navigation.
           router.push(nextUrl);
         } else {
-          // Redirect to the default dashboard if no `next` URL is specified.
           router.push('/dashboard');
         }
       }
-
     } catch (error) {
       console.error('Login error:', error);
-
       let errorMessage = 'Login failed. Please check your credentials and try again.';
-
       if (error instanceof AuthError) {
         if (error.message.includes('Invalid login credentials')) {
           errorMessage = 'Invalid email or password. Please try again.';
@@ -121,7 +110,6 @@ export default function Login(): JSX.Element {
       } else if (error instanceof Error) {
         errorMessage = error.message;
       }
-
       setErrors({ general: errorMessage });
     } finally {
       setLoading(false);
@@ -133,11 +121,9 @@ export default function Login(): JSX.Element {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          // Redirect to the portal app after successful login
           redirectTo: `${portalUrl}dashboard`
         }
       });
-
       if (error) {
         throw error;
       }
@@ -164,7 +150,6 @@ export default function Login(): JSX.Element {
         </h2>
         <p className={styles.subtitle}>
           Or{' '}
-          {/* ✅ Corrected link to the landing page's signup page */}
           <Link href={`${landingPageUrl}signup`}>
             <button className={styles.linkButton}>
               start your 14-day free trial
@@ -172,7 +157,6 @@ export default function Login(): JSX.Element {
           </Link>
         </p>
       </div>
-
       <div className={styles.formContainer}>
         <div className={styles.formCard}>
           <form className={styles.form} onSubmit={handleLogin}>
@@ -181,7 +165,6 @@ export default function Login(): JSX.Element {
                 {errors.general}
               </div>
             )}
-
             <div>
               <label htmlFor="email" className={styles.label}>
                 Email address
@@ -203,7 +186,6 @@ export default function Login(): JSX.Element {
                 )}
               </div>
             </div>
-
             <div>
               <label htmlFor="password" className={styles.label}>
                 Password
@@ -224,7 +206,6 @@ export default function Login(): JSX.Element {
                 )}
               </div>
             </div>
-
             <div className={styles.formOptions}>
               <div className={styles.checkboxGroup}>
                 <input
@@ -237,7 +218,6 @@ export default function Login(): JSX.Element {
                   Remember me
                 </label>
               </div>
-
               <div className={styles.forgotPassword}>
                 <button
                   type="button"
@@ -248,7 +228,6 @@ export default function Login(): JSX.Element {
                 </button>
               </div>
             </div>
-
             <div>
               <button
                 type="submit"
@@ -265,12 +244,10 @@ export default function Login(): JSX.Element {
                 )}
               </button>
             </div>
-
             <div className={styles.dividerSection}>
               <div className={styles.divider}>
                 <span>Or continue with</span>
               </div>
-
               <div className={styles.googleButtonContainer}>
                 <button
                   type="button"
@@ -289,12 +266,10 @@ export default function Login(): JSX.Element {
               </div>
             </div>
           </form>
-
           <div className={styles.signupSection}>
             <div className={styles.signupPrompt}>
               <span className={styles.signupText}>
                 Don't have an account?{' '}
-                {/* ✅ Corrected link to the landing page's signup page */}
                 <Link href={`${landingPageUrl}signup`}>
                   <button className={styles.linkButton}>
                     Sign up for free
