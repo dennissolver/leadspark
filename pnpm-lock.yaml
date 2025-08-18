@@ -137,6 +137,9 @@ importers:
 
   packages/frontend/admin-portal:
     dependencies:
+      '@hookform/resolvers':
+        specifier: ^5.2.1
+        version: 5.2.1(react-hook-form@7.62.0(react@18.3.1))
       '@leadspark/ui':
         specifier: workspace:*
         version: link:../../ui
@@ -149,25 +152,6 @@ importers:
       '@supabase/supabase-js':
         specifier: 2.54.0
         version: 2.54.0
-      cookie:
-        specifier: ^1.0.2
-        version: 1.0.2
-      next:
-        specifier: ^14.2.5
-        version: 14.2.31(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.90.0)
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
-      react-is:
-        specifier: ^19.1.1
-        version: 19.1.1
-    devDependencies:
-      '@hookform/resolvers':
-        specifier: ^5.2.1
-        version: 5.2.1(react-hook-form@7.62.0(react@18.3.1))
       '@types/node':
         specifier: ^24.2.1
         version: 24.3.0
@@ -180,18 +164,30 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.21(postcss@8.5.6)
+      cookie:
+        specifier: ^1.0.2
+        version: 1.0.2
+      next:
+        specifier: ^14.2.5
+        version: 14.2.31(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.90.0)
       postcss:
         specifier: ^8.4.40
         version: 8.5.6
-      prisma:
-        specifier: ^6.14.0
-        version: 6.14.0(typescript@5.9.2)
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
       react-hook-form:
         specifier: ^7.62.0
         version: 7.62.0(react@18.3.1)
       react-hot-toast:
         specifier: ^2.6.0
         version: 2.6.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-is:
+        specifier: ^19.1.1
+        version: 19.1.1
       recharts:
         specifier: ^3.1.2
         version: 3.1.2(@types/react@19.1.10)(react-dom@18.3.1(react@18.3.1))(react-is@19.1.1)(react@18.3.1)(redux@5.0.1)
@@ -204,6 +200,10 @@ importers:
       zod:
         specifier: ^4.0.17
         version: 4.0.17
+    devDependencies:
+      prisma:
+        specifier: ^6.14.0
+        version: 6.14.0(typescript@5.9.2)
 
   packages/frontend/landing-page:
     dependencies:
@@ -216,6 +216,18 @@ importers:
       '@supabase/supabase-js':
         specifier: 2.54.0
         version: 2.54.0
+      '@types/node':
+        specifier: ^24.2.1
+        version: 24.3.0
+      '@types/react':
+        specifier: ^19.1.9
+        version: 19.1.10
+      '@types/react-dom':
+        specifier: ^19.1.7
+        version: 19.1.7(@types/react@19.1.10)
+      autoprefixer:
+        specifier: ^10.4.20
+        version: 10.4.21(postcss@8.5.6)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -228,6 +240,9 @@ importers:
       next:
         specifier: ^14.2.5
         version: 14.2.31(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.90.0)
+      postcss:
+        specifier: ^8.4.40
+        version: 8.5.6
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -237,31 +252,15 @@ importers:
       tailwind-merge:
         specifier: ^3.3.1
         version: 3.3.1
-      uuid:
-        specifier: ^11.1.0
-        version: 11.1.0
-    devDependencies:
-      '@types/node':
-        specifier: ^24.2.1
-        version: 24.3.0
-      '@types/react':
-        specifier: ^19.1.9
-        version: 19.1.10
-      '@types/react-dom':
-        specifier: ^19.1.7
-        version: 19.1.7(@types/react@19.1.10)
-      autoprefixer:
-        specifier: ^10.4.20
-        version: 10.4.21(postcss@8.5.6)
-      postcss:
-        specifier: ^8.4.40
-        version: 8.5.6
       tailwindcss:
         specifier: ^3.4.10
         version: 3.4.17
       typescript:
         specifier: ^5.5.4
         version: 5.9.2
+      uuid:
+        specifier: ^11.1.0
+        version: 11.1.0
 
   packages/frontend/portal:
     dependencies:
@@ -274,31 +273,12 @@ importers:
       '@supabase/supabase-js':
         specifier: 2.54.0
         version: 2.54.0
-      '@types/nodemailer':
-        specifier: ^6.4.15
-        version: 6.4.18
-      next:
-        specifier: ^14.2.5
-        version: 14.2.31(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.90.0)
-      nodemailer:
-        specifier: ^6.9.14
-        version: 6.10.1
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
-      stripe:
-        specifier: ^16.10.0
-        version: 16.12.0
-      twilio:
-        specifier: ^4.23.0
-        version: 4.23.0
-    devDependencies:
       '@types/node':
         specifier: ^24.2.1
         version: 24.3.0
+      '@types/nodemailer':
+        specifier: ^6.4.15
+        version: 6.4.18
       '@types/react':
         specifier: ^19.1.9
         version: 19.1.10
@@ -308,12 +288,30 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.21(postcss@8.5.6)
+      next:
+        specifier: ^14.2.5
+        version: 14.2.31(@babel/core@7.28.3)(@playwright/test@1.54.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.90.0)
+      nodemailer:
+        specifier: ^6.9.14
+        version: 6.10.1
       postcss:
         specifier: ^8.4.40
         version: 8.5.6
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+      stripe:
+        specifier: ^16.10.0
+        version: 16.12.0
       tailwindcss:
         specifier: ^3.4.10
         version: 3.4.17
+      twilio:
+        specifier: ^4.23.0
+        version: 4.23.0
       typescript:
         specifier: ^5.5.4
         version: 5.9.2
