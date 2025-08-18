@@ -8,6 +8,7 @@ python-multipart>=0.0.6
 asyncpg>=0.29.0
 aiopg>=1.4.0
 httpx>=0.25.0
+python-jose>=3.3.0
 
 # Environment and config
 python-dotenv>=1.0.0
