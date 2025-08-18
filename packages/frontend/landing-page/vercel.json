@@ -1,6 +1,5 @@
 {
-  "buildCommand": "pnpm run build --filter=@leadspark/landing-page",
-  "outputDirectory": ".next",
+  "buildCommand": "next build",
   "installCommand": "pnpm install",
   "framework": "nextjs"
 }
