@@ -140,6 +140,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.2.1
         version: 5.2.1(react-hook-form@7.62.0(react@18.3.1))
+      '@leadspark/common':
+        specifier: workspace:*
+        version: link:../../common
       '@leadspark/ui':
         specifier: workspace:*
         version: link:../../ui
@@ -207,6 +210,9 @@ importers:
 
   packages/frontend/landing-page:
     dependencies:
+      '@leadspark/common':
+        specifier: workspace:*
+        version: link:../../common
       '@radix-ui/react-slot':
         specifier: ^1.2.3
         version: 1.2.3(@types/react@18.3.23)(react@18.3.1)
@@ -247,6 +253,9 @@ importers:
 
   packages/frontend/portal:
     dependencies:
+      '@leadspark/common':
+        specifier: workspace:*
+        version: link:../../common
       '@leadspark/ui':
         specifier: workspace:*
         version: link:../../ui

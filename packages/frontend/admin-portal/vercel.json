@@ -1,7 +1,6 @@
 {
-  "buildCommand": "cd ../../../ && npx turbo run build --filter=admin-portal",
+  "buildCommand": "pnpm run build --filter=@leadspark/admin-portal",
   "outputDirectory": ".next",
-  "installCommand": "cd ../../../ && npm install",
-  "framework": "nextjs",
-  "rootDirectory": "packages/frontend/admin-portal"
+  "installCommand": "pnpm install",
+  "framework": "nextjs"
 }
