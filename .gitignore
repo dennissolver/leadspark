@@ -128,4 +128,4 @@ secrets.json
 *.backup
 
 # Windows specific
-UsersdenniAppDataRoamingnpm/
+UsersdenniAppDataRoamingnpm/.turbo/

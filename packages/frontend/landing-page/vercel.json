@@ -1,6 +1,6 @@
 {
-  "buildCommand": "cd ../../../ && npx turbo run build --filter=landing-page",
+  "buildCommand": "cd ../../../ && pnpm run build:landing",
   "outputDirectory": ".next",
-  "installCommand": "cd ../../../ && npm install",
+  "installCommand": "cd ../../../ && pnpm install",
   "framework": "nextjs"
 }

@@ -393,7 +393,9 @@ async def debug_routes():
         "routes": routes,
         "websocket_connections": websocket_manager.get_connection_count()
     }
-
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
 
 if __name__ == "__main__":
     import uvicorn
@@ -405,3 +407,4 @@ if __name__ == "__main__":
         reload=True,
         log_level="info"
     )
+

@@ -42,7 +42,8 @@ pytest-asyncio>=0.21.0
 
 # Development
 black>=23.9.0
-isort>=5.12.0httpx>=0.25.0
+isort>=5.12.0
+httpx>=0.25.0
 websockets>=11.0
 httpx>=0.25.0
 websockets>=11.0
