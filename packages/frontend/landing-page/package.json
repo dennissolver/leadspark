@@ -1,10 +1,9 @@
 {
   "name": "@leadspark/landing-page",
   "version": "0.1.0",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "next build",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
@@ -15,7 +14,8 @@
     "react-dom": "^18.3.1",
     "recharts": "^3.1.2",
     "tailwind-merge": "^3.3.1",
-    "@leadspark/common": "workspace:*"
+    "@leadspark/common": "workspace:*",
+    "next": "^14.2.5"
   },
   "devDependencies": {
     "typescript": "^5.5.4",
