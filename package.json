@@ -64,7 +64,8 @@
     "@supabase/supabase-js": "^2.45.4",
     "concurrently": "^8.2.2",
     "jsonwebtoken": "^9.0.2",
-    "start-server-and-test": "^2.0.3"
+    "start-server-and-test": "^2.0.3",
+    "build": "tsc"
   },
   "engines": {
     "node": ">=18.0.0"
