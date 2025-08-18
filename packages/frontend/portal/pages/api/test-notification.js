@@ -1,5 +1,7 @@
 // pages/api/test-notification.js
-import nodemailer from 'nodemailer';
+
+const nodemailer = require('nodemailer');
+const twilio = require('twilio');
 
 // Mock services for testing
 const mockServices = {
@@ -8,10 +10,7 @@ const mockServices = {
       to: config.emailAddresses,
       subject: testData.subject
     });
-
-    // Simulate delay
     await new Promise(resolve => setTimeout(resolve, 1000));
-
     return {
       success: true,
       messageId: `mock_email_${Date.now()}`,
@@ -25,9 +24,7 @@ const mockServices = {
       to: config.phoneNumbers,
       message: testData.message
     });
-
     await new Promise(resolve => setTimeout(resolve, 800));
-
     return {
       success: true,
       messageId: `mock_sms_${Date.now()}`,
@@ -42,16 +39,28 @@ const mockServices = {
       channel: config.channel,
       message: testData.message
     });
-
     await new Promise(resolve => setTimeout(resolve, 600));
-
     return {
       success: true,
       messageId: `mock_slack_${Date.now()}`,
       channel: config.channel,
       service: 'mock'
     };
-  }
+  },
+
+  async sendWhatsapp(config, testData) {
+    console.log('Mock WhatsApp Service - Sending test message:', {
+      to: config.phoneNumbers,
+      message: testData.message
+    });
+    await new Promise(resolve => setTimeout(resolve, 900));
+    return {
+      success: true,
+      messageId: `mock_whatsapp_${Date.now()}`,
+      recipients: config.phoneNumbers,
+      service: 'mock'
+    };
+  },
 };
 
 // Real email service using nodemailer
@@ -75,7 +84,6 @@ async function sendRealEmail(config, testData) {
   };
 
   const info = await transporter.sendMail(mailOptions);
-
   return {
     success: true,
     messageId: info.messageId,
@@ -94,18 +102,16 @@ async function sendRealSMS(config, testData) {
     throw new Error('Twilio credentials not configured');
   }
 
-  const twilio = require('twilio')(accountSid, authToken);
-
+  const twilioClient = twilio(accountSid, authToken);
   const results = [];
 
   for (const phoneNumber of config.phoneNumbers) {
     try {
-      const message = await twilio.messages.create({
+      const message = await twilioClient.messages.create({
         body: testData.message,
         from: fromNumber,
         to: phoneNumber,
       });
-
       results.push({
         phone: phoneNumber,
         sid: message.sid,
@@ -159,112 +165,22 @@ async function sendRealSlack(config, testData) {
 const testDataGenerators = {
   email: {
     subject: '🧪 LeadSpark Test Email - Settings Configuration',
-    text: `Hello!
-
-This is a test email from your LeadSpark portal to verify your email notification settings are working correctly.
-
-✅ Email notifications are configured properly
-✅ SMTP connection is working
-✅ Your notification preferences have been saved
-
-You will receive notifications for:
-- New leads captured
-- Lead information updates
-- System alerts and errors
-- Weekly summary reports (if enabled)
-
-Best regards,
-The LeadSpark Team
-
----
-This is an automated test message. If you received this in error, please check your notification settings in the LeadSpark portal.`,
-    html: `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-      <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center; color: white; border-radius: 8px 8px 0 0;">
-        <h1 style="margin: 0; font-size: 24px;">⚡ LeadSpark Test Email</h1>
-        <p style="margin: 10px 0 0 0; opacity: 0.9;">Settings Configuration Test</p>
-      </div>
-
-      <div style="background: #f8f9fa; padding: 30px; border-radius: 0 0 8px 8px;">
-        <p style="font-size: 16px; color: #333; margin-bottom: 20px;">Hello!</p>
-
-        <p style="color: #666; line-height: 1.6;">
-          This is a test email from your LeadSpark portal to verify your email notification settings are working correctly.
-        </p>
-
-        <div style="background: #e8f5e8; border-left: 4px solid #28a745; padding: 15px; margin: 20px 0;">
-          <p style="margin: 0; color: #155724; font-weight: bold;">✅ Configuration Status</p>
-          <ul style="color: #155724; margin: 10px 0 0 0; padding-left: 20px;">
-            <li>Email notifications are configured properly</li>
-            <li>SMTP connection is working</li>
-            <li>Your notification preferences have been saved</li>
-          </ul>
-        </div>
-
-        <div style="background: #fff; border: 1px solid #dee2e6; padding: 20px; border-radius: 6px; margin: 20px 0;">
-          <h3 style="color: #333; margin-top: 0;">You will receive notifications for:</h3>
-          <ul style="color: #666; line-height: 1.8; margin: 10px 0;">
-            <li>🆕 New leads captured</li>
-            <li>📝 Lead information updates</li>
-            <li>⚠️ System alerts and errors</li>
-            <li>📊 Weekly summary reports (if enabled)</li>
-          </ul>
-        </div>
-
-        <p style="color: #666; line-height: 1.6;">
-          Best regards,<br>
-          <strong>The LeadSpark Team</strong>
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #dee2e6; margin: 30px 0 20px 0;">
-        <p style="font-size: 12px; color: #999; text-align: center;">
-          This is an automated test message. If you received this in error, please check your notification settings in the LeadSpark portal.
-        </p>
-      </div>
-    </div>`
+    text: `Hello! This is a test email from your LeadSpark portal to verify your email notification settings are working correctly.`,
+    html: `<h1>🧪 LeadSpark Test Email</h1><p>Your email notifications are working correctly!</p>`
   },
-
   sms: {
-    message: `🧪 LeadSpark Test SMS
-
-Your SMS notifications are working correctly! You'll receive alerts for new leads and urgent system notifications.
-
-Reply STOP to opt out.`
+    message: `🧪 LeadSpark Test SMS\n\nYour SMS notifications are working correctly! You'll receive alerts for new leads and urgent system notifications.\n\nReply STOP to opt out.`
   },
-
   slack: {
-    message: `🧪 *LeadSpark Test Message*
-
-Your Slack integration is working correctly!
-
-You'll receive notifications in this channel for:
-• New leads captured
-• Lead information updates
-• System alerts
-
-_This is an automated test message from your LeadSpark portal._`,
-    attachments: [
-      {
-        color: "#36a64f",
-        fields: [
-          {
-            title: "Integration Status",
-            value: "✅ Working correctly",
-            short: true
-          },
-          {
-            title: "Channel",
-            value: "#leads",
-            short: true
-          }
-        ],
-        footer: "LeadSpark Portal",
-        ts: Math.floor(Date.now() / 1000)
-      }
-    ]
+    message: `🧪 *LeadSpark Test Message*\n\nYour Slack integration is working correctly!\n\nYou'll receive notifications in this channel for:\n• New leads captured\n• Lead information updates\n• System alerts\n\n_This is an automated test message from your LeadSpark portal._`,
+    attachments: []
+  },
+  whatsapp: {
+    message: `🧪 LeadSpark Test WhatsApp Message\n\nYour WhatsApp notifications are configured and working correctly! You'll receive real-time alerts.\n\nThis is an automated test message from your LeadSpark portal.`
   }
 };
 
+// Main handler function
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -280,29 +196,23 @@ export default async function handler(req, res) {
       });
     }
 
-    if (!['email', 'sms', 'slack'].includes(type)) {
+    if (!['email', 'sms', 'slack', 'whatsapp'].includes(type)) {
       return res.status(400).json({
         error: 'Invalid notification type',
-        allowed_types: ['email', 'sms', 'slack']
+        allowed_types: ['email', 'sms', 'slack', 'whatsapp']
       });
     }
 
     console.log(`Testing ${type} notification...`);
-
     let result;
     const testData = testDataGenerators[type];
 
     switch (type) {
       case 'email':
         if (!config.enabled || !config.emailAddresses || config.emailAddresses.length === 0) {
-          return res.status(400).json({
-            error: 'Email notifications not properly configured',
-            details: 'Please add at least one email address and ensure email notifications are enabled'
-          });
+          return res.status(400).json({ error: 'Email notifications not properly configured' });
         }
-
         try {
-          // Try real email service first, fall back to mock
           if (process.env.SMTP_USER && process.env.SMTP_PASS) {
             result = await sendRealEmail(config, testData);
           } else {
@@ -317,12 +227,8 @@ export default async function handler(req, res) {
 
       case 'sms':
         if (!config.enabled || !config.phoneNumbers || config.phoneNumbers.length === 0) {
-          return res.status(400).json({
-            error: 'SMS notifications not properly configured',
-            details: 'Please add at least one phone number and ensure SMS notifications are enabled'
-          });
+          return res.status(400).json({ error: 'SMS notifications not properly configured' });
         }
-
         try {
           if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN) {
             result = await sendRealSMS(config, testData);
@@ -338,20 +244,11 @@ export default async function handler(req, res) {
 
       case 'slack':
         if (!config.enabled || !config.webhookUrl) {
-          return res.status(400).json({
-            error: 'Slack integration not properly configured',
-            details: 'Please provide a valid webhook URL and ensure Slack integration is enabled'
-          });
+          return res.status(400).json({ error: 'Slack integration not properly configured' });
         }
-
-        // Validate webhook URL format
         if (!config.webhookUrl.startsWith('https://hooks.slack.com/')) {
-          return res.status(400).json({
-            error: 'Invalid Slack webhook URL',
-            details: 'Webhook URL must start with https://hooks.slack.com/'
-          });
+          return res.status(400).json({ error: 'Invalid Slack webhook URL' });
         }
-
         try {
           result = await sendRealSlack(config, testData);
         } catch (error) {
@@ -359,67 +256,41 @@ export default async function handler(req, res) {
           result = await mockServices.sendSlack(config, testData);
         }
         break;
+
+      case 'whatsapp':
+        if (!config.enabled || !config.phoneNumbers || config.phoneNumbers.length === 0) {
+          return res.status(400).json({ error: 'WhatsApp notifications not properly configured' });
+        }
+        result = await mockServices.sendWhatsapp(config, testData);
+        break;
     }
 
-    // Log successful test
-    console.log(`${type} notification test completed:`, {
-      success: result.success,
-      service: result.service,
-      messageId: result.messageId
-    });
+    console.log(`${type} notification test completed:`, { success: result.success, service: result.service });
 
-    const response = {
+    return res.status(200).json({
       success: result.success,
       type,
       message: `Test ${type} notification sent successfully!`,
-      details: result,
-      timestamp: new Date().toISOString(),
-      test_data_sent: {
-        email: type === 'email' ? { subject: testData.subject } : null,
-        sms: type === 'sms' ? { message_length: testData.message.length } : null,
-        slack: type === 'slack' ? { message_length: testData.message.length, attachments: testData.attachments?.length || 0 } : null
-      }[type]
-    };
-
-    return res.status(200).json(response);
+      details: result
+    });
 
   } catch (error) {
-    console.error(`Error testing ${req.body.type} notification:`, error);
+    console.error(`Error testing ${req.body.type || 'unknown'} notification:`, error);
 
-    // Provide helpful error messages
     let userMessage = 'Failed to send test notification';
-    let suggestions = ['Check your configuration settings', 'Try again in a few minutes'];
-
     if (error.message.includes('credentials')) {
       userMessage = 'Service credentials not configured';
-      suggestions = ['Contact your administrator to configure notification services'];
     } else if (error.message.includes('network') || error.message.includes('timeout')) {
       userMessage = 'Network error occurred';
-      suggestions = ['Check your internet connection', 'Try again in a moment'];
     } else if (error.message.includes('webhook')) {
       userMessage = 'Webhook URL is invalid or unreachable';
-      suggestions = ['Verify your Slack webhook URL', 'Check Slack app permissions'];
     }
 
     return res.status(500).json({
       success: false,
       error: userMessage,
       details: error.message,
-      type: req.body.type,
-      suggestions,
-      timestamp: new Date().toISOString()
+      type: req.body.type || 'unknown'
     });
   }
-}
-
-// Helper function to validate email addresses
-function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
-
-// Helper function to validate phone numbers
-function isValidPhone(phone) {
-  const phoneRegex = /^[\+]?[\d\s\-\(\)]+$/;
-  return phoneRegex.test(phone) && phone.replace(/\D/g, '').length >= 10;
-}
+};

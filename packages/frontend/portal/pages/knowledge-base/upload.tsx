@@ -3,9 +3,9 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Link from 'next/link'; // Added the missing import for the Link component
 import Layout from '../../components/layout';
-import { useSupabase } from '../../hooks/useSupabase';
-import { dbHelpers, KnowledgeBaseEntry } from '../../lib/supabaseClient';
-import { getTenantId } from '../../utils/tenant';
+import { useSupabase } from '@leadspark/common/src/utils/supabase/useSupabase'; // Corrected import path
+import { Lead } from '@leadspark/common/src/utils/supabase/supabaseClient'; // Assuming 'Lead' type is still in this file
+import { getTenantId } from '@leadspark/common/src/utils/supabase/tenantUtils';
 
 type NewEntry = Omit<KnowledgeBaseEntry, 'id' | 'created_at' | 'updated_at'>;
 

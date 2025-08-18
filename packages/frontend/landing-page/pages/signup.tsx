@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { supabase } from '../lib/supabaseClient'; // Make sure this import is correct
+import { createBrowserClient } from '@supabase/ssr';
 import { AuthError } from '@supabase/supabase-js';
-import styles from './signup.module.scss';
+import { v4 as uuidv4 } from 'uuid';
+import { Button } from '@leadspark/ui/components/Button';
+import { Card, CardHeader, CardTitle, CardContent } from '@leadspark/ui/components/Card';
+
+// Create Supabase client
+const supabase = createBrowserClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 interface SignupFormData {
   email: string;
@@ -22,7 +30,7 @@ interface SignupErrors {
   general?: string;
 }
 
-export default function Signup() {
+export default function Signup(): JSX.Element {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<SignupFormData>({
@@ -30,23 +38,22 @@ export default function Signup() {
     password: '',
     firstName: '',
     lastName: '',
-    companyName: ''
+    companyName: '',
   });
   const [errors, setErrors] = useState<SignupErrors>({});
-  // This is the base URL for the portal application
   const portalUrl = 'https://leadspark-tenant.vercel.app/';
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
 
     if (errors[name as keyof SignupErrors]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: undefined
+        [name]: undefined,
       }));
     }
   };
@@ -92,18 +99,17 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      // ✅ Call the Supabase sign-up method with email and password
+      const tenantId = uuidv4();
       const { data, error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
         options: {
-          // You can pass additional user metadata here
           data: {
             first_name: formData.firstName,
             last_name: formData.lastName,
             company_name: formData.companyName,
+            tenant_id: tenantId,
           },
-          // Redirect the user to the portal's login page after confirmation
           emailRedirectTo: `${portalUrl}login`,
         },
       });
@@ -112,8 +118,14 @@ export default function Signup() {
         throw error;
       }
 
-      // If no error, show a success message and redirect to the portal login page
-      // ✅ Redirect to a new "thank-you" page on the landing app
+      await supabase.from('tenants').insert({
+        id: tenantId,
+        name: formData.companyName,
+        config_json: {},
+        subscription_status: 'trialing',
+        created_at: new Date().toISOString(),
+      });
+
       router.push('/thank-you');
     } catch (error) {
       console.error('Signup error:', error);
@@ -136,9 +148,12 @@ export default function Signup() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          // Redirect to the portal app after successful login
-          redirectTo: `${portalUrl}dashboard`
-        }
+          redirectTo: `${portalUrl}auth/callback`,
+          queryParams: {
+            access_type: 'offline',
+            prompt: 'consent',
+          },
+        },
       });
 
       if (error) {
@@ -147,180 +162,181 @@ export default function Signup() {
     } catch (error) {
       console.error('Google login error:', error);
       setErrors({
-        general: 'Google sign-in failed. Please try again.'
+        general: 'Google sign-in failed. Please try again.',
       });
     }
   };
 
   return (
-    <div className={styles.page}>
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <Link href="/leadspark-intro">
-            <button className={styles.logo}>
-              Leadspark
-            </button>
-          </Link>
-        </div>
-        <h2 className={styles.title}>
-          Create a new account
-        </h2>
-        <p className={styles.subtitle}>
-          Or{' '}
-          {/* ✅ Corrected link to the portal app's login page */}
-          <Link href={`${portalUrl}login`}>
-            <button className={styles.linkButton}>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <div className="flex justify-between items-center mb-4">
+            <Link href="/leadspark-intro">
+              <Button variant="outline" className="text-lg font-bold">Leadspark</Button>
+            </Link>
+          </div>
+          <CardTitle className="text-2xl">Create a new account</CardTitle>
+          <p className="text-gray-600">
+            Or{' '}
+            <Link href={`${portalUrl}login`} className="text-blue-600 hover:underline">
               sign in to your existing account
-            </button>
-          </Link>
-        </p>
-      </div>
-
-      <div className={styles.formContainer}>
-        <div className={styles.formCard}>
-          <form className={styles.form} onSubmit={handleSignup}>
+            </Link>
+          </p>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSignup} className="space-y-4">
             {errors.general && (
-              <div className={styles.errorBanner}>
-                {errors.general}
-              </div>
+              <div className="bg-red-100 text-red-700 p-3 rounded-md">{errors.general}</div>
             )}
 
-            <div className={styles.formGrid2}>
+            <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="firstName" className={styles.label}>
+                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
                   First name
                 </label>
-                <div className={styles.inputGroup}>
-                  <input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    required
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    className={`${styles.input} ${errors.firstName ? styles.inputError : ''}`}
-                  />
-                  {errors.firstName && <p className={styles.errorMessage}>{errors.firstName}</p>}
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="lastName" className={styles.label}>
-                  Last name
-                </label>
-                <div className={styles.inputGroup}>
-                  <input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    required
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    className={`${styles.input} ${errors.lastName ? styles.inputError : ''}`}
-                  />
-                  {errors.lastName && <p className={styles.errorMessage}>{errors.lastName}</p>}
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="companyName" className={styles.label}>
-                Company name
-              </label>
-              <div className={styles.inputGroup}>
                 <input
-                  id="companyName"
-                  name="companyName"
+                  id="firstName"
+                  name="firstName"
                   type="text"
                   required
-                  value={formData.companyName}
+                  value={formData.firstName}
                   onChange={handleInputChange}
-                  className={`${styles.input} ${errors.companyName ? styles.inputError : ''}`}
+                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    errors.firstName ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 />
-                {errors.companyName && <p className={styles.errorMessage}>{errors.companyName}</p>}
+                {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
+              </div>
+              <div>
+                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
+                  Last name
+                </label>
+                <input
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  required
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    errors.lastName ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                />
+                {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
               </div>
             </div>
 
             <div>
-              <label htmlFor="email" className={styles.label}>
+              <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-1">
+                Company name
+              </label>
+              <input
+                id="companyName"
+                name="companyName"
+                type="text"
+                required
+                value={formData.companyName}
+                onChange={handleInputChange}
+                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  errors.companyName ? 'border-red-500' : 'border-gray-300'
+                }`}
+              />
+              {errors.companyName && <p className="text-red-500 text-sm mt-1">{errors.companyName}</p>}
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                 Email address
               </label>
-              <div className={styles.inputGroup}>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
-                />
-                {errors.email && <p className={styles.errorMessage}>{errors.email}</p>}
-              </div>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                value={formData.email}
+                onChange={handleInputChange}
+                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  errors.email ? 'border-red-500' : 'border-gray-300'
+                }`}
+              />
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
 
             <div>
-              <label htmlFor="password" className={styles.label}>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                 Password
               </label>
-              <div className={styles.inputGroup}>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="new-password"
-                  required
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  className={`${styles.input} ${errors.password ? styles.inputError : ''}`}
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="new-password"
+                required
+                value={formData.password}
+                onChange={handleInputChange}
+                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  errors.password ? 'border-red-500' : 'border-gray-300'
+                }`}
+              />
+              {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
+            </div>
+
+            <Button
+              type="submit"
+              disabled={loading}
+              className="w-full"
+            >
+              {loading ? (
+                <div className="flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2" />
+                  Creating account...
+                </div>
+              ) : (
+                'Create account'
+              )}
+            </Button>
+
+            <div className="relative my-4">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="bg-white px-2 text-gray-500">Or continue with</span>
+              </div>
+            </div>
+
+            <Button
+              type="button"
+              onClick={handleGoogleLogin}
+              disabled={loading}
+              variant="outline"
+              className="w-full flex items-center justify-center space-x-2"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24">
+                <path
+                  fill="#4285F4"
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                 />
-                {errors.password && <p className={styles.errorMessage}>{errors.password}</p>}
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                disabled={loading}
-                className={`${styles.submitButton} ${loading ? styles.submitButtonLoading : ''}`}
-              >
-                {loading ? (
-                  <div className={styles.loadingContent}>
-                    <div className={styles.spinner}></div>
-                    Creating account...
-                  </div>
-                ) : (
-                  'Create account'
-                )}
-              </button>
-            </div>
-
-            <div className={styles.dividerSection}>
-              <div className={styles.divider}>
-                <span>Or continue with</span>
-              </div>
-
-              <div className={styles.googleButtonContainer}>
-                <button
-                  type="button"
-                  onClick={handleGoogleLogin}
-                  disabled={loading}
-                  className={styles.googleButton}
-                >
-                  <svg className={styles.googleIcon} viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                  </svg>
-                  Sign in with Google
-                </button>
-              </div>
-            </div>
+                <path
+                  fill="#34A853"
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                />
+                <path
+                  fill="#FBBC05"
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                />
+                <path
+                  fill="#EA4335"
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                />
+              </svg>
+              <span>Sign in with Google</span>
+            </Button>
           </form>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

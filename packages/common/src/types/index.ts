@@ -23,3 +23,9 @@ export interface Lead {
   tenantId: string;
   created_at: string;
 }
+
+export interface ConversationMessage {
+  role: 'user' | 'assistant';
+  content: string;
+  // This type can be expanded to include other fields as needed.
+}

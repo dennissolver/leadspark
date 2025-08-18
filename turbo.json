@@ -1,27 +1,39 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "tasks": {
-    "typecheck": {
-      "outputs": []
-    },
-    "build:styles": {
-      "outputs": ["dist/**", "build/**"],
-      "inputs": ["src/**/*.scss", "src/**/*.sass"]
-    },
-    "dev": {
-      "cache": false,
-      "persistent": true,
-      "dependsOn": ["build:styles"]
-    },
-    "build": {
-      "dependsOn": ["^build", "typecheck"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"],
-      "env": [
-        "GOOGLE_MAPS_API_KEY",
-        "NEXT_PUBLIC_SUPABASE_URL",
-        "NEXT_PUBLIC_SUPABASE_ANON_KEY"
-      ]
-    }
-  },
-  "globalDependencies": ["packages/common/**/*"]
-}
+     "$schema": "https://turbo.build/schema.json",
+     "tasks": {
+       "typecheck": {
+         "outputs": [],
+         "inputs": ["**/*.ts", "**/*.tsx", "middleware.ts"],
+         "cache": true
+       },
+       "build:styles": {
+         "outputs": ["dist/**", "build/**", "packages/ui/dist/**"],
+         "inputs": ["src/**/*.scss", "src/**/*.sass", "src/**/*.css", "packages/ui/**/*.ts", "packages/ui/**/*.tsx"]
+       },
+       "dev": {
+         "cache": false,
+         "persistent": true,
+         "dependsOn": ["build:styles"],
+         "env": [
+           "NEXT_PUBLIC_SUPABASE_URL",
+           "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+           "SUPABASE_URL",
+           "SUPABASE_KEY",
+           "SUPABASE_SERVICE_ROLE_KEY"
+         ]
+       },
+       "build": {
+         "dependsOn": ["^build", "typecheck", "build:styles"],
+         "outputs": [".next/**", "!.next/cache/**", "dist/**", "dist/assets/**"],
+         "env": [
+           "NEXT_PUBLIC_SUPABASE_URL",
+           "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+           "SUPABASE_URL",
+           "SUPABASE_KEY",
+           "SUPABASE_SERVICE_ROLE_KEY",
+           "PYTHON_VERSION"
+         ]
+       }
+     },
+     "globalDependencies": ["packages/common/**/*", "packages/ui/**/*"]
+   }

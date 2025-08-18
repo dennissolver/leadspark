@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Sidebar from './Sidebar';
-import { useSupabase } from '../hooks/useSupabase';
-import styles from './layout.module.scss';
+import { useSupabase } from '@leadspark/common/src/utils/supabase/useSupabase';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -23,10 +22,10 @@ const Layout: React.FC<LayoutProps> = ({
   // Show loading state while checking authentication
   if (loading) {
     return (
-      <div className={styles.loadingContainer}>
-        <div className={styles.loadingSpinner}>
-          <div className={styles.spinner}></div>
-          <p className={styles.loadingText}>Loading...</p>
+      <div className="loadingContainer">
+        <div className="loadingSpinner">
+          <div className="spinner"></div>
+          <p className="loadingText">Loading...</p>
         </div>
       </div>
     );
@@ -36,10 +35,10 @@ const Layout: React.FC<LayoutProps> = ({
   if (!user && router.pathname !== '/') {
     router.push(`${process.env.NEXT_PUBLIC_LANDING_URL}/login?redirect=${process.env.NEXT_PUBLIC_PORTAL_URL}${router.pathname}`);
     return (
-      <div className={styles.loadingContainer}>
-        <div className={styles.loadingSpinner}>
-          <div className={styles.spinner}></div>
-          <p className={styles.loadingText}>Redirecting...</p>
+      <div className="loadingContainer">
+        <div className="loadingSpinner">
+          <div className="spinner"></div>
+          <p className="loadingText">Redirecting...</p>
         </div>
       </div>
     );
@@ -58,34 +57,34 @@ const Layout: React.FC<LayoutProps> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={styles.layoutContainer}>
+      <div className="layoutContainer">
         {/* Mobile Menu Button */}
         <button
-          className={styles.mobileMenuButton}
+          className="mobileMenuButton"
           onClick={toggleSidebar}
           aria-label="Toggle navigation menu"
         >
-          <span className={styles.hamburger}></span>
-          <span className={styles.hamburger}></span>
-          <span className={styles.hamburger}></span>
+          <span className="hamburger"></span>
+          <span className="hamburger"></span>
+          <span className="hamburger"></span>
         </button>
 
         {/* Sidebar */}
-        <div className={`${styles.sidebarWrapper} ${sidebarOpen ? styles.sidebarOpen : ''}`}>
+        <div className={`sidebar-container ${sidebarOpen ? 'open' : 'closed'}`}>
           <Sidebar />
         </div>
 
         {/* Mobile Overlay */}
         {sidebarOpen && (
           <div
-            className={styles.mobileOverlay}
+            className="mobileOverlay"
             onClick={() => setSidebarOpen(false)}
           ></div>
         )}
 
         {/* Main Content */}
-        <main className={styles.mainContent}>
-          <div className={styles.contentWrapper}>
+        <main className="mainContent">
+          <div className="contentWrapper">
             {children}
           </div>
         </main>
@@ -95,4 +94,3 @@ const Layout: React.FC<LayoutProps> = ({
 };
 
 export default Layout;
-

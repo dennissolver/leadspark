@@ -6,9 +6,19 @@
   "main": "main.py",
   "scripts": {
     "dev": "uvicorn main:app --reload",
-    "build": "echo 'No build step required for Python backend'"
+    "build": "echo 'No build step required for Python backend'",
+    "type-check": "echo 'No TypeScript in Python backend'",
+    "lint": "pylint src routes middleware services utils",
+    "clean": "rm -rf __pycache__"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "wscat": "^5.2.0",
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "python": ">=3.10.0"
+  }
 }

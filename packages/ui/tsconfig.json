@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "typeRoots": ["./node_modules/@types", "../../node_modules/@types"],
+    "types": ["@types/react", "@types/react-dom"]
+  },
+  "include": [
+    "components/*.ts",
+    "components/*.tsx",
+    "utils.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

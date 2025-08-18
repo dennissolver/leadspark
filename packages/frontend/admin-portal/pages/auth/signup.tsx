@@ -1,16 +1,18 @@
-// File: packages/frontend/admin-portal/pages/auth/signup.tsx
+﻿// File: packages/frontend/admin-portal/pages/auth/signup.tsx
 
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { supabase } from '../../lib/supabaseClient';
+import { useSupabase } from '@leadspark/common/supabase'; // Corrected import path
 
 export default function SignupPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
+  const { supabase } = useSupabase(); // Correctly get the Supabase client from the hook
 
   async function handleSignup(e: any) {
     e.preventDefault();
+    // The supabase object is now correctly defined here
     const { error } = await supabase.auth.signUp({ email, password });
     if (!error) router.push('/auth/login');
   }
@@ -24,3 +26,4 @@ export default function SignupPage() {
     </form>
   );
 }
+

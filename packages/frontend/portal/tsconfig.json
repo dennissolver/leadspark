@@ -20,7 +20,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@leadspark/packages/*": ["../../common/src/*"],
+      "@leadspark/ui/*": ["../../ui/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

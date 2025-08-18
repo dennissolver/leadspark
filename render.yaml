@@ -1,9 +1,25 @@
 services:
   - type: web
     name: leadspark-backend
-    runtime: python
-    buildCommand: pip install -r packages/backend/requirements.txt
-    startCommand: uvicorn packages.backend.main:app --host 0.0.0.0 --port 10000
-    plan: free
-    autoDeploy: true
-    rootDir: packages/backend
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -k uvicorn.workers.UvicornWorker main:app
+    envVars:
+      - key: SUPABASE_URL
+        fromGroup: leadspark-env  # Reference environment group
+      - key: SUPABASE_KEY
+        fromGroup: leadspark-env
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        fromGroup: leadspark-env
+      - key: PYTHON_VERSION
+        value: 3.10  # Match your local Python version
+environmentGroups:
+  - name: leadspark-env
+    envVars:
+      - key: SUPABASE_URL
+        value: $SUPABASE_URL  # Set in Render dashboard
+      - key: SUPABASE_KEY
+        value: $SUPABASE_KEY
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        value: $SUPABASE_SERVICE_ROLE_KEY

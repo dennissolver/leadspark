@@ -1,32 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useJessIntegration } from './hooks/useJessIntegration';
-import AvatarAnimation from './components/AvatarAnimation';
-import ConversationWindow from './components/ConversationWindow';
+import { WidgetApp } from './components/ChatWidget'; // Import the main WidgetApp component
 
 interface WidgetConfig {
   position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
   primaryColor?: string;
   autoShow?: boolean;
   delay?: number;
-}
-
-function WidgetApp({ config }: { config: WidgetConfig }) {
-  useJessIntegration();
-
-  const positionStyles = {
-    position: 'fixed' as const,
-    zIndex: 10000,
-    [config.position?.includes('bottom') ? 'bottom' : 'top']: '20px',
-    [config.position?.includes('right') ? 'right' : 'left']: '20px',
-  };
-
-  return (
-    <div style={positionStyles}>
-      <AvatarAnimation />
-      <ConversationWindow />
-    </div>
-  );
 }
 
 // Global widget interface

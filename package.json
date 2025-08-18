@@ -1,41 +1,72 @@
 {
-  "name": "leadspark-monorepo",
+  "name": "leadspark-project",
   "private": true,
   "workspaces": [
-    "packages/*",
-    "packages/frontend/*"
+    "packages/*"
   ],
+  "overrides": {
+    "@types/react": "18.3.2",
+    "@types/react-dom": "18.3.2"
+  },
   "scripts": {
-    "dev:main": "turbo run dev --filter='!leadspark-widget'",
+    "playwright": "npx playwright test",
+    "dev:portal": "powershell ./scripts/kill_frontend_ports.ps1 && turbo run dev --filter=@leadspark/portal",
+    "dev:landing": "powershell ./scripts/kill_frontend_ports.ps1 && turbo run dev --filter=@leadspark/landing-page",
+    "dev:backend": "powershell ./scripts/kill_backend_port.ps1 && turbo run dev --filter=@leadspark/backend",
+    "start:all": "concurrently \"pnpm run dev:backend\" \"pnpm run dev:landing\" \"pnpm run dev:portal\"",
+    "test:clientPortal": "start-server-and-test 'pnpm run dev:portal' http-get://localhost:3001 'pnpm run playwright --project=clientPortal'",
+    "test:landing": "start-server-and-test 'pnpm run dev:landing' http-get://localhost:3000 'pnpm run playwright --project=widget --project=stripe'",
+    "test:dashboard": "start-server-and-test 'pnpm run dev:portal' http-get://localhost:3001 'pnpm run playwright --project=dashboard'",
+    "test:all": "pnpm run test:clientPortal && pnpm run test:landing && pnpm run test:dashboard",
+    "e2e:prepare": "powershell ./scripts/kill_backend_ports.ps1; powershell ./scripts/kill_frontend_ports.ps1 && turbo run dev --filter=@leadspark/backend --filter=@leadspark/landing-page --filter=@leadspark/portal",
+    "dev:main": "powershell ./scripts/kill_backend_port.ps1; powershell ./scripts/kill_frontend_ports.ps1 && turbo run dev --filter=!@leadspark/widget",
+    "dev:admin": "powershell ./scripts/kill_frontend_ports.ps1 && turbo run dev --filter=@leadspark/admin-portal",
+    "dev:widget": "powershell ./scripts/kill_frontend_ports.ps1 && turbo run dev --filter=@leadspark/widget",
     "build": "turbo run build",
-    "dev": "turbo run dev",
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
     "clean": "turbo run clean",
-    "build:landing": "turbo run build --filter=landing-page",
-    "build:portal": "turbo run build --filter=portal",
-    "build:admin": "turbo run build --filter=admin-portal",
+    "build:landing": "turbo run build --filter=@leadspark/landing-page",
+    "build:portal": "turbo run build --filter=@leadspark/portal",
+    "build:admin": "turbo run build --filter=@leadspark/admin-portal",
+    "build:widget": "turbo run build --filter=@leadspark/widget",
     "build:styles": "turbo run build --filter=@leadspark/styles",
-    "dev:landing": "turbo run dev --filter=landing-page",
-    "dev:portal": "turbo run dev --filter=portal",
-    "dev:admin": "turbo run dev --filter=admin-portal",
-    "dev:all-frontend": "turbo run dev --filter='./packages/frontend/*'",
+    "dev:all-frontend": "powershell ./scripts/kill_frontend_ports.ps1 && turbo run dev --filter=@leadspark/landing-page --filter=@leadspark/portal --filter=@leadspark/admin-portal --filter=@leadspark/widget",
     "deploy:landing": "cd packages/frontend/landing-page && vercel --prod",
     "deploy:portal": "cd packages/frontend/portal && vercel --prod",
-    "deploy:admin": "cd packages/frontend/admin-portal && vercel --prod"
+    "deploy:admin": "cd packages/frontend/admin-portal && vercel --prod",
+    "deploy:widget": "cd packages/frontend/widget && vercel --prod"
   },
   "devDependencies": {
+    "@playwright/test": "^1.46.1",
+    "@testing-library/react": "^16.3.0",
     "@types/jsonwebtoken": "^9.0.10",
+    "@vitejs/plugin-react": "^4.3.2",
+    "autoprefixer": "^10.4.20",
+    "dotenv-cli": "^10.0.0",
+    "postcss": "^8.4.40",
+    "prisma": "^6.14.0",
     "sass": "^1.90.0",
-    "turbo": "latest",
-    "typescript": "^5.0.0"
+    "shadcn-ui": "^0.9.5",
+    "supabase": "^2.33.9",
+    "tailwindcss": "^3.4.17",
+    "turbo": "2.5.5",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4",
+    "wscat": "^5.2.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.14.0",
+    "@radix-ui/react-select": "^2.2.6",
+    "@supabase/auth-helpers-nextjs": "^0.10.0",
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.45.4",
+    "concurrently": "^8.2.2",
+    "jsonwebtoken": "^9.0.2",
+    "start-server-and-test": "^2.0.3"
   },
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "npm@9.0.0",
-  "dependencies": {
-    "@supabase/ssr": "^0.6.1",
-    "@supabase/supabase-js": "^2.54.0"
-  }
+  "packageManager": "pnpm@9.0.0"
 }

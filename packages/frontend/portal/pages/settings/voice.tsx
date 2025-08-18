@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Layout from '../../components/layout';
-import { useSupabase } from '../../hooks/useSupabase';
-import { supabase, Tenant } from '../../lib/supabaseClient';
+import { useSupabase } from '@leadspark/common/src/utils/supabase/useSupabase'; // Corrected import path
+import { supabase, Tenant } from '@leadspark/common/src/utils/supabase/supabaseClient'; // Assuming types and helpers are in this centralized file
+
 
 const getTenantId = (user: any): string | undefined =>
   user?.user_metadata?.tenant_id ?? user?.app_metadata?.tenant_id ?? user?.tenant_id;

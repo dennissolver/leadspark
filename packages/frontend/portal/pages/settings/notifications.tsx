@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Layout from '../../components/layout';
-import { useSupabase } from '../../hooks/useSupabase';
-import styles from './notifications.module.scss';
+import { useSupabase } from '@leadspark/common/src/utils/supabase/useSupabase'; // Corrected import path
 
 interface NotificationConfig {
   emailNotifications: {
@@ -273,8 +272,8 @@ const NotificationsPage: React.FC = () => {
   if (!tenantId || loading) {
     return (
       <Layout>
-        <div className={styles.loading}>
-          <div className={styles.spinner} />
+        <div className="loading">
+          <div className="spinner" />
           <p>Loading notification settings...</p>
         </div>
       </Layout>
@@ -283,18 +282,18 @@ const NotificationsPage: React.FC = () => {
 
   return (
     <Layout>
-      <div className={styles.notificationsContainer}>
-        <div className={styles.header}>
-          <Link href="/settings" className={styles.backButton}>
+      <div className="notificationsContainer">
+        <div className="header">
+          <Link href="/settings" className="backButton">
             ← Back to Settings
           </Link>
-          <h1 className={styles.title}>Notification Settings</h1>
-          <p className={styles.subtitle}>
+          <h1 className="title">Notification Settings</h1>
+          <p className="subtitle">
             Configure how and when you receive alerts about leads and system events
           </p>
         </div>
 
-        <div className={styles.sectionsGrid}>
+        <div className="sectionsGrid">
           {/* Email */}
           {/* ...existing Email section from your snippet stays unchanged... */}
 
@@ -305,10 +304,10 @@ const NotificationsPage: React.FC = () => {
           {/* ...existing Slack section from your snippet stays unchanged... */}
 
           {/* Webhook Integration */}
-          <div className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2 className={styles.sectionTitle}>Webhook Integration</h2>
-              <div className={styles.toggleSwitch}>
+          <div className="section">
+            <div className="sectionHeader">
+              <h2 className="sectionTitle">Webhook Integration</h2>
+              <div className="toggleSwitch">
                 <input
                   type="checkbox"
                   id="webhookEnabled"
@@ -320,15 +319,15 @@ const NotificationsPage: React.FC = () => {
                     }))
                   }
                 />
-                <label htmlFor="webhookEnabled" className={styles.switch}>
-                  <span className={styles.slider}></span>
+                <label htmlFor="webhookEnabled" className="switch">
+                  <span className="slider"></span>
                 </label>
               </div>
             </div>
 
-            <div className={`${styles.sectionContent} ${!config.webhookIntegration.enabled ? styles.disabled : ''}`}>
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Webhook URL</label>
+            <div className={`disabled : ''}`}>
+              <div className="formGroup">
+                <label className="label">Webhook URL</label>
                 <input
                   type="url"
                   value={config.webhookIntegration.url}
@@ -339,13 +338,13 @@ const NotificationsPage: React.FC = () => {
                     }))
                   }
                   placeholder="https://your-server.com/webhook"
-                  className={styles.input}
+                  className="input"
                   disabled={!config.webhookIntegration.enabled}
                 />
               </div>
 
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Secret Key (Optional)</label>
+              <div className="formGroup">
+                <label className="label">Secret Key (Optional)</label>
                 <input
                   type="text"
                   value={config.webhookIntegration.secret}
@@ -356,15 +355,15 @@ const NotificationsPage: React.FC = () => {
                     }))
                   }
                   placeholder="Optional secret for webhook verification"
-                  className={styles.input}
+                  className="input"
                   disabled={!config.webhookIntegration.enabled}
                 />
               </div>
 
-              <div className={styles.eventsList}>
-                <label className={styles.label}>Events to Send</label>
+              <div className="eventsList">
+                <label className="label">Events to Send</label>
                 {availableEvents.map((event) => (
-                  <div key={event.value} className={styles.checkboxItem}>
+                  <div key={event.value} className="checkboxItem">
                     <input
                       type="checkbox"
                       id={`webhook-${event.value}`}
@@ -393,7 +392,7 @@ const NotificationsPage: React.FC = () => {
                     alert('Failed to send test webhook.');
                   }
                 }}
-                className={styles.testButton}
+                className="testButton"
                 disabled={
                   !config.webhookIntegration.enabled ||
                   !config.webhookIntegration.url
@@ -406,10 +405,10 @@ const NotificationsPage: React.FC = () => {
         </div>
 
         {/* Footer actions */}
-        <div className={styles.footerActions}>
+        <div className="footerActions">
           <button
             onClick={saveConfig}
-            className={styles.saveButton}
+            className="saveButton"
             disabled={saving}
           >
             {saving ? 'Saving…' : 'Save Changes'}

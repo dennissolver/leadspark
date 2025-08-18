@@ -66,7 +66,7 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
             ...options,
           });
         },
-        remove(name: string, options: { [key: string]: any }): void { // Changed from 'delete' to 'remove'
+        remove(name: string, options: { [key: string]: any }): void {
           res.cookies.set({
             name,
             value: '',
@@ -79,14 +79,32 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
 
   const {
     data: { user },
+    error,
   } = await supabase.auth.getUser();
 
+  // Log error if getUser fails
+  if (error) {
+    console.error('Error fetching user:', error.message);
+    const url = new URL('/login', req.url);
+    url.searchParams.set('next', pathname);
+    return NextResponse.redirect(url);
+  }
+
   // Redirect to login if no user is found
-  // if (!user) {
-  //   const url = new URL('/login', req.url);
-  //   url.searchParams.set('next', pathname);
-  //   return NextResponse.redirect(url);
-  // }
+  if (!user) {
+    console.warn('No user found, redirecting to login');
+    const url = new URL('/login', req.url);
+    url.searchParams.set('next', pathname);
+    return NextResponse.redirect(url);
+  }
+
+  // Optional: Check tenant ID if required
+  const tenantId = getTenantIdFromUser(user);
+  if (!tenantId) {
+    console.warn('No tenant ID found for user:', user.id);
+    // Allow access without tenant ID (modify as needed)
+    // Alternatively, redirect to a tenant selection page or handle differently
+  }
 
   // All good, continue to the requested page
   return res;

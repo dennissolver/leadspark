@@ -1,0 +1,127 @@
+# A string used to distinguish different Supabase projects on the same host.
+project_id = "LeadSpark"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[api.tls]
+enabled = false
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 17
+
+[db.pooler]
+enabled = false
+port = 54329
+pool_mode = "transaction"
+default_pool_size = 20
+max_client_conn = 100
+
+[realtime]
+enabled = true
+
+[studio]
+enabled = true
+port = 54323
+api_url = "http://127.0.0.1"
+openai_api_key = "env(OPENAI_API_KEY)"
+
+[inbucket]
+enabled = true
+port = 54324
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+[storage.image_transformation]
+enabled = false
+
+[auth]
+enabled = true
+site_url = "https://leadspark-tenant.vercel.app"
+additional_redirect_urls = [
+  "https://leadspark-tenant.vercel.app/dashboard",
+  "https://leadspark-tenant.vercel.app/auth/callback",
+  "https://leadspark-tenant.vercel.app/",
+  "https://leadspark-six.vercel.app/auth/callback",
+  "https://leadspark-tenant.vercel.app/reset-password",
+  "https://leadspark-six.vercel.app",
+  "https://leadspark-six.vercel.app/signup",
+  "https://leadspark-tenant.vercel.app/login",
+  "http://localhost:3000/signup",
+  "http://localhost:3000/auth/callback",
+  "http://localhost:3001/login",
+  "http://localhost:3001/auth/callback"
+]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+refresh_token_reuse_interval = 10
+enable_signup = true
+enable_anonymous_sign_ins = false
+enable_manual_linking = false
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = false
+max_frequency = "1s"
+otp_expiry = 3600
+
+[auth.sms]
+enable_signup = false
+enable_confirmations = false
+template = "Your code is {{ .Code }}"
+max_frequency = "5s"
+
+[auth.sms.twilio]
+enabled = false
+account_sid = ""
+message_service_sid = ""
+auth_token = "env(SUPABASE_AUTH_SMS_TWILIO_AUTH_TOKEN)"
+
+[auth.external.apple]
+enabled = false
+client_id = ""
+secret = "env(SUPABASE_AUTH_EXTERNAL_APPLE_SECRET)"
+redirect_uri = ""
+url = ""
+skip_nonce_check = false
+
+[edge_runtime]
+enabled = true
+policy = "oneshot"
+inspector_port = 8083
+
+[analytics]
+enabled = true
+port = 54327
+backend = "postgres"
+
+[experimental]
+orioledb_version = ""
+s3_host = "env(S3_HOST)"
+s3_region = "env(S3_REGION)"
+s3_access_key = "env(S3_ACCESS_KEY)"
+s3_secret_key = "env(S3_SECRET_KEY)"
+
+[auth.mfa]
+max_enrolled_factors = 10
+
+[auth.mfa.totp]
+enroll_enabled = true
+verify_enabled = true
+
+# supabase/config.toml
+
+[functions.bookDiscoveryCall]
+verify_jwt = true
+
+[functions.transferConversation]
+verify_jwt = true

@@ -1,21 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { useJessIntegration } from './hooks/useJessIntegration';
-import AvatarAnimation from './components/AvatarAnimation';
-import ConversationWindow from './components/ConversationWindow';
+import { createRoot } from 'react-dom/client';
+import useJessIntegration from './hooks/useJessIntegration';
+import { ChatWidget } from './components/ChatWidget'; // Import the main ChatWidget component
 
 function WidgetApp() {
-  useJessIntegration(); // 🔌 Plug-in the Jess voice + backend + Supabase connection
+  // Plug-in the Jess voice + backend + Supabase connection
+  // The logic inside this hook will be used by the ChatWidget
+  useJessIntegration();
 
   return (
-    <div>
-      <AvatarAnimation />
-      <ConversationWindow />
-    </div>
+    // Render the main ChatWidget component
+    <ChatWidget />
   );
 }
 
 const root = document.getElementById('root');
 if (root) {
-  ReactDOM.createRoot(root).render(<WidgetApp />);
+  createRoot(root).render(<WidgetApp />);
 }

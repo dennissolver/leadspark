@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import styles from './pricing.module.scss';
 
 type BillingCycle = 'monthly' | 'annually';
 
@@ -115,37 +114,37 @@ export default function Pricing(): JSX.Element {
   };
 
   return (
-    <div className={styles.page}>
+    <div className="page">
       {/* Header */}
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>
+      <div className="container">
+        <div className="header">
+          <h2 className="title">
             Simple, transparent pricing
           </h2>
-          <p className={styles.subtitle}>
+          <p className="subtitle">
             Choose the perfect plan for your business. Start with a 14-day free trial, no credit card required.
           </p>
         </div>
 
         {/* Billing toggle */}
-        <div className={styles.billingToggleContainer}>
-          <div className={styles.billingToggle}>
+        <div className="billingToggleContainer">
+          <div className="billingToggle">
             <button
               onClick={() => handleBillingToggle('monthly')}
-              className={`${styles.billingButton} ${
-                billingCycle === 'monthly' ? styles.billingButtonActive : ''
+              className="billingButton" ${
+                billingCycle === 'monthly' ? """billingButtonActive : ''
               }`}
             >
               Monthly
             </button>
             <button
               onClick={() => handleBillingToggle('annually')}
-              className={`${styles.billingButton} ${
-                billingCycle === 'annually' ? styles.billingButtonActive : ''
+              className="billingButton" ${
+                billingCycle === 'annually' ? """billingButtonActive : ''
               }`}
             >
               Annual
-              <span className={styles.discountBadge}>
+              <span className="discountBadge">
                 Save {getDiscountPercentage(plans.professional.monthly, plans.professional.annually)}%
               </span>
             </button>
@@ -153,37 +152,37 @@ export default function Pricing(): JSX.Element {
         </div>
 
         {/* Pricing cards */}
-        <div className={styles.pricingGrid}>
+        <div className="pricingGrid">
           {Object.entries(plans).map(([key, plan]) => (
             <div
               key={key}
-              className={`${styles.pricingCard} ${
-                plan.popular ? styles.pricingCardPopular : ''
+              className="pricingCard" ${
+                plan.popular ? """pricingCardPopular : ''
               }`}
             >
               {plan.popular && (
-                <div className={styles.popularBadge}>
-                  <span className={styles.popularBadgeText}>
+                <div className="popularBadge">
+                  <span className="popularBadgeText">
                     Most Popular
                   </span>
                 </div>
               )}
 
-              <div className={styles.cardContent}>
-                <h3 className={styles.planName}>{plan.name}</h3>
-                <p className={styles.planDescription}>{plan.description}</p>
+              <div className="cardContent">
+                <h3 className="planName">{plan.name}</h3>
+                <p className="planDescription">{plan.description}</p>
 
-                <div className={styles.priceSection}>
-                  <div className={styles.priceDisplay}>
-                    <span className={styles.price}>
+                <div className="priceSection">
+                  <div className="priceDisplay">
+                    <span className="price">
                       {formatPrice(plan[billingCycle])}
                     </span>
-                    <span className={styles.pricePeriod}>
+                    <span className="pricePeriod">
                       {billingCycle === 'monthly' ? '/month' : '/year'}
                     </span>
                   </div>
                   {billingCycle === 'annually' && (
-                    <p className={styles.annualNote}>
+                    <p className="annualNote">
                       {formatPrice(plan.monthly)} per month, billed annually
                     </p>
                   )}
@@ -191,19 +190,19 @@ export default function Pricing(): JSX.Element {
 
                 <button
                   onClick={() => handleSelectPlan(key)}
-                  className={`${styles.planButton} ${
-                    plan.popular ? styles.planButtonPrimary : styles.planButtonSecondary
+                  className="planButton" ${
+                    plan.popular ? """planButtonPrimary : """planButtonSecondary
                   }`}
                 >
                   {plan.cta}
                 </button>
 
-                <ul className={styles.featureList}>
+                <ul className="featureList">
                   {plan.features.map((feature, index) => (
-                    <li key={index} className={styles.featureItem}>
-                      <div className={styles.checkIcon}>
+                    <li key={index} className="featureItem">
+                      <div className="checkIcon">
                         <svg
-                          className={styles.checkSvg}
+                          className="checkSvg"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -216,7 +215,7 @@ export default function Pricing(): JSX.Element {
                           />
                         </svg>
                       </div>
-                      <p className={styles.featureText}>{feature}</p>
+                      <p className="featureText">{feature}</p>
                     </li>
                   ))}
                 </ul>
@@ -226,40 +225,40 @@ export default function Pricing(): JSX.Element {
         </div>
 
         {/* FAQ Section */}
-        <div className={styles.faqSection}>
-          <h3 className={styles.faqTitle}>
+        <div className="faqSection">
+          <h3 className="faqTitle">
             Frequently Asked Questions
           </h3>
-          <div className={styles.faqGrid}>
-            <div className={styles.faqItem}>
-              <h4 className={styles.faqQuestion}>
+          <div className="faqGrid">
+            <div className="faqItem">
+              <h4 className="faqQuestion">
                 Is there a free trial?
               </h4>
-              <p className={styles.faqAnswer}>
+              <p className="faqAnswer">
                 Yes! All plans come with a 14-day free trial. No credit card required to start.
               </p>
             </div>
-            <div className={styles.faqItem}>
-              <h4 className={styles.faqQuestion}>
+            <div className="faqItem">
+              <h4 className="faqQuestion">
                 Can I change plans later?
               </h4>
-              <p className={styles.faqAnswer}>
+              <p className="faqAnswer">
                 Absolutely. You can upgrade or downgrade your plan at any time from your dashboard.
               </p>
             </div>
-            <div className={styles.faqItem}>
-              <h4 className={styles.faqQuestion}>
+            <div className="faqItem">
+              <h4 className="faqQuestion">
                 What happens if I exceed my conversation limit?
               </h4>
-              <p className={styles.faqAnswer}>
+              <p className="faqAnswer">
                 We'll notify you when you're approaching your limit. You can upgrade your plan or purchase additional conversations.
               </p>
             </div>
-            <div className={styles.faqItem}>
-              <h4 className={styles.faqQuestion}>
+            <div className="faqItem">
+              <h4 className="faqQuestion">
                 Do you offer custom enterprise solutions?
               </h4>
-              <p className={styles.faqAnswer}>
+              <p className="faqAnswer">
                 Yes! Our Enterprise plan includes custom integrations, dedicated support, and can be tailored to your specific needs.
               </p>
             </div>
@@ -267,24 +266,24 @@ export default function Pricing(): JSX.Element {
         </div>
 
         {/* CTA Section */}
-        <div className={styles.ctaSection}>
-          <div className={styles.ctaContent}>
-            <h3 className={styles.ctaTitle}>
+        <div className="ctaSection">
+          <div className="ctaContent">
+            <h3 className="ctaTitle">
               Ready to transform your lead generation?
             </h3>
-            <p className={styles.ctaSubtitle}>
+            <p className="ctaSubtitle">
               Join hundreds of businesses already using Leadspark to capture and convert more leads with AI-powered conversations.
             </p>
-            <div className={styles.ctaButtons}>
+            <div className="ctaButtons">
               <button
                 onClick={() => handleSelectPlan('professional')}
-                className={styles.ctaPrimary}
+                className="ctaPrimary"
               >
                 Start Free Trial
               </button>
               <button
                 onClick={handleContactSales}
-                className={styles.ctaSecondary}
+                className="ctaSecondary"
               >
                 Contact Sales
               </button>

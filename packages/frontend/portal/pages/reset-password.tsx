@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { supabase } from '../lib/supabaseClient';
-import styles from './login.module.scss'; // Reuse login page styles
+import { useSupabase } from '@leadspark/common/src/utils/supabase/useSupabase'; // Corrected import path
 
 export default function ResetPassword(): JSX.Element {
   const router = useRouter();
@@ -10,13 +9,14 @@ export default function ResetPassword(): JSX.Element {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
+  const { supabase, getSession } = useSupabase();
 
   useEffect(() => {
     // Check for a password reset token in the URL
     // Supabase will automatically handle this, but we'll check for an auth error.
     const handleReset = async () => {
-      const { error: authError } = await supabase.auth.getSession();
-      if (authError) {
+      const { data: authData, error: authError } = await getSession();
+      if (authError || !authData.session) {
         setError('An error occurred during password reset. Please try again.');
       }
     };
@@ -57,44 +57,44 @@ export default function ResetPassword(): JSX.Element {
   };
 
   return (
-    <div className={styles.page}>
+    <div className="page">
       <Head>
         <title>Reset Password - LeadSpark Portal</title>
       </Head>
 
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <button onClick={() => router.push('/login')} className={styles.logo}>
+      <div className="container">
+        <div className="header">
+          <button onClick={() => router.push('/login')} className="logo">
             Leadspark
           </button>
         </div>
-        <h2 className={styles.title}>
+        <h2 className="title">
           Reset Your Password
         </h2>
-        <p className={styles.subtitle}>
+        <p className="subtitle">
           Enter a new password for your account.
         </p>
       </div>
 
-      <div className={styles.formContainer}>
-        <div className={styles.formCard}>
-          <form className={styles.form} onSubmit={handlePasswordReset}>
+      <div className="formContainer">
+        <div className="formCard">
+          <form className="form" onSubmit={handlePasswordReset}>
             {error && (
-              <div className={styles.errorBanner}>
+              <div className="errorBanner">
                 {error}
               </div>
             )}
             {message && (
-              <div className={styles.successBanner}>
+              <div className="successBanner">
                 {message}
               </div>
             )}
 
             <div>
-              <label htmlFor="password" className={styles.label}>
+              <label htmlFor="password" className="label">
                 New Password
               </label>
-              <div className={styles.inputGroup}>
+              <div className="inputGroup">
                 <input
                   id="password"
                   name="password"
@@ -103,7 +103,7 @@ export default function ResetPassword(): JSX.Element {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className={styles.input}
+                  className="input"
                   disabled={loading}
                 />
               </div>
@@ -113,11 +113,11 @@ export default function ResetPassword(): JSX.Element {
               <button
                 type="submit"
                 disabled={loading || !!message}
-                className={`${styles.submitButton} ${loading ? styles.submitButtonLoading : ''}`}
+                className={`}`}
               >
                 {loading ? (
-                  <div className={styles.loadingContent}>
-                    <div className={styles.spinner}></div>
+                  <div className="loadingContent">
+                    <div className="spinner"></div>
                     Resetting...
                   </div>
                 ) : (

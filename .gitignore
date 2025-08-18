@@ -1,89 +1,131 @@
-# Python
+# Dependencies
+node_modules/
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.venv/
+.Python
 env/
 venv/
-.env
-.env.frontend
-.env.*
-*.egg-info/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Build outputs
 dist/
 build/
-
-# Node
-node_modules/
-.vite/
-npm-debug.log
-yarn-debug.log
-pnpm-debug.log
-*.log
-
-
-# Build output
-dist/
+*.egg-info/
 .next/
 out/
-build/
 coverage/
-.eslintcache
 
-# Vercel & Render
-.vercel/
-render-build/
-.render/
-
-# Supabase
-.supabase/
-supabase/.temp/
-supabase/functions/.netlify/
+# Environment variables
 .env
 .env.local
-.env.*.local
-.env.example
+.env.development.local
+.env.test.local
+.env.production.local
 
-# IDE files
+# IDE and editor files
 .vscode/
 .idea/
-*.sublime-project
-*.sublime-workspace
+*.swp
+*.swo
+*~
 
-# OS-specific
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
 # Logs
-logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+debug.log
 
-# Playwright
-playwright-report/
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Test results and screenshots
 test-results/
-*.spec.ts.snap
-*.spec.js.snap
-*.log
-.traces/
+playwright-report/
+*.png
+*.webm
 
-# Misc
-*.swp
-*.bak
+# Temporary files
 *.tmp
-*.lock
-.cache/
-.pnpm-store/
-.parcel-cache/
-*.tgz
+*.temp
 
-# TypeScript
+# Package manager locks (choose one strategy)
+# Option 1: Keep pnpm-lock.yaml, ignore others
+package-lock.json
+yarn.lock
+# Option 2: If using npm, keep package-lock.json instead
+# pnpm-lock.yaml
+# yarn.lock
+
+# TypeScript build info
 *.tsbuildinfo
+tsconfig.tsbuildinfo
 
-# SCSS/CSS
-*.css.map
+# Vercel
+.vercel
 
-# Optional local uploads (not for production)
-public/uploads/
-supabase/storage/buckets/knowledge-base-files/*
-!supabase/storage/buckets/knowledge-base-files/.keep
+# Supabase
+.supabase/
 
+# Compiled CSS from SCSS
+packages/styles/dist/
+packages/styles/main.css
+packages/styles/main.css.map
+
+# Zip archives (these appear to be backup/deployment artifacts)
+*.zip
+
+# Python virtual environment folders that may be created elsewhere
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Prisma
+prisma/dev.db
+prisma/migrations/dev.db
+
+# Local secrets and configs
+config/local.json
+secrets.json
+
+# Backup files
+*.bak
+*.backup
+
+# Windows specific
+UsersdenniAppDataRoamingnpm/

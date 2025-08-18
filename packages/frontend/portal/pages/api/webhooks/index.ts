@@ -1,5 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { supabase } from '../../../lib/supabaseClient';
+import { NextRequest } from 'next/server';
+import { createSupabaseServerClient } from '../../../../common/lib/supabaseClient'; // Corrected import path
+
+export const config = {
+  runtime: 'edge', // This route is configured for the Edge runtime
+};
+
+export default async function handler(req: NextRequest) {
+  const { supabase, response } = createSupabaseServerClient(req);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {

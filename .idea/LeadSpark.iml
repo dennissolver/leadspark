@@ -3,6 +3,31 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/.vscode" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/backend/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/common/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/common/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/env" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/frontend/admin-portal/.next" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/frontend/admin-portal/UsersdenniAppDataRoamingnpm" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/frontend/admin-portal/UsersdenniAppDataRoamingnpm/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/frontend/admin-portal/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/frontend/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/frontend/landing-page/.next" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/frontend/landing-page/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/frontend/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/frontend/portal/.next" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/frontend/portal/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/frontend/widget/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/frontend/widget/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/styles/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/styles/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/ui/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/ui/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/supabase/.supabase" />
+      <excludeFolder url="file://$MODULE_DIR$/supabase/.temp" />
+      <excludeFolder url="file://$MODULE_DIR$/test-results" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.12 (LeadSpark)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
