@@ -240,6 +240,28 @@ importers:
       uuid:
         specifier: ^11.1.0
         version: 11.1.0
+    devDependencies:
+      '@types/node':
+        specifier: ^24.2.1
+        version: 24.3.0
+      '@types/react':
+        specifier: ^19.1.9
+        version: 19.1.10
+      '@types/react-dom':
+        specifier: ^19.1.7
+        version: 19.1.7(@types/react@19.1.10)
+      autoprefixer:
+        specifier: ^10.4.20
+        version: 10.4.21(postcss@8.5.6)
+      postcss:
+        specifier: ^8.4.40
+        version: 8.5.6
+      tailwindcss:
+        specifier: ^3.4.10
+        version: 3.4.17
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.2
 
   packages/frontend/portal:
     dependencies:
