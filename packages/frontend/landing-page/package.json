@@ -2,6 +2,7 @@
   "name": "@leadspark/landing-page",
   "version": "0.1.0",
   "scripts": {
+    "clean": "rimraf dist .next",
     "build": "next build",
     "type-check": "tsc --noEmit"
   },

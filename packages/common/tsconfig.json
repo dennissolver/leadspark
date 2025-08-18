@@ -2,6 +2,8 @@
   "compilerOptions": {
     "target": "es2019",
     "module": "commonjs",
+    "lib": ["es2019", "dom"],
+    "jsx": "react-jsx",
     "declaration": true,
     "outDir": "./dist",
     "strict": true,
@@ -9,6 +11,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist"]
 }

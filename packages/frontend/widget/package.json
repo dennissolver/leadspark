@@ -2,6 +2,7 @@
   "name": "@leadspark/widget",
   "version": "0.1.0",
   "scripts": {
+    "clean": "rimraf dist .next",
     "dev": "vite --port 3003",
     "build": "vite build && pnpm run copy-to-apps",
     "preview": "vite preview",

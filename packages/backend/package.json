@@ -9,7 +9,7 @@
     "build": "echo 'No build step required for Python backend'",
     "type-check": "echo 'No TypeScript in Python backend'",
     "lint": "pylint src routes middleware services utils",
-    "clean": "rm -rf __pycache__"
+    "clean": "rimraf dist .next"
   },
   "keywords": [],
   "author": "",

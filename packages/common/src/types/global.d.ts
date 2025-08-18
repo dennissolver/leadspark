@@ -1,6 +1,9 @@
 declare global {
   interface Window {
-    LeadSparkWidget?: any;
+    LeadSparkWidget?: {
+      init: (options: { position: string; accentColor: string }) => void;
+    };
   }
 }
+
 export {};

@@ -31,11 +31,11 @@ export function createSupabaseServerClient(ctx: GetServerSidePropsContext) {
         // Pages Router: cookies are plain object on req
         return ctx.req.cookies?.[name];
       },
-      set(name: string, value: string, options: CookieSerializeOptions) {
+      set(name: string, value: string, options: SerializeOptions) {
         const cookie = serialize(name, value, { path: '/', ...options });
         appendSetCookieHeader(ctx, cookie);
       },
-      remove(name: string, options: CookieSerializeOptions) {
+      remove(name: string, options: SerializeOptions) {
         const cookie = serialize(name, '', { path: '/', maxAge: 0, ...options });
         appendSetCookieHeader(ctx, cookie);
       },

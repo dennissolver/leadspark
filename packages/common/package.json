@@ -6,13 +6,19 @@
   "types": "./src/index.ts",
   "scripts": {
     "dev": "tsc --watch",
+    "clean": "rimraf dist .next",
     "build": "tsc"
   },
   "dependencies": {
     "@prisma/client": "^5.7.0",
-    "@supabase/supabase-js": "^2.38.5"
+    "@supabase/supabase-js": "^2.38.5",
+    "react": "^18.3.1",
+    "next": "^14.2.31",
+    "cookie": "^1.0.2"
   },
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1"
   }
 }

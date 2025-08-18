@@ -22,6 +22,7 @@
         "@leadspark/common": "workspace:*"
     },
     "scripts": {
+        "clean": "rimraf dist .next",
         "copy:widget": "node -e \"require('fs').copyFileSync(require('path').resolve(__dirname, '../../widget/dist/leadspark-widget.js'), require('path').resolve(__dirname, './public/leadspark-widget.js'))\"",
         "dev": "pnpm run copy:widget && next dev -p 3001",
         "type-check": "tsc --noEmit",

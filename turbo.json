@@ -6,10 +6,18 @@
       "inputs": ["**/*.ts", "**/*.tsx", "middleware.ts"],
       "cache": true
     },
+    "clean": {
+      "outputs": [],
+      "cache": false,
+      "env": [
+        "VERCEL_ENV",
+        "NODE_ENV"
+      ]
+    },
     "dev": {
       "cache": false,
       "persistent": true,
-      "dependsOn": [],  // No longer depends on build:styles
+      "dependsOn": [],
       "env": [
         "NEXT_PUBLIC_SUPABASE_URL",
         "NEXT_PUBLIC_SUPABASE_ANON_KEY",
@@ -19,8 +27,16 @@
       ]
     },
     "build": {
-      "dependsOn": ["^build", "typecheck"], // No longer depends on build:styles
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", "dist/assets/**"],
+      "dependsOn": [
+        "^build",
+        "typecheck"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "dist/**",
+        "dist/assets/**"
+      ],
       "env": [
         "NEXT_PUBLIC_SUPABASE_URL",
         "NEXT_PUBLIC_SUPABASE_ANON_KEY",
@@ -31,5 +47,8 @@
       ]
     }
   },
-  "globalDependencies": ["packages/common/**/*", "packages/ui/**/*"]
+  "globalDependencies": [
+    "packages/common/**/*",
+    "packages/ui/**/*"
+  ]
 }

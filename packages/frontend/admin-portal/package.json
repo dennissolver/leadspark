@@ -29,6 +29,7 @@
         "prisma": "^6.14.0"
     },
     "scripts": {
+        "clean": "rimraf dist .next",
         "test": "vitest",
         "test:coverage": "vitest run --coverage",
         "copy:widget": "node -e \"require('fs').copyFileSync(require('path').resolve(__dirname, '../../widget/dist/leadspark-widget.js'), require('path').resolve(__dirname, './public/leadspark-widget.js'))\"",

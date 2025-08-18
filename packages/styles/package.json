@@ -6,7 +6,7 @@
   "scripts": {
     "build": "sass main.scss dist/main.css",
     "watch": "sass --watch main.scss dist/main.css",
-    "clean": "rm -rf dist"
+    "clean": "rimraf dist .next"
   },
   "devDependencies": {
     "sass": "^1.69.0"
