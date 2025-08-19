@@ -8,11 +8,7 @@
     },
     "clean": {
       "outputs": [],
-      "cache": false,
-      "env": [
-        "VERCEL_ENV",
-        "NODE_ENV"
-      ]
+      "cache": false
     },
     "dev": {
       "cache": false,
@@ -27,16 +23,8 @@
       ]
     },
     "build": {
-      "dependsOn": [
-        "^build",
-        "typecheck"
-      ],
-      "outputs": [
-        ".next/**",
-        "!.next/cache/**",
-        "dist/**",
-        "dist/assets/**"
-      ],
+      "dependsOn": ["^build", "typecheck"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "dist/assets/**"],
       "env": [
         "NEXT_PUBLIC_SUPABASE_URL",
         "NEXT_PUBLIC_SUPABASE_ANON_KEY",
@@ -47,8 +35,5 @@
       ]
     }
   },
-  "globalDependencies": [
-    "packages/common/**/*",
-    "packages/ui/**/*"
-  ]
+  "globalDependencies": ["packages/common/**/*", "packages/ui/**/*"]
 }
