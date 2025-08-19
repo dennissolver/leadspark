@@ -6,6 +6,19 @@ import React from 'react';
 // Shared provider so pages can call useSupabase()
 import { SupabaseProvider } from '@leadspark/common/src/utils/supabase/useSupabase';
 
+// Extend the Window interface to include LeadSparkWidget
+declare global {
+  interface Window {
+    LeadSparkWidget?: {
+      init: (config: {
+        position: string;
+        accentColor: string;
+        zIndex: number;
+      }) => void;
+    };
+  }
+}
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
