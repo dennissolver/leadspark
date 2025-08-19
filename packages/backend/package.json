@@ -1,24 +1,15 @@
 {
   "name": "@leadspark/backend",
   "version": "1.0.0",
-  "private": true,
-  "description": "The FastAPI backend for the LeadSpark AI assistant.",
+  "description": "LeadSpark FastAPI backend",
   "main": "main.py",
   "scripts": {
-    "dev": "uvicorn main:app --reload",
-    "build": "echo 'No build step required for Python backend'",
-    "type-check": "echo 'No TypeScript in Python backend'",
-    "lint": "pylint src routes middleware services utils",
-    "clean": "rimraf dist .next"
+    "start": "python main.py",
+    "dev": "python main.py --dev",
+    "test": "python -m pytest",
+    "lint": "python -m flake8 .",
+    "format": "python -m black ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "wscat": "^5.2.0",
-    "typescript": "^5.5.4"
-  },
-  "engines": {
-    "python": ">=3.10.0"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }

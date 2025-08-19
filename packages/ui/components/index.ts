@@ -10,3 +10,4 @@ export * from './Input';
 export * from './Label';
 export * from './ChatBubble';
 export * from './LeadCard';
+export * from './Select';

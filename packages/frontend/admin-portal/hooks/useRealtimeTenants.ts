@@ -1,6 +1,6 @@
 ﻿// packages/frontend/admin-portal/hooks/useRealtimeTenants.ts
 import { useState, useEffect } from "react";
-import { useSupabase } from "@leadspark/common/supabase";
+import { useSupabase } from "@leadspark/common";
 
 type Tenant = {
   id: string;
@@ -23,7 +23,7 @@ export const useRealtimeTenants = (initialTenants: Tenant[], supabase: any) => {
           schema: "public",
           table: "tenants",
         },
-        async (payload) => {
+        async (payload: any) => {
           const { eventType, new: newTenant, old: oldTenant } = payload;
           setTenants((currentTenants) => {
             switch (eventType) {

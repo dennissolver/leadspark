@@ -1,39 +1,25 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
-    "typecheck": {
-      "outputs": [],
-      "inputs": ["**/*.ts", "**/*.tsx", "middleware.ts"],
-      "cache": true
-    },
-    "clean": {
-      "outputs": [],
-      "cache": false
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "build/**"]
     },
     "dev": {
       "cache": false,
-      "persistent": true,
-      "dependsOn": [],
-      "env": [
-        "NEXT_PUBLIC_SUPABASE_URL",
-        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
-        "SUPABASE_URL",
-        "SUPABASE_KEY",
-        "SUPABASE_SERVICE_ROLE_KEY"
-      ]
+      "persistent": true
     },
-    "build": {
-      "dependsOn": ["^build", "typecheck"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", "dist/assets/**"],
-      "env": [
-        "NEXT_PUBLIC_SUPABASE_URL",
-        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
-        "SUPABASE_URL",
-        "SUPABASE_KEY",
-        "SUPABASE_SERVICE_ROLE_KEY",
-        "PYTHON_VERSION"
-      ]
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "type-check": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "start": {
+      "cache": false,
+      "persistent": true
     }
   },
-  "globalDependencies": ["packages/common/**/*", "packages/ui/**/*"]
+  "globalEnv": ["NODE_ENV"]
 }

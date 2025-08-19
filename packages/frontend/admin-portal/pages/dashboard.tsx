@@ -10,9 +10,9 @@ import { serialize } from "cookie";
 import * as UI from "@leadspark/ui";
 
 // Local deps remain the same
-import { useSupabase } from "@leadspark/common/supabase";
-import { AnalyticsChart as AnalyticsChartFromUI } from "@leadspark/ui/AnalyticsChart"; // keep if it exists
-import { TenantForm as TenantFormFromLocal } from "../components/TenantForm";
+import { useSupabase } from "@leadspark/common";
+import { AnalyticsChart as AnalyticsChartFromUI } from "@leadspark/ui"; // keep if it exists
+import TenantFormFromLocal from "../components/TenantForm";
 import { useRealtimeTenants } from "../hooks/useRealtimeTenants";
 import { useRealtimeLeads } from "../hooks/useRealtimeLeads";
 
@@ -159,9 +159,13 @@ export default function DashboardPage({
 
   const isSuper = (role ?? "").toLowerCase() === "superadmin";
 
-  const { tenants } = useRealtimeTenants(initialTenants, supabase, isSuper ? null : tenantId);
-  const { leads } = useRealtimeLeads(initialLeads, supabase, isSuper ? null : tenantId);
+  const { tenants } = useRealtimeTenants(initialTenants, supabase);
 
+  const normalizedTenants = initialTenants.map((tenant) => ({
+    ...tenant,
+    subscriptionStatus: tenant.subscriptionStatus ?? "unknown", // Default to "unknown" or another valid string
+  }));
+  const { tenants } = useRealtimeTenants(normalizedTenants, supabase);
   const chartData = useMemo(() => {
     const buckets = new Map<string, number>();
     for (const l of leads) {

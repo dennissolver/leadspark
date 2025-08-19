@@ -4,22 +4,20 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useSupabase } from "@leadspark/common/supabase";
+import { useSupabase } from "@leadspark/common";
 import toast from "react-hot-toast"; // Assume installed via npm install react-hot-toast
-import { type Tenant } from "@leadspark/common/src/types"; // Updated import for type consistency
+import { type Tenant } from "@leadspark/common"; // Updated import for type consistency
 
 // Shared UI components
-import { Card, CardContent, CardHeader, CardTitle } from "@leadspark/ui/components/Card";
-import { Button } from "@leadspark/ui/components/Button";
-import { Input } from "@leadspark/ui/components/Input";
-import { Label } from "@leadspark/ui/components/Label";
+import { Card, CardContent, CardHeader, CardTitle } from "@leadspark/ui";
+import { Button } from "@leadspark/ui";
+import { Input } from "@leadspark/ui";
+import { Label } from "@leadspark/ui";
 import {
   Select,
-  SelectContent,
-  SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@leadspark/ui/components/Select";
+} from "@leadspark/ui";
 
 const tenantFormSchema = z.object({
   name: z.string().min(2, { message: "Tenant name must be at least 2 characters." }),
@@ -70,7 +68,7 @@ const TenantForm: React.FC<TenantFormProps> = ({ open, onClose, initialData, onD
       onClose(); // Close modal on success
       router.reload(); // Refresh dashboard to reflect new tenant
     } catch (error) {
-      toast.error(`Failed to create tenant: ${error.message}`);
+      toast.error(`Failed to create tenant: ${(error as Error).message}`);
     } finally {
       setLoading(false);
     }
@@ -85,7 +83,7 @@ const TenantForm: React.FC<TenantFormProps> = ({ open, onClose, initialData, onD
         onClose();
         router.reload();
       } catch (error) {
-        toast.error(`Failed to delete tenant: ${error.message}`);
+        toast.error(`Failed to delete tenant: ${(error as Error).message}`);
       } finally {
         setLoading(false);
       }
@@ -109,7 +107,7 @@ const TenantForm: React.FC<TenantFormProps> = ({ open, onClose, initialData, onD
                 id="name"
                 placeholder="Corporate AI Solutions"
                 {...form.register("name")}
-                disabled={loading}
+                
               />
               {form.formState.errors.name && (
                 <p className="text-red-500 text-sm">{form.formState.errors.name.message}</p>
@@ -118,22 +116,19 @@ const TenantForm: React.FC<TenantFormProps> = ({ open, onClose, initialData, onD
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="subscription_status">Subscription Status</Label>
               <Select
+                options={[
+                  {label: "Trialing", value: "trialing"},
+                  {label: "Active", value: "active"},
+                  {label: "Past Due", value: "past_due"},
+                  {label: "Canceled", value: "canceled"}
+                ]}
                 onValueChange={(value) =>
                   form.setValue("subscription_status", value as any)
                 }
                 value={form.watch("subscription_status")}
-                disabled={loading}
-              >
-                <SelectTrigger id="subscription_status">
-                  <SelectValue placeholder="Select a status" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="trialing">Trialing</SelectItem>
-                  <SelectItem value="active">Active</SelectItem>
-                  <SelectItem value="past_due">Past Due</SelectItem>
-                  <SelectItem value="canceled">Canceled</SelectItem>
-                </SelectContent>
-              </Select>
+                placeholder="Select a status"
+                
+              />
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="stripeCustomerId">Stripe Customer ID</Label>
@@ -141,7 +136,7 @@ const TenantForm: React.FC<TenantFormProps> = ({ open, onClose, initialData, onD
                 id="stripeCustomerId"
                 placeholder="cus_123456789"
                 {...form.register("stripeCustomerId")}
-                disabled={loading}
+                
               />
               {form.formState.errors.stripeCustomerId && (
                 <p className="text-red-500 text-sm">
@@ -151,7 +146,7 @@ const TenantForm: React.FC<TenantFormProps> = ({ open, onClose, initialData, onD
             </div>
           </div>
           <div className="flex justify-between items-center pt-4">
-            <Button type="submit" disabled={loading}>
+            <Button type="submit" >
               {loading
                 ? "Saving..."
                 : initialData
@@ -161,9 +156,9 @@ const TenantForm: React.FC<TenantFormProps> = ({ open, onClose, initialData, onD
             {initialData && onDelete && (
               <Button
                 type="button"
-                variant="ghost"
+                variant="outline"
                 onClick={handleDelete}
-                disabled={loading}
+                
                 className="text-red-500 hover:text-red-600"
               >
                 Delete Tenant
@@ -173,7 +168,7 @@ const TenantForm: React.FC<TenantFormProps> = ({ open, onClose, initialData, onD
               type="button"
               variant="outline"
               onClick={onClose}
-              disabled={loading}
+              
             >
               Cancel
             </Button>

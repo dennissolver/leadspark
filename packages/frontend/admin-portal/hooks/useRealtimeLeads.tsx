@@ -1,6 +1,6 @@
 ﻿// packages/frontend/admin-portal/hooks/useRealtimeLeads.ts
 import { useState, useEffect } from "react";
-import { useSupabase } from "@leadspark/common/supabase";
+import { useSupabase } from "@leadspark/common";
 
 type Lead = {
   id: string;
@@ -23,7 +23,7 @@ export const useRealtimeLeads = (initialLeads: Lead[], supabase: any) => {
           schema: "public",
           table: "leads",
         },
-        (payload) => {
+        (payload: any) => {
           const { eventType, new: newLead, old: oldLead } = payload;
           setLeads((currentLeads) => {
             switch (eventType) {

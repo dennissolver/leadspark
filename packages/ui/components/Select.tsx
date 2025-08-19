@@ -1,35 +1,23 @@
 import React from 'react';
 import {
   Select as SelectPrimitive,
-  SelectContent,
+  SelectContent as SelectContentPrimitive,
   SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@radix-ui/react-select"; // This assumes you have @radix-ui/react-select installed.
+  SelectItem as SelectItemPrimitive,
+  SelectTrigger as SelectTriggerPrimitive,
+  SelectValue as SelectValuePrimitive,
+} from "@radix-ui/react-select";
 
 interface SelectProps {
-  // The current value of the select input.
   value?: string;
-  // Callback function to handle value changes.
   onValueChange?: (value: string) => void;
-  // A placeholder text to display when no value is selected.
   placeholder?: string;
-  // An array of options to display in the dropdown.
   options: { label: string; value: string }[];
-  // The label for the select component.
   label?: string;
 }
 
-/**
- * A reusable Select component for your application.
- * This component wraps the basic functionality of a select dropdown.
- * It is designed to be flexible and easy to use.
- *
- * @param {SelectProps} props - The props for the component.
- * @returns {JSX.Element} A Select React element.
- */
-export default function SelectComponent({
+// Export the main Select component
+export function Select({
   value,
   onValueChange,
   placeholder,
@@ -38,29 +26,31 @@ export default function SelectComponent({
 }: SelectProps) {
   return (
     <div className="flex flex-col space-y-2">
-      {/* Renders a label if the 'label' prop is provided */}
       {label && <label className="text-sm font-medium text-gray-700">{label}</label>}
-
-      {/* The main Select component, with value and change handler */}
       <SelectPrimitive onValueChange={onValueChange} value={value}>
-        {/* The visible trigger for the dropdown, styled with Tailwind classes */}
-        <SelectTrigger className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-          {/* Displays the selected value or a placeholder */}
-          <SelectValue placeholder={placeholder} />
-        </SelectTrigger>
-
-        {/* The content container for the dropdown list */}
-        <SelectContent>
+        <SelectTriggerPrimitive className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+          <SelectValuePrimitive placeholder={placeholder} />
+        </SelectTriggerPrimitive>
+        <SelectContentPrimitive>
           <SelectGroup>
-            {/* Maps through the options array to render each selectable item */}
             {options.map((option) => (
-              <SelectItem key={option.value} value={option.value}>
+              <SelectItemPrimitive key={option.value} value={option.value}>
                 {option.label}
-              </SelectItem>
+              </SelectItemPrimitive>
             ))}
           </SelectGroup>
-        </SelectContent>
+        </SelectContentPrimitive>
       </SelectPrimitive>
     </div>
   );
 }
+
+// Export the individual Radix components for direct use
+export const SelectContent = SelectContentPrimitive;
+export const SelectItem = SelectItemPrimitive;
+export const SelectTrigger = SelectTriggerPrimitive;
+export const SelectValue = SelectValuePrimitive;
+
+// Keep default export for backward compatibility
+export default Select;
+// Export individual Radix components for direct use

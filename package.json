@@ -1,66 +1,22 @@
 {
-  "name": "leadspark-project",
+  "name": "@leadspark/monorepo",
   "private": true,
+  "packageManager": "pnpm@9.0.0",
   "workspaces": [
-    "packages/*",
-    "packages/frontend/*"
+    "packages/*"
   ],
   "scripts": {
-    "playwright": "npx playwright test",
-    "dev:portal": "turbo run dev --filter=@leadspark/portal",
-    "dev:landing": "turbo run dev --filter=@leadspark/landing-page",
-    "dev:backend": "turbo run dev --filter=@leadspark/backend",
-    "start:all": "concurrently \"pnpm run dev:backend\" \"pnpm run dev:landing\" \"pnpm run dev:portal\"",
-    "test:clientPortal": "start-server-and-test 'pnpm run dev:portal' http-get://localhost:3001 'pnpm run playwright --project=clientPortal'",
-    "test:landing": "start-server-and-test 'pnpm run dev:landing' http-get://localhost:3000 'pnpm run playwright --project=widget --project=stripe'",
-    "test:dashboard": "start-server-and-test 'pnpm run dev:portal' http-get://localhost:3001 'pnpm run playwright --project=dashboard'",
-    "test:all": "pnpm run test:clientPortal && pnpm run test:landing && pnpm run test:dashboard",
-    "e2e:prepare": "turbo run dev --filter=@leadspark/backend --filter=@leadspark/landing-page --filter=@leadspark/portal",
-    "dev:main": "turbo run dev --filter=!@leadspark/widget",
-    "dev:admin": "turbo run dev --filter=@leadspark/admin-portal",
-    "dev:widget": "turbo run dev --filter=@leadspark/widget",
-    "build": "turbo run build",
-    "lint": "turbo run lint",
-    "type-check": "turbo run type-check",
-    "clean": "rimraf dist .next",
-    "build:landing": "turbo run build --filter=@leadspark/landing-page",
-    "build:portal": "turbo run build --filter=@leadspark/portal",
-    "build:admin": "turbo run build --filter=@leadspark/admin-portal",
-    "build:widget": "turbo run build --filter=@leadspark/widget",
-    "deploy:landing": "cd packages/frontend/landing-page && vercel --prod",
-    "deploy:portal": "cd packages/frontend/portal && vercel --prod",
-    "deploy:admin": "cd packages/frontend/admin-portal && vercel --prod",
-    "deploy:widget": "cd packages/frontend/widget && vercel --prod"
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.46.1",
-    "@testing-library/react": "^16.3.0",
-    "@types/jsonwebtoken": "^9.0.10",
-    "@vitejs/plugin-react": "^4.3.2",
-    "autoprefixer": "^10.4.20",
-    "dotenv-cli": "^10.0.0",
-    "postcss": "^8.4.40",
-    "prisma": "^6.14.0",
-    "rimraf": "^6.0.1",
-    "tailwindcss": "^3.4.17",
-    "turbo": "2.5.5",
-    "vitest": "^3.2.4",
-    "wscat": "^5.2.0"
+    "build": "turbo build",
+    "build:frontend": "turbo build --filter='!@leadspark/backend'",
+    "dev": "turbo dev",
+    "dev:backend": "turbo dev --filter=@leadspark/backend",
+    "dev:frontend": "turbo dev --filter='!@leadspark/backend'",
+    "start:backend": "turbo start --filter=@leadspark/backend",
+    "lint": "turbo lint",
+    "type-check": "turbo type-check",
+    "clean": "turbo clean && rimraf node_modules"
   },
   "dependencies": {
-    "@prisma/client": "^6.14.0",
-    "@radix-ui/react-select": "^2.2.6",
-    "@supabase/ssr": "^0.6.1",
-    "@supabase/supabase-js": "^2.45.4",
-    "@types/react": "18.3.2",
-    "@types/react-dom": "18.3.2",
-    "concurrently": "^8.2.2",
-    "jsonwebtoken": "^9.0.2",
-    "start-server-and-test": "^2.0.3",
-    "typescript": "^5.9.2"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "packageManager": "pnpm@9.0.0"
+    "@radix-ui/react-select": "^2.2.6"
+  }
 }

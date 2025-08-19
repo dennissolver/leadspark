@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useSupabase } from '@leadspark/common/supabase'; // Corrected import path
+import { useSupabase } from '@leadspark/common'; // Corrected import path
 
 export default function SignupPage() {
   const [email, setEmail] = useState('');
